@@ -71,230 +71,64 @@
           </div>
         </div>
 
-        {% assign formyselfIconImage = '' %}
-        {% assign forGiftSomeoneImage = '' %}
-        {% for singleStep in shop.metaobjects.image_icon_urls.values %}
-          {% if singleStep.step == 'whosthisfor' %}
-            {% for singleStepSingleOption in singleStep.options.value %}
-              {% if singleStepSingleOption.name == 'myself' %}
-                {% assign formyselfIconImage = singleStepSingleOption.image_url.value %}
-              {% else %}
-                {% assign forGiftSomeoneImage = singleStepSingleOption.image_url.value %}
-              {% endif %}
-            {% endfor %}
-          {% endif %}
-        {% endfor %}
         <div class="subscriptionContent">
           <div class="stepsWrapper">
-            {% comment %} WHO IS THIS FOR? {% endcomment %}
-            <div class="subscriptionOption step">
-              <h2>1. Who is this for?</h2>
-              <div class="subscriptionRow">
-                <div class="subscriptionCol slection-step-1">
-                  <input
-                    type="radio"
-                    id="forMySelf"
-                    name="whoisThisFor"
-                    value="forMySelf"
-                    class="selection-steps-radio"
-                  >
-                  <label for="forMySelf" class="subscriptionCard card_one">
-                    <div class="itemDiv">
-                      <div class="itemIcon">
-                        <img
-                          src="{{ formyselfIconImage | image_url }}"
-                          alt=""
-                          class="whoImage"
-                        >
-                        <h4>For myself</h4>
-                      </div>
-                      <div class="itemDetail">
-                        <ul>
-                          <li>
-                            <img
-                              src="https://cdn.shopify.com/s/files/1/0726/2391/5327/files/SVG.svg?v=1706094410"
-                              alt=""
-                            >
-                            Shipping included
-                          </li>
-                          <li>
-                            <img
-                              src="https://cdn.shopify.com/s/files/1/0726/2391/5327/files/SVG.svg?v=1706094410"
-                              alt=""
-                            >
-                            Modify and cancel anytime
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </label>
-                </div>
-                <div class="subscriptionCol slection-step-1">
-                  <input type="radio" id="forGift" name="whoisThisFor" value="forGift" class="selection-steps-radio">
-                  <label for="forGift" class="subscriptionCard card_one">
-                    <div class="itemDiv">
-                      <div class="itemIcon">
-                        <img
-                          src="{{ forGiftSomeoneImage | image_url }}"
-                          alt=""
-                          class="whoImage"
-                        >
-                        <h4>A Gift For Someone else</h4>
-                      </div>
-
-                      <div class="itemDetail">
-                        <ul>
-                          <li>
-                            <img
-                              src="https://cdn.shopify.com/s/files/1/0726/2391/5327/files/SVG.svg?v=1706094410"
-                              alt=""
-                            >
-                            Shipping included
-                          </li>
-                          <li>
-                            <img
-                              src="https://cdn.shopify.com/s/files/1/0726/2391/5327/files/SVG.svg?v=1706094410"
-                              alt=""
-                            >
-                            Perfect gift for every occasion
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </label>
-                </div>
-              </div>
-            </div>
+            {% comment %} WHO IS THIS FOR? - REFACTORIZADO {% endcomment %}
+            {% render 'subscription-step',
+              step_number: 1,
+              step_title: 'Who is this for?',
+              step_name: 'whoisThisFor',
+              step_options: 'whosthisfor',
+              wrapper_classes: 'subscriptionOption step',
+              row_classes: 'subscriptionRow'
+            %}
             <div class="forMySelf" id="stepsWrapperForMySelf" style="display:none">
-              {% comment %} 1. SELECT YOUR COFFEE: {% endcomment %}
-              <div class="subscriptionOption step for-myself-steps" id="productSelectYourCoffeeStep">
-                <h2>2. Select your coffee:</h2>
-                <div class="selectYourCoffeeRow">
-                  {% for product in coffee_subscription_products %}
-                    {% if product.available %}
-                      {% assign subscription_product_image = product.metafields.custom.subscription_wizard_image %}
-                      <div class="selectYourCoffeeCol" data-x-product="{{ product | json | escape }}">
-                        <input
-                          type="radio"
-                          id="{{ product.handle }}"
-                          name="selectYourCoffee"
-                          value="{{ product.id }}"
-                          class="selection-steps-radio"
-                        >
-                        <label for="{{ product.handle }}" class="subscriptionCard card_five ">
-                          <div class="itemDiv itemCardReletive">
-                            <div class="itemCard selectCoffeeImage">
-                              <img
-                                src="{{ subscription_product_image | img_url: '400x', format: 'pjpg' }}"
-                                alt="{{ product.handle }}"
-                              >
-                            </div>
-                            {% comment %} <h4 style="text-align:center">{{ product.title }}</h4> {% endcomment %}
-                            <button type="button">Select</button>
+              {% comment %} SELECT YOUR COFFEE - REFACTORIZADO {% endcomment %}
+              {% render 'product-selector',
+                products: coffee_subscription_products,
+                step_number: 2,
+                step_title: 'Select your coffee:',
+                input_name: 'selectYourCoffee',
+                wrapper_classes: 'subscriptionOption step for-myself-steps',
+                wrapper_id: 'productSelectYourCoffeeStep'
+              %}
 
-                            {% if product.tags contains 'Bestseller' %}
-                              <div class="tag">
-                                <span>Bestseller</span>
-                              </div>
-                            {% endif %}
-                          </div>
-                        </label>
-                      </div>
-                    {% endif %}
-                  {% endfor %}
-                </div>
-              </div>
-
+              {% comment %} PRODUCT OPTIONS - REFACTORIZADO {% endcomment %}
               {% for product in coffee_subscription_products %}
                 {% assign currentIndex = forloop.index %}
-
                 <div class="productOptions" id="main-product-{{ product.id }}">
                   {% for option in product.options_with_values %}
                     {% assign optionName = option.name | downcase %}
-                    {% comment %} name = {{ optionName }} {% endcomment %}
-                    {% comment %} <br> {% endcomment %}
-                    {% comment %} currentIndex = {{ currentIndex }} {% endcomment %}
 
-                    {% comment %} Render Type step when have product {% endcomment %}
+                    {% comment %} TYPE STEP {% endcomment %}
                     {% if optionName == 'type' %}
                       <div
-                        class="subscriptionOption step  productTypeStep {% if currentIndex != 1 %}display-none-needed{% endif %}"
-                        id="product-type-step-{{-  product.id -}}"
+                        class="subscriptionOption step productTypeStep {% if currentIndex != 1 %}display-none-needed{% endif %}"
+                        id="product-type-step-{{ product.id }}"
                       >
                         <h2>3. Select Coffee Type</h2>
-                        <div
-                          class="subscriptionRow size type w-50-needed"
-                          {% if currentIndex != 1 %}
-                            display-none-needed
-                          {% endif %}
-                          id="type-{{ product.id }}"
-                        >
-                          {% assign optionName = option.name | downcase %}
-                          {% if optionName == 'type' %}
-                            {%- for value in option.values -%}
-                              {% comment %} Check that variation is avaialbe of not {% endcomment %}
-                              {% assign option_available = false %}
-                              {% for variant in product.variants %}
-                                {% if variant.option3 == value and variant.available %}
-                                  {% assign option_available = true %}
-                                  {% break %}
-                                {% endif %}
-
-                                {% if variant.option2 == value and variant.available %}
-                                  {% assign option_available = true %}
-                                  {% break %}
-                                {% endif %}
-
-                                {% if variant.option1 == value and variant.available %}
-                                  {% assign option_available = true %}
-                                  {% break %}
-                                {% endif %}
-                              {% endfor %}
-
-                              {% if option_available %}
-                                <div class="subscriptionCol size">
-                                  <input
-                                    type="radio"
-                                    id="{{ value}}-{{ product.id }}"
-                                    name="productType"
-                                    value="{{ value}}"
-                                    step="1"
-                                    class="selection-steps-radio"
-                                  >
-                                  <label for="{{ value }}-{{ product.id }}" class="subscriptionCard card_four ">
-                                    <div class="itemDiv">
-                                      <div class="itemIcon">
-                                        {% assign icon_url = '' %}
-                                        {% for singleStep in shop.metaobjects.image_icon_urls.values %}
-                                          {% for singleStepSingleOption in singleStep.options.value %}
-                                            {% assign optionValue = value | downcase %}
-                                            {% if optionValue == singleStepSingleOption.name %}
-                                              {% assign icon_url = singleStepSingleOption.image_url.value %}
-                                            {% endif %}
-                                          {% endfor %}
-                                        {% endfor %}
-                                        <img
-                                          src="{{ icon_url | image_url }}"
-                                          alt="{{ value }}"
-                                          height="40px"
-                                          ,
-                                          width="40px"
-                                        >
-                                      </div>
-                                      <div class="itemDetail type">
-                                        <h4>{{ value }}</h4>
-                                      </div>
-                                    </div>
-                                  </label>
-                                </div>
-                              {% endif %}
-                            {%- endfor -%}
-                          {% endif %}
+                        <div class="subscriptionRow size type w-50-needed" id="type-{{ product.id }}">
+                          {% for value in option.values %}
+                            {% render 'variant-availability-checker', product: product, option_value: value %}
+                            {% if variant_available %}
+                              {% render 'icon-finder', step_name: 'type', option_name: value %}
+                              {%
+                                render 'subscription-card',
+                                input_id: value | append: '-' | append: product.id,
+                                input_name: 'productType',
+                                input_value: value,
+                                title: value,
+                                icon_url: icon_finder_result,
+                                card_classes: 'subscriptionCol size',
+                                label_classes: 'subscriptionCard card_four'
+                              %}
+                            {% endif %}
+                          {% endfor %}
                         </div>
                       </div>
                     {% endif %}
 
-                    {% comment %} 2. WHOLE BEAN OR GROUND? {% endcomment %}
+                    {% comment %} GRIND TYPE STEP {% endcomment %}
                     {% if optionName == 'grind type' %}
                       <div class="subscriptionOption step for-myself-steps" id="productNameStep">
                         <div
@@ -302,70 +136,27 @@
                           id="grind-type-{{ product.id }}"
                         >
                           <h2 style="margin-bottom: 10px;"><span>4</span>. Whole Bean or Ground?</h2>
-                          {% assign lowercasedOptionName = option.name | downcase %}
-                          {% if lowercasedOptionName == 'grind type' %}
-                            {%- for value in option.values -%}
-                              {% comment %} Check that variation is avaialbe of not {% endcomment %}
-                              {% assign option_available = false %}
-                              {% for variant in product.variants %}
-                                {% if variant.option3 == value and variant.available %}
-                                  {% assign option_available = true %}
-                                  {% break %}
-                                {% endif %}
-
-                                {% if variant.option2 == value and variant.available %}
-                                  {% assign option_available = true %}
-                                  {% break %}
-                                {% endif %}
-
-                                {% if variant.option1 == value and variant.available %}
-                                  {% assign option_available = true %}
-                                  {% break %}
-                                {% endif %}
-                              {% endfor %}
-
-                              {% if option_available %}
-                                <div class="subscriptionCol size">
-                                  <input
-                                    type="radio"
-                                    id="{{ value | replace: " ", "-" | downcase }}-{{ product.id }}"
-                                    name="beanOrGround"
-                                    value="{{ value}}"
-                                    class="selection-steps-radio"
-                                  >
-                                  <label
-                                    for="{{ value | replace: " ", "-" | downcase }}-{{ product.id }}"
-                                    class="subscriptionCard card_four "
-                                  >
-                                    <div class="itemDiv">
-                                      <div class="itemIcon">
-                                        {% assign icon_url = '' %}
-                                        {% for singleStep in shop.metaobjects.image_icon_urls.values %}
-                                          {% for singleStepSingleOption in singleStep.options.value %}
-                                            {% if value == singleStepSingleOption.name %}
-                                              {% assign icon_url = singleStepSingleOption.image_url.value %}
-                                            {% endif %}
-                                          {% endfor %}
-                                        {% endfor %}
-                                        <img
-                                          src="{{ icon_url | image_url }}"
-                                          alt="{{ value }}"
-                                        >
-                                      </div>
-                                      <div class="itemDetail">
-                                        <h4>{{ value }}</h4>
-                                      </div>
-                                    </div>
-                                  </label>
-                                </div>
-                              {% endif %}
-                            {%- endfor -%}
-                          {% endif %}
+                          {% for value in option.values %}
+                            {% render 'variant-availability-checker', product: product, option_value: value %}
+                            {% if variant_available %}
+                              {% render 'icon-finder', step_name: 'grind', option_name: value %}
+                              {%
+                                render 'subscription-card',
+                                input_id: value | replace: ' ', '-' | downcase | append: '-' | append: product.id,
+                                input_name: 'beanOrGround',
+                                input_value: value,
+                                title: value,
+                                icon_url: icon_finder_result,
+                                card_classes: 'subscriptionCol size',
+                                label_classes: 'subscriptionCard card_four'
+                              %}
+                            {% endif %}
+                          {% endfor %}
                         </div>
                       </div>
                     {% endif %}
 
-                    {% comment %} 3. HOW MUCH COFFEE DO YOU WANT? {% endcomment %}
+                    {% comment %} WEIGHT STEP {% endcomment %}
                     {% if optionName == 'weight' %}
                       <div class="subscriptionOption step for-myself-steps" id="productSizeStep">
                         <div
@@ -373,67 +164,26 @@
                           id="coffee-weight-{{ product.id }}"
                         >
                           <h2 style="width:100%;margin-bottom: 10px;"><span>5.</span> What size bag would you like</h2>
-                          {%- for value in option.values -%}
-                            {% comment %} Check that variation is avaialbe of not {% endcomment %}
-                            {% assign option_available = false %}
-                            {% for variant in product.variants %}
-                              {% if variant.option3 == value and variant.available %}
-                                {% assign option_available = true %}
-                                {% break %}
-                              {% endif %}
-
-                              {% if variant.option2 == value and variant.available %}
-                                {% assign option_available = true %}
-                                {% break %}
-                              {% endif %}
-
-                              {% if variant.option1 == value and variant.available %}
-                                {% assign option_available = true %}
-                                {% break %}
-                              {% endif %}
-                            {% endfor %}
-
-                            {% if option_available %}
-                              <div class="subscriptionCol size">
-                                <input
-                                  type="radio"
-                                  id="{{ value | replace: " ", "-" | downcase }}-{{ product.id }}"
-                                  name="coffeeYouWant"
-                                  value="{{ value}}"
-                                  class="selection-steps-radio"
-                                >
-                                <label
-                                  for="{{ value | replace: " ", "-" | downcase }}-{{ product.id }}"
-                                  class="subscriptionCard card_two"
-                                >
-                                  <div class="itemDiv">
-                                    <div class="itemIcon">
-                                      {% assign icon_url = '' %}
-                                      {% for singleStep in shop.metaobjects.image_icon_urls.values %}
-                                        {% for singleStepSingleOption in singleStep.options.value %}
-                                          {% if value == singleStepSingleOption.name %}
-                                            {% assign icon_url = singleStepSingleOption.image_url.value %}
-                                          {% endif %}
-                                        {% endfor %}
-                                      {% endfor %}
-                                      <img
-                                        src="{{ icon_url | image_url }}"
-                                        alt="{{ value }}"
-                                      >
-                                    </div>
-                                    <div class="itemDetail">
-                                      <h4>{{ value }} bag</h4>
-
-                                      <h5>
-                                        Makes about {% if value == '12oz' %}24{% endif -%}
-                                        {%- if value == '2lbs' %}52{% endif %} cups
-                                      </h5>
-                                    </div>
-                                  </div>
-                                </label>
-                              </div>
+                          {% for value in option.values %}
+                            {% render 'variant-availability-checker', product: product, option_value: value %}
+                            {% if variant_available %}
+                              {% render 'icon-finder', step_name: 'weight', option_name: value %}
+                              {% assign cups_text = '' %}
+                              {% if value == '12oz' %}{% assign cups_text = 'Makes about 24 cups' %}{% endif %}
+                              {% if value == '2lbs' %}{% assign cups_text = 'Makes about 52 cups' %}{% endif %}
+                              {%
+                                render 'subscription-card',
+                                input_id: value | replace: ' ', '-' | downcase | append: '-' | append: product.id,
+                                input_name: 'coffeeYouWant',
+                                input_value: value,
+                                title: value | append: ' bag',
+                                description: cups_text,
+                                icon_url: icon_finder_result,
+                                card_classes: 'subscriptionCol size',
+                                label_classes: 'subscriptionCard card_two'
+                              %}
                             {% endif %}
-                          {%- endfor -%}
+                          {% endfor %}
                         </div>
                       </div>
                     {% endif %}
@@ -441,68 +191,18 @@
                 </div>
               {% endfor %}
 
-              {% comment %} Render Type step when have product {% endcomment %}
+              {% comment %} QUANTITY STEP - REFACTORIZADO {% endcomment %}
+              {% render 'subscription-step',
+                step_number: 6,
+                step_title: 'How much coffee do you want?',
+                step_name: 'coffeeBag',
+                step_options: 'coffeeBag',
+                wrapper_classes: 'subscriptionOption step for-myself-steps',
+                wrapper_id: 'productQuantityStep',
+                row_classes: 'subscriptionRow c w-50-needed'
+              %}
 
-              {% comment %} 2. WHOLE BEAN OR GROUND? {% endcomment %}
-
-              {% comment %} 3. HOW MUCH COFFEE DO YOU WANT? {% endcomment %}
-
-              {% comment %} quantity/bag {% endcomment %}
-
-              <div class="subscriptionOption step for-myself-steps" id="productQuantityStep">
-                <h2>6. How much coffee do you want?</h2>
-                <div class="subscriptionRow c w-50-needed ">
-                  {% for singleStep in shop.metaobjects.image_icon_urls.values %}
-                    {% assign step_name = singleStep.step %}
-                    {% assign step_name_key = step_name | downcase | replace: ' ', '-' %}
-                    {% if singleStep.step == 'coffeeBag' %}
-                      {% for singleStepSingleOption in singleStep.options.value %}
-                        {% assign icon_url = singleStepSingleOption.image_url.value %}
-                        {% assign quantity_val = 1 %}
-                        {% assign coffee_bag_name = singleStepSingleOption.name %}
-                        {% if coffee_bag_name == 'One bag' %}
-                          {% assign quantity_val = 1 %}
-                        {% endif %}
-                        {% if coffee_bag_name == 'Two bags' %}
-                          {% assign quantity_val = 2 %}
-                        {% endif %}
-                        {% if coffee_bag_name == 'Three bags' %}
-                          {% assign quantity_val = 3 %}
-                        {% endif %}
-                        <div class="subscriptionCol">
-                          <input
-                            type="radio"
-                            id="{{ step_name_key }}-{{ quantity_val }}"
-                            name="{{ step_name }}"
-                            value="{{ quantity_val }}"
-                            class="selection-steps-radio"
-                          >
-                          <label
-                            for="{{ step_name_key }}-{{ quantity_val }}"
-                            class="subscriptionCard card_three "
-                          >
-                            <div class="itemDiv">
-                              <div class="itemIcon">
-                                {% assign icon_url = singleStepSingleOption.image_url.value %}
-                                <img
-                                  src="{{ icon_url | image_url }}"
-                                  alt="{{ step_name_key }}"
-                                >
-                              </div>
-                              <div class="itemDetail">
-                                <h4>{{ coffee_bag_name }}</h4>
-                                <h5>Each Shipment</h5>
-                              </div>
-                            </div>
-                          </label>
-                        </div>
-                      {% endfor %}
-                    {% endif %}
-                  {% endfor %}
-                </div>
-              </div>
-
-              {% comment %} 3. HOW OFTEN? {% endcomment %}
+              {% comment %} FREQUENCY STEP - REFACTORIZADO {% endcomment %}
               <div class="subscriptionOption step for-myself-steps" id="productFreqStep">
                 <h2>7. How often?</h2>
                 {% for product in coffee_subscription_products %}
@@ -514,41 +214,18 @@
                     {% for selling_plan in product.selling_plan_groups %}
                       {% assign plan_value = selling_plan.selling_plans[0].id %}
                       {% assign plan_name = selling_plan.name | replace: 'Delivery ', '' %}
-                      {% assign plan_name_downcase = selling_plan.name | replace: 'Delivery ', '' | downcase %}
-                      <div class="subscriptionCol size">
-                        <input
-                          type="radio"
-                          id="{{ plan_name | replace: " ", "-" | downcase }}-{{ product.id }}"
-                          name="howOften"
-                          value="{{ plan_value }}"
-                          class="selection-steps-radio"
-                        >
-                        <label
-                          for="{{ plan_name | replace: " ", "-" | downcase }}-{{ product.id }}"
-                          class="subscriptionCard card_three "
-                        >
-                          <div class="itemDiv">
-                            <div class="itemIcon">
-                              {% assign icon_url = '' %}
-                              {% for singleStep in shop.metaobjects.image_icon_urls.values %}
-                                {% for singleStepSingleOption in singleStep.options.value %}
-                                  {% assign singleStepOptionName = singleStepSingleOption.name | downcase %}
-                                  {% if plan_name_downcase contains singleStepOptionName %}
-                                    {% assign icon_url = singleStepSingleOption.image_url.value %}
-                                  {% endif %}
-                                {% endfor %}
-                              {% endfor %}
-                              <img
-                                src="{{ icon_url | image_url }}"
-                                alt="{{ plan_name }}"
-                              >
-                            </div>
-                            <div class="itemDetail">
-                              <h4>{{ plan_name }}</h4>
-                            </div>
-                          </div>
-                        </label>
-                      </div>
+                      {% assign plan_name_downcase = plan_name | downcase %}
+                      {% render 'icon-finder', step_name: 'frequency', option_name: plan_name_downcase %}
+                      {%
+                        render 'subscription-card',
+                        input_id: plan_name | replace: ' ', '-' | downcase | append: '-' | append: product.id,
+                        input_name: 'howOften',
+                        input_value: plan_value,
+                        title: plan_name,
+                        icon_url: icon_finder_result,
+                        card_classes: 'subscriptionCol size',
+                        label_classes: 'subscriptionCard card_three'
+                      %}
                     {% endfor %}
                   </div>
                 {% endfor %}
@@ -642,9 +319,11 @@
                         <div class="itemDiv itemCardReletive">
                           <div class="itemCard selectCoffeeImage">
                             <img
-                              src="{{ gift_product.image | img_url: '400x', format: 'pjpg' }}"
-                              alt="{{ gift_product.product_type }}"
-                            >
+                            src="{{ gift_product.image | img_url: '400x', format: 'pjpg' }}"
+                            alt="{{ gift_product.product_type }}"
+                            width="400"
+                            height="400"
+                          >
                           </div>
                           <h4 style="text-align:center">{{ gift_product.product_type }}</h4>
                           <button type="button">Select</button>
@@ -688,6 +367,8 @@
                                   <img
                                     src="{{ product.images[0] | img_url: '400x' }}"
                                     alt="{{ product.handle }}"
+                                    width="400"
+                                    height="400"
                                   >
                                 </div>
                               </div>
@@ -767,6 +448,8 @@
                                         <img
                                           src="{{ icon_url | image_url }}"
                                           alt="{{ value }}"
+                                          width="50"
+                                          height="50"
                                         >
                                       </div>
                                       <div class="itemDetail">
@@ -843,6 +526,8 @@
                                           <img
                                             src="{{ icon_url | image_url }}"
                                             alt="{{ value }}"
+                                            width="50"
+                                            height="50"
                                           >
                                         </div>
                                         <div class="itemDetail">
@@ -992,6 +677,8 @@
                                           <img
                                             src="{{ icon_url | image_url }}"
                                             alt="{{ value }}"
+                                            height="40px"
+                                            width="40px"
                                           >
                                         </div>
                                         <div class="itemDetail type">
@@ -1327,13 +1014,14 @@
     </div>
   </section>
   <!-- jQuery cdn -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" defer></script>
   <!-- slick slider cdn -->
   <script
     src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
     integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
+    defer
   ></script>
   <script src="{{ 'ckCoffeeSubscriptionNew.js' | asset_url }}" defer></script>
   <script>

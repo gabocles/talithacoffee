@@ -1,0 +1,45 @@
+{% comment %}
+  Checks if a product option value is available in any variant
+
+  Accepts:
+  - product: {Object} Product object (required)
+  - option_value: {String} Option value to check (required)
+  - check_all_options: {Boolean} Check all option positions (default: true)
+
+  Returns:
+  - option_available: {Boolean} True if option is available in any variant
+
+  Usage:
+  {% render 'variant-availability-checker',
+     product: product,
+     option_value: 'Ground' %}
+  <!-- Use {{ option_available }} after render -->
+{% endcomment %}
+
+{%- liquid
+  assign option_available = false
+  assign check_all_options = check_all_options | default: true
+-%}
+
+{% for variant in product.variants %}
+  {% if variant.available %}
+    {% if check_all_options %}
+      {% if variant.option1 == option_value or variant.option2 == option_value or variant.option3 == option_value %}
+        {% assign option_available = true %}
+        {% break %}
+      {% endif %}
+    {% else %}
+      {% comment %} Check specific option position if needed {% endcomment %}
+      {% if option_position == 1 and variant.option1 == option_value %}
+        {% assign option_available = true %}
+        {% break %}
+      {% elsif option_position == 2 and variant.option2 == option_value %}
+        {% assign option_available = true %}
+        {% break %}
+      {% elsif option_position == 3 and variant.option3 == option_value %}
+        {% assign option_available = true %}
+        {% break %}
+      {% endif %}
+    {% endif %}
+  {% endif %}
+{% endfor %}

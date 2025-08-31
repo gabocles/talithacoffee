@@ -1,0 +1,52 @@
+{% comment %}
+  Finds icon URL from metaobjects based on step and option name
+
+  Accepts:
+  - step_name: {String} Step identifier to filter by (optional)
+  - option_name: {String} Option name to match (required)
+  - default_url: {String} Fallback URL if not found (optional)
+  - case_sensitive: {Boolean} Whether to match case sensitively (default: false)
+
+  Returns:
+  - icon_url: {String} Found icon URL or default_url
+
+  Usage:
+  {% render 'icon-finder',
+     step_name: 'whosthisfor',
+     option_name: 'myself' %}
+  <!-- Use {{ icon_url }} after render -->
+{% endcomment %}
+
+{%- liquid
+  assign icon_url = default_url | default: ''
+  assign case_sensitive = case_sensitive | default: false
+
+  unless case_sensitive
+    assign normalized_option = option_name | downcase | strip
+  else
+    assign normalized_option = option_name | strip
+  endunless
+-%}
+
+{% for singleStep in shop.metaobjects.image_icon_urls.values %}
+  {% if step_name == blank or singleStep.step == step_name %}
+    {% for singleStepSingleOption in singleStep.options.value %}
+      {%- liquid
+        unless case_sensitive
+          assign normalized_step_option = singleStepSingleOption.name | downcase | strip
+        else
+          assign normalized_step_option = singleStepSingleOption.name | strip
+        endunless
+      -%}
+
+      {% if normalized_option == normalized_step_option or normalized_option contains normalized_step_option %}
+        {% assign icon_url = singleStepSingleOption.image_url.value %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  {% if icon_url != blank and icon_url != default_url %}
+    {% break %}
+  {% endif %}
+{% endfor %}

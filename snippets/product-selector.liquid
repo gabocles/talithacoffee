@@ -1,0 +1,80 @@
+{% comment %}
+  Renders a product selection section with availability checking
+
+  Accepts:
+  - products: {Array} Array of product objects (required)
+  - section_title: {String} Title for the section (required)
+  - step_name: {String} Name attribute for radio group (required)
+  - step_id: {String} Unique identifier for the step (required)
+  - show_availability: {Boolean} Check and show availability (default: true)
+  - show_bestseller: {Boolean} Show bestseller tags (default: true)
+  - show_images: {Boolean} Show product images (default: true)
+  - container_class: {String} Additional CSS class for container (optional)
+  - card_class: {String} Additional CSS class for cards (optional)
+
+  Usage:
+  {% render 'product-selector',
+     products: collections['coffee-subscription-1'].products,
+     section_title: 'Select your coffee',
+     step_name: 'selectedProduct',
+     step_id: 'coffee-selection' %}
+{% endcomment %}
+
+{%- liquid
+  assign show_availability = show_availability | default: true
+  assign show_bestseller = show_bestseller | default: true
+  assign show_images = show_images | default: true
+-%}
+
+<div class="productSelectorStep">
+  <h3 class="stepTitle">{{ section_title }}</h3>
+
+  <div class="subscriptionContainer {{ container_class }}">
+    {% for product in products %}
+      {%- liquid
+        assign product_id = step_id | append: '_' | append: product.id
+        assign is_available = true
+
+        if show_availability and product.variants.size > 0
+          assign is_available = false
+          for variant in product.variants
+            if variant.available
+              assign is_available = true
+              break
+            endif
+          endfor
+        endif
+      -%}
+
+      {% if is_available %}
+        {%- liquid
+          assign product_image_url = ''
+          if show_images and product.featured_image
+            assign product_image_url = product.featured_image.url
+          endif
+
+          assign tag_text = ''
+          if show_bestseller and product.tags contains 'bestseller'
+            assign tag_text = 'Bestseller'
+          endif
+
+          assign product_content = ''
+          if product.description != blank
+            assign product_content = product.description | truncate: 100
+          endif
+        -%}
+
+        {% render 'subscription-card',
+           id: product_id,
+           name: step_name,
+           value: product.id,
+           title: product.title,
+           icon_url: product_image_url,
+           content: product_content,
+           tag_text: tag_text,
+           card_class: card_class,
+           data_attributes: 'data-product-id="' | append: product.id | append: '"' %}
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>

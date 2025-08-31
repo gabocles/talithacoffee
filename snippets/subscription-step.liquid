@@ -1,0 +1,69 @@
+{% comment %}
+  Renders a complete subscription step section with title and options
+
+  Accepts:
+  - step_title: {String} Title for the step section (required)
+  - step_id: {String} Unique identifier for the step (required)
+  - step_name: {String} Name attribute for radio group (required)
+  - options: {Array} Array of option objects (required)
+  - section_class: {String} Additional CSS class for section (optional)
+  - title_class: {String} Additional CSS class for title (optional)
+  - container_class: {String} Additional CSS class for container (optional)
+  - show_icons: {Boolean} Whether to show icons (default: true)
+  - icon_step_name: {String} Step name for icon lookup (optional)
+
+  Option object structure:
+  - value: {String} Option value
+  - title: {String} Display title
+  - content: {String} Additional content (optional)
+  - tag_text: {String} Tag text (optional)
+  - card_class: {String} Additional card class (optional)
+
+  Usage:
+  {% assign coffee_options = 'Light Roast,Medium Roast,Dark Roast' | split: ',' %}
+  {% render 'subscription-step',
+     step_title: 'Select your coffee',
+     step_id: 'coffee-selection',
+     step_name: 'coffeeType',
+     options: coffee_options %}
+{% endcomment %}
+
+{%- liquid
+  assign show_icons = show_icons | default: true
+  assign icon_step_name = icon_step_name | default: step_id
+-%}
+
+<div class="subscriptionStep {{ section_class }}">
+  <h3 class="stepTitle {{ title_class }}">{{ step_title }}</h3>
+
+  <div class="subscriptionContainer {{ container_class }}">
+    {% for option in options %}
+      {%- liquid
+        if option.value
+          assign option_value = option.value
+          assign option_title = option.title | default: option.value
+        else
+          assign option_value = option
+          assign option_title = option
+        endif
+
+        assign option_id = step_id | append: '_' | append: option_value | replace: ' ', '_' | downcase
+      -%}
+
+      {% if show_icons %}
+        {% render 'icon-finder', step_name: icon_step_name, option_name: option_value %}
+      {% endif %}
+
+      {% render 'subscription-card',
+        id: option_id,
+        name: step_name,
+        value: option_value,
+        title: option_title,
+        icon_url: icon_url,
+        content: option.content,
+        tag_text: option.tag_text,
+        card_class: option.card_class
+      %}
+    {% endfor %}
+  </div>
+</div>
