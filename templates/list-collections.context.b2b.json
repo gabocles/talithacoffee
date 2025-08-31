@@ -1,0 +1,91 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "list-collections.json",
+  "context": {
+    "b2b": true
+  },
+  "sections": {
+    "main": {
+      "disabled": false,
+      "settings": {
+        "layout": "grid",
+        "no_products": 18,
+        "products_per_row_desktop": 5,
+        "display_on_card": false
+      },
+      "blocks": {
+        "e75c56cc-f75e-4045-b9ae-b6915295bbc4": {
+          "type": "collection",
+          "disabled": false,
+          "settings": {
+            "collection": "wholesale-coffee",
+            "image_shape": "same_as_section"
+          }
+        },
+        "3d03f250-98c7-4489-8bb9-9494f4378bd7": {
+          "type": "collection",
+          "disabled": false,
+          "settings": {
+            "collection": "wholesale-tea",
+            "image_shape": "same_as_section"
+          }
+        },
+        "fe30b068-318c-4ca2-8267-927ce71e5480": {
+          "type": "collection",
+          "disabled": false,
+          "settings": {
+            "collection": "powders-mixes",
+            "image_shape": "same_as_section"
+          }
+        },
+        "f8518f6e-0fd2-4700-89b2-77bef36b6f5a": {
+          "type": "collection",
+          "disabled": false,
+          "settings": {
+            "collection": "syrups-sauces",
+            "image_shape": "same_as_section"
+          }
+        },
+        "ecd73fb5-8bd6-4bea-81b8-60d0a9f6dae3": {
+          "type": "collection",
+          "disabled": false,
+          "settings": {
+            "collection": "supplies",
+            "image_shape": "same_as_section"
+          }
+        }
+      },
+      "block_order": [
+        "a1acd75d-f1ad-4645-96d8-162533f5b447",
+        "e75c56cc-f75e-4045-b9ae-b6915295bbc4",
+        "3d03f250-98c7-4489-8bb9-9494f4378bd7",
+        "fe30b068-318c-4ca2-8267-927ce71e5480",
+        "f8518f6e-0fd2-4700-89b2-77bef36b6f5a",
+        "ecd73fb5-8bd6-4bea-81b8-60d0a9f6dae3"
+      ]
+    },
+    "collage": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    },
+    "501d3218-483e-42b1-9cc9-179c46a2d3dd": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    }
+  },
+  "order": [
+    "main",
+    "collage",
+    "501d3218-483e-42b1-9cc9-179c46a2d3dd"
+  ]
+}

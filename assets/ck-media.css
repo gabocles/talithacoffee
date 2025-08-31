@@ -1,0 +1,476 @@
+@media screen and (max-width: 1350px) {
+
+    .subscriptionContent {
+        width: 45%;
+        padding-left: 24px;
+    }
+
+    .subscriptionCol .card_one {
+        padding: 15px 9px;
+    }
+
+    .itemDiv h4 {
+        font-size: 16px;
+        margin-top: 5px;
+    }
+
+    .itemDiv h5 {
+        font-size: 15px;
+        line-height: 19px;
+        margin-top: 6px;
+    }
+
+    .subscriptionCol .card_two {
+        padding: 0 10px 10px 10px;
+    }
+
+    .subscriptionOption {
+        margin-bottom: 30px;
+    }
+
+    .subscriptionOption h2 {
+        font-size: 28px;
+    }
+
+    .subscriptionRow {
+        margin-top: 15px;
+    }
+
+    .offMainDiv {
+        padding: 65px 90px 90px 90px;
+    }
+
+    .offInput {
+        padding: 16px 0 16px 23px;
+    }
+
+    .offFromBtn {
+        margin-top: 25px;
+    }
+
+    .subscriptionText h1 {
+        font-size: 44px;
+        line-height: 54px;
+    }
+
+    .subscriptionText {
+        padding: 30px 45px 0;
+    }
+
+    .subscriptionDesktop {
+        min-height: 520px;
+    }
+
+}
+
+@media screen and (max-width: 1199px) {
+    .subscription {
+        width: 50%;
+    }
+
+    .subscriptionRow {
+        margin: 21px 0 0;
+    }
+
+    .offOredr h2 {
+        font-size: 26px;
+        margin-top: 0;
+        text-align: center;
+    }
+
+    .subscriptionText {
+        padding: 15px 20px;
+        text-align: center;
+    }
+
+    .subscriptionText h1 {
+        font-size: 34px;
+        line-height: 44px;
+    }
+
+    .subscriptionText p {
+        font-size: 16px;
+        padding: 0 20px;
+    }
+
+    .subscriptionContent {
+        width: 50%;
+        padding-left: 20px;
+    }
+
+    .offOredr h2 {
+        font-size: 26px;
+        margin-top: 0;
+        text-align: center;
+    }
+
+    .offInput {
+        font-size: 16px;
+        padding: 10px 0 10px 23px;
+    }
+
+    .offFrom p {
+        font-size: 16px;
+    }
+
+    .offOredr h1 {
+        font-size: 65px;
+        line-height: 65px;
+        text-align: center;
+    }
+
+    .sideContainer {
+        max-width: calc(100% - 40px);
+    }
+
+    .productDetail .productName h3 {
+        font-size: 24px;
+        line-height: 30px;
+    }
+
+    .stickyFooterSection {
+        padding: 10px 80px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .sideContainer {
+        max-width: 100%;
+    }
+
+    .subscriptionMainDiv {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .owl-carousel .owl-nav button.owl-next,
+    .owl-carousel .owl-nav button.owl-prev {
+        top: -88px;
+        padding: 12px 20px !important;
+    }
+
+    .owl-carousel .owl-nav button.owl-prev {
+        right: 132px;
+    }
+
+    .owl-carousel .owl-nav button.owl-next {
+        right: 70px;
+    }
+
+    .cardSectionhead {
+        padding: 0 210px 0 60px;
+    }
+
+    .cardSection h1 {
+        font-size: 24px;
+        text-align: left;
+        max-width: 85%;
+    }
+
+    .subscriptionText h1 {
+        font-size: 55px;
+        line-height: 55px;
+        margin-top: 15px;
+        padding: 0 20px;
+    }
+
+    .subscriptionMobile {
+        min-height: 800px;
+    }
+
+    .subscriptionText {
+        padding: 0px 20px 0px 20px;
+    }
+
+    .offInput {
+        font-size: 14px;
+        padding: 8px 0 8px 23px;
+    }
+
+    .offFrom p {
+        font-size: 13px;
+        margin-bottom: 15px;
+    }
+
+    .offMainDiv {
+        padding: 20px 25px;
+    }
+
+    .offOredr h1 {
+        font-size: 50px;
+        line-height: 55px;
+    }
+
+    .offOredr h2 {
+        font-size: 20px;
+        line-height: 26px;
+    }
+
+    .offFromBtn {
+        padding: 8px 30px;
+        margin-top: 15px;
+    }
+
+    /* 
+    .offOredr h1 {
+        font-size: 80px;
+        line-height: 65px;
+    } */
+
+    /* .offMainDiv {
+        padding: 0px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    } */
+
+    .subscription {
+        width: 100%;
+        padding: 0;
+        margin-bottom: 20px;
+    }
+
+    .subscriptionContent {
+        padding: 0 16px;
+        width: 100%;
+    }
+
+    .stickyFooterSection {
+        padding: 10px 50px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .stickyFooter a {
+        padding: 12px 10px;
+    }
+
+    .stickyFooterSection {
+        padding: 10px 20px;
+    }
+
+    .stickyFooter h3 {
+        font-size: 16px;
+        line-height: 22px;
+    }
+
+    .subscriptionMainDiv {
+        flex-direction: column;
+    }
+
+    .subscriptionDesktop {
+        display: none;
+    }
+
+    .subscriptionMobile {
+        display: flex;
+        width: 100%;
+        min-height: 1150px;
+        background-image: url(https://cdn.shopify.com/s/files/1/0726/2391/5327/files/Illustrations_4513c14d-507d-4b30-af35-d027dd074811.png?v=1706181978), url(https://cdn.shopify.com/s/files/1/0726/2391/5327/files/Group_99.png?v=1706181979);
+        background-position: bottom -1px left, top 14px center;
+        background-repeat: no-repeat;
+        background-size: auto;
+        align-items: flex-end;
+        margin-bottom: 0;
+        background-color: #1b3c34;
+    }
+
+    .cardSection h1 {
+        font-size: 20px;
+        line-height: 26px;
+        max-width: 70%;
+        text-align: left;
+    }
+
+    .owl-carousel .owl-nav button.owl-next,
+    .owl-carousel .owl-nav button.owl-prev {
+        padding: 8px 14px !important;
+    }
+
+    .subscriptionText h1 {
+        font-size: 28.74px;
+        line-height: 27.6px;
+        text-align: center;
+    }
+
+    .subscriptionText p {
+        font-size: 11px;
+        line-height: 15px;
+        text-align: left;
+    }
+
+    .subscriptionText {
+        padding: 0px 0px 41px 0px;
+    }
+
+    .subscriptionMobile {
+        min-height: 456px;
+    }
+
+    .subscriptionImage {
+        margin-top: 0px;
+    }
+
+    .subscriptionOption h2 {
+        font-size: 21.336px;
+        line-height: 22.512px;
+        width: 100%;
+    }
+
+    .subscriptionOption {
+        margin-bottom: 26px;
+    }
+
+    .subscriptionRow {
+        margin: 13px 0 0;
+        gap: 20px;
+        justify-content: space-between;
+    }
+
+    .itemDiv h4 {
+        font-size: 15px;
+    }
+
+    .itemIcon .whoImage {
+        margin-bottom: 6px;
+    }
+
+    .itemDetail ul li {
+        margin-top: 12px;
+    }
+
+    .itemDetail li {
+        font-size: 14px;
+    }
+
+    .itemDetail ul li img {
+        margin-right: 5px;
+        width: 15px;
+    }
+
+    .itemDiv .itemIcon .whoImage {
+        width: 21px;
+    }
+
+    .itemDiv .itemIcon .threeBagImg {
+        width: 78px;
+    }
+
+    .subscriptionCol .itemIcon img {
+        width: 53px;
+    }
+
+    .subscriptionCol .card_two {
+        padding: 12px;
+    }
+
+    .subscriptionCol .card_three,
+    .card_four,
+    .card_six {
+        padding: 13px 8.5px;
+    }
+
+    .itemDetail h5 {
+        font-size: 14px;
+        line-height: 15px;
+        margin-top: 6px;
+    }
+
+    .offMainDiv {
+        background-image: url(https://cdn.shopify.com/s/files/1/0726/2391/5327/files/Frame.png?v=1706095406);
+        width: 100%;
+        background-repeat: no-repeat;
+        background-position: top center;
+        background-size: contain;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #1A3C34;
+    }
+
+    .offFrom,
+    .offOredr {
+        width: 100%;
+        padding: 0 30px;
+    }
+
+    .offMainDiv {
+        padding: 20px 0px;
+    }
+
+    .offOredr h1 {
+        font-size: 65px;
+    }
+
+    .offOredr h2 {
+        font-size: 25px;
+        margin-bottom: 20px;
+    }
+
+    .offFrom p {
+        font-size: 13px;
+        margin-bottom: 20px;
+    }
+
+    .offInput {
+        font-size: 14px;
+        padding: 12px 0 12px 23px;
+    }
+
+    .offMainDiv {
+        padding: 65px 0px 0 0;
+    }
+
+    .offInput {
+        margin-bottom: 22px;
+    }
+
+    .offFromBtn {
+        padding: 12px 30px;
+        margin-top: 30px;
+    }
+
+    .owl-carousel .owl-nav button.owl-prev {
+        right: 65px;
+    }
+
+    .owl-carousel .owl-nav button.owl-next {
+        right: 20px;
+    }
+
+    .cardSectionhead {
+        padding: 0 125px 0 20px;
+    }
+
+    .subscriptionCol.slection-step-1 {
+        width: calc(50% - 10px);
+    }
+
+    .subscriptionCol.slection-step-2 .subscriptionCard {
+        padding: 24px;
+    }
+
+    .selectYourCoffeeCol,
+    .subscriptionCol {
+        width: calc(50% - 10px);
+        /* margin-bottom: 10px; */
+    }
+
+    .selectYourCoffeeRow,
+    .subscriptionRow.size {
+        gap: 20px;
+    }
+
+    .giftContactCol input {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .giftScheduleAt {
+        padding: 10px;
+        border: 1px solid;
+    }
+
+
+}

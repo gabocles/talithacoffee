@@ -1,0 +1,135 @@
+{% style %}
+
+/* inset-pad  */
+.custom-two-column-grid {
+  max-width: calc(100% - 60px);
+  margin: 0 auto;
+}
+/* inset-pad media */
+@media (max-width: 989px) {
+    .custom-two-column-grid {
+        max-width: calc(100% - 26px);
+    }
+  }
+
+.custom-two-column-grid {
+  padding: 20px;
+}
+
+.two-column-header {
+  font-family: 'Stratum';
+  background-image: url('https://cdn.shopify.com/s/files/1/0726/2391/5327/files/background-img.png');
+  background-position: center center;
+  background-size: cover;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none !important;
+  text-stroke: black !important;
+  -webkit-text-stroke: black !important;
+  text-align: left;
+  font-size: 45px;
+  padding-bottom: 20px;
+}
+
+.text-content-section {
+  color: white;
+}
+
+@media (min-width: 990px) {
+
+  .left-column {
+    font-size: 30px;
+    line-height: 30px;
+    padding: 35px 35px 0 0;
+  }
+
+  .right-column {
+    padding: 35px 35px 0 0;
+  }
+  
+  .two-column-header {
+    font-size: 150px;
+  }
+
+  .custom-two-column-grid {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 70px;
+  }
+
+  .left-column, .right-column {
+    width: 50%; 
+  }
+  
+}
+
+{% endstyle %}
+
+
+
+
+<div style="background-color: {{ section.settings.background_color }}" class="custom-two-column-grid">
+  <h2 style="color: {{ section.settings.header_color }}" class="two-column-header">{{ section.settings.header }}</h2>
+  <div class="left-column text-content-section">
+    <p style="color: {{ section.settings.body_color }}" class="left-column-body">
+      {{ section.settings.para_text_1 }}
+    </p>
+  </div>
+  <div class="right-column text-content-section">
+    <p style="color: {{ section.settings.body_color }}" class="right-column-body">
+      {{ section.settings.para_text_2 }}
+    </p>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Header and Two Column",
+  "presets": [
+    {
+      "name": "Header and Two Column",
+      "category": "Custom"
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "header",
+      "label": "Header",
+      "default": "Enter your heading here"
+    },
+    {
+      "type": "text",
+      "id": "para_text_1",
+      "label": "Paragraph Text 1",
+      "default": "Enter your text for the first column here"
+    },
+    {
+      "type": "text",
+      "id": "para_text_2",
+      "label": "Paragraph Text 2",
+      "default": "Enter your text for the second column here"
+    },
+    {
+      "type": "color",
+      "id": "header_color",
+      "label": "Header Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Body Color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    }
+  ]
+}
+{% endschema %}

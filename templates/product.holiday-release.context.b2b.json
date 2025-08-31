@@ -1,0 +1,74 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "product.holiday-release.json",
+  "context": {
+    "b2b": true
+  },
+  "sections": {
+    "524a80b0-f537-4729-8e03-2951f3996a4c": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    },
+    "featured_collection_PrGdz": {
+      "type": "featured-collection",
+      "disabled": false,
+      "settings": {
+        "title": "",
+        "subheading": "",
+        "collection": "wholesale-coffee",
+        "no_products": 18,
+        "show_view_all": true,
+        "enable_quick_buy": true,
+        "display_on_card": true,
+        "layout": "carousel",
+        "header-5160c73da9db34e0af2785006fe628e2": null,
+        "paragraph-f53dadc2af31e355c701a3ff9351861f": null,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 5,
+        "header-377a500e2c90bcfd7f2f1b0cde759eda": null,
+        "paragraph-1d7a82cad429fb23d1b1709263f5f3bb": null,
+        "slideshow_focus": "center",
+        "mobile_slide_width": "three_fifths",
+        "desktop_slide_width": 20,
+        "autoscroll_mode": "1",
+        "header-db0654b4ece62aa2c704d28afe832707": null,
+        "product_tiles_aspect_ratio": "",
+        "image_shape": "",
+        "header-0cb09d58f8f140b3f251478f2e1cb08f": null,
+        "color_scheme": "quaternary",
+        "use_gradient_background": false,
+        "header-2a93a89a2733017c029723c3f9068ffd": null,
+        "show_promo_box": false,
+        "promo_box_size": "single",
+        "promo_bg": null,
+        "promo_overlay": "",
+        "promo_overlay_percentage": 25,
+        "promo_title": "",
+        "promo_desc": "",
+        "promo_cta": "",
+        "promo_url": ""
+      },
+      "blocks": {},
+      "block_order": []
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_DCXfNa",
+    "text_columns_with_images_Qhycdw",
+    "169021714666a7a555",
+    "1706891424d72fe38b",
+    "featured_collection_PrGdz",
+    "524a80b0-f537-4729-8e03-2951f3996a4c",
+    "3ca0157d-b18d-4799-8c0a-205a81f7a9ad"
+  ]
+}

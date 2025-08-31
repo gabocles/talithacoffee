@@ -1,0 +1,280 @@
+<link rel="stylesheet" href="{{ 'adev-new-impact.min.css' | asset_url }}" media="all">
+{%- assign get = section.settings -%}
+{% style %}
+    {%- capture styles -%}
+    .adev-new-impact#section_{{ section.id }} {
+        padding-top: {{ get.spacing_top_mobile }}px;
+        padding-bottom: {{ get.spacing_bottom_mobile }}px;
+        --title-size: {{ get.title_size_mobile }}px;
+        --number-size: {{ get.number_size_mobile }}px;
+        --text-size: {{ get.text_size_mobile }}px;
+        --content-width: {{ get.content_width_mobile }}px;
+    }
+
+    @media (min-width:992px) {
+        .adev-new-impact#section_{{ section.id }} {
+            padding-top: {{ get.spacing_top_desktop }}px;
+            padding-bottom: {{ get.spacing_bottom_desktop }}px;
+            --title-size: {{ get.title_size_desktop }}px;
+            --number-size: {{ get.number_size_desktop }}px;
+            --text-size: {{ get.text_size_desktop }}px;
+            --content-width: {{ get.content_width_desktop }}px;
+        }
+    }
+    {%- endcapture -%}
+    {{- styles | strip_newlines | remove:'  ' | remove:'  ' -}}
+{% endstyle %}
+
+<div class="adev-new-impact" id="section_{{ section.id }}">
+    <div class="adev-container">
+
+        <div class="adev-ni-art adev-ni-art-1">
+            <img src="{{ 'new-impact-1.svg' | asset_url }}">
+        </div>
+
+        <div class="adev-ni-art adev-ni-art-2">
+            <img src="{{ 'new-impact-2.svg' | asset_url }}">
+        </div>
+
+        <div class="adev-ni__inner">
+
+            {%- if get.title != blank -%}
+            <div class="adev-ni__header">
+                <h2>{{ get.title }}</h2>
+            </div>
+            {%- endif -%}
+            
+            {%- assign rows = '1,2,3' | split: ',' -%}
+
+            <div class="adev-ni__row">
+                {%- for row in rows -%}
+                    {%- assign number_key = 'stats_' | append: row | append: '_number' -%}
+                    {%- assign text_key = 'stats_' | append: row | append: '_text' -%}
+
+                    {%- assign number = get[number_key] -%}
+                    {%- assign text = get[text_key] -%}
+
+                    {%- if number != blank -%}
+                    <div class="adev-ni__col">
+                        <div class="adev-ni__card">
+                            <div class="adev-ni__number">
+                                {{ number }}
+                            </div>
+                            <div class="adev-ni__text">
+                                {{ text }}
+                            </div>
+                        </div>
+                    </div>
+                    {%- endif -%}
+                    
+
+                {%- endfor -%}
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "New Impact",
+  "settings": [
+    {
+        "type": "textarea",
+        "id": "title",
+        "label": "Title",
+        "default": "The impact you've helped us make"
+    },
+    {
+        "type": "range",
+        "id": "title_size_desktop",
+        "label": "Text Size (Desktop)",
+        "unit": "px",
+        "min": 5,
+        "max": 40,
+        "step": 1,
+        "default": 18
+    },
+    {
+        "type": "range",
+        "id": "title_size_mobile",
+        "label": "Title Size (Mobile)",
+        "unit": "px",
+        "min": 5,
+        "max": 40,
+        "step": 1,
+        "default": 16
+    },
+    {
+        "type": "header",
+        "content": "Stats 1"
+    },
+    {
+        "type": "text",
+        "id": "stats_1_number",
+        "label": "Stats 1 Number",
+        "default": "17,238"
+    },
+    {
+        "type": "textarea",
+        "id": "stats_1_text",
+        "label": "Stats 1 Text",
+        "default": "Lorem ipsum dolor sit amet consectetur adipisicing elit."
+    },
+    {
+        "type": "header",
+        "content": "Stats 2"
+    },
+    {
+        "type": "text",
+        "id": "stats_2_number",
+        "label": "Stats 2 Number",
+        "default": "36K+"
+    },
+    {
+        "type": "textarea",
+        "id": "stats_2_text",
+        "label": "Stats 2 Text",
+        "default": "Lorem ipsum dolor sit amet consectetur adipisicing elit."
+    },
+    {
+        "type": "header",
+        "content": "Stats 3"
+    },
+    {
+        "type": "text",
+        "id": "stats_3_number",
+        "label": "Stats 3 Number",
+        "default": "52K+"
+    },
+    {
+        "type": "textarea",
+        "id": "stats_3_text",
+        "label": "Stats 3 Text",
+        "default": "Lorem ipsum dolor sit amet consectetur adipisicing elit."
+    },
+    {
+        "type": "header",
+        "content": "Number Sizing"
+    },
+    {
+        "type": "range",
+        "id": "number_size_desktop",
+        "label": "Number Size (Desktop)",
+        "unit": "px",
+        "min": 5,
+        "max": 70,
+        "step": 1,
+        "default": 32
+    },
+    {
+        "type": "range",
+        "id": "number_size_mobile",
+        "label": "Number Size (Mobile)",
+        "unit": "px",
+        "min": 5,
+        "max": 70,
+        "step": 1,
+        "default": 24
+    },
+    {
+        "type": "header",
+        "content": "Text Sizing"
+    },
+    {
+        "type": "range",
+        "id": "text_size_desktop",
+        "label": "Text Size (Desktop)",
+        "unit": "px",
+        "min": 5,
+        "max": 40,
+        "step": 1,
+        "default": 16
+    },
+    {
+        "type": "range",
+        "id": "text_size_mobile",
+        "label": "Text Size (Mobile)",
+        "unit": "px",
+        "min": 5,
+        "max": 40,
+        "step": 1,
+        "default": 16
+    },
+    {
+        "type": "header",
+        "content": "Content Max Width"
+    },
+    {
+        "type": "range",
+        "id": "content_width_desktop",
+        "label": "Content Width (Desktop)",
+        "unit": "px",
+        "min": 80,
+        "max": 500,
+        "step": 5,
+        "default": 250
+    },
+    {
+        "type": "range",
+        "id": "content_width_mobile",
+        "label": "Content Width (Mobile)",
+        "unit": "px",
+        "min": 80,
+        "max": 500,
+        "step": 5,
+        "default": 250
+    },
+    {
+        "type": "header",
+        "content": "Spacing"
+    },
+    {
+        "type": "range",
+        "id": "spacing_top_desktop",
+        "label": "Spacing Top (Desktop)",
+        "unit": "px",
+        "min": 0,
+        "max": 300,
+        "step": 5,
+        "default": 60
+    },
+    {
+        "type": "range",
+        "id": "spacing_bottom_desktop",
+        "label": "Spacing Bottom (Desktop)",
+        "unit": "px",
+        "min": 0,
+        "max": 300,
+        "step": 5,
+        "default": 60
+    },
+    {
+        "type": "range",
+        "id": "spacing_top_mobile",
+        "label": "Spacing Top (Mobile)",
+        "unit": "px",
+        "min": 0,
+        "max": 300,
+        "step": 5,
+        "default": 45
+    },
+    {
+        "type": "range",
+        "id": "spacing_bottom_mobile",
+        "label": "Spacing Bottom (Mobile)",
+        "unit": "px",
+        "min": 0,
+        "max": 300,
+        "step": 5,
+        "default": 45
+    }
+  ],
+  "presets": [
+    {
+      "name": "New Impact"
+    }
+  ]
+}
+{% endschema %}

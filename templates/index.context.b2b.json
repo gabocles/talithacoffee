@@ -1,0 +1,109 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "index.json",
+  "context": {
+    "b2b": true
+  },
+  "sections": {
+    "ecom_wsheader_section_QPgr4": {
+      "type": "ecom-wsheader-section",
+      "disabled": false,
+      "settings": {
+        "header-fdcd0a07e7119eef965b7ea20857474c": null,
+        "header-37b331c1c1614e11a177a0c65843a846": null
+      },
+      "blocks": {},
+      "block_order": []
+    },
+    "3bd9c82c-23a2-4144-93ba-a20695f40aa0": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {
+        "slide_wi3fq": {
+          "type": "slide",
+          "disabled": false,
+          "settings": {
+            "image": "shopify://shop_images/Header_5aea67b5-0683-4c45-8055-ef8e4ce3637f.jpg",
+            "image_mobile": "shopify://shop_images/Header-1.jpg",
+            "title": "Wholesale",
+            "richtext": "<p>Order your Favorite Blend or Single origin Talitha Coffee now and empower survivors of sex trafficking with every cup.</p>",
+            "header-768c82577dbfd89b3de69c48bf5f6a41": null,
+            "cta_url": "shopify://collections/all-products",
+            "cta_text": "Browse Products",
+            "header-371e1590348c21979b699a35146c3109": null,
+            "place_content": "place-content-start-start",
+            "text_align": "text-left",
+            "text_overlay_color": "white"
+          }
+        },
+        "template--20081841504575__3bd9c82c-23a2-4144-93ba-a20695f40aa0-slide-1": {
+          "disabled": true,
+          "settings": {}
+        },
+        "template--20081841504575__3bd9c82c-23a2-4144-93ba-a20695f40aa0-slide-2": {
+          "disabled": true,
+          "settings": {}
+        },
+        "b3617381-edb7-4f40-a2c7-26ca280bf196": {
+          "disabled": true,
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "slide_wi3fq",
+        "template--20081841504575__3bd9c82c-23a2-4144-93ba-a20695f40aa0-slide-1",
+        "template--20081841504575__3bd9c82c-23a2-4144-93ba-a20695f40aa0-slide-2",
+        "b3617381-edb7-4f40-a2c7-26ca280bf196",
+        "0a1d245d-507b-4b9e-89ef-14ad7200dc93",
+        "407b4d31-b27b-41f5-92c9-05c2405b27c5",
+        "2d4df34f-71dc-431f-b92d-ed4867925685"
+      ]
+    },
+    "ac0a275e-bb4f-4104-93b4-a4213a8f11c9": {
+      "settings": {
+        "title": "Explore our Coffee",
+        "collection": "wholesale-coffee",
+        "no_products": 10,
+        "enable_quick_buy": true,
+        "display_on_card": true,
+        "layout": "grid",
+        "products_per_row_mobile": "2"
+      },
+      "blocks": {}
+    },
+    "efffcc5b-6044-433b-9583-cc29bf8ba258": {
+      "disabled": false,
+      "settings": {},
+      "blocks": {}
+    },
+    "ecom_slimheader_section_rXaqf": {
+      "type": "ecom-slimheader-section",
+      "disabled": false,
+      "settings": {
+        "header-3fc16ad5ddf69d24619fb55a73df8d4d": null,
+        "header-de33bb246a4bc773165eae6be9aec010": null
+      },
+      "blocks": {},
+      "block_order": []
+    }
+  },
+  "order": [
+    "ecom_slimheader_section_rXaqf",
+    "3bd9c82c-23a2-4144-93ba-a20695f40aa0",
+    "ecom_wsheader_section_QPgr4",
+    "ac0a275e-bb4f-4104-93b4-a4213a8f11c9",
+    "bb122acc-f5d9-4099-985b-93ed182d1b4b",
+    "2fded257-bc40-4a85-bb7a-014476fa7302",
+    "e9e189d7-c1e2-4e19-9da8-10e639608a93",
+    "efffcc5b-6044-433b-9583-cc29bf8ba258",
+    "cabcb2ce-433f-4c55-98a4-0eb9695ce34f"
+  ]
+}

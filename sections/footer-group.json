@@ -1,0 +1,71 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "Footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "menus-0": {
+          "type": "menus",
+          "disabled": true,
+          "settings": {
+            "show_menu_headings": false,
+            "linklist_1": "footer",
+            "linklist_2": ""
+          }
+        },
+        "c68067de-5d20-41ab-af23-96f260fceedf": {
+          "type": "newsletter",
+          "settings": {
+            "newsletter_heading": "Sign up to our newsletter"
+          }
+        },
+        "tagline-and-social-links-0": {
+          "type": "tagline_and_social_links",
+          "settings": {
+            "tagline": "",
+            "show_social_icons": true
+          }
+        }
+      },
+      "block_order": [
+        "menus-0",
+        "c68067de-5d20-41ab-af23-96f260fceedf",
+        "tagline-and-social-links-0"
+      ],
+      "custom_css": [
+        "svg {height: 40px;}",
+        "ul {justify-content: center;}",
+        ".phone-number {justify-content: center;}"
+      ],
+      "settings": {
+        "logo": "shopify://shop_images/Talitha-BadgeLogo-1_81d5b620-df3a-4550-a65d-009184181fa0.png",
+        "icon": "shopify://shop_images/Vector.svg",
+        "designer_logo": "shopify://shop_images/friendly.png",
+        "logo_max_width": 130,
+        "show_payment_icons": false,
+        "show_country_selector": true,
+        "show_locale_selector": true,
+        "phone_text": "<a href=\"tel:61550.1830\">619.550.1830</a>",
+        "button_label": "Contact Us",
+        "button_link": "shopify://pages/contact",
+        "terms_link": "shopify://policies/terms-of-service",
+        "privacy_link": "shopify://policies/privacy-policy",
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

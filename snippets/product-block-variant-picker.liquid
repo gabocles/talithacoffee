@@ -1,0 +1,162 @@
+<script>
+  window.addEventListener('load', function() {
+    // Select the first variant and its buttons
+    var firstVariant = document.querySelector('.product-variant-picker-block');
+    var buttons = firstVariant.querySelectorAll('.variant-input .btn');
+
+
+    // Loop over the buttons and add the classes
+    buttons.forEach(function(button) {
+        button.classList.add('first-variant-button', 'new-border-color');
+    });
+});
+</script>
+
+{% unless product.has_only_default_variant %}
+  <div
+    class="{{ block_base_classes }} space-y-2.5"
+    {{ block.shopify_attributes }}
+  >
+    {% assign option_style = block.settings.option_style %}
+    {% for option in product.options_with_values %}
+      {% liquid
+        if block.settings.enable_color_swatches
+          assign is_color = false
+          assign swatch_trigger = 'products.product.color_swatch_trigger' | t | downcase
+          assign option_downcase = option.name | downcase
+          if option_downcase contains swatch_trigger
+            assign is_color = true
+          elsif swatch_trigger == 'color' and option_downcase contains 'colour'
+            assign is_color = true
+          endif
+        endif
+      %}
+      {% assign option_array_index = forloop.index0 %}
+
+      <fieldset class="product-variant-picker-block {% if is_color %}-mx-color-fieldset-offset {% endif %} js-enabled">
+        {%- unless is_color or option_style == 'buttons' -%}
+          <div class="my-1 lg:flex lg:items-center lg:justify-start">
+            {% comment %} <label class="{{ label_class }} break-words lg:w-1/4 xl:w-1/5 lg:shrink-0 pr-2.5" for="Option{{ option.position }}-{{ section.id }}">
+              {{ option.name }}
+            </label> {% endcomment %}
+            <select
+              id="Option{{ option.position }}-{{ section.id }}"
+              name="options[{{ option.name | escape }}]"
+              @change="optionChange()"
+              class="mt-2.5 lg:mt-0 single-option-selector font-body text-base text-scheme-text appearance-none input w-full "
+              data-single-option-selector
+            >
+              {% for value in option.values %}
+                <option
+                  value="{{ value | escape }}"
+                  {% if option.selected_value == value %}selected="selected"{% endif %}>
+                    {{ value }}
+                </option>
+              {% endfor %}
+            </select>
+          </div>
+        {%- else -%}
+          <div class="option-title">
+            {% if option.name == 'Size' %}
+              SELECT A
+            {% endif %}
+            {{ option.name }}
+          </div>
+          <div class="my-1 lg:flex lg:items-center lg:justify-start">
+            {% comment %} <legend class="{{ label_class }} lg:w-1/4 xl:w-1/5 lg:shrink-0 pr-2.5">
+              {{ option.name }}{% if is_color %}:<br/><span class="mt-1 inline-block" x-text="options[{{ forloop.index0 }}]"></span>{% endif %}
+            </legend> {% endcomment %}
+          
+            <div class="mt-2.5 flex flex-wrap lg:flex-1  gap-2.5 ">
+              {% for value in option.values %}
+                {%- liquid
+                  assign color_image = value | handle | append: '.' | append: 'png' | file_img_url: '120x' | prepend: 'https:'
+                  assign color_swatch_fallback = value | split: ' ' | last | handle
+                -%}
+
+                <div {{ variant_selected.title }} class="inline-block relative variant-input {% if product.options.size < 1 %} variant-enable {% endif %}">
+                  <input option="option{{ option.position }}"
+                    class="{% if is_color %}color-swatch{% endif %}  single-option-selector cursor-pointer absolute top-0 left-0 w-full h-full opacity-0"
+                    @change="optionChange()"
+                    type="radio"
+                    id="Section-{{ section.id }}-Option{{ option.position }}-{{ value | escape }}" name="Section-{{ section.id }}-options[{{ option.name }}]"
+                    value="{{ value | escape }}"
+                    data-handle="{{ value | handleize }}"
+                    {% if option.selected_value == value %} checked{% endif %} data-single-option-selector
+                  >
+                  <label
+                    :class=" 
+                      {
+                        {% if is_color %}
+                          'shadow-none' : optionHandles[{{ option_array_index }}] !== '{{ value | handleize }}'
+                        {% else %}
+                        'bg-scheme-secondary-background text-scheme-text shadow-secondary' : optionHandles[{{ option_array_index }}] !== '{{ value | handleize }}',
+                          'bg-scheme-text text-scheme-text-overlay' : optionHandles[{{ option_array_index }}] === '{{ value | handleize }}'
+                        {% endif %}
+                      }
+                    "
+                    class="btn after:hidden variant-button
+                      {% if is_color %}p-1 bg-scheme-secondary-background{% endif %}
+                      cursor-pointer"
+                    for="Section-{{ section.id }}-Option{{ option.position }}-{{ value | escape }}"
+                    title="{{ option.value }}"
+                    >
+                    {%- if is_color %}
+                      <span class="btn after:none block w-8 h-8 bg-cover" style="background-image: url({{ color_image }}); background-color: {{ color_swatch_fallback }};"></span>
+                    {%- endif -%}
+                    <span {% if is_color %}class="sr-only"{% endif %}>{{ value }}</span>
+                  </label>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        {%- endunless -%}
+      </fieldset>
+    {% endfor %}
+  </div>
+{% endunless %}
+
+<select id="variant-selector" style="display:none;">
+  {% for variant in product.variants %}
+    <option value="{{ variant.id }}" 
+            data-price="{{ variant.price | money }}" 
+            data-available="{{ variant.available }}"
+            data-option1="{{ variant.option1 }}"
+            data-option2="{{ variant.option2 }}"
+            data-option3="{{ variant.option3 }}">
+      {{ variant.title }}
+    </option>
+  {% endfor %}
+</select>
+
+<script>
+  var selected_option = $('[option="option1"]:checked').val();
+  var firstcheck = 0;
+  for (var i = 0; i < $('[option="option2"]').length; i++) {
+      if($('[data-option1="'+selected_option+'"][data-option2="'+$('[option="option2"]').eq(i).val()+'"][data-available="false"]').length == 1 || $('[data-option1="'+selected_option+'"][data-option2="'+$('[option="option2"]').eq(i).val()+'"]').length == 0){
+        $('[option="option2"]').eq(i).parent().hide();
+      }else{
+        if(firstcheck == 0){
+          $('[option="option2"]').eq(i).prop('checked', true);
+          firstcheck = 1;
+        }
+      }
+  }
+  $('[option="option1"]').click(function() {
+    $('.inline-block.relative.variant-input').show();
+  	var selected_option = $('[option="option1"]:checked').val();
+    var firstcheck = 0;
+    for (var i = 0; i < $('[option="option2"]').length; i++) {
+        if($('[data-option1="'+selected_option+'"][data-option2="'+$('[option="option2"]').eq(i).val()+'"][data-available="false"]').length == 1 || $('[data-option1="'+selected_option+'"][data-option2="'+$('[option="option2"]').eq(i).val()+'"]').length == 0){
+          $('[option="option2"]').eq(i).parent().hide();
+        }else{
+          if(firstcheck == 0){
+            $('[option="option2"]').eq(i).prop('checked', true);
+            firstcheck = 1;
+          }
+        }
+	}
+  });
+
+</script>
+

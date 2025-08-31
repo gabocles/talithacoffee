@@ -1,0 +1,8 @@
+{% if customer.tags contains "Wholesale" %}
+<script>
+document.addEventListener('rebuy:smartcart.ready', (event) => {
+Rebuy.SmartCart.destroy()
+});
+</script>
+<div id="TESTING" style="display: none;"> {{customer.tags}} </div>
+{% endif %}

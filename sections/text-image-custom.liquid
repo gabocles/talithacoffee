@@ -1,0 +1,151 @@
+
+ 
+
+
+{% style %}
+
+/* inset-pad  */
+.custom-grid{
+  max-width: calc(100% - 60px);
+  margin: 0 auto;
+}
+/* inset-pad media */
+@media (max-width: 989px) {
+    .custom-grid {
+        max-width: calc(100% - 26px);
+    }
+  }
+/* inset-pad ^ */
+
+  .custom-grid__column h2 {
+    font-family: "Stratum";
+    padding-bottom: 20px;
+    font-size: 42px;
+}
+  
+  .custom-grid__column p {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  @media (min-width: 990px) {
+  .custom-grid__column img {
+    width: 300px;
+    padding-top: 30px;
+  }
+
+  .custom-grid__column h2 {
+    font-size: 100px;
+}
+  
+  }
+
+{% endstyle %}
+
+
+
+
+
+<div style="background-color: {{ section.settings.background_color }}" class="custom-grid">
+  {% if section.settings.reverse_order %}
+    <div class="custom-grid__column">
+      {% if section.settings.custom_image != blank %}
+        <div class="image-wrapper">
+          <img loading="lazy" width="314" height="579" src="{{ section.settings.custom_image | img_url: 'master' }}" alt="{{ section.settings.heading }}" />
+        </div>
+      {% endif %}
+    </div>
+    <div class="custom-grid__column text-content-life">
+      <h2 style="color: {{ section.settings.header_color }}">{{ section.settings.header_split }}</h2>
+      <p style="color: {{ section.settings.body_color }}">{{ section.settings.para_text }}</p>
+      {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
+        <a href="{{ section.settings.button_link }}" class="custom-btn">
+          {{ section.settings.button_label }}
+        </a>
+      {%- endif -%}
+    </div>
+  {% else %}
+    <div class="custom-grid__column text-content-life">
+      <h2 style="color: {{ section.settings.header_color }}">{{ section.settings.header_split }}</h2>
+      <p style="color: {{ section.settings.body_color }}">{{ section.settings.para_text }}</p>
+      {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
+        <a href="{{ section.settings.button_link }}" class="custom-btn">
+          {{ section.settings.button_label }}
+        </a>
+      {%- endif -%}
+    </div>
+    <div class="custom-grid__column">
+      {% if section.settings.custom_image != blank %}
+        <div class="image-wrapper">
+          <img loading="lazy" width="314" height="579" src="{{ section.settings.custom_image | img_url: 'master' }}" alt="{{ section.settings.heading }}" class="responsive-img" />
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+</div>
+
+
+{% schema %}
+{
+  "name": "Half and Half Image Text",
+  "presets": [
+    {
+      "name": "Half and Half Image Text",
+      "category": "Custom"
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "header_split",
+      "label": "Header",
+      "default": "Enter your heading here"
+    },
+    {
+      "type": "text",
+      "id": "para_text",
+      "label": "Body Text",
+      "default": "Enter your text here"
+    },
+    {
+     "type": "image_picker",
+     "id": "custom_image",
+     "label": "image"
+    },
+    {
+      "type": "color",
+      "id": "header_color",
+      "label": "Header Color",
+      "default": "#000000"
+    },
+    {
+     "type": "color",
+     "id": "body_color",
+     "label": "Body Color",
+     "default": "#947D57"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#EDE5DC"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "reverse_order",
+      "label": "Reverse order of image and text",
+      "default": false
+     }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,215 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "display_on_card": true,
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "7d04653d-97f7-4144-ba4a-9cbe3c5630ef": {
+      "type": "image-with-text-overlay",
+      "custom_css": [
+        "h2 {font-family: \"Stratum\"; background-image: url(\"https://cdn.shopify.com/s/files/1/0726/2391/5327/files/background-img.png\"); background-position: center center; background-size: cover; background-clip: text; -webkit-background-clip: text; color: transparent; -webkit-text-fill-color: transparent; text-shadow: none !important; text-stroke: black !important; font-size: 55px;}",
+        "@media (min-width: 990px) {h2 {font-size: 200px; } p {font-size: 24px; }}",
+        ".max-w-lg {max-width: 100% !important;}"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/Subscribe.png",
+        "display_on_card": false,
+        "display_content_below_image_on_mobile": true,
+        "style": "full",
+        "height": "natural",
+        "place_content": "place-content-start-center",
+        "text_align": "text-center",
+        "title": "SUBSCRIBE",
+        "heading_size": "heading-standard",
+        "richtext": "<p>Support survivors, <strong>AUTOMATICALLY. </strong>Each bag of coffee you subscribe to, directly supports our efforts of providing advocacy, support and employment for survivors of human trafficking. </p>",
+        "cta_url": "shopify://collections",
+        "cta_text": "Build your Subscription",
+        "color_scheme": "primary",
+        "use_gradient_background": false,
+        "text_overlay_color": "white"
+      }
+    },
+    "f28f973e-b051-4311-9da3-e3f3728a01b0": {
+      "type": "feature-text-columns",
+      "blocks": {
+        "template--19913318433087__f28f973e-b051-4311-9da3-e3f3728a01b0-16893511234859e423-0": {
+          "type": "column",
+          "settings": {
+            "title": "Save 10% Every. Single. Time.",
+            "subheading": "<p>Plus <strong>FREE SHIPPING</strong> on orders of <strong>$50</strong> or more. Enjoy savings with every sip.  <br/><br/><br/></p>"
+          }
+        },
+        "template--19913318433087__f28f973e-b051-4311-9da3-e3f3728a01b0-16893511234859e423-1": {
+          "type": "column",
+          "settings": {
+            "title": "Modify Anytime",
+            "subheading": "<p>Easily manage your subscription. Need to skip a shipment? Easily pause it. Want a different coffee? Simply swap it.  Need a break? No problem you can cancel anytime.<br/><br/><br/><br/></p>"
+          }
+        },
+        "template--19913318433087__f28f973e-b051-4311-9da3-e3f3728a01b0-16893511234859e423-2": {
+          "type": "column",
+          "settings": {
+            "title": "advocacy on autopilot",
+            "subheading": "<p>Support survivors, automatically. Each bag of coffee you subscribe to, directly supports our efforts of providing advocacy, support and employment for survivors of se trafficking. </p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--19913318433087__f28f973e-b051-4311-9da3-e3f3728a01b0-16893511234859e423-0",
+        "template--19913318433087__f28f973e-b051-4311-9da3-e3f3728a01b0-16893511234859e423-1",
+        "template--19913318433087__f28f973e-b051-4311-9da3-e3f3728a01b0-16893511234859e423-2"
+      ],
+      "custom_css": [
+        "h2 {font-family: \"termina\", sans-serif !important; font-size: 30px;}"
+      ],
+      "settings": {
+        "display_on_card": false,
+        "title": "",
+        "heading_size": "heading-standard",
+        "subheading_font": "body",
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "18fd4ead-e4ef-4788-8fe2-58928344b386": {
+      "type": "rich-text",
+      "disabled": true,
+      "custom_css": [
+        "h2 {font-family: \"termina\", sans-serif !important;}"
+      ],
+      "settings": {
+        "title": "BUILD YOUR OWN",
+        "heading_size": "heading-standard",
+        "rich_text": "",
+        "display_on_card": false,
+        "content_width_desktop": "lg:w-full",
+        "button_link": "",
+        "button_label": "Shop Now",
+        "color_scheme": "secondary",
+        "use_gradient_background": false
+      }
+    },
+    "ee386810-7a7d-4019-b083-c1cad948a118": {
+      "type": "image-with-text",
+      "disabled": true,
+      "settings": {
+        "display_on_card": false,
+        "crop": "",
+        "image_shape": "default",
+        "blob_type": 1,
+        "rotate_image": 0,
+        "image_position": "left",
+        "image_size": "half",
+        "disable_media_style": false,
+        "title": "TAILOR YOUR SUBSCRIPTION",
+        "heading_size": "heading-standard",
+        "richtext": "",
+        "text_alignment": "text-left",
+        "button_link": "",
+        "button_label": "Shop Now",
+        "color_scheme": "secondary",
+        "use_gradient_background": false
+      }
+    },
+    "604165ea-96cb-4625-8da7-c75ab47b52f2": {
+      "type": "featured-collection",
+      "custom_css": [
+        "h2 {text-align: left;}",
+        "section {padding: 0px 0 !important;}"
+      ],
+      "settings": {
+        "title": "Our best selling subscriptions",
+        "subheading": "",
+        "collection": "coffee",
+        "no_products": 18,
+        "show_view_all": true,
+        "enable_quick_buy": true,
+        "display_on_card": true,
+        "layout": "grid",
+        "products_per_row_mobile": "1",
+        "products_per_row_desktop": 3,
+        "slideshow_focus": "center",
+        "mobile_slide_width": "three_fifths",
+        "desktop_slide_width": 40,
+        "autoscroll_mode": "1",
+        "product_tiles_aspect_ratio": "aspect-w-1 aspect-h-1",
+        "image_shape": "",
+        "color_scheme": "primary",
+        "use_gradient_background": false,
+        "show_promo_box": false,
+        "promo_box_size": "single",
+        "promo_overlay": "",
+        "promo_overlay_percentage": 25,
+        "promo_title": "",
+        "promo_desc": "",
+        "promo_cta": "",
+        "promo_url": ""
+      }
+    },
+    "6f5b7d11-6e8a-428a-adcb-ba5e590499d7": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Our best selling Single Origins",
+        "subheading": "",
+        "collection": "coffee-single-origin",
+        "no_products": 18,
+        "show_view_all": false,
+        "enable_quick_buy": true,
+        "display_on_card": true,
+        "layout": "grid",
+        "products_per_row_mobile": "1",
+        "products_per_row_desktop": 3,
+        "slideshow_focus": "center",
+        "mobile_slide_width": "three_fifths",
+        "desktop_slide_width": 25,
+        "autoscroll_mode": "1",
+        "product_tiles_aspect_ratio": "",
+        "image_shape": "",
+        "color_scheme": "primary",
+        "use_gradient_background": false,
+        "show_promo_box": false,
+        "promo_box_size": "single",
+        "promo_overlay": "",
+        "promo_overlay_percentage": 25,
+        "promo_title": "",
+        "promo_desc": "",
+        "promo_cta": "",
+        "promo_url": ""
+      }
+    },
+    "b7be1615-efc6-4d49-a4ba-301347924ae3": {
+      "type": "newsletter",
+      "settings": {
+        "title": "10% OFF YOUR FIRST ORDER",
+        "richtext": "<p>Stay up to date with all things from Talitha Coffee, and get our newsletter straight to your inbox.. with 10% off your first order!</p>",
+        "display_on_card": false,
+        "color_scheme": "secondary",
+        "use_gradient_background": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "7d04653d-97f7-4144-ba4a-9cbe3c5630ef",
+    "f28f973e-b051-4311-9da3-e3f3728a01b0",
+    "18fd4ead-e4ef-4788-8fe2-58928344b386",
+    "ee386810-7a7d-4019-b083-c1cad948a118",
+    "604165ea-96cb-4625-8da7-c75ab47b52f2",
+    "6f5b7d11-6e8a-428a-adcb-ba5e590499d7",
+    "b7be1615-efc6-4d49-a4ba-301347924ae3"
+  ]
+}

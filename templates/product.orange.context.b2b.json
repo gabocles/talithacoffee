@@ -1,0 +1,62 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "product.orange.json",
+  "context": {
+    "b2b": true
+  },
+  "sections": {
+    "main": {
+      "settings": {
+        "color_scheme": "secondary"
+      },
+      "blocks": {
+        "ef3075c5-d478-47e7-84d9-bae6cbed3c91": {
+          "disabled": true,
+          "settings": {}
+        },
+        "price": {
+          "disabled": false,
+          "settings": {
+            "display_on_card": false,
+            "text_align": "text-right"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "a17e90c4-acc9-4f1d-af84-828ae4cb2289",
+        "62bbe4ca-b97e-40a6-a436-ba9573a1fd31",
+        "c53aba67-255f-4c61-afdb-667f7e29ad79",
+        "ef3075c5-d478-47e7-84d9-bae6cbed3c91",
+        "variant_picker",
+        "price",
+        "quantity_selector",
+        "d5e492c1-cd6b-4f38-804f-eb89d7e95aaf",
+        "baf3083e-d14d-435d-bca3-100d6ac490ce",
+        "39086e30-eff0-4d4f-9e50-b8988b685485"
+      ]
+    },
+    "524a80b0-f537-4729-8e03-2951f3996a4c": {
+      "settings": {
+        "collection": "wholesale-coffee"
+      },
+      "blocks": {}
+    }
+  },
+  "order": [
+    "main",
+    "169021714666a7a555",
+    "5904cc6c-63d3-4a4f-a665-9cb31cea5756",
+    "524a80b0-f537-4729-8e03-2951f3996a4c",
+    "bed08be0-0bc7-49a1-850a-0d37a6292f1d",
+    "3ca0157d-b18d-4799-8c0a-205a81f7a9ad"
+  ]
+}

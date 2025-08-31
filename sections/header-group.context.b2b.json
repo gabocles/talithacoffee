@@ -1,0 +1,45 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "header-group.json",
+  "context": {
+    "b2b": true
+  },
+  "sections": {
+    "header": {
+      "settings": {
+        "main_linklist": "wholesale",
+        "main_linklist_right": "wholesale-right-menu",
+        "shop_button_text_1": "All products",
+        "shop_button_url_1": "shopify://collections/all-products",
+        "shop_button_text_2": "My Orders",
+        "shop_button_url_2": "https://shopify.com/72623915327/account/orders",
+        "show_all_navigation_links": true,
+        "showcase_second_level_links": true,
+        "crop": "aspect-w-4 aspect-h-3",
+        "header_show_search": true,
+        "sticky_header": true,
+        "show_icons": true,
+        "transparent_when_overlaid_and_stuck": true,
+        "overlay_first_section_padding_top_desktop": 3,
+        "overlay_first_section_padding_top_mobile": 3,
+        "sidebar_show_footer_menu": false
+      },
+      "blocks": {
+        "35078245-1ed2-4f44-8213-91b20a692661": {
+          "disabled": true,
+          "settings": {
+            "position": "first_item_in_navigation"
+          }
+        }
+      }
+    }
+  }
+}

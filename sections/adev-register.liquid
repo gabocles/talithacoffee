@@ -1,0 +1,157 @@
+<link rel="stylesheet" href="{{ 'adev-new-register.min.css' | asset_url }}" media="all">
+
+{%- assign get = section.settings -%}
+{% style %}
+    .adev-new-register#section_{{ section.id }} {
+        padding-top: {{ get.spacing_top_mobile }}px;
+        padding-bottom: {{ get.spacing_bottom_mobile }}px;
+    }
+    @media (min-width:992px) {
+        .adev-new-register#section_{{ section.id }} {
+            padding-top: {{ get.spacing_top_desktop }}px;
+            padding-bottom: {{ get.spacing_bottom_desktop }}px;
+        }
+    }
+{% endstyle %}
+
+<div class="adev-customer adev-new-register" id="section_{{ section.id }}">
+    <div class="adev-container">
+
+        <div class="adev-customer__header">
+            <h1>Create Account</h1>
+        </div>
+
+        <div class="adev-register-wrap">
+            {%- form 'create_customer', name: 'create_customer', class: 'adev-register-form adev-customer-form' -%}
+
+                {%- if form.errors -%}
+                    {%- for field in form.errors -%}
+                        {%- if field == 'form' -%}
+                        <div class="adev-alert adev-alert-error">
+                            <p>{{ form.errors.messages[field] }}</p>
+                        </div>
+                        {%- endif -%}
+                    {%- endfor -%}
+                {%- endif -%}
+
+                {% if form.posted_successfully? %}
+                    <div class="adev-alert adev-alert-success">
+                    <p>Registered Successfully!</p>
+                    </div>
+                {% endif %}
+
+                
+                {%- capture firstNameField -%}
+                <div class="adev-form__field">
+                    <label for="first_name" class="adev-form__label">First Name</label>
+                    <input type="text" name="customer[first_name]" id="first_name" {% unless form.errors %}autofocus{% endunless %} required{% if form.first_name %} value="{{ form.first_name }}"{% endif %}>
+                </div>
+                {%- endcapture -%}
+        
+                {%- if request.locale.iso_code != 'ja' -%}
+                    {{ firstNameField }}
+                {%- endif -%}
+        
+                <div class="adev-form__field">
+                    <label for="last_name" class="adev-form__label">Last Name</label>
+                    <input type="text" name="customer[last_name]" id="last_name"{% if form.last_name %} value="{{ form.last_name }}"{% endif %}>
+                </div>
+        
+                {%- if request.locale.iso_code == 'ja' -%}
+                    {{ firstNameField }}
+                {%- endif -%}
+
+                <div class="adev-form__field">
+                    <label for="email" class="adev-form__label">Email Address</label>
+
+                    <input type="email" name="customer[email]" id="email" autocorrect="off" autocapitalize="off" autofocus value="{% if form.email %}{{ form.email }}{% endif %}" required>
+                    {% if form.errors contains 'email' %}
+                    <span class="adev-form-hint adev-form-hint-error">Email {{ form.errors.messages['email'] }}</span>
+                    {% endif %}
+                </div>
+
+                <div class="adev-form__field">
+                  <label for="password" class="adev-form__label">Password</label>
+
+                  <input type="password" name="customer[password]" id="password" minlength="5" autocomplete required>
+                  {% if form.errors contains 'password' %}
+                  <span class="adev-form-hint adev-form-hint-error">Password {{ form.errors.messages['password'] }}</span>
+                  {% endif %}
+                </div>
+
+                <button type="submit" class="adev-btn" aria-label="{{ 'customer.register.submit' | t }}">
+                    <span>{{ 'customer.register.submit' | t }}</span>
+                </button>
+          
+            {% endform %}
+
+            <a href="{{ routes.account_login_url }}" class="adev-login-btn adev-btn adev-btn--secondary" aria-label="{{ 'customer.login.sign_in' | t }}">
+                <span>{{ 'customer.login.sign_in' | t }}</span>
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="adev-customer-art adev-customer-art-1">
+        <img src="{{ 'login-art-1.svg' | asset_url }}">
+    </div>
+
+    <div class="adev-customer-art adev-customer-art-2">
+        <img src="{{ 'login-art-2.svg' | asset_url }}">
+    </div>
+
+</div>
+
+{% schema %}
+{
+  "name": "New Register",
+  "settings": [
+    {
+        "type": "header",
+        "content": "Spacing"
+    },
+    {
+        "type": "range",
+        "id": "spacing_top_desktop",
+        "label": "Spacing Top (Desktop)",
+        "unit": "px",
+        "min": 0,
+        "max": 300,
+        "step": 5,
+        "default": 80
+    },
+    {
+        "type": "range",
+        "id": "spacing_bottom_desktop",
+        "label": "Spacing Bottom (Desktop)",
+        "unit": "px",
+        "min": 0,
+        "max": 300,
+        "step": 5,
+        "default": 80
+    },
+    {
+        "type": "range",
+        "id": "spacing_top_mobile",
+        "label": "Spacing Top (Mobile)",
+        "unit": "px",
+        "min": 0,
+        "max": 300,
+        "step": 5,
+        "default": 60
+    },
+    {
+        "type": "range",
+        "id": "spacing_bottom_mobile",
+        "label": "Spacing Bottom (Mobile)",
+        "unit": "px",
+        "min": 0,
+        "max": 300,
+        "step": 5,
+        "default": 60
+    }
+  ]
+}
+{% endschema %}

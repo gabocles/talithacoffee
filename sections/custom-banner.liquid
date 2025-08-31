@@ -1,0 +1,159 @@
+{% style %}
+
+/* inset-pad  */
+  
+.custom-banner {
+  max-width: calc(100% - 60px);
+  margin: 0 auto;
+}
+  
+@media (max-width: 989px) {
+    .custom-banner {
+      max-width: calc(100% - 26px);
+    }
+  }
+  
+  .custom-banner {
+    background: url('https://cdn.shopify.com/s/files/1/0726/2391/5327/files/myaccount-bk.png?v=1689968486');
+    background-size: cover;
+    color: white;
+    margin-top: 25px;
+    font-family: 'termina';
+    padding: 60px 30px 20px 30px;
+  }
+
+  .banner-inner{
+    max-width: 80%;
+    margin: 0 auto;
+  }
+
+  .banner-header h2 {
+    font-size: 18px;
+  }
+
+  .banner-column {
+    padding-top: 10px;
+  }
+  
+  .custom-banner .banner-header {
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .custom-banner h3 {
+    color: #FFA400;
+    font-size: 20px;
+  }
+
+  .banner-content {
+    text-align: center;
+    font-size: 16px;
+  }
+
+  @media (min-width: 990px) {
+    .banner-content {
+      display: flex;
+      max-width: 80%;
+      margin: 0 auto;
+      text-align: center;
+      height: 20vh
+    }
+
+    .banner-column {
+      padding: 30px;
+    }
+
+    .banner-header h2 {
+      font-size: 18px;
+      padding-top: 40px;
+    }
+
+    .banner-column h3 {
+      text-align: center;
+      font-size: 62px;
+    }
+    
+  }
+
+{% endstyle %}
+
+
+
+  <div class="custom-banner inset-pad">
+    <div class="banner-inner">
+      <div class="banner-header">
+        <h2>{{ section.settings.custom_header_1 }}</h2>
+      </div>
+      <div class="banner-content">
+        <div class="banner-column">
+          <h3> {{ section.settings.custom_header_2 }} </h3>
+          <p> {{ section.settings.custom_para_1 }} </p>
+        </div>
+        <div class="banner-column">
+          <h3> {{ section.settings.custom_header_3 }} </h3>
+          <p> {{ section.settings.custom_para_2 }} </p>
+        </div>
+        <div class="banner-column">
+          <h3> {{ section.settings.custom_header_4 }} </h3>
+          <p> {{ section.settings.custom_para_3 }} </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+{% schema %}
+{
+  "name": "Banner Custom",
+  "presets": [
+    {
+      "name": "Banner Custom",
+      "category": "Custom"
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "custom_header_1",
+      "label": "Main Header",
+      "default": "Enter your main heading here"
+    },
+        {
+      "type": "text",
+      "id": "custom_header_2",
+      "label": "Column Header 1",
+      "default": "Enter your column heading here"
+    },
+        {
+      "type": "text",
+      "id": "custom_header_3",
+      "label": "Column Header 2",
+      "default": "Enter your column heading here"
+    },
+        {
+      "type": "text",
+      "id": "custom_header_4",
+      "label": "Column Header 3",
+      "default": "Enter your column heading here"
+    },
+    {
+      "type": "text",
+      "id": "custom_para_1",
+      "label": "Paragraph Text 1",
+      "default": "Enter your text for the first column here"
+    },
+    {
+      "type": "text",
+      "id": "custom_para_2",
+      "label": "Paragraph Text 2",
+      "default": "Enter your text for the second column here"
+    },
+    {
+      "type": "text",
+      "id": "custom_para_3",
+      "label": "Paragraph Text 3",
+      "default": "Enter your text for the second column here"
+    }
+  ]
+}
+{% endschema %}

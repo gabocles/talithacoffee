@@ -1,0 +1,114 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "featured-image": {
+      "type": "main-article-featured-image",
+      "disabled": true,
+      "settings": {
+        "style": "inset",
+        "height": "pt-half-screen-height",
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "main": {
+      "type": "main-article",
+      "blocks": {
+        "62cb6b8c-5253-4e66-b3dc-89471e920f94": {
+          "type": "sticker",
+          "disabled": true,
+          "settings": {
+            "text": "Sticker",
+            "shape": "fit_to_text",
+            "width": 150,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/STICKER-RIGHT.png",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 90,
+            "vertical_position": 23,
+            "rotate": 0,
+            "show_sticker_on_mobile": false,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": false,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "76368d58-cdd3-4377-9ef6-dd5e4b54a2db": {
+          "type": "sticker",
+          "disabled": true,
+          "settings": {
+            "text": "",
+            "shape": "fit_to_text",
+            "width": 150,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/sticker-left.png",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 10,
+            "vertical_position": 36,
+            "rotate": 0,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": false,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        }
+      },
+      "block_order": [
+        "62cb6b8c-5253-4e66-b3dc-89471e920f94",
+        "76368d58-cdd3-4377-9ef6-dd5e4b54a2db"
+      ],
+      "settings": {
+        "display_on_card": true,
+        "show_image": true,
+        "show_author": true,
+        "show_date": true,
+        "show_share_links": true,
+        "show_tags": true,
+        "show_next_previous_links": true,
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "aac0e69b-0cf2-4c43-bb45-6c8dfc204084": {
+      "type": "blog-posts",
+      "settings": {
+        "display_on_card": true,
+        "title": "TIME FOR Another?",
+        "blog": "news",
+        "post_limit": 3,
+        "crop": "aspect-w-4 aspect-h-3",
+        "image_shape": "default",
+        "blog_show_author": false,
+        "blog_show_date": false,
+        "show_post_excerpt": true,
+        "show_view_all": false,
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "1704377025991fc287": {
+      "type": "apps",
+      "settings": {}
+    }
+  },
+  "order": [
+    "featured-image",
+    "main",
+    "aac0e69b-0cf2-4c43-bb45-6c8dfc204084",
+    "1704377025991fc287"
+  ]
+}

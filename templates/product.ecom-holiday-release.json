@@ -1,0 +1,299 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "layout": "theme",
+  "sections": {
+    "text_marquee_cfQwjT": {
+      "type": "text-marquee",
+      "settings": {
+        "text": "Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.",
+        "repeat_text": true,
+        "shape_between_text": "10_point_star",
+        "animate_shape_between_text": true,
+        "link": "",
+        "font": "font-heading heading-secondary",
+        "apply_effects": false,
+        "mobile_text_scale": 2,
+        "desktop_text_scale": 4,
+        "speed": 200,
+        "direction": "",
+        "color_scheme": "quaternary",
+        "use_gradient_background": false
+      }
+    },
+    "ecom-holiday-release-product": {
+      "type": "ecom-holiday-release-product",
+      "disabled": true,
+      "settings": {}
+    },
+    "featured_product_z9Bk6Q": {
+      "type": "featured-product",
+      "blocks": {
+        "title_UVQ7xY": {
+          "type": "title",
+          "settings": {
+            "display_on_card": false,
+            "text_align": "text-left"
+          }
+        },
+        "star_rating_DB43wD": {
+          "type": "star_rating",
+          "settings": {
+            "display_on_card": false,
+            "type": "native"
+          }
+        },
+        "description_iKhicd": {
+          "type": "description",
+          "settings": {
+            "display_on_card": false,
+            "truncate_description": false,
+            "text_align": "text-left"
+          }
+        },
+        "price_gPPt64": {
+          "type": "price",
+          "settings": {
+            "display_on_card": false,
+            "show_on_sale_sticker": false,
+            "text_align": "text-left"
+          }
+        },
+        "variant_picker_GNGKGk": {
+          "type": "variant_picker",
+          "settings": {
+            "display_on_card": false,
+            "option_style": "buttons",
+            "hide_option_labels": true,
+            "enable_color_swatches": false
+          }
+        },
+        "quantity_selector_jLAADy": {
+          "type": "quantity_selector",
+          "settings": {
+            "display_on_card": false,
+            "show_label": false
+          }
+        },
+        "buy_buttons_6iKeUx": {
+          "type": "buy_buttons",
+          "settings": {
+            "display_on_card": false,
+            "show_price": true,
+            "enable_payment_button": true,
+            "show_pickup_availability": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "sticker_enP7Rz": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 110,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Christmas_Pattern_Elements_11.png",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 92,
+            "vertical_position": 30,
+            "rotate": -46,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "rotate_when_scrolling",
+            "enable_parallax": true,
+            "parallax_speed": 6,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "sticker_nXFd7y": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 150,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Christmas_Pattern_Elements_12.png",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 5,
+            "vertical_position": 41,
+            "rotate": 0,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "rotate_when_scrolling",
+            "enable_parallax": true,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        }
+      },
+      "block_order": [
+        "title_UVQ7xY",
+        "star_rating_DB43wD",
+        "description_iKhicd",
+        "price_gPPt64",
+        "variant_picker_GNGKGk",
+        "quantity_selector_jLAADy",
+        "buy_buttons_6iKeUx",
+        "sticker_enP7Rz",
+        "sticker_nXFd7y"
+      ],
+      "settings": {
+        "title": "",
+        "product": "winter-slay",
+        "crop": "",
+        "image_shape": "default",
+        "media_mobile_width": "w-full",
+        "desktop_media_width": "lg:col-span-6_lg:col-span-6",
+        "enable_video_looping": true,
+        "thumbnails_position": "under",
+        "thumbnail_crop": "aspect-w-1 aspect-h-1",
+        "thumbnail_shape": "default",
+        "hide_media_shadow": false,
+        "thumbnail_size": "standard",
+        "show_thumbnails_on_mobile": false,
+        "color_scheme": "quaternary",
+        "use_gradient_background": false
+      }
+    },
+    "product_recommendations_nPCnwJ": {
+      "type": "product-recommendations",
+      "disabled": true,
+      "settings": {
+        "show_product_recommendations": true,
+        "display_on_card": true,
+        "enable_quick_buy": true,
+        "product_recommendations_heading": "You may also like",
+        "max_products": "4",
+        "product_tiles_aspect_ratio": "",
+        "image_shape": "",
+        "color_scheme": "quaternary",
+        "use_gradient_background": false
+      }
+    },
+    "featured_collection_AdFYtd": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "",
+        "subheading": "",
+        "collection": "retail",
+        "no_products": 4,
+        "show_view_all": true,
+        "enable_quick_buy": true,
+        "display_on_card": true,
+        "layout": "carousel",
+        "products_per_row_mobile": "1",
+        "products_per_row_desktop": 3,
+        "slideshow_focus": "center",
+        "mobile_slide_width": "three_fifths",
+        "desktop_slide_width": 25,
+        "autoscroll_mode": "1",
+        "product_tiles_aspect_ratio": "",
+        "image_shape": "",
+        "color_scheme": "quaternary",
+        "use_gradient_background": false,
+        "show_promo_box": false,
+        "promo_box_size": "single",
+        "promo_overlay": "",
+        "promo_overlay_percentage": 25,
+        "promo_title": "",
+        "promo_desc": "",
+        "promo_cta": "",
+        "promo_url": ""
+      }
+    },
+    "blog_posts_DrUypk": {
+      "type": "blog-posts",
+      "blocks": {
+        "sticker_GpcxXr": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 150,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Christmas_Pattern_Elements_16.png",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 80,
+            "vertical_position": 0,
+            "rotate": 0,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": false,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        }
+      },
+      "block_order": [
+        "sticker_GpcxXr"
+      ],
+      "settings": {
+        "display_on_card": true,
+        "title": "Blog posts",
+        "blog": "news",
+        "post_limit": 3,
+        "crop": "aspect-w-4 aspect-h-3",
+        "image_shape": "default",
+        "blog_show_author": false,
+        "blog_show_date": true,
+        "show_post_excerpt": true,
+        "show_view_all": true,
+        "color_scheme": "quaternary",
+        "use_gradient_background": false
+      }
+    },
+    "17307503601d66d2c8": {
+      "type": "apps",
+      "blocks": {
+        "rebuy_personalization_engine_rebuy_widget_NBmPqQ": {
+          "type": "shopify://apps/rebuy-personalization-engine/blocks/rebuy-widget/a26ae9b9-933b-40bf-bbc6-bf1220bbc4dc",
+          "settings": {
+            "enabled": true,
+            "id": "",
+            "product_id_enabled": true,
+            "collection_id_enabled": false
+          }
+        }
+      },
+      "block_order": [
+        "rebuy_personalization_engine_rebuy_widget_NBmPqQ"
+      ],
+      "settings": {}
+    },
+    "newsletter_YW9eXj": {
+      "type": "newsletter",
+      "disabled": true,
+      "custom_css": [
+        "h2 {text-align: left;}"
+      ],
+      "settings": {
+        "title": "Sign up to our newsletter",
+        "richtext": "<p>Receive special offers and first look at new products.</p>",
+        "display_on_card": false,
+        "color_scheme": "quaternary",
+        "use_gradient_background": false
+      }
+    }
+  },
+  "order": [
+    "text_marquee_cfQwjT",
+    "ecom-holiday-release-product",
+    "featured_product_z9Bk6Q",
+    "product_recommendations_nPCnwJ",
+    "featured_collection_AdFYtd",
+    "blog_posts_DrUypk",
+    "17307503601d66d2c8",
+    "newsletter_YW9eXj"
+  ]
+}

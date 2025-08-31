@@ -1,0 +1,44 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "product.preorder.json",
+  "context": {
+    "b2b": true
+  },
+  "sections": {
+    "main": {
+      "settings": {},
+      "blocks": {
+        "dbd892f2-7ddc-4772-92a8-c79a8cd910cb": {
+          "type": "horizontal_bar_chart",
+          "settings": {
+            "display_on_card": false,
+            "label": "Value",
+            "value": 83,
+            "value_alt": ""
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "price",
+        "quantity_selector",
+        "dbd892f2-7ddc-4772-92a8-c79a8cd910cb",
+        "variant_picker",
+        "baf3083e-d14d-435d-bca3-100d6ac490ce",
+        "a17e90c4-acc9-4f1d-af84-828ae4cb2289"
+      ]
+    }
+  },
+  "order": [
+    "main",
+    "product-recommendations"
+  ]
+}

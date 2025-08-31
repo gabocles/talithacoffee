@@ -1,0 +1,192 @@
+<link rel="stylesheet" href="{{ 'adev-new-login.min.css' | asset_url }}" media="all">
+<script src="{{ 'adev-login.min.js' | asset_url }}" defer></script>
+
+{%- assign get = section.settings -%}
+{% style %}
+    .adev-new-login#section_{{ section.id }} {
+        padding-top: {{ get.spacing_top_mobile }}px;
+        padding-bottom: {{ get.spacing_bottom_mobile }}px;
+    }
+    @media (min-width:992px) {
+        .adev-new-login#section_{{ section.id }} {
+            padding-top: {{ get.spacing_top_desktop }}px;
+            padding-bottom: {{ get.spacing_bottom_desktop }}px;
+        }
+    }
+{% endstyle %}
+
+<div class="adev-customer adev-new-login" x-data="adev_login" id="section_{{ section.id }}">
+    <div class="adev-container" x-show="!recoverOpened">
+
+        <div class="adev-customer__header">
+            <h1>Account Login</h1>
+        </div>
+
+        <div class="adev-login-wrap">
+            {%- form 'customer_login', name: 'login', class: 'adev-login-form adev-customer-form' -%}
+
+                {% if form.errors %}
+                    <div class="adev-alert adev-alert-error">
+                    {{- form.errors.messages['form'] -}}
+                    </div>
+                {% endif %}
+
+                <div class="adev-form__field">
+                    <label for="email" class="adev-form__label">Email Address</label>
+
+                    <input type="email" name="customer[email]" id="email" autocorrect="off" autocapitalize="off" autofocus required>
+                    {% if form.errors contains 'email' %}
+                    <span class="adev-form-hint adev-form-hint-error">{{ form.errors.messages['email'] }}</span>
+                    {% endif %}
+                </div>
+
+                {% if form.password_needed %}
+                <div class="adev-form__field">
+                  <label for="password" class="adev-form__label">Password</label>
+
+                  <input type="password" name="customer[password]" id="password" autocomplete required>
+                  {% if form.errors contains 'password' %}
+                  <span class="adev-form-hint adev-form-hint-error">{{ form.errors.messages['password'] }}</span>
+                  {% endif %}
+                </div>
+                {% endif %}
+
+                <button type="submit" class="adev-btn" aria-label="{{ 'customer.login.sign_in' | t }}">
+                    <span>{{ 'customer.login.sign_in' | t }}</span>
+                </button>
+                {% if form.password_needed %}
+                    <div class="adev-form__forgot-pass">
+                        <a href="#" @click.prevent="openRecover()">{{ 'customer.login.forgot_password' | t }}</a>
+                    </div>
+                {% endif %}
+          
+            {% endform %}
+                    <br>
+          <div class="custom-btn-green">
+                  <a href="https://shopify.com/72623915327/account" target="_blank">
+                    <button type="button" class=".custom-btn-green">
+                      WHOLESALE LOGIN
+                    </button>
+                  </a>
+                </div>
+          <br>
+         <a href="{{ routes.account_register_url }}" class="adev-btn adev-btn--secondary" aria-label="{{ 'layout.customer.create_account' | t }}">
+                <span>{{ 'layout.customer.create_account' | t }}</span>
+             </a>
+        </div>
+
+    </div>
+
+
+    <div class="adev-container" x-cloak x-show="recoverOpened">
+
+        <div class="adev-customer__header">
+            <h1>{{ 'customer.recover_password.title' | t }}</h1>
+        </div>
+
+        <div class="adev-login-wrap">
+            {%- form 'recover_customer_password', class: 'adev-login-form adev-customer-form' -%}
+
+                {% if form.errors != blank %}
+                    {% for error in form.errors %}
+                        <div class="adev-alert adev-alert-error">
+                        {%- capture form_error -%}{{ form.errors.translated_fields[error] }} {{ form.errors.messages[error] }}{%- endcapture -%}
+                        {{- form_error | remove:'form' | remove:'form ' | remove:'form ' -}}
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    {% if form.posted_successfully? %}
+                        <div class="adev-alert adev-alert-success">
+                            We have sent you an email to reset your password.
+                        </div>
+                    {% else %}
+                        <div class="adev-alert adev-alert-info">
+                            We will send you an email to reset your password.
+                        </div>
+                    {% endif %}
+                {% endif %}
+
+                <div class="adev-form__field">
+                    <label for="recover-email" class="adev-form__label">Email Address</label>
+
+                    <input type="email" name="email" id="recover-email" autocorrect="off" autocapitalize="off" autofocus required>
+                    {% if form.errors contains 'email' %}
+                    <span class="adev-form-hint adev-form-hint-error">{{ form.errors.messages['email'] }}</span>
+                    {% endif %}
+                </div>
+
+                <button type="submit" class="adev-btn" aria-label="{{ 'customer.recover_password.submit' | t }}">
+                    <span>{{ 'customer.recover_password.submit' | t }}</span>
+                </button>
+        
+            {% endform %}
+
+            <a href="#" @click.prevent="closeRecover()" class="adev-btn adev-btn--alt" aria-label="{{ 'customer.recover_password.cancel' | t }}">
+                <span>{{ 'customer.recover_password.cancel' | t }}</span>
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="adev-customer-art adev-customer-art-1">
+        <img src="{{ 'login-art-1.svg' | asset_url }}">
+    </div>
+
+    <div class="adev-customer-art adev-customer-art-2">
+        <img src="{{ 'login-art-2.svg' | asset_url }}">
+    </div>
+
+</div>
+
+{% schema %}
+{
+  "name": "New Login",
+  "settings": [
+    {
+        "type": "header",
+        "content": "Spacing"
+    },
+    {
+        "type": "range",
+        "id": "spacing_top_desktop",
+        "label": "Spacing Top (Desktop)",
+        "unit": "px",
+        "min": 0,
+        "max": 300,
+        "step": 5,
+        "default": 60
+    },
+    {
+        "type": "range",
+        "id": "spacing_bottom_desktop",
+        "label": "Spacing Bottom (Desktop)",
+        "unit": "px",
+        "min": 0,
+        "max": 300,
+        "step": 5,
+        "default": 60
+    },
+    {
+        "type": "range",
+        "id": "spacing_top_mobile",
+        "label": "Spacing Top (Mobile)",
+        "unit": "px",
+        "min": 0,
+        "max": 300,
+        "step": 5,
+        "default": 35
+    },
+    {
+        "type": "range",
+        "id": "spacing_bottom_mobile",
+        "label": "Spacing Bottom (Mobile)",
+        "unit": "px",
+        "min": 0,
+        "max": 300,
+        "step": 5,
+        "default": 35
+    }
+  ]
+}
+{% endschema %}

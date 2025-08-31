@@ -1,0 +1,244 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-list-collections",
+      "blocks": {
+        "cabd015d-1d51-4a10-9aaa-f04b4d2ae618": {
+          "type": "collection",
+          "settings": {
+            "collection": "coffee",
+            "image_shape": "same_as_section"
+          }
+        },
+        "714a209b-0d80-4fc0-815d-e5fbb0ed2a1d": {
+          "type": "collection",
+          "settings": {
+            "collection": "coffee-single-origin",
+            "image_shape": "same_as_section"
+          }
+        },
+        "06647954-50c7-485c-8f1f-f9a9a3e0d08b": {
+          "type": "collection",
+          "settings": {
+            "collection": "tea",
+            "image_shape": "same_as_section"
+          }
+        },
+        "7002d246-613a-475f-828d-8a21d2c88721": {
+          "type": "sticker",
+          "settings": {
+            "text": "",
+            "shape": "star_1",
+            "width": 150,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/3.svg",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 53,
+            "vertical_position": 80,
+            "rotate": -26,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": true,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "2dcb9688-7c09-4cbd-946f-f19647b39ae8": {
+          "type": "sticker",
+          "settings": {
+            "text": "",
+            "shape": "star_1",
+            "width": 160,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/11.svg",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 9,
+            "vertical_position": 47,
+            "rotate": 40,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": true,
+            "parallax_speed": 6,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "87ded1b2-906d-40bf-bb06-4b75907b7747": {
+          "type": "sticker",
+          "settings": {
+            "text": "",
+            "shape": "star_1",
+            "width": 100,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/1.svg",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 23,
+            "vertical_position": 19,
+            "rotate": -40,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": true,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "a1acd75d-f1ad-4645-96d8-162533f5b447": {
+          "type": "sticker",
+          "settings": {
+            "text": "",
+            "shape": "star_1",
+            "width": 150,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/22.svg",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 97,
+            "vertical_position": 36,
+            "rotate": -26,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": true,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "collection_VWYxQn": {
+          "type": "collection",
+          "settings": {
+            "collection": "ecomm-merch",
+            "image_shape": "same_as_section"
+          }
+        },
+        "b15a6777-95ac-455e-b9ef-daa63a3ed536": {
+          "type": "collection",
+          "disabled": true,
+          "settings": {
+            "collection": "wholesale-coffee",
+            "image_shape": "same_as_section"
+          }
+        },
+        "0ef62c64-41ea-4a31-ab39-c3be5d517dd7": {
+          "type": "collection",
+          "disabled": true,
+          "settings": {
+            "collection": "wholesale-tea",
+            "image_shape": "same_as_section"
+          }
+        },
+        "fb8c5cc4-5261-4bbb-b938-534f2cec7acc": {
+          "type": "collection",
+          "disabled": true,
+          "settings": {
+            "collection": "powders-mixes",
+            "image_shape": "same_as_section"
+          }
+        },
+        "43799044-37d6-4583-96c7-96ad0cb81f71": {
+          "type": "collection",
+          "disabled": true,
+          "settings": {
+            "collection": "syrups-sauces",
+            "image_shape": "same_as_section"
+          }
+        }
+      },
+      "block_order": [
+        "cabd015d-1d51-4a10-9aaa-f04b4d2ae618",
+        "714a209b-0d80-4fc0-815d-e5fbb0ed2a1d",
+        "06647954-50c7-485c-8f1f-f9a9a3e0d08b",
+        "7002d246-613a-475f-828d-8a21d2c88721",
+        "2dcb9688-7c09-4cbd-946f-f19647b39ae8",
+        "87ded1b2-906d-40bf-bb06-4b75907b7747",
+        "a1acd75d-f1ad-4645-96d8-162533f5b447",
+        "collection_VWYxQn",
+        "b15a6777-95ac-455e-b9ef-daa63a3ed536",
+        "0ef62c64-41ea-4a31-ab39-c3be5d517dd7",
+        "fb8c5cc4-5261-4bbb-b938-534f2cec7acc",
+        "43799044-37d6-4583-96c7-96ad0cb81f71"
+      ],
+      "custom_css": [],
+      "settings": {
+        "layout": "grid",
+        "crop": "aspect-w-1 aspect-h-1",
+        "image_shape": "default",
+        "no_products": 18,
+        "show_collection_description": true,
+        "show_view_all": true,
+        "display_on_card": true,
+        "enable_quick_buy": true,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 3,
+        "slideshow_focus": "left",
+        "mobile_slide_width": "three_fifths",
+        "desktop_slide_width": 20,
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "collage": {
+      "type": "main-list-collections-collage",
+      "disabled": true,
+      "settings": {
+        "crop": "aspect-w-1 aspect-h-1",
+        "image_shape": "default",
+        "button_style": "push-btn-surface",
+        "show_buttons_on_mobile": true,
+        "only_show_button_on_hover": true,
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "501d3218-483e-42b1-9cc9-179c46a2d3dd": {
+      "type": "featured-collection",
+      "disabled": true,
+      "settings": {
+        "title": "Featured collection",
+        "subheading": "Use this text to share information about your collection.",
+        "collection": "coffee-single-origin",
+        "no_products": 8,
+        "show_view_all": true,
+        "enable_quick_buy": false,
+        "display_on_card": true,
+        "layout": "grid",
+        "products_per_row_mobile": "1",
+        "products_per_row_desktop": 4,
+        "slideshow_focus": "center",
+        "mobile_slide_width": "three_fifths",
+        "desktop_slide_width": 40,
+        "autoscroll_mode": "1",
+        "product_tiles_aspect_ratio": "aspect-w-1 aspect-h-1",
+        "image_shape": "",
+        "color_scheme": "primary",
+        "use_gradient_background": false,
+        "show_promo_box": false,
+        "promo_box_size": "double",
+        "promo_overlay": "",
+        "promo_overlay_percentage": 25,
+        "promo_title": "",
+        "promo_desc": "",
+        "promo_cta": "",
+        "promo_url": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "collage",
+    "501d3218-483e-42b1-9cc9-179c46a2d3dd"
+  ]
+}

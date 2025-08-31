@@ -1,0 +1,26 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "collection.coffee.json",
+  "context": {
+    "b2b": true
+  },
+  "sections": {
+    "product-grid": {
+      "settings": {
+        "products_per_row_desktop": 5,
+        "enable_filtering": false,
+        "enable_quick_buy": true,
+        "display_on_card": false
+      },
+      "blocks": {}
+    }
+  }
+}

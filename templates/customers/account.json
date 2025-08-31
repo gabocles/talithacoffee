@@ -1,0 +1,56 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "ecom_hidden_section_qRGPiE": {
+      "type": "ecom-hidden-section",
+      "settings": {}
+    },
+    "10b1c93f-ee23-4a70-ac4e-79ce76cc6d6d": {
+      "type": "adev-new-impact",
+      "disabled": true,
+      "settings": {
+        "title": "The impact you've helped us make",
+        "title_size_desktop": 20,
+        "title_size_mobile": 20,
+        "stats_1_number": "17,238",
+        "stats_1_text": "of survivors employed",
+        "stats_2_number": "36K+",
+        "stats_2_text": "survivors supported through our Care network",
+        "stats_3_number": "52K+",
+        "stats_3_text": "of survivors that have access to jobs we are supplying",
+        "number_size_desktop": 54,
+        "number_size_mobile": 36,
+        "text_size_desktop": 17,
+        "text_size_mobile": 17,
+        "content_width_desktop": 210,
+        "content_width_mobile": 220,
+        "spacing_top_desktop": 60,
+        "spacing_bottom_desktop": 60,
+        "spacing_top_mobile": 60,
+        "spacing_bottom_mobile": 35
+      }
+    },
+    "adev_account": {
+      "type": "adev-account",
+      "settings": {
+        "spacing_top_desktop": 60,
+        "spacing_bottom_desktop": 60,
+        "spacing_top_mobile": 45,
+        "spacing_bottom_mobile": 35
+      }
+    }
+  },
+  "order": [
+    "ecom_hidden_section_qRGPiE",
+    "10b1c93f-ee23-4a70-ac4e-79ce76cc6d6d",
+    "adev_account"
+  ]
+}

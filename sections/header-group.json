@@ -1,0 +1,91 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "Header",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "custom_css": [
+        "p {color: #fafafa;}"
+      ],
+      "settings": {
+        "home_page_only": true,
+        "display": "marquee",
+        "text": "Support survivors and save 10% - order your favorite specialty coffee on subscription.",
+        "link": "https://talitha.com/pages/coffee-subscription",
+        "color_scheme": "primary",
+        "use_gradient_background": false,
+        "repeat_text": false,
+        "shape_between_text": "star",
+        "animate_shape_between_text": false,
+        "speed": 30,
+        "direction": "reverse"
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "35078245-1ed2-4f44-8213-91b20a692661": {
+          "type": "feature_desktop_link",
+          "disabled": true,
+          "settings": {
+            "button_link": "",
+            "button_label": "Shop Now",
+            "position": "right_of_cart",
+            "hide_button_shadow": true
+          }
+        }
+      },
+      "block_order": [
+        "35078245-1ed2-4f44-8213-91b20a692661"
+      ],
+      "custom_css": [],
+      "settings": {
+        "logo": "shopify://shop_images/TK_Logo.svg",
+        "logo_max_width": 220,
+        "main_linklist": "main-menu",
+        "main_linklist_right": "secondary-menu",
+        "shop_button_text_1": "Shop Coffee",
+        "shop_button_url_1": "shopify://collections/retail",
+        "shop_button_text_2": "Shop Teas",
+        "shop_button_url_2": "shopify://collections/tea",
+        "dropdown_bg_image": "shopify://shop_images/Rectangle_23.jpg",
+        "promo_overlay_image": "shopify://shop_images/Group_16-min.png",
+        "show_all_navigation_links": true,
+        "showcase_second_level_links": true,
+        "showcase_first_level_collections": true,
+        "show_collection_images": true,
+        "crop": "aspect-w-1 aspect-h-1",
+        "header_layout": "navigation_left_logo_center",
+        "header_show_search": true,
+        "sticky_header": true,
+        "show_icons": true,
+        "enable_overlay_on_homepage": false,
+        "enable_overlay_on_collection_pages": false,
+        "enable_overlay_on_product_pages": false,
+        "overlay_text_color": "white",
+        "transparent_when_overlaid_and_stuck": false,
+        "overlay_show_separator_border": true,
+        "overlay_first_section_padding_top_desktop": 3,
+        "overlay_first_section_padding_top_mobile": 3,
+        "color_scheme": "primary",
+        "use_gradient_background": false,
+        "dropdown_bg": "text",
+        "sidebar_show_footer_menu": false,
+        "sidebar_show_social_icons": false
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
+}

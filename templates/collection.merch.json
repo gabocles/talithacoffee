@@ -1,0 +1,295 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "6d1326c0-b8b6-4665-b902-ad883b68302f": {
+      "type": "image-with-text-overlay",
+      "settings": {
+        "image": "shopify://shop_images/BG_2.svg",
+        "display_on_card": false,
+        "display_content_below_image_on_mobile": false,
+        "style": "full",
+        "height": "natural",
+        "place_content": "place-content-center-center",
+        "text_align": "text-center",
+        "title": "Shop Talitha Merch",
+        "heading_size": "heading-standard",
+        "richtext": "",
+        "cta_url": "",
+        "cta_text": "Shop Now",
+        "color_scheme": "primary",
+        "use_gradient_background": false,
+        "text_overlay_color": "white"
+      }
+    },
+    "banner": {
+      "type": "main-collection-banner",
+      "settings": {
+        "display_on_card": false,
+        "show_collection_title": false,
+        "show_collection_description": false,
+        "show_collection_image": false,
+        "collection_image_style": "full",
+        "crop": "aspect-w-4 aspect-h-1",
+        "linklist": "retail-product-sorting",
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "blocks": {
+        "f56a58cf-f031-4c5c-b99c-a61072ef1621": {
+          "type": "collection_banner",
+          "disabled": true,
+          "settings": {
+            "display_on_card": true,
+            "show_collection_title": true,
+            "show_collection_description": true,
+            "show_collection_image": false,
+            "collection_image_style": "full",
+            "crop": "aspect-w-4 aspect-h-1",
+            "linklist": ""
+          }
+        }
+      },
+      "block_order": [
+        "f56a58cf-f031-4c5c-b99c-a61072ef1621"
+      ],
+      "custom_css": [
+        ".media-drop-shadow-border {display: none;}",
+        ".media-style-container:after {display: none;}"
+      ],
+      "settings": {
+        "no_products": 24,
+        "display_on_card": false,
+        "enable_quick_buy": false,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 3,
+        "enable_filtering": false,
+        "enable_sorting": false,
+        "expand_filters": false,
+        "show_filter_count": false,
+        "enable_color_swatch_filters": false,
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "caf571fb-b3cd-413b-b5c6-4f7d30533748": {
+      "type": "rich-text",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "title": "SIGNATURE BLENDS",
+        "heading_size": "heading-standard",
+        "rich_text": "<p>Introducing our range of expertly-crafted blends and single origin coffees made from premium-quality beans sourced ethically from around the world.</p>",
+        "display_on_card": false,
+        "content_width_desktop": "lg:w-2/3",
+        "button_link": "",
+        "button_label": "Shop Now",
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "37be5744-f57e-4b97-8f5d-3c83b5320bc3": {
+      "type": "featured-collection",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "title": "",
+        "subheading": "",
+        "collection": "coffee",
+        "no_products": 18,
+        "show_view_all": true,
+        "enable_quick_buy": false,
+        "display_on_card": false,
+        "layout": "grid",
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 3,
+        "slideshow_focus": "center",
+        "mobile_slide_width": "three_fifths",
+        "desktop_slide_width": 20,
+        "autoscroll_mode": "1",
+        "product_tiles_aspect_ratio": "",
+        "image_shape": "",
+        "color_scheme": "primary",
+        "use_gradient_background": false,
+        "show_promo_box": false,
+        "promo_box_size": "double",
+        "promo_bg": "shopify://shop_images/flat-coffee-beans.jpg",
+        "promo_overlay": "#000000",
+        "promo_overlay_percentage": 35,
+        "promo_title": "<p>SUBSCRIBE & SAVE</p>",
+        "promo_desc": "Our flexible coffee subscriptions offer you complete control, ​​so you get exactly the coffee you want, exactly when you need it, keeping you caffeinated all day long!",
+        "promo_cta": "Learn More",
+        "promo_url": "shopify://pages/subscription"
+      }
+    },
+    "3d91d198-d772-47c9-9d5a-e3cece47e738": {
+      "type": "rich-text",
+      "disabled": true,
+      "settings": {
+        "icon": "shopify://shop_images/348424355_926019662040956_3573115347781414604_n.jpg",
+        "bg-image": "shopify://shop_images/subscribe-bg.svg",
+        "title": "SINGLE ORIGINS",
+        "heading_size": "heading-standard",
+        "rich_text": "<p>Introducing our range of expertly-crafted blends and single origin coffees made from premium-quality beans sourced ethically from around the world.</p>",
+        "display_on_card": false,
+        "content_width_desktop": "lg:w-2/3",
+        "button_link": "",
+        "button_label": "Shop Now",
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "c3808eda-9d1a-4a90-ad3e-5714c62f0d85": {
+      "type": "featured-collection",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "title": "",
+        "subheading": "",
+        "collection": "coffee-single-origin",
+        "no_products": 18,
+        "show_view_all": false,
+        "enable_quick_buy": false,
+        "display_on_card": false,
+        "layout": "grid",
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 3,
+        "slideshow_focus": "center",
+        "mobile_slide_width": "three_fifths",
+        "desktop_slide_width": 40,
+        "autoscroll_mode": "1",
+        "product_tiles_aspect_ratio": "aspect-w-1 aspect-h-1",
+        "image_shape": "",
+        "color_scheme": "primary",
+        "use_gradient_background": false,
+        "show_promo_box": false,
+        "promo_box_size": "single",
+        "promo_bg": "shopify://shop_images/flat-coffee-beans.jpg",
+        "promo_overlay": "#000000",
+        "promo_overlay_percentage": 35,
+        "promo_title": "<p>SUBSCRIBE & SAVE</p>",
+        "promo_desc": "Our flexible coffee subscriptions offer you complete control, ​​so you get exactly the coffee you want, exactly when you need it, keeping you caffeinated all day long!",
+        "promo_cta": "LEARN MORE",
+        "promo_url": "shopify://pages/subscription"
+      }
+    },
+    "281f2e1f-953f-40b6-a3d7-e3f6ad19a552": {
+      "type": "rich-text",
+      "disabled": true,
+      "settings": {
+        "icon": "shopify://shop_images/642c24c03b4d4450e0f45ad8_talitha-badge-logo.svg",
+        "bg-image": "shopify://shop_images/subscribe-bg.svg",
+        "title": "Tea",
+        "heading_size": "heading-standard",
+        "rich_text": "<p>Introducing our range of expertly-crafted blends and single origin coffees made from premium-quality beans sourced ethically from around the world.</p>",
+        "display_on_card": false,
+        "content_width_desktop": "lg:w-2/3",
+        "button_link": "",
+        "button_label": "Shop Now",
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "45e6ded5-e66f-4238-9d62-ec14fd90e121": {
+      "type": "featured-collection",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "title": "",
+        "subheading": "",
+        "collection": "tea",
+        "no_products": 18,
+        "show_view_all": true,
+        "enable_quick_buy": false,
+        "display_on_card": true,
+        "layout": "grid",
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 3,
+        "slideshow_focus": "center",
+        "mobile_slide_width": "three_fifths",
+        "desktop_slide_width": 60,
+        "autoscroll_mode": "1",
+        "product_tiles_aspect_ratio": "aspect-w-1 aspect-h-1",
+        "image_shape": "",
+        "color_scheme": "primary",
+        "use_gradient_background": false,
+        "show_promo_box": false,
+        "promo_box_size": "single",
+        "promo_overlay": "",
+        "promo_overlay_percentage": 25,
+        "promo_title": "",
+        "promo_desc": "",
+        "promo_cta": "",
+        "promo_url": ""
+      }
+    },
+    "4a6cf521-10bd-45b4-928f-6fa024df14a4": {
+      "type": "image-with-text-overlay",
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/Cold_Brew.png",
+        "image_mobile": "shopify://shop_images/nitro_cold_brew.png",
+        "display_on_card": false,
+        "display_content_below_image_on_mobile": true,
+        "style": "full",
+        "height": "natural",
+        "place_content": "place-content-center-start",
+        "text_align": "text-left",
+        "title": "NITRO COLD BREW",
+        "heading_size": "heading-standard",
+        "richtext": "<p>Exhibiting a pristine and silky nitro texture, it unveils delicate nuances of creamy milk chocolate, roasted almond undertones, and a subtle trace of caramel.</p>",
+        "cta_url": "",
+        "cta_text": "",
+        "color_scheme": "secondary",
+        "use_gradient_background": false,
+        "text_overlay_color": "same_as_section"
+      }
+    },
+    "4d117300-e63d-4f2f-abc5-82e15c1e0587": {
+      "type": "custom-liquid",
+      "settings": {
+        "title": "",
+        "custom_liquid": "",
+        "full_width": false,
+        "color_scheme": "primary"
+      }
+    },
+    "60c9847b-bdad-4674-8e70-5e8406ba2b12": {
+      "type": "newsletter",
+      "custom_css": [
+        "@media (min-width: 990px) {.py-section-vertical-spacing {padding-top: 74px; } .px-section {padding-left: 100px; padding-right: 100px; }}"
+      ],
+      "settings": {
+        "title": "10% OFF YOUR FIRST ORDER",
+        "richtext": "<p>Stay up to date with all things from Talitha Coffee, and get our newsletter straight to your inbox.. with 10% off your first order!</p>",
+        "display_on_card": false,
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    }
+  },
+  "order": [
+    "6d1326c0-b8b6-4665-b902-ad883b68302f",
+    "banner",
+    "product-grid",
+    "caf571fb-b3cd-413b-b5c6-4f7d30533748",
+    "37be5744-f57e-4b97-8f5d-3c83b5320bc3",
+    "3d91d198-d772-47c9-9d5a-e3cece47e738",
+    "c3808eda-9d1a-4a90-ad3e-5714c62f0d85",
+    "281f2e1f-953f-40b6-a3d7-e3f6ad19a552",
+    "45e6ded5-e66f-4238-9d62-ec14fd90e121",
+    "4a6cf521-10bd-45b4-928f-6fa024df14a4",
+    "4d117300-e63d-4f2f-abc5-82e15c1e0587",
+    "60c9847b-bdad-4674-8e70-5e8406ba2b12"
+  ]
+}

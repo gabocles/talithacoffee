@@ -1,0 +1,113 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "collection.json",
+  "context": {
+    "b2b": true
+  },
+  "sections": {
+    "product-grid": {
+      "disabled": true,
+      "settings": {
+        "products_per_row_desktop": 5
+      },
+      "blocks": {}
+    },
+    "banner": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    },
+    "caf571fb-b3cd-413b-b5c6-4f7d30533748": {
+      "disabled": false,
+      "settings": {
+        "title": "Shop Coffee"
+      },
+      "blocks": {}
+    },
+    "37be5744-f57e-4b97-8f5d-3c83b5320bc3": {
+      "disabled": false,
+      "settings": {
+        "title": "",
+        "subheading": "",
+        "collection": "wholesale-coffee",
+        "no_products": 10,
+        "show_view_all": true,
+        "enable_quick_buy": true,
+        "layout": "grid",
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 5,
+        "slideshow_focus": "left",
+        "mobile_slide_width": "full_width",
+        "desktop_slide_width": 20,
+        "product_tiles_aspect_ratio": "aspect-w-1 aspect-h-1",
+        "show_promo_box": false
+      },
+      "blocks": {}
+    },
+    "3d91d198-d772-47c9-9d5a-e3cece47e738": {
+      "disabled": false,
+      "settings": {
+        "title": "SHOP TEA",
+        "rich_text": "<p>Shop, sip, and savor our selection of artisan organic teas.</p>"
+      },
+      "blocks": {}
+    },
+    "c3808eda-9d1a-4a90-ad3e-5714c62f0d85": {
+      "disabled": false,
+      "settings": {
+        "collection": "wholesale-tea",
+        "no_products": 10,
+        "show_view_all": true,
+        "enable_quick_buy": true,
+        "display_on_card": false,
+        "layout": "grid",
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 5,
+        "slideshow_focus": "center",
+        "mobile_slide_width": "three_fifths",
+        "desktop_slide_width": 20,
+        "title": ""
+      },
+      "blocks": {}
+    },
+    "281f2e1f-953f-40b6-a3d7-e3f6ad19a552": {
+      "disabled": false,
+      "settings": {
+        "title": "POWDERS & Mixes",
+        "rich_text": "<p>The perfect solution for any busy specialty beverage environment. These powdered frappe mix can be used to prepare frozen, over ice, or hot beverages.</p>",
+        "button_link": ""
+      },
+      "blocks": {}
+    },
+    "45e6ded5-e66f-4238-9d62-ec14fd90e121": {
+      "disabled": false,
+      "settings": {
+        "collection": "powders-mixes",
+        "no_products": 10,
+        "enable_quick_buy": true,
+        "layout": "grid",
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 5,
+        "desktop_slide_width": 20,
+        "product_tiles_aspect_ratio": "aspect-w-1 aspect-h-1",
+        "title": ""
+      },
+      "blocks": {}
+    },
+    "4a6cf521-10bd-45b4-928f-6fa024df14a4": {
+      "settings": {
+        "cta_url": "shopify://pages/contact",
+        "cta_text": "Contact Us!"
+      },
+      "blocks": {}
+    }
+  }
+}

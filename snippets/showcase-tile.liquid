@@ -1,0 +1,27 @@
+<div class="nav-product wrapper hidden lg:block">
+  <div class="col nav-col-left">
+    <a href="{{ object.url }}"> 
+      {%- if object.metafields.custom.nav_promo_image != blank -%}
+        <div class="{% unless crop == '' or crop == blank %}object-wrapper {{ crop }}{% endunless %}">
+          {{ object.metafields.custom.nav_promo_image | image_url: width: 700 | image_tag: class: 'nav-product-image' }}
+        </div>
+      {%- elsif object.featured_image != blank -%}
+        <div class="{% unless crop == '' or crop == blank %}object-wrapper {{ crop }}{% endunless %}">
+          {{ object.featured_image | image_url: width: 700 | image_tag: class: 'nav-product-image' }}
+        </div>
+      {%- endif -%}
+    </a>
+  </div>
+  <div class="col nav-col-right">
+    <a href="{{ object.url }}">
+      <div class="mt-2 nav-product-title">
+        {{ object.title }}
+      </div>
+      <h4 class="nav-subtitle">{{ object.metafields.custom.subtitle }}</h4>
+      <div class="nav-desc">{{ object.description }}</div>
+    </a>
+    {% if overlayImage != blank %}
+      <img class="nav-overlay-img" src="{{ overlayImage | img_url: '400x' }}">
+    {% endif %}
+  </div>
+</div>

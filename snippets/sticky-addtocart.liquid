@@ -1,0 +1,181 @@
+{% if template contains 'product' %}
+  {% liquid
+  assign section_color = section.settings.color_scheme
+  assign current_variant = product.selected_or_first_available_variant
+  assign featured_media = current_variant.featured_media | default: product.featured_media
+  assign models = product.media | where: 'media_type', 'model'
+  assign image_index = 0
+  for media in product.media
+    if media.media_type != 'image'
+      assign has_interactive_media = true
+      break
+    endif
+  endfor
+
+  assign product_form_id = 'product-form-' | append: section.id
+  assign media_desktop_width = section.settings.desktop_media_width | split: '_' | first
+  assign content_desktop_width = section.settings.desktop_media_width | split: '_' | last
+  assign media_desktop_cols = section.settings.desktop_media_width | split: '_' | first | split: '' | last | plus: 0
+  if section.settings.crop != ''
+    assign ratio_1 = section.settings.crop | split: ' ' | first | split: '' | last | plus: 0.0
+    assign ratio_2 = section.settings.crop | split: ' ' | last | split: '' | last | plus: 0.0
+    assign tallest_media_aspect_ratio = ratio_1 | divided_by: ratio_2
+  else
+    assign tallest_media_aspect_ratio = product.media | map: 'aspect_ratio' | sort | first
+  endif
+%}
+<section 
+  x-data="
+    ThemeSection_Product({
+      product: {{ product | json | escape }},
+      variant: {{ current_variant | json | escape }},
+      featuredMediaID: {{ featured_media.id | json }},
+      template: {{ template | json | escape }},
+      thumbnailsPosition: {{ section.settings.thumbnails_position | json | escape }},
+      showThumbnailsOnMobile: {{ section.settings.show_thumbnails_on_mobile | json }}
+    })"
+  data-product-section
+  >
+<div class="addtocart-sticky lg:px-section" >
+  <div class=" flex max-w-site relative section-content z-10">
+  <div class="price11">
+  {% if current_variant.compare_at_price > current_variant.price %}
+      <span class="{{ price_text_size }}">
+        <s data-compare-price
+          class="text-scheme-text"
+          x-html="formatMoney(current_variant.compare_at_price)">
+            {{ current_variant.compare_at_price | money }}
+        </s>
+      </span>
+ {% endif %}
+  <span class="text-scheme-text {{ price_text_size }} current-regular-price" >
+    {{ current_variant.price | money }}
+  </span>  
+  </div>
+  {% capture product_form_id %}product-form-{{ section.id }}{% endcapture %}
+   {% form 'product',
+    product,
+    id: product_form_id,
+    data-product-form: '',
+    data-product-handle: product.handle,
+    data-enable-history-state: 'true',
+    data-product-form: '',
+    x-ref: 'productForm2'
+  %}
+    <div class="flex flex-nowrap ctn-btn justify-start items-center">
+    <input type="hidden" id="sticky-id" name="id" value="{{product.selected_or_first_available_variant.id}}">
+    <input name="selling_plan"  id="sticky-plan" type="hidden" value="" aria-label="selling_plan">
+    <div class="qty flex flex-nowrap justify-start items-center mr-10">
+     
+        <button type="button" onclick="updateQuantity(-1)"
+          class="quantity"
+          aria-label="&minus;"
+        >
+          {% render 'icon-subtract' %}
+        </button>
+        <input
+          type="number"
+          class="quantity number input--no-border block font-bold text-center border-0 bg-transparent text-base max-w-[3rem] p-2 "
+          id="Quantity-{{ section.id }}-sticky"
+          name="quantity"
+          value="1" min="1"
+        >
+        <button  type="button" onclick="updateQuantity(1)"
+          class="quantity"
+          aria-label="&plus;"
+        >
+          {% render 'icon-add' %}
+        </button>
+      </div>
+    <button class="add-to-cart-btn" value="Add To Cart" type="submit" type="submit"
+          :class="{ 'cursor-not-allowed': !currentVariantAvailable }"
+          :disabled="!currentVariantAvailable"
+          :aria-label="addToCartText">Add to cart</button>
+    </div>
+{% endform %}
+  </div>
+</div>
+</section>
+
+<style>
+  .addtocart-sticky{
+    display: flex;
+    justify-content: flex-end;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 9999;
+    background: #1B3C34;
+    opacity: .95;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .addtocart-sticky select,
+  .addtocart-sticky input,
+  .addtocart-sticky button{
+    height:50px;
+    margin:0 5px;
+    vertical-align: middle;
+  }
+  .addtocart-sticky input{
+    width: 60px;
+    text-align: center;
+  }
+  .addtocart-sticky .add-to-cart-btn{
+    background: #FFA400;
+    padding: 20px;
+    color: #1a3c34;
+    font-size: 15px!important;
+    text-transform: uppercase;
+    height: 50px;
+  }
+  .ctn-btn{
+    background: #FFA400;
+    padding: 0 15px;
+  }
+  .ctn-btn .quantity{
+    width: 34px;
+    height: 34px;
+    border-radius: 34px;
+    background: #132823;
+  }
+  .ctn-btn .quantity svg{
+    width: 14px;
+    height: 25px;
+    color:#fff;
+    margin: 2px 10px;
+  }
+  .ctn-btn input.quantity {
+    background: transparent;
+    color:#fff;
+    font-size:20px;
+  }
+  .price11{
+   margin-right:20px;
+  }
+  .price11 .current-regular-price{
+    color: #FFF;
+    font-family: "Stratum", sans-serif !important;
+    font-size: 35.964px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 48px; /* 190.625% */
+    text-transform: uppercase;
+  }
+
+</style>
+
+<script defer>
+  function updateQuantity(change) {
+    var input = document.getElementById('Quantity-{{ section.id }}-sticky');
+    if (input) {
+      var newValue = parseInt(input.value) + change;
+
+      // Ensure the quantity is not less than 1
+      newValue = newValue < 1 ? 1 : newValue;
+
+      input.value = newValue;
+    }
+  }
+</script>
+{% endif %}

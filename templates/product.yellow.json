@@ -1,0 +1,329 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "feature_text_t3QzwK": {
+      "type": "feature-text",
+      "name": "t:sections.feature_text.name",
+      "settings": {
+        "rich_text": "<p>Talitha Coffee  </p><p>Hope roasted</p>",
+        "mobile_text_size": "text-lg",
+        "desktop_text_size": "lg:text-3xl",
+        "display_on_card": false,
+        "apply_effects": true,
+        "content_width_desktop": "lg:w-full",
+        "button_link": "",
+        "button_label": "Shop Now",
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+            "display_on_card": false,
+            "text_align": "text-left"
+          }
+        },
+        "okendo_star_rating_ttpYQf": {
+          "type": "shopify://apps/okendo/blocks/star-rating/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "a17e90c4-acc9-4f1d-af84-828ae4cb2289": {
+          "type": "description",
+          "settings": {
+            "display_on_card": false,
+            "truncate_description": false,
+            "text_align": "text-left"
+          }
+        },
+        "62bbe4ca-b97e-40a6-a436-ba9573a1fd31": {
+          "type": "tasting_notes",
+          "settings": {}
+        },
+        "ef3075c5-d478-47e7-84d9-bae6cbed3c91": {
+          "type": "shopify://apps/recharge-subscriptions/blocks/subscription-widget/371eed76-0b44-4869-9813-730372ea378e",
+          "settings": {
+            "product": "{{ product }}"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "display_on_card": false,
+            "option_style": "buttons",
+            "hide_option_labels": false,
+            "hide_sold_variants": true,
+            "enable_color_swatches": false
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "display_on_card": false,
+            "show_on_sale_sticker": false,
+            "text_align": "text-right"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {
+            "display_on_card": false,
+            "show_label": false
+          }
+        },
+        "baf3083e-d14d-435d-bca3-100d6ac490ce": {
+          "type": "buy_buttons",
+          "settings": {
+            "display_on_card": false,
+            "show_price": false,
+            "enable_payment_button": false,
+            "show_pickup_availability": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "d5e492c1-cd6b-4f38-804f-eb89d7e95aaf": {
+          "type": "collapsible_tab",
+          "disabled": true,
+          "settings": {
+            "display_on_card": false,
+            "icon": "none",
+            "heading": "Collapsible tab",
+            "content": "",
+            "page": ""
+          }
+        },
+        "39086e30-eff0-4d4f-9e50-b8988b685485": {
+          "type": "complementary",
+          "disabled": true,
+          "settings": {
+            "block_heading": "ADD-ONS",
+            "product_list_limit": 3
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "okendo_star_rating_ttpYQf",
+        "a17e90c4-acc9-4f1d-af84-828ae4cb2289",
+        "62bbe4ca-b97e-40a6-a436-ba9573a1fd31",
+        "ef3075c5-d478-47e7-84d9-bae6cbed3c91",
+        "variant_picker",
+        "price",
+        "quantity_selector",
+        "baf3083e-d14d-435d-bca3-100d6ac490ce",
+        "d5e492c1-cd6b-4f38-804f-eb89d7e95aaf",
+        "39086e30-eff0-4d4f-9e50-b8988b685485"
+      ],
+      "custom_css": [
+        "a {font-family: \"Stratum\" !important;}"
+      ],
+      "settings": {
+        "crop": "",
+        "image_shape": "default",
+        "desktop_media_width": "lg:col-span-6_lg:col-span-6",
+        "show_slideshow_arrows_on_desktop": false,
+        "enable_image_zoom": false,
+        "enable_video_looping": false,
+        "autoplay_videos_on_desktop": false,
+        "media_mobile_width": "w-full",
+        "thumbnails_position": "under",
+        "thumbnail_crop": "aspect-w-1 aspect-h-1",
+        "thumbnail_shape": "default",
+        "hide_media_shadow": false,
+        "thumbnail_size": "standard",
+        "show_thumbnails_on_mobile": false,
+        "color_scheme": "secondary",
+        "use_gradient_background": false,
+        "shipping_text": "<p>We do not offer returns on Coffee because it is a perishable product. However, customer satisfaction is very important to us. We want you to be happy. If you are unhappy with the coffee please contact us at orders@talitha.com and we will help you find a replacement or offer you a refund.</p>",
+        "badge_1_text": "Subscribe now",
+        "badge_2_text": true
+      }
+    },
+    "169021714666a7a555": {
+      "type": "apps",
+      "disabled": true,
+      "settings": {}
+    },
+    "feature_text_bVG9NT": {
+      "type": "feature-text",
+      "settings": {
+        "rich_text": "<p>What People are saying</p>",
+        "mobile_text_size": "text-xl",
+        "desktop_text_size": "lg:text-5xl",
+        "display_on_card": false,
+        "apply_effects": true,
+        "content_width_desktop": "lg:w-full",
+        "button_link": "",
+        "button_label": "Shop Now",
+        "color_scheme": "secondary",
+        "use_gradient_background": false
+      }
+    },
+    "1706891650234e6f4f": {
+      "type": "apps",
+      "blocks": {
+        "okendo_reviews_widget_EytM8k": {
+          "type": "shopify://apps/okendo/blocks/reviews-widget/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "settings": {
+            "product": "{{product}}",
+            "widget_type": "combined_widget"
+          }
+        }
+      },
+      "block_order": [
+        "okendo_reviews_widget_EytM8k"
+      ],
+      "custom_css": [
+        "{background-color: #1a3c34; /* Green background */}"
+      ],
+      "settings": {}
+    },
+    "5904cc6c-63d3-4a4f-a665-9cb31cea5756": {
+      "type": "image-with-text",
+      "custom_css": [
+        "* {border-style: none;}",
+        "section {background: #1b3c34; color: white;}"
+      ],
+      "settings": {
+        "display_on_card": false,
+        "image": "shopify://shop_images/Group_91.png",
+        "crop": "",
+        "image_shape": "default",
+        "blob_type": 1,
+        "rotate_image": 0,
+        "image_position": "left",
+        "image_size": "half",
+        "disable_media_style": false,
+        "title": "BREW GUIDE",
+        "heading_size": "heading-standard",
+        "richtext": "<p>Our preferred extractions</p><ul><li>Espresso: 19g in 35-40g out, 25-30 seconds</li><li>Brewing: 1:16 coffee to water ratio</li></ul>",
+        "text_alignment": "text-left",
+        "button_link": "",
+        "button_label": "Download Brewing Guide",
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "image_with_text_overlay_jpwhXg": {
+      "type": "image-with-text-overlay",
+      "name": "t:sections.image_with_text_overlay.name",
+      "settings": {
+        "image": "shopify://shop_images/Artboard_1_copy_2x-80.jpg",
+        "display_on_card": false,
+        "display_content_below_image_on_mobile": true,
+        "style": "full",
+        "height": "pt-half-screen-height",
+        "place_content": "place-content-center-center",
+        "text_align": "text-center",
+        "title": "",
+        "heading_size": "heading-standard",
+        "richtext": "",
+        "cta_url": "",
+        "cta_text": "Shop Now",
+        "color_scheme": "primary",
+        "use_gradient_background": false,
+        "text_overlay_color": "same_as_section"
+      }
+    },
+    "524a80b0-f537-4729-8e03-2951f3996a4c": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "EXPLORE OUR RANGE",
+        "subheading": "",
+        "collection": "coffee",
+        "no_products": 18,
+        "show_view_all": true,
+        "enable_quick_buy": false,
+        "display_on_card": false,
+        "layout": "carousel",
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 5,
+        "slideshow_focus": "center",
+        "mobile_slide_width": "three_fifths",
+        "desktop_slide_width": 20,
+        "autoscroll_mode": "1",
+        "product_tiles_aspect_ratio": "",
+        "image_shape": "",
+        "color_scheme": "primary",
+        "use_gradient_background": false,
+        "show_promo_box": false,
+        "promo_box_size": "single",
+        "promo_overlay": "",
+        "promo_overlay_percentage": 25,
+        "promo_title": "",
+        "promo_desc": "",
+        "promo_cta": "",
+        "promo_url": ""
+      }
+    },
+    "bed08be0-0bc7-49a1-850a-0d37a6292f1d": {
+      "type": "newsletter",
+      "custom_css": [
+        "@media (min-width: 990px) {.py-section-vertical-spacing {padding-top: 74px; } .px-section {padding-left: 100px; padding-right: 100px; }}"
+      ],
+      "settings": {
+        "title": "10% OFF YOUR FIRST ORDER",
+        "richtext": "<p>Stay up to date with all things from Talitha Coffee, and get our newsletter straight to your inbox.. with 10% off your first order!</p>",
+        "display_on_card": false,
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "image_with_text_overlay_kKWdPY": {
+      "type": "image-with-text-overlay",
+      "name": "t:sections.image_with_text_overlay.name",
+      "settings": {
+        "image": "shopify://shop_images/Artboard_1_2x-80.jpg",
+        "display_on_card": false,
+        "display_content_below_image_on_mobile": true,
+        "style": "full",
+        "height": "natural",
+        "place_content": "place-content-center-center",
+        "text_align": "text-center",
+        "title": "",
+        "heading_size": "heading-standard",
+        "richtext": "",
+        "cta_url": "",
+        "cta_text": "Shop Now",
+        "color_scheme": "primary",
+        "use_gradient_background": false,
+        "text_overlay_color": "same_as_section"
+      }
+    },
+    "3ca0157d-b18d-4799-8c0a-205a81f7a9ad": {
+      "type": "custom-liquid",
+      "settings": {
+        "title": "",
+        "custom_liquid": "<style>\n.title-subtitle-container {\n  width: 100%;\n  border-bottom: 4px solid #ffa400 !important;\n  padding-bottom: 20px;\n}\n</style>",
+        "full_width": true,
+        "color_scheme": "primary"
+      }
+    }
+  },
+  "order": [
+    "feature_text_t3QzwK",
+    "main",
+    "169021714666a7a555",
+    "feature_text_bVG9NT",
+    "1706891650234e6f4f",
+    "5904cc6c-63d3-4a4f-a665-9cb31cea5756",
+    "image_with_text_overlay_jpwhXg",
+    "524a80b0-f537-4729-8e03-2951f3996a4c",
+    "bed08be0-0bc7-49a1-850a-0d37a6292f1d",
+    "image_with_text_overlay_kKWdPY",
+    "3ca0157d-b18d-4799-8c0a-205a81f7a9ad"
+  ]
+}

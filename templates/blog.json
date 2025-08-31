@@ -1,0 +1,106 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "945830b4-d4b1-4ed4-a1ee-c2496dc80dde": {
+      "type": "image-with-text-overlay",
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/Title.jpg",
+        "display_on_card": false,
+        "display_content_below_image_on_mobile": true,
+        "style": "full",
+        "height": "natural",
+        "place_content": "place-content-center-center",
+        "text_align": "text-center",
+        "title": "",
+        "heading_size": "heading-standard",
+        "richtext": "",
+        "cta_url": "",
+        "cta_text": "Shop Now",
+        "color_scheme": "primary",
+        "use_gradient_background": false,
+        "text_overlay_color": "same_as_section"
+      }
+    },
+    "main": {
+      "type": "main-blog",
+      "settings": {
+        "header_title": "Daily Grind",
+        "header_subtitle": "The",
+        "svg": "shopify://shop_images/Group_16.svg",
+        "header_update_text": "REGULAR UPDATES FROM THE TALITHA TEAM - LAST UPDATED",
+        "btn_lbl": "Subscribe for updates",
+        "btn_lnk": "#shopify-section-template--23702311665983__cabcb2ce-433f-4c55-98a4-0eb9695ce34f",
+        "display_on_card": false,
+        "show_blog_title": false,
+        "show_tags": true,
+        "crop": "aspect-w-4 aspect-h-3",
+        "image_shape": "default",
+        "blog_show_author": false,
+        "blog_show_date": true,
+        "show_post_excerpt": true,
+        "center_text": false,
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "cabcb2ce-433f-4c55-98a4-0eb9695ce34f": {
+      "type": "newsletter",
+      "custom_css": [
+        "h2 {text-align: left;}"
+      ],
+      "settings": {
+        "title": "10% OFF YOUR FIRST ORDER",
+        "richtext": "<p>Stay up to date with all things from Talitha Coffee, and get our newsletter straight to your inbox.. with 10% off your first order!</p>",
+        "display_on_card": false,
+        "color_scheme": "secondary",
+        "use_gradient_background": false
+      }
+    },
+    "featured_collection_mxtmid": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Explore our Blends",
+        "subheading": "",
+        "collection": "coffee",
+        "no_products": 4,
+        "show_view_all": false,
+        "enable_quick_buy": true,
+        "display_on_card": true,
+        "layout": "carousel",
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 4,
+        "slideshow_focus": "center",
+        "mobile_slide_width": "three_fifths",
+        "desktop_slide_width": 25,
+        "autoscroll_mode": "1",
+        "product_tiles_aspect_ratio": "",
+        "image_shape": "",
+        "color_scheme": "primary",
+        "use_gradient_background": false,
+        "show_promo_box": false,
+        "promo_box_size": "single",
+        "promo_overlay": "",
+        "promo_overlay_percentage": 25,
+        "promo_title": "",
+        "promo_desc": "",
+        "promo_cta": "",
+        "promo_url": ""
+      }
+    }
+  },
+  "order": [
+    "945830b4-d4b1-4ed4-a1ee-c2496dc80dde",
+    "main",
+    "cabcb2ce-433f-4c55-98a4-0eb9695ce34f",
+    "featured_collection_mxtmid"
+  ]
+}

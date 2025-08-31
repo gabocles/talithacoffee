@@ -1,0 +1,38 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "product.blue.json",
+  "context": {
+    "b2b": true
+  },
+  "sections": {
+    "524a80b0-f537-4729-8e03-2951f3996a4c": {
+      "settings": {
+        "collection": "wholesale-coffee"
+      },
+      "blocks": {}
+    },
+    "main": {
+      "settings": {},
+      "blocks": {
+        "ef3075c5-d478-47e7-84d9-bae6cbed3c91": {
+          "disabled": true,
+          "settings": {}
+        },
+        "price": {
+          "disabled": false,
+          "settings": {
+            "text_align": "text-right"
+          }
+        }
+      }
+    }
+  }
+}

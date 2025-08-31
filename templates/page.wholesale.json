@@ -1,0 +1,319 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "display_on_card": true,
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "7f488a4f-7c40-427a-84f1-20004637f898": {
+      "type": "video-with-text-overlay",
+      "custom_css": [
+        "h2 {font-size: 36px;}",
+        "@media (min-width: 990px) {h2 {font-size: 100px; }}",
+        ".btn,.push-btn-surface,.shopify-payment-button__button--unbranded::before {text-transform: var(--button-text-transform); background: #ffa400; color: #1a3c34; box-shadow: inset 0 0 0 var(--button-border-width) box-sizing: border-box; transition: transform 0.1s cubic-bezier(0.215, 0.61, 0.355, 1); font-weight: var(--main-font-weight);font-family: stratum;}"
+      ],
+      "settings": {
+        "video": "shopify://files/videos/00 - roasting bROLL.mp4",
+        "video_url": "",
+        "crop": "natural",
+        "crop_desktop": "same",
+        "display_on_card": false,
+        "style": "full",
+        "place_content": "place-content-center-start",
+        "text_align": "text-left",
+        "title": "GROWING TOGETHER THROUGH COFFEE",
+        "heading_size": "heading-standard",
+        "richtext": "",
+        "cta_url": "https://shopify.com/72623915327/account",
+        "cta_text": "Log into your account",
+        "color_scheme": "secondary",
+        "use_gradient_background": false,
+        "text_overlay_color": "same_as_section"
+      }
+    },
+    "9e00f908-99f8-4003-982d-1e2ef1f7847b": {
+      "type": "image-with-text-overlay",
+      "disabled": true,
+      "custom_css": [
+        "h2 {font-size: 36px;}",
+        "@media (min-width: 990px) {h2 {font-size: 100px; }}"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/tyler-nix-heMFtZlDkew-unsplash_1.png",
+        "display_on_card": false,
+        "display_content_below_image_on_mobile": true,
+        "style": "full",
+        "height": "natural",
+        "place_content": "place-content-center-start",
+        "text_align": "text-left",
+        "title": "GROWING TOGETHER THROUGH COFFEE",
+        "heading_size": "heading-feature",
+        "richtext": "",
+        "cta_url": "https://shopify.com/72623915327/account",
+        "cta_text": "LOGIN TO YOUR ACCOUNT",
+        "color_scheme": "secondary",
+        "use_gradient_background": false,
+        "text_overlay_color": "same_as_section"
+      }
+    },
+    "540ac47a-6b9a-4b32-9d65-cb11a8a8011d": {
+      "type": "custom-liquid",
+      "custom_css": [
+        "p {text-align: left; line-height: 24px;}",
+        "h3 {font-family: \"termina\", sans-serif !important; font-size: 26px; font-weight: 700;}",
+        ".globo-form-app {font-family: \"termina\", sans-serif !important; font-size: 14px; font-weight: 700;}",
+        ".globo-form-app .label-content {font-weight: 700;}",
+        ".form-text span {color: #ffa400;}",
+        "@media (min-width: 990px) {h2 {font-size: 110px; }}",
+        "@media (max-width: 990px) {.px-section {padding-top: 0px; }}"
+      ],
+      "settings": {
+        "title": "",
+        "custom_liquid": "<div class=\"wholesale-form\">\n\n<div class=\"form-text\">\n<h2 class=\"font-heading  heading-feature heading-style none\">LET'S WORK <br><span>TOGETHER</span></h2>\n<br>\n<p>We understand hospitality. Our hope is that our pursuit of quality coffee will help your business succeed. You'll find an entire team of professionals to help along your journey, each an industry leaders in their own field of expertise. Contact us to see what we can offer and let us know if you have questions.</p>\n<br>\n<br>\n<h3>\n619.550.1830</h3>\n</div>\n\n<div class=\"form\">\n<div class=\"globo-formbuilder\" data-id=\"OTM5Mw==\"></div>\n</div>\n\n</div></div>",
+        "full_width": false,
+        "color_scheme": "secondary"
+      }
+    },
+    "146b29fd-d440-4d3b-b08a-83b81684a988": {
+      "type": "rich-text",
+      "blocks": {
+        "b25aae7c-56fe-44cc-a26f-9296b7af004c": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 150,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/24.svg",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 8,
+            "vertical_position": 0,
+            "rotate": 0,
+            "show_sticker_on_mobile": false,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": false,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "e3f2d56c-c6f3-4470-b428-67185808ff1d": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 100,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/3.svg",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 17,
+            "vertical_position": 0,
+            "rotate": 0,
+            "show_sticker_on_mobile": false,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": false,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        }
+      },
+      "block_order": [
+        "b25aae7c-56fe-44cc-a26f-9296b7af004c",
+        "e3f2d56c-c6f3-4470-b428-67185808ff1d"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "h2,p {text-align: left;}",
+        "p {line-height: 24px;}",
+        "span {color: #ffa400;}",
+        ".py-section-vertical-spacing {padding-bottom: 0px;}",
+        "@media (min-width: 990px) {p {width: 40%; }}"
+      ],
+      "settings": {
+        "title": "MEET YOUR TEAM",
+        "heading_size": "heading-standard",
+        "rich_text": "<p>Introducing our exceptional team of expert coffee roasters, dedicated to crafting the perfect blend for your ultimate caffeinated experience.</p>",
+        "display_on_card": false,
+        "content_width_desktop": "lg:w-full",
+        "button_link": "",
+        "button_label": "Shop Now",
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "2821557c-f7f6-47ff-ae11-1cc98b5bf838": {
+      "type": "text-columns-with-images",
+      "blocks": {
+        "template--19912911061311__2821557c-f7f6-47ff-ae11-1cc98b5bf838-1689350337b709a681-0": {
+          "type": "column",
+          "disabled": true,
+          "settings": {
+            "show_image": true,
+            "image": "shopify://shop_images/Talitha_Support-1.jpg",
+            "title": "",
+            "text": "<p><strong>TAYLOR YAMANAKA</strong></p>",
+            "cta_link": "",
+            "cta_text": "",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "template--19912911061311__2821557c-f7f6-47ff-ae11-1cc98b5bf838-1689350337b709a681-1": {
+          "type": "column",
+          "disabled": true,
+          "settings": {
+            "show_image": true,
+            "image": "shopify://shop_images/Talitha_Support-2.jpg",
+            "title": "",
+            "text": "<p>ROBERT BARBER</p>",
+            "cta_link": "",
+            "cta_text": "",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "ed433584-e999-4347-8ce8-3f5eb77a468b": {
+          "type": "column",
+          "disabled": true,
+          "settings": {
+            "show_image": true,
+            "image": "shopify://shop_images/Talitha_Support-4.jpg",
+            "title": "",
+            "text": "<p><strong>ADRIANA URIOSTEGUI</strong></p>",
+            "cta_link": "",
+            "cta_text": "",
+            "color_scheme": "same_as_section"
+          }
+        }
+      },
+      "block_order": [
+        "template--19912911061311__2821557c-f7f6-47ff-ae11-1cc98b5bf838-1689350337b709a681-0",
+        "template--19912911061311__2821557c-f7f6-47ff-ae11-1cc98b5bf838-1689350337b709a681-1",
+        "ed433584-e999-4347-8ce8-3f5eb77a468b"
+      ],
+      "custom_css": [
+        "p {text-align: left; font-weight: bold; font-family: \"Stratum\"; font-size: 24px;}"
+      ],
+      "settings": {
+        "display_on_card": false,
+        "slideshow_on_mobile": true,
+        "title": "",
+        "crop": "",
+        "image_shape": "default",
+        "show_index_on_blocks": false,
+        "index_shape": "circle",
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "f91e77e0-e5c7-47b4-a23a-00f5517b97fe": {
+      "type": "image-with-text",
+      "custom_css": [
+        "h2 {font-family: \"termina\" !important; font-size: 50px;}",
+        "p {font-family: \"calibre\" !important; line-height: 20px;}",
+        ".py-section-vertical-spacing {padding-bottom: 0;}",
+        "@media (max-width: 990px) {p {width: 90%; font-size: 20px; } h2 {font-family: Termina; font-size: 29px; font-weight: 700; line-height: 29px; letter-spacing: 0em; text-align: left; /* Scaled down font size for mobile */ }}"
+      ],
+      "settings": {
+        "display_on_card": false,
+        "image": "shopify://shop_images/Talitha_Support-8.jpg",
+        "crop": "",
+        "image_shape": "default",
+        "blob_type": 1,
+        "rotate_image": 0,
+        "image_position": "right",
+        "image_size": "half",
+        "disable_media_style": false,
+        "title": "Training",
+        "heading_size": "heading-standard",
+        "richtext": "<p>We are committed to working with our partners to achieve the highest level of coffee service. </p><p>Our training is certified by SCA and adheres to the Specialty Coffee industry standards. We provide you with the tools to get your program off on a solid foundation and stay with you along the way to assist you in maintaining consistency and quality with every cup.</p>",
+        "text_alignment": "text-left",
+        "button_link": "",
+        "button_label": "Shop Now",
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "b347786a-fe09-42f8-8457-be39383fc5ed": {
+      "type": "image-with-text",
+      "custom_css": [
+        "h2 {font-family: \"termina\" !important; font-size: 50px;}",
+        "p {font-family: \"calibre\" !important; line-height: 20px;}",
+        ".py-section-vertical-spacing {padding-bottom: 0;}",
+        "@media (max-width: 990px) {p {width: 90%; font-size: 18px; } h2 {font-family: Termina; font-size: 29px; font-weight: 700; line-height: 29px; letter-spacing: 0em; text-align: left; /* Scaled down font size for mobile */ }}"
+      ],
+      "settings": {
+        "display_on_card": false,
+        "image": "shopify://shop_images/Group_33.png",
+        "crop": "",
+        "image_shape": "default",
+        "blob_type": 1,
+        "rotate_image": 0,
+        "image_position": "left",
+        "image_size": "half",
+        "disable_media_style": false,
+        "title": "Equipment Support",
+        "heading_size": "heading-standard",
+        "richtext": "<p>We provide everything you need to deliver the best tasting cup of coffee in town. We can get you set up and running with the right equipment best suited to your needs.</p><p>We are proud to procure, install and maintain: <a href=\"https://slayerespresso.com/\" target=\"_blank\">Slayer</a> and La Marzocco espresso machines; <a href=\"http://www.lamarzoccousa.com/portfolio/mazzer-grinders/\" target=\"_blank\">Mazzer</a> and <a href=\"https://www.mahlkoenig.de/en/home\" target=\"_blank\">MAHLKÖNIG </a>espresso grinders; <a href=\"http://www.wilburcurtis.com/categories/g4\" target=\"_blank\">Wilbur Curtis</a> drip coffee and tea brewers; and various coffee water formulation systems.</p>",
+        "text_alignment": "text-left",
+        "button_link": "",
+        "button_label": "Shop Now",
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "c15f4a35-3fc4-4842-9af1-e6895c2f2156": {
+      "type": "image-with-text",
+      "custom_css": [
+        "h2 {font-family: \"termina\" !important; font-size: 50px;}",
+        "p {font-family: \"calibre\" !important; line-height: 20px;}",
+        ".py-section-vertical-spacing {padding-bottom: 0;}",
+        "@media (max-width: 990px) {p {width: 90%; font-size: 20px; } h2 {font-family: Termina; font-size: 29px; font-weight: 700; line-height: 29px; letter-spacing: 0em; text-align: left; /* Scaled down font size for mobile */ }}"
+      ],
+      "settings": {
+        "display_on_card": false,
+        "image": "shopify://shop_images/Group_35.png",
+        "crop": "",
+        "image_shape": "default",
+        "blob_type": 1,
+        "rotate_image": 0,
+        "image_position": "right",
+        "image_size": "half",
+        "disable_media_style": false,
+        "title": "Partnership",
+        "heading_size": "heading-standard",
+        "richtext": "<p>If you are intent in building a relationship with a coffee roaster who obsesses about the details, from flavor profiles and sustainable sourcing practices to hyper-consciousness in every aspect involved with producing a consistent quality product, then we are eager for the opportunity to partner with you<br/><br/><br/></p>",
+        "text_alignment": "text-left",
+        "button_link": "",
+        "button_label": "Shop Now",
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "7f488a4f-7c40-427a-84f1-20004637f898",
+    "9e00f908-99f8-4003-982d-1e2ef1f7847b",
+    "540ac47a-6b9a-4b32-9d65-cb11a8a8011d",
+    "146b29fd-d440-4d3b-b08a-83b81684a988",
+    "2821557c-f7f6-47ff-ae11-1cc98b5bf838",
+    "f91e77e0-e5c7-47b4-a23a-00f5517b97fe",
+    "b347786a-fe09-42f8-8457-be39383fc5ed",
+    "c15f4a35-3fc4-4842-9af1-e6895c2f2156"
+  ]
+}

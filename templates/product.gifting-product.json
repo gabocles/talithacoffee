@@ -1,0 +1,264 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product-gifting-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+            "display_on_card": false,
+            "text_align": "text-left"
+          }
+        },
+        "a17e90c4-acc9-4f1d-af84-828ae4cb2289": {
+          "type": "description",
+          "settings": {
+            "display_on_card": false,
+            "truncate_description": false,
+            "text_align": "text-left"
+          }
+        },
+        "62bbe4ca-b97e-40a6-a436-ba9573a1fd31": {
+          "type": "tasting_notes",
+          "settings": {}
+        },
+        "ef3075c5-d478-47e7-84d9-bae6cbed3c91": {
+          "type": "shopify://apps/recharge-subscriptions/blocks/subscription-widget/371eed76-0b44-4869-9813-730372ea378e",
+          "settings": {
+            "product": ""
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "display_on_card": false,
+            "option_style": "buttons",
+            "hide_option_labels": false,
+            "hide_sold_variants": true,
+            "enable_color_swatches": false
+          }
+        },
+        "price": {
+          "type": "price",
+          "disabled": true,
+          "settings": {
+            "display_on_card": false,
+            "show_on_sale_sticker": false,
+            "text_align": "text-left"
+          }
+        },
+        "recharge_subscriptions_gifting_widget_yJ7NNw": {
+          "type": "shopify://apps/recharge-subscriptions/blocks/gifting-widget/371eed76-0b44-4869-9813-730372ea378e",
+          "settings": {
+            "rc_show_sender_name": true,
+            "rc_show_send_date": true,
+            "rc_gift_months_max": 24,
+            "rc_disable_add_to_cart": true,
+            "rc_gift_recipient_block_title": "Recipient information",
+            "rc_gift_sender_name_text_input": "Sender name",
+            "rc_gift_recipient_firstname_text_input": "First name",
+            "rc_gift_recipient_lastname_text_input": "Last name",
+            "rc_gift_recipient_email_text_input": "Email",
+            "rc_gift_message_text_input": "Message",
+            "rc_gift_send_date_text_input": "When should we tell the recipient about their gift?"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {
+            "display_on_card": false,
+            "show_label": false
+          }
+        },
+        "d5e492c1-cd6b-4f38-804f-eb89d7e95aaf": {
+          "type": "collapsible_tab",
+          "disabled": true,
+          "settings": {
+            "display_on_card": false,
+            "icon": "none",
+            "heading": "Collapsible tab",
+            "content": "",
+            "page": ""
+          }
+        },
+        "baf3083e-d14d-435d-bca3-100d6ac490ce": {
+          "type": "buy_buttons",
+          "disabled": true,
+          "settings": {
+            "display_on_card": false,
+            "show_price": false,
+            "enable_payment_button": false,
+            "show_pickup_availability": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "39086e30-eff0-4d4f-9e50-b8988b685485": {
+          "type": "complementary",
+          "disabled": true,
+          "settings": {
+            "block_heading": "ADD-ONS",
+            "product_list_limit": 3
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "a17e90c4-acc9-4f1d-af84-828ae4cb2289",
+        "62bbe4ca-b97e-40a6-a436-ba9573a1fd31",
+        "ef3075c5-d478-47e7-84d9-bae6cbed3c91",
+        "variant_picker",
+        "price",
+        "recharge_subscriptions_gifting_widget_yJ7NNw",
+        "quantity_selector",
+        "d5e492c1-cd6b-4f38-804f-eb89d7e95aaf",
+        "baf3083e-d14d-435d-bca3-100d6ac490ce",
+        "39086e30-eff0-4d4f-9e50-b8988b685485"
+      ],
+      "custom_css": [
+        "a {font-family: \"Stratum\" !important;}"
+      ],
+      "settings": {
+        "crop": "",
+        "image_shape": "default",
+        "desktop_media_width": "lg:col-span-6_lg:col-span-6",
+        "show_slideshow_arrows_on_desktop": false,
+        "enable_image_zoom": false,
+        "enable_video_looping": false,
+        "autoplay_videos_on_desktop": false,
+        "media_mobile_width": "w-full",
+        "thumbnails_position": "under",
+        "thumbnail_crop": "aspect-w-1 aspect-h-1",
+        "thumbnail_shape": "default",
+        "hide_media_shadow": false,
+        "thumbnail_size": "standard",
+        "show_thumbnails_on_mobile": false,
+        "color_scheme": "secondary",
+        "use_gradient_background": false,
+        "shipping_text": "<p><strong>Coffee: </strong>We do not offer returns on Coffee because it is a perishable product. However, customer satisfaction is very important to us. We want you to be happy. If you are unhappy with the coffee please contact us at <a href=\"mailto:online@talitha.com\" target=\"_blank\">online@talitha.com </a>and we will help you find a replacement or offer you a refund.</p><p><strong>Merch:</strong> We are happy to accept returns on our wearable and non-wearable merch that is defective, unused, or damaged in transit. We would ask you to submit photos to <a href=\"mailto:online@talitha.com\" target=\"_blank\">online@talitha.com</a>. We cannot accept returns on merch or gear that are used but in working order. All non Coffee purchases must be returned within 30 days of the date of sale.</p><p><strong>Non-Coffee Products:</strong> We accept returns on non-coffee products that are broken, defective, damaged, or unused. We would ask that you submit photos to <a href=\"mailto:online@talitha.com\" target=\"_blank\">online@talitha.com</a>. There are no returns for used gear. Items must be returned within 30 days of the purchase date. Items purchased online can only be returned through mail.</p>",
+        "badge_1_text": "FREE SHIPPING",
+        "badge_2_text": true
+      }
+    },
+    "17097028302d75d7a5": {
+      "type": "apps",
+      "settings": {}
+    },
+    "169021714666a7a555": {
+      "type": "apps",
+      "blocks": {
+        "f9f94ff5-ccb2-4b72-b84a-6f4f7e7d0bbd": {
+          "type": "shopify://apps/rebuy-personalization-engine/blocks/rebuy-widget/a26ae9b9-933b-40bf-bbc6-bf1220bbc4dc",
+          "settings": {
+            "enabled": true,
+            "id": "102113",
+            "product_id_enabled": true,
+            "collection_id_enabled": false
+          }
+        }
+      },
+      "block_order": [
+        "f9f94ff5-ccb2-4b72-b84a-6f4f7e7d0bbd"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "5904cc6c-63d3-4a4f-a665-9cb31cea5756": {
+      "type": "image-with-text",
+      "custom_css": [
+        "* {border-style: none;}",
+        "section {background: #1b3c34; color: white;}"
+      ],
+      "settings": {
+        "display_on_card": false,
+        "image": "shopify://shop_images/Group_91.png",
+        "crop": "",
+        "image_shape": "default",
+        "blob_type": 1,
+        "rotate_image": 0,
+        "image_position": "left",
+        "image_size": "half",
+        "disable_media_style": false,
+        "title": "BREW GUIDE",
+        "heading_size": "heading-standard",
+        "richtext": "<p>Our preferred extractions</p><ul><li>Espresso: 19g in 35-40g out, 25-30 seconds</li><li>Brewing: 1:16 coffee to water ratio</li></ul>",
+        "text_alignment": "text-left",
+        "button_link": "shopify://pages/contact",
+        "button_label": "Download Brewing Guide",
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "524a80b0-f537-4729-8e03-2951f3996a4c": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "EXPLORE OUR RANGE",
+        "subheading": "",
+        "collection": "coffee",
+        "no_products": 4,
+        "show_view_all": false,
+        "enable_quick_buy": false,
+        "display_on_card": false,
+        "layout": "carousel",
+        "products_per_row_mobile": "1",
+        "products_per_row_desktop": 3,
+        "slideshow_focus": "center",
+        "mobile_slide_width": "three_fifths",
+        "desktop_slide_width": 30,
+        "autoscroll_mode": "1",
+        "product_tiles_aspect_ratio": "",
+        "image_shape": "",
+        "color_scheme": "primary",
+        "use_gradient_background": false,
+        "show_promo_box": false,
+        "promo_box_size": "single",
+        "promo_overlay": "",
+        "promo_overlay_percentage": 25,
+        "promo_title": "",
+        "promo_desc": "",
+        "promo_cta": "",
+        "promo_url": ""
+      }
+    },
+    "bed08be0-0bc7-49a1-850a-0d37a6292f1d": {
+      "type": "newsletter",
+      "custom_css": [
+        "@media (min-width: 990px) {.py-section-vertical-spacing {padding-top: 74px; } .px-section {padding-left: 100px; padding-right: 100px; }}"
+      ],
+      "settings": {
+        "title": "10% OFF YOUR FIRST ORDER",
+        "richtext": "<p>Stay up to date with all things from Talitha Coffee, and get our newsletter straight to your inbox.. with 10% off your first order!</p>",
+        "display_on_card": false,
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "3ca0157d-b18d-4799-8c0a-205a81f7a9ad": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "settings": {
+        "title": "Custom liquid",
+        "custom_liquid": "<div class=\"upsell-addonbox\" id=\"upsell-addon-{{addOnProductHandle}}\">\n\n              <div class=\"upsell-addonbox-col1\">\n\n                  <img src=\"{{img}}\" class=\"{{imageClassName}}\">\n\n              </div>\n\n              <div class=\"upsell-addonbox-col2\">\n\n                  <span class=\"product-single__title upsell-font-color upsell-addon-title\">{{titleSnippet}}</span>\n\n                  <br/>\n\n\t\t  {{description}}\n\n                  {{variantDropdown}}\n\n                  <a href=\"{{addOnSlug}}\" target=\"_blank\" class=\"upsell-addon-details {{seeDetails}}\">{{seeDetailsText}}</a>                  \n\n              </div>\n\n              <div class=\"upsell-addonbox-col3\">\n\n                    {{addToCartInput}}\n\n              </div>\n\n       </div>",
+        "full_width": false,
+        "color_scheme": "primary"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "17097028302d75d7a5",
+    "169021714666a7a555",
+    "5904cc6c-63d3-4a4f-a665-9cb31cea5756",
+    "524a80b0-f537-4729-8e03-2951f3996a4c",
+    "bed08be0-0bc7-49a1-850a-0d37a6292f1d",
+    "3ca0157d-b18d-4799-8c0a-205a81f7a9ad"
+  ]
+}

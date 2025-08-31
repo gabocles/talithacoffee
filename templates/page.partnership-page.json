@@ -1,0 +1,179 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "display_on_card": true,
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "9e00f908-99f8-4003-982d-1e2ef1f7847b": {
+      "type": "image-with-text-overlay",
+      "custom_css": [
+        "h2 {font-size: 36px;}",
+        "@media (min-width: 990px) {h2 {font-size: 100px; }}"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/tyler-nix-heMFtZlDkew-unsplash_1.png",
+        "display_on_card": false,
+        "display_content_below_image_on_mobile": true,
+        "style": "full",
+        "height": "pt-half-screen-height",
+        "place_content": "place-content-center-start",
+        "text_align": "text-left",
+        "title": "New Partnership form",
+        "heading_size": "heading-feature",
+        "richtext": "",
+        "cta_url": "https://shopify.com/72623915327/account",
+        "cta_text": "",
+        "color_scheme": "secondary",
+        "use_gradient_background": false,
+        "text_overlay_color": "same_as_section"
+      }
+    },
+    "540ac47a-6b9a-4b32-9d65-cb11a8a8011d": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "custom_css": [
+        "p {text-align: left; line-height: 24px;}",
+        "h3 {font-family: \"termina\", sans-serif !important; font-size: 26px; font-weight: 700;}",
+        ".globo-form-app {font-family: \"termina\", sans-serif !important; font-size: 14px; font-weight: 700;}",
+        ".globo-form-app .label-content {font-weight: 700;}",
+        ".form-text span {color: #ffa400;}",
+        "@media (min-width: 990px) {h2 {font-size: 110px; }}",
+        "@media (max-width: 990px) {.px-section {padding-top: 0px; }}"
+      ],
+      "settings": {
+        "title": "",
+        "custom_liquid": "<div class=\"wholesale-form\">\n\n<div class=\"form-text\">\n<h2 class=\"font-heading  heading-feature heading-style none\">LET'S WORK <br><span>TOGETHER</span></h2>\n<br>\n<p><strong>We are super excited to partner with you. Fill out this form with your company details, user accounts, and location information. We will review it, and get your account activated!\n<br>\n<strong>(WE CAN'T WAIT TO WORK TOGETHER) </strong>\n<br>\n<br>\nGive us a holler if you have questions.</p>\n<br>\n<h3>\n619.550.1830</h3>\n<br><p>-The Talitha Team</p>\n</div>\n\n\n<div class=\"globo-formbuilder\" data-id=\"Mjk5NjY=\"></div>\n\n\n</div></div>",
+        "full_width": false,
+        "color_scheme": "secondary"
+      }
+    },
+    "f91e77e0-e5c7-47b4-a23a-00f5517b97fe": {
+      "type": "image-with-text",
+      "disabled": true,
+      "custom_css": [
+        "h2 {font-family: \"termina\" !important; font-size: 50px;}",
+        "p {font-family: \"calibre\" !important; line-height: 20px;}",
+        ".py-section-vertical-spacing {padding-bottom: 0;}",
+        "@media (min-width: 990px) {p {max-width: 80%; }}"
+      ],
+      "settings": {
+        "display_on_card": false,
+        "image": "shopify://shop_images/Talitha_Support-8.jpg",
+        "crop": "",
+        "image_shape": "default",
+        "blob_type": 1,
+        "rotate_image": 0,
+        "image_position": "right",
+        "image_size": "half",
+        "disable_media_style": false,
+        "title": "Training",
+        "heading_size": "heading-standard",
+        "richtext": "<p>We are committed to working with our partners to achieve the highest level of coffee service. </p><p>Our training is certified by SCA and adheres to the Specialty Coffee industry standards. We provide you with the tools to get your program off on a solid foundation and stay with you along the way to assist you in maintaining consistency and quality with every cup.</p>",
+        "text_alignment": "text-left",
+        "button_link": "",
+        "button_label": "Shop Now",
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "b347786a-fe09-42f8-8457-be39383fc5ed": {
+      "type": "image-with-text",
+      "disabled": true,
+      "custom_css": [
+        "h2 {font-family: \"termina\" !important; font-size: 50px;}",
+        "p {font-family: \"calibre\" !important; line-height: 20px;}",
+        ".py-section-vertical-spacing {padding-bottom: 0;}",
+        "@media (min-width: 990px) {p {max-width: 80%; }}"
+      ],
+      "settings": {
+        "display_on_card": false,
+        "image": "shopify://shop_images/Group_33.png",
+        "crop": "",
+        "image_shape": "default",
+        "blob_type": 1,
+        "rotate_image": 0,
+        "image_position": "left",
+        "image_size": "half",
+        "disable_media_style": false,
+        "title": "Equipment Support",
+        "heading_size": "heading-standard",
+        "richtext": "<p>We provide everything you need to deliver the best tasting cup of coffee in town. We can get you set up and running with the right equipment best suited to your needs.</p><p>We are proud to procure, install and maintain: <a href=\"https://slayerespresso.com/\" target=\"_blank\">Slayer</a> and <a href=\"http://www.lamarzoccousa.com/portfolio-type/products/espresso-machines/\" target=\"_blank\">La Marzocco</a> espresso machines; <a href=\"http://www.lamarzoccousa.com/portfolio/mazzer-grinders/\" target=\"_blank\">Mazzer</a> and <a href=\"https://www.mahlkoenig.de/en/home\" target=\"_blank\">MAHLKÖNIG </a>espresso grinders; <a href=\"http://www.wilburcurtis.com/categories/g4\" target=\"_blank\">Wilbur Curtis</a> drip coffee and tea brewers; and various coffee water formulation systems.</p>",
+        "text_alignment": "text-left",
+        "button_link": "",
+        "button_label": "Shop Now",
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "c15f4a35-3fc4-4842-9af1-e6895c2f2156": {
+      "type": "image-with-text",
+      "disabled": true,
+      "custom_css": [
+        "h2 {font-family: \"termina\" !important; font-size: 50px;}",
+        "p {font-family: \"calibre\" !important; line-height: 20px;}",
+        ".py-section-vertical-spacing {padding-bottom: 0;}",
+        "@media (min-width: 990px) {p {max-width: 80%; }}"
+      ],
+      "settings": {
+        "display_on_card": false,
+        "image": "shopify://shop_images/Group_35.png",
+        "crop": "",
+        "image_shape": "default",
+        "blob_type": 1,
+        "rotate_image": 0,
+        "image_position": "right",
+        "image_size": "half",
+        "disable_media_style": false,
+        "title": "Partnership",
+        "heading_size": "heading-standard",
+        "richtext": "<p>If you are intent in building a relationship with a coffee roaster who obsesses about the details, from flavor profiles and sustainable sourcing practices to hyper-consciousness in every aspect involved with producing a consistent quality product, then we are eager for the opportunity to partner with you<br/><br/><br/></p>",
+        "text_alignment": "text-left",
+        "button_link": "",
+        "button_label": "Shop Now",
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "1718128223235ed549": {
+      "type": "apps",
+      "blocks": {
+        "helium_customer_fields_app_block_fhnqJd": {
+          "type": "shopify://apps/helium-customer-fields/blocks/app-block/bab58598-3e6a-4377-aaaa-97189b15f131",
+          "settings": {
+            "form_id": "w6teWd",
+            "width": 600,
+            "vertical_spacing": 20,
+            "horizontal_spacing": 20
+          }
+        }
+      },
+      "block_order": [
+        "helium_customer_fields_app_block_fhnqJd"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "9e00f908-99f8-4003-982d-1e2ef1f7847b",
+    "540ac47a-6b9a-4b32-9d65-cb11a8a8011d",
+    "f91e77e0-e5c7-47b4-a23a-00f5517b97fe",
+    "b347786a-fe09-42f8-8457-be39383fc5ed",
+    "c15f4a35-3fc4-4842-9af1-e6895c2f2156",
+    "1718128223235ed549"
+  ]
+}

@@ -1,0 +1,38 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-404",
+      "settings": {
+        "color_scheme": "quaternary",
+        "use_gradient_background": false
+      }
+    },
+    "300b00ff-258b-4dfe-b378-f28d48e4daa0": {
+      "type": "rich-text",
+      "settings": {
+        "title": "",
+        "heading_size": "heading-feature",
+        "rich_text": "<p>If you are not seeing the product above please login to your wholesale account </p>",
+        "display_on_card": false,
+        "content_width_desktop": "lg:w-2/3",
+        "button_link": "https://account.talitha.com/",
+        "button_label": "Wholesale LOGIN",
+        "color_scheme": "secondary",
+        "use_gradient_background": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "300b00ff-258b-4dfe-b378-f28d48e4daa0"
+  ]
+}

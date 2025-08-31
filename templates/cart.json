@@ -1,0 +1,43 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "wrapper": "div[data-color-scheme=primary].bg-scheme-background.text-scheme-text",
+  "sections": {
+    "cart": {
+      "type": "cart",
+      "custom_css": [
+        "section {overflow: visible; z-index: 11;}"
+      ],
+      "settings": {
+        "display_on_card": false,
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "rich_text_V3cwYV": {
+      "type": "rich-text",
+      "settings": {
+        "title": "",
+        "heading_size": "heading-standard",
+        "rich_text": "",
+        "display_on_card": true,
+        "content_width_desktop": "lg:w-2/3",
+        "button_link": "",
+        "button_label": "Shop Now",
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    }
+  },
+  "order": [
+    "cart",
+    "rich_text_V3cwYV"
+  ]
+}

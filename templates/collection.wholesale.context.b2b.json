@@ -1,0 +1,112 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "collection.wholesale.json",
+  "context": {
+    "b2b": true
+  },
+  "sections": {
+    "e76d9c63-88b5-4b75-91f5-2d0a4f53d338": {
+      "type": "featured-collection",
+      "disabled": false,
+      "settings": {
+        "title": "Other Popular Products",
+        "subheading": "",
+        "collection": "best-selling",
+        "no_products": 18,
+        "show_view_all": true,
+        "enable_quick_buy": true,
+        "display_on_card": true,
+        "layout": "carousel",
+        "header-486e1f75acdb80354909459c6edcb7dc": null,
+        "paragraph-70e65f1b15219907246553debf2986e4": null,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 5,
+        "header-df9a8d971f060308507f0164c56c1e81": null,
+        "paragraph-8bb67e9fd6fee088de11c54be2f0653c": null,
+        "slideshow_focus": "center",
+        "mobile_slide_width": "three_fifths",
+        "desktop_slide_width": 20,
+        "autoscroll_mode": "1",
+        "header-014fb101c984cf657640622add041df5": null,
+        "product_tiles_aspect_ratio": "",
+        "image_shape": "",
+        "header-6d19872701e19ae9c5f3b603091a55ef": null,
+        "color_scheme": "tertiary",
+        "use_gradient_background": false,
+        "header-2360880bca7a77cb795025ae2559135b": null,
+        "show_promo_box": false,
+        "promo_box_size": "single",
+        "promo_bg": null,
+        "promo_overlay": "",
+        "promo_overlay_percentage": 25,
+        "promo_title": "",
+        "promo_desc": "",
+        "promo_cta": "",
+        "promo_url": ""
+      },
+      "blocks": {},
+      "block_order": []
+    },
+    "banner": {
+      "disabled": false,
+      "settings": {
+        "display_on_card": false,
+        "show_collection_title": false,
+        "show_collection_description": true,
+        "show_collection_image": true,
+        "collection_image_style": "full",
+        "linklist": "wholesale-collections-page-menu",
+        "color_scheme": "primary"
+      },
+      "blocks": {}
+    },
+    "product-grid": {
+      "disabled": false,
+      "settings": {
+        "no_products": 24,
+        "display_on_card": true,
+        "enable_quick_buy": true,
+        "products_per_row_desktop": 5,
+        "enable_filtering": true,
+        "enable_sorting": true,
+        "expand_filters": false,
+        "color_scheme": "primary"
+      },
+      "blocks": {
+        "f56a58cf-f031-4c5c-b99c-a61072ef1621": {
+          "settings": {
+            "display_on_card": false,
+            "show_collection_title": false,
+            "show_collection_description": false,
+            "show_collection_image": false,
+            "crop": "",
+            "linklist": "wholesale"
+          }
+        }
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid",
+    "e76d9c63-88b5-4b75-91f5-2d0a4f53d338",
+    "6d1326c0-b8b6-4665-b902-ad883b68302f",
+    "caf571fb-b3cd-413b-b5c6-4f7d30533748",
+    "37be5744-f57e-4b97-8f5d-3c83b5320bc3",
+    "3d91d198-d772-47c9-9d5a-e3cece47e738",
+    "c3808eda-9d1a-4a90-ad3e-5714c62f0d85",
+    "281f2e1f-953f-40b6-a3d7-e3f6ad19a552",
+    "45e6ded5-e66f-4238-9d62-ec14fd90e121",
+    "4a6cf521-10bd-45b4-928f-6fa024df14a4",
+    "4d117300-e63d-4f2f-abc5-82e15c1e0587",
+    "60c9847b-bdad-4674-8e70-5e8406ba2b12"
+  ]
+}

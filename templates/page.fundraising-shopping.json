@@ -1,0 +1,541 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "display_on_card": true,
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "ecom_fundraiser_header_section_DbqNC6": {
+      "type": "ecom-fundraiser-header-section",
+      "settings": {}
+    },
+    "f28f973e-b051-4311-9da3-e3f3728a01b0": {
+      "type": "feature-text-columns",
+      "blocks": {
+        "template--19913318433087__f28f973e-b051-4311-9da3-e3f3728a01b0-16893511234859e423-1": {
+          "type": "column",
+          "settings": {
+            "title": "Place your order",
+            "subheading": "<p>Explore our selection of coffees and teas on this page or anywhere else on our site. We automatically will track your order using the schools referral link, and credit your purchase to Kearny! <br/></p>"
+          }
+        },
+        "template--19913318433087__f28f973e-b051-4311-9da3-e3f3728a01b0-16893511234859e423-2": {
+          "type": "column",
+          "settings": {
+            "title": "advocacy on autopilot",
+            "subheading": "<p>In addition to supporting your school you are directly supporting survivors of trafficking, automatically with each purchase! </p>"
+          }
+        },
+        "template--19913318433087__f28f973e-b051-4311-9da3-e3f3728a01b0-16893511234859e423-0": {
+          "type": "column",
+          "settings": {
+            "title": "Raise $$ for Kearny!",
+            "subheading": "<p>Talitha is giving 20% of all orders placed using the schools referral link or CODE during the fundraiser.  Plus enjoy  <strong>FREE SHIPPING</strong> on orders of <strong>$50</strong> or more.<br/><br/><br/></p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--19913318433087__f28f973e-b051-4311-9da3-e3f3728a01b0-16893511234859e423-1",
+        "template--19913318433087__f28f973e-b051-4311-9da3-e3f3728a01b0-16893511234859e423-2",
+        "template--19913318433087__f28f973e-b051-4311-9da3-e3f3728a01b0-16893511234859e423-0"
+      ],
+      "custom_css": [
+        "h3 {font-family: \"termina\", sans-serif !important; font-size: 30px;}"
+      ],
+      "settings": {
+        "display_on_card": false,
+        "title": "How it works",
+        "heading_size": "heading-standard",
+        "subheading_font": "body",
+        "color_scheme": "secondary",
+        "use_gradient_background": false
+      }
+    },
+    "ecom_centered_button_section_Ri6NAF": {
+      "type": "ecom-centered-button-section",
+      "settings": {}
+    },
+    "ecom_fundraiser_selector_section_rtenDR": {
+      "type": "ecom-fundraiser-selector-section",
+      "settings": {}
+    },
+    "image_with_text_overlay_gQUmHh": {
+      "type": "image-with-text-overlay",
+      "settings": {
+        "image": "shopify://shop_images/subscribe-bg.svg",
+        "display_on_card": false,
+        "display_content_below_image_on_mobile": false,
+        "style": "full",
+        "height": "natural",
+        "place_content": "place-content-center-center",
+        "text_align": "text-center",
+        "title": "Signature Blends",
+        "heading_size": "heading-standard",
+        "richtext": "",
+        "cta_url": "",
+        "cta_text": "",
+        "color_scheme": "primary",
+        "use_gradient_background": false,
+        "text_overlay_color": "same_as_section"
+      }
+    },
+    "604165ea-96cb-4625-8da7-c75ab47b52f2": {
+      "type": "featured-collection",
+      "custom_css": [
+        "h2 {text-align: left;}",
+        "section {padding: 0px 0 !important;}"
+      ],
+      "settings": {
+        "title": "",
+        "subheading": "",
+        "collection": "fundraisers",
+        "no_products": 6,
+        "show_view_all": true,
+        "enable_quick_buy": true,
+        "display_on_card": true,
+        "layout": "grid",
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 3,
+        "slideshow_focus": "center",
+        "mobile_slide_width": "three_fifths",
+        "desktop_slide_width": 45,
+        "autoscroll_mode": "1",
+        "product_tiles_aspect_ratio": "",
+        "image_shape": "",
+        "color_scheme": "primary",
+        "use_gradient_background": false,
+        "show_promo_box": false,
+        "promo_box_size": "single",
+        "promo_overlay": "",
+        "promo_overlay_percentage": 25,
+        "promo_title": "",
+        "promo_desc": "",
+        "promo_cta": "",
+        "promo_url": ""
+      }
+    },
+    "image_with_text_overlay_6ik79B": {
+      "type": "image-with-text-overlay",
+      "settings": {
+        "image": "shopify://shop_images/subscribe-bg.svg",
+        "display_on_card": false,
+        "display_content_below_image_on_mobile": false,
+        "style": "full",
+        "height": "natural",
+        "place_content": "place-content-center-center",
+        "text_align": "text-center",
+        "title": "Single Origin Coffees",
+        "heading_size": "heading-standard",
+        "richtext": "",
+        "cta_url": "",
+        "cta_text": "",
+        "color_scheme": "primary",
+        "use_gradient_background": false,
+        "text_overlay_color": "same_as_section"
+      }
+    },
+    "featured_collection_B6CPxi": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "",
+        "subheading": "",
+        "collection": "coffee-single-origin",
+        "no_products": 18,
+        "show_view_all": false,
+        "enable_quick_buy": true,
+        "display_on_card": true,
+        "layout": "grid",
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 3,
+        "slideshow_focus": "center",
+        "mobile_slide_width": "three_fifths",
+        "desktop_slide_width": 40,
+        "autoscroll_mode": "1",
+        "product_tiles_aspect_ratio": "",
+        "image_shape": "",
+        "color_scheme": "primary",
+        "use_gradient_background": false,
+        "show_promo_box": false,
+        "promo_box_size": "single",
+        "promo_overlay": "",
+        "promo_overlay_percentage": 25,
+        "promo_title": "",
+        "promo_desc": "",
+        "promo_cta": "",
+        "promo_url": ""
+      }
+    },
+    "image_with_text_overlay_RWcpTe": {
+      "type": "image-with-text-overlay",
+      "settings": {
+        "image": "shopify://shop_images/subscribe-bg.svg",
+        "display_on_card": false,
+        "display_content_below_image_on_mobile": false,
+        "style": "full",
+        "height": "natural",
+        "place_content": "place-content-center-center",
+        "text_align": "text-center",
+        "title": "Organic Teas",
+        "heading_size": "heading-standard",
+        "richtext": "",
+        "cta_url": "",
+        "cta_text": "",
+        "color_scheme": "primary",
+        "use_gradient_background": false,
+        "text_overlay_color": "same_as_section"
+      }
+    },
+    "featured_collection_EnhkrP": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "",
+        "subheading": "",
+        "collection": "tea",
+        "no_products": 18,
+        "show_view_all": false,
+        "enable_quick_buy": true,
+        "display_on_card": true,
+        "layout": "grid",
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 3,
+        "slideshow_focus": "center",
+        "mobile_slide_width": "three_fifths",
+        "desktop_slide_width": 40,
+        "autoscroll_mode": "1",
+        "product_tiles_aspect_ratio": "",
+        "image_shape": "",
+        "color_scheme": "primary",
+        "use_gradient_background": false,
+        "show_promo_box": false,
+        "promo_box_size": "single",
+        "promo_overlay": "",
+        "promo_overlay_percentage": 25,
+        "promo_title": "",
+        "promo_desc": "",
+        "promo_cta": "",
+        "promo_url": ""
+      }
+    },
+    "feature_text_columns_zAi3Je": {
+      "type": "feature-text-columns",
+      "blocks": {
+        "column_8g4qGa": {
+          "type": "column",
+          "settings": {
+            "title": "Save 10% Every. Single. Time.",
+            "subheading": "<p>Plus <strong>FREE SHIPPING</strong> on orders of <strong>$50</strong> or more. Enjoy savings with every sip.  <br/><br/><br/></p>"
+          }
+        },
+        "column_HtHFTB": {
+          "type": "column",
+          "settings": {
+            "title": "Modify Anytime",
+            "subheading": "<p>Easily manage your subscription. Need to skip a shipment? Easily pause it. Want a different coffee? Simply swap it.  Need a break? No problem you can cancel anytime.<br/><br/><br/><br/></p>"
+          }
+        },
+        "column_8mUAy4": {
+          "type": "column",
+          "settings": {
+            "title": "advocacy on autopilot",
+            "subheading": "<p>Support survivors, automatically. Each bag of coffee you subscribe to, directly supports our efforts of providing advocacy, support and employment for survivors of se trafficking. </p>"
+          }
+        }
+      },
+      "block_order": [
+        "column_8g4qGa",
+        "column_HtHFTB",
+        "column_8mUAy4"
+      ],
+      "disabled": true,
+      "settings": {
+        "display_on_card": false,
+        "title": "How it works",
+        "heading_size": "heading-standard",
+        "subheading_font": "body",
+        "color_scheme": "secondary",
+        "use_gradient_background": false
+      }
+    },
+    "image_with_text_XNDcPf": {
+      "type": "image-with-text",
+      "blocks": {
+        "sticker_HkgiWk": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 150,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Artboard_30.svg",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 88,
+            "vertical_position": 0,
+            "rotate": 0,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": true,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "sticker_XjtXzc": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 100,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Artboard_28.svg",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 8,
+            "vertical_position": 85,
+            "rotate": 68,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": true,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "sticker_PMhN7M": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 100,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Artboard_34.svg",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 9,
+            "vertical_position": 0,
+            "rotate": 0,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": true,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        }
+      },
+      "block_order": [
+        "sticker_HkgiWk",
+        "sticker_XjtXzc",
+        "sticker_PMhN7M"
+      ],
+      "settings": {
+        "display_on_card": false,
+        "image": "shopify://shop_images/Asset_1.svg",
+        "crop": "",
+        "image_shape": "default",
+        "blob_type": 1,
+        "rotate_image": 0,
+        "image_position": "left",
+        "image_size": "third",
+        "disable_media_style": true,
+        "title": "Support Kearny & Help Talitha provide support for trafficking Survivors",
+        "heading_size": "heading-feature",
+        "richtext": "<h4>PROVIDING JOBS </h4><p>We prioritize hiring survivors through our survivor care network, and create workplaces that are supportive, informed and designed to help survivors thrive long-term.</p><h4><strong>TRAINING</strong></h4><p>Talitha Coffee Roasters is certified by the Specialty Coffee Association (SCA). We share our expert training with survivors to help them find, get, and keep jobs, at Talitha and beyond.</p><h4><strong>HOLISTIC SUPPORT</strong></h4><p>From housing to transportation, food to clothing, we work closely with our survivor care network to understand and support a holistically safe and sustainable re-entry for survivors.</p>",
+        "text_alignment": "text-left",
+        "button_link": "",
+        "button_label": "",
+        "color_scheme": "quaternary",
+        "use_gradient_background": false
+      }
+    },
+    "custom_liquid_eRaf9n": {
+      "type": "custom-liquid",
+      "settings": {
+        "title": ".",
+        "custom_liquid": "",
+        "full_width": true,
+        "color_scheme": "primary"
+      }
+    },
+    "image_with_text_NY4Vwa": {
+      "type": "image-with-text",
+      "blocks": {
+        "sticker_mPWK37": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 100,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Artboard_28.svg",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 80,
+            "vertical_position": 93,
+            "rotate": 0,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": true,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "sticker_ghg88N": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 100,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Artboard_36.svg",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 5,
+            "vertical_position": 80,
+            "rotate": 0,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": true,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "sticker_RT6EMM": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 120,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Artboard_33.svg",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 2,
+            "vertical_position": 3,
+            "rotate": 90,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": true,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "sticker_PXjDbU": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 100,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Artboard_37.svg",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 89,
+            "vertical_position": 49,
+            "rotate": -84,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": true,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "sticker_rGBaKa": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 100,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Artboard_27.svg",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 50,
+            "vertical_position": 0,
+            "rotate": 0,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": false,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        }
+      },
+      "block_order": [
+        "sticker_mPWK37",
+        "sticker_ghg88N",
+        "sticker_RT6EMM",
+        "sticker_PXjDbU",
+        "sticker_rGBaKa"
+      ],
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "display_on_card": false,
+        "image": "shopify://shop_images/Testimonial_bc5ee79c-b1a7-48e5-9e1b-02fa0195c367.jpg",
+        "crop": "",
+        "image_shape": "default",
+        "blob_type": 1,
+        "rotate_image": 0,
+        "image_position": "right",
+        "image_size": "half",
+        "disable_media_style": true,
+        "title": "Talitha Is partnering with Kearny High to Fuel Fundraising Efforts and Drive Positive Change",
+        "heading_size": "heading-feature",
+        "richtext": "<p>Talitha.com is not just a coffee company; it's a mission-driven platform dedicated to making a lasting impact. Our partnership with Kearny Senior High goes beyond fundraising; it's about combating a critical issue – sex trafficking. At Talitha.com, we're committed to supporting survivors on their path to recovery and empowerment. Every cup of our coffee and every bag you purchase play a vital role in our mission to eradicate sex trafficking. Your support isn't just about raising funds; it's about actively contributing to the cause of ending sex trafficking and making a difference in the lives of survivors.</p>",
+        "text_alignment": "text-left",
+        "button_link": "",
+        "button_label": "",
+        "color_scheme": "secondary",
+        "use_gradient_background": false
+      }
+    },
+    "b7be1615-efc6-4d49-a4ba-301347924ae3": {
+      "type": "newsletter",
+      "disabled": true,
+      "settings": {
+        "title": "10% OFF YOUR FIRST ORDER",
+        "richtext": "<p>Stay up to date with all things from Talitha Coffee, and get our newsletter straight to your inbox.. with 10% off your first order!</p>",
+        "display_on_card": false,
+        "color_scheme": "secondary",
+        "use_gradient_background": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "ecom_fundraiser_header_section_DbqNC6",
+    "f28f973e-b051-4311-9da3-e3f3728a01b0",
+    "ecom_centered_button_section_Ri6NAF",
+    "ecom_fundraiser_selector_section_rtenDR",
+    "image_with_text_overlay_gQUmHh",
+    "604165ea-96cb-4625-8da7-c75ab47b52f2",
+    "image_with_text_overlay_6ik79B",
+    "featured_collection_B6CPxi",
+    "image_with_text_overlay_RWcpTe",
+    "featured_collection_EnhkrP",
+    "feature_text_columns_zAi3Je",
+    "image_with_text_XNDcPf",
+    "custom_liquid_eRaf9n",
+    "image_with_text_NY4Vwa",
+    "b7be1615-efc6-4d49-a4ba-301347924ae3"
+  ]
+}

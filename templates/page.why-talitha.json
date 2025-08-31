@@ -1,0 +1,374 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "display_on_card": false,
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "6cbf0dae-b779-4a8f-89ce-62d0f749d32e": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "861b86c5-be5c-446a-b454-434ec96c6cd0": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 100,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/24.svg",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 6,
+            "vertical_position": 90,
+            "rotate": 2,
+            "show_sticker_on_mobile": false,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": false,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "f99be31f-0f8c-4429-93ce-2c256b1dd238": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 100,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/11.svg",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 4,
+            "vertical_position": 74,
+            "rotate": -24,
+            "show_sticker_on_mobile": false,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": false,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "7ba5f3ce-23f9-4061-ae6a-499856dd6843": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 100,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Artboard_37.svg",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 14,
+            "vertical_position": 99,
+            "rotate": -70,
+            "show_sticker_on_mobile": false,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": true,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "064c5794-3648-48f5-83bc-a86bb60dec01": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 100,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/6.svg",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 12,
+            "vertical_position": 97,
+            "rotate": 0,
+            "show_sticker_on_mobile": false,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": false,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        }
+      },
+      "block_order": [
+        "861b86c5-be5c-446a-b454-434ec96c6cd0",
+        "f99be31f-0f8c-4429-93ce-2c256b1dd238",
+        "7ba5f3ce-23f9-4061-ae6a-499856dd6843",
+        "064c5794-3648-48f5-83bc-a86bb60dec01"
+      ],
+      "custom_css": [],
+      "settings": {
+        "image": "shopify://shop_images/background1.jpg",
+        "image_mobile": "shopify://shop_images/Screenshot_2023-05-02_at_16.28_1_1.png",
+        "display_on_card": false,
+        "display_content_below_image_on_mobile": true,
+        "style": "full",
+        "height": "natural",
+        "place_content": "place-content-center-start",
+        "text_align": "text-left",
+        "title": "to end Human trafficking and support survivors, one sip at a time.",
+        "heading_size": "heading-standard",
+        "richtext": "",
+        "cta_url": "",
+        "cta_text": "Shop Now",
+        "color_scheme": "secondary",
+        "use_gradient_background": false,
+        "text_overlay_color": "same_as_section"
+      }
+    },
+    "14528820-54c0-40da-b52e-157fd83f8a8a": {
+      "type": "scroll-hardcode",
+      "blocks": {
+        "a939bacd-ab22-47fd-b784-ba8f382280ac": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/tk_2.png",
+            "title": "Ethically Sourced",
+            "text": "We work with importers that source only through ethical practices, protecting and honoring the people whose hard work and dedication makes each cup of coffee possible."
+          }
+        },
+        "082dcdc0-57d2-45ad-920d-1f40d7484df7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/tk_1_c209a990-06fc-4d8c-8f9c-3e00afdf4d95.png",
+            "title": "Intentionally Roasted",
+            "text": "Our highly skilled roasters, thoughtfully roast every batch of carefully selected specialty coffee beans to best draw out the unique flavour characteristics, creating a product that we are proud to offer."
+          }
+        },
+        "adb4eeca-25fe-4714-8ee3-9eee123778df": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/tk_3.png",
+            "title": "Collaborative Advocacy",
+            "text": "We believe in the power of collaboration. By creating job opportunities, providing support for survivors of human trafficking, and partnering with experts as well as individuals and organizations seeking to benefit others, we can all do more together to make a difference."
+          }
+        }
+      },
+      "block_order": [
+        "a939bacd-ab22-47fd-b784-ba8f382280ac",
+        "082dcdc0-57d2-45ad-920d-1f40d7484df7",
+        "adb4eeca-25fe-4714-8ee3-9eee123778df"
+      ],
+      "custom_css": [
+        "p {width: 90%; font-size: 30px;}",
+        "h1 {font-size: 85px; width: 90%;}",
+        "@media (max-width: 990px) {p {width: 90%; font-size: 20px; } h1 {font-size: 45px; width: 80%; }}"
+      ],
+      "settings": {}
+    },
+    "6230ea24-62e9-479d-9e13-980f5c304d77": {
+      "type": "image-with-text",
+      "disabled": true,
+      "settings": {
+        "display_on_card": false,
+        "image": "shopify://shop_images/Mask_group_1.jpg",
+        "crop": "",
+        "image_shape": "default",
+        "blob_type": 1,
+        "rotate_image": 0,
+        "image_position": "left",
+        "image_size": "half",
+        "disable_media_style": false,
+        "title": "Ethically Sourced",
+        "heading_size": "heading-feature",
+        "richtext": "<p>We work with importers that source only through ethical practices, protecting and honoring the people whose hard work and dedication makes each cup of coffee possible.</p>",
+        "text_alignment": "text-left",
+        "button_link": "",
+        "button_label": "Shop Now",
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "8d85b951-dbd4-4185-ab42-907e5b423ec8": {
+      "type": "header-two-column",
+      "custom_css": [
+        "p {line-height: 20p;}",
+        "@media (max-width: 990px) {p {line-height: 20px; }}",
+        "@media (min-width: 990px) {p {line-height: 26px; }}"
+      ],
+      "settings": {
+        "header": "THE HEROES OF THE STORY",
+        "para_text_1": "We remind ourselves every day that this isn’t about us. We are honored to be a platform from which survivors can rise, and reclaim their lives.",
+        "para_text_2": "Because the average age of entry into trafficking is 11-14 years old, survivors often face challenging barriers when re-building their lives. We built Talitha with the vision to empower survivors and equip them with the tools and support they need to thrive.  Talitha's Co-Founder, Jenny, is a survivor of childhood exploitation. Today, she’s a mother of 6, college graduate, business and non-profit leader, and tireless advocate. Jenny is our hero, and our reminder that survivors can rise, uplift each other, and create a safer, more abundant world.When you buy Talitha coffee, you are directly helping us provide support and bring hope to survivors of human trafficking, empowering more lives, like Jenny’s. Thank you!",
+        "header_color": "#ffffff",
+        "body_color": "#ffffff",
+        "background_color": "#1b3c34"
+      }
+    },
+    "1e5bf31f-76f3-488e-a2a7-687e7ca4dfa3": {
+      "type": "image-with-text",
+      "custom_css": [
+        "h2 {font-family: \"termina\" !important;}",
+        "p {font-family: \"calibre\" !important; line-height: 24px;}",
+        ".py-section-vertical-spacing {padding-bottom: 0;}",
+        "@media (min-width: 990px) {p {max-width: 80%; }}"
+      ],
+      "settings": {
+        "display_on_card": false,
+        "image": "shopify://shop_images/Rectangle_16.png",
+        "crop": "",
+        "image_shape": "default",
+        "blob_type": 1,
+        "rotate_image": 0,
+        "image_position": "right",
+        "image_size": "half",
+        "disable_media_style": false,
+        "title": "JOBS",
+        "heading_size": "heading-standard",
+        "richtext": "<p>By collaborating with our survivor care network, we hire human trafficking survivors and create workplaces that are intentionally supportive, informed and designed to help survivors thrive long-term.</p>",
+        "text_alignment": "text-left",
+        "button_link": "",
+        "button_label": "",
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "f33e2f71-5967-49bd-b058-d41aa77a8eb0": {
+      "type": "image-with-text",
+      "custom_css": [
+        "h2 {font-family: \"termina\" !important;}",
+        "p {font-family: \"calibre\" !important; line-height: 24px;}",
+        ".py-section-vertical-spacing {padding-bottom: 0;}",
+        "@media (min-width: 990px) {p {max-width: 80%; }}"
+      ],
+      "settings": {
+        "display_on_card": false,
+        "image": "shopify://shop_images/Group_33.png",
+        "crop": "",
+        "image_shape": "default",
+        "blob_type": 1,
+        "rotate_image": 0,
+        "image_position": "left",
+        "image_size": "half",
+        "disable_media_style": false,
+        "title": "Training",
+        "heading_size": "heading-standard",
+        "richtext": "<p>Talitha Coffee Roasters is certified by the Specialty Coffee Association (SCA). To help empower and liberate survivors, we offer our expert training and professional mentoring.<br/><br/><br/><br/></p>",
+        "text_alignment": "text-left",
+        "button_link": "",
+        "button_label": "",
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "9770567a-44d1-4f41-bb9a-d3001ca9fff0": {
+      "type": "image-with-text",
+      "custom_css": [
+        "h2 {font-family: \"termina\" !important;}",
+        "p {font-family: \"calibre\" !important; line-height: 24px;}",
+        ".py-section-vertical-spacing {padding-bottom: 40px;}",
+        "@media (min-width: 990px) {p {max-width: 80%; }}"
+      ],
+      "settings": {
+        "display_on_card": false,
+        "image": "shopify://shop_images/Group_35.png",
+        "crop": "",
+        "image_shape": "default",
+        "blob_type": 1,
+        "rotate_image": 0,
+        "image_position": "right",
+        "image_size": "half",
+        "disable_media_style": false,
+        "title": "Holistic Support",
+        "heading_size": "heading-standard",
+        "richtext": "<p>From housing to transportation, food to clothing, we work closely with our survivor care network to understand and support a holistically safe and sustainable re-entry for survivors.</p>",
+        "text_alignment": "text-left",
+        "button_link": "",
+        "button_label": "",
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "3bcfc045-a048-494d-aff3-35e8f717eadd": {
+      "type": "text-image-custom",
+      "custom_css": [
+        "p {line-height: 24px; padding-bottom: 20px;}",
+        "img {width: 190px; margin: 0 auto;}"
+      ],
+      "settings": {
+        "header_split": "OUR STORY",
+        "para_text": "With a deep passion for combating human trafficking, Talitha's co-founder Jenny Barber was determined to make a positive difference after witnessing the devastating, intergenerational impact of the issue from a young age.",
+        "custom_image": "shopify://shop_images/Asset_1.svg",
+        "header_color": "#1b3c34",
+        "body_color": "#1b3c34",
+        "background_color": "#f4f4f4",
+        "button_label": "Read More",
+        "button_link": "shopify://pages/about",
+        "reverse_order": true
+      }
+    },
+    "06068412-08a1-4100-8bc0-0839d1dd27ec": {
+      "type": "featured-collection",
+      "custom_css": [
+        "section {padding: 0px 0 !important;}"
+      ],
+      "settings": {
+        "title": "EXPLORE OUR RANGE",
+        "subheading": "",
+        "collection": "coffee",
+        "no_products": 4,
+        "show_view_all": false,
+        "enable_quick_buy": false,
+        "display_on_card": false,
+        "layout": "carousel",
+        "products_per_row_mobile": "1",
+        "products_per_row_desktop": 4,
+        "slideshow_focus": "center",
+        "mobile_slide_width": "three_fifths",
+        "desktop_slide_width": 25,
+        "autoscroll_mode": "1",
+        "product_tiles_aspect_ratio": "",
+        "image_shape": "",
+        "color_scheme": "primary",
+        "use_gradient_background": false,
+        "show_promo_box": false,
+        "promo_box_size": "single",
+        "promo_overlay": "",
+        "promo_overlay_percentage": 25,
+        "promo_title": "",
+        "promo_desc": "",
+        "promo_cta": "",
+        "promo_url": ""
+      }
+    },
+    "e48727fd-6e04-48ce-b42f-631204273f7d": {
+      "type": "newsletter",
+      "settings": {
+        "title": "10% OFF YOUR FIRST ORDER",
+        "richtext": "<p>Stay up to date with all things from Talitha Coffee, and get our newsletter straight to your inbox...with 10% off your first order!</p>",
+        "display_on_card": false,
+        "color_scheme": "secondary",
+        "use_gradient_background": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "6cbf0dae-b779-4a8f-89ce-62d0f749d32e",
+    "14528820-54c0-40da-b52e-157fd83f8a8a",
+    "6230ea24-62e9-479d-9e13-980f5c304d77",
+    "8d85b951-dbd4-4185-ab42-907e5b423ec8",
+    "1e5bf31f-76f3-488e-a2a7-687e7ca4dfa3",
+    "f33e2f71-5967-49bd-b058-d41aa77a8eb0",
+    "9770567a-44d1-4f41-bb9a-d3001ca9fff0",
+    "3bcfc045-a048-494d-aff3-35e8f717eadd",
+    "06068412-08a1-4100-8bc0-0839d1dd27ec",
+    "e48727fd-6e04-48ce-b42f-631204273f7d"
+  ]
+}

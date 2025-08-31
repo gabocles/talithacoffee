@@ -1,0 +1,317 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+  <head>
+     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="">
+    <meta name="zoom-domain-verification" content="ZOOM_verify_QnSPDpN5YVUZsRKxSnDH3g">
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: '32x32' }}">
+    {%- endif -%}
+
+    {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
+      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+    {%- endunless -%}
+
+    <title>
+      {{ page_title }}
+      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    </title>
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+    {% render "network" %}
+    {%- render 'meta-tags' -%}
+
+    {%- render 'ecom_header' -%}
+    <!-- Added by AVADA SEO Suite -->
+    {% include 'avada-seo' %} 
+    <!-- /Added by AVADA SEO Suite -->
+    <link rel="preconnect dns-prefetch" href="https://api.config-security.com/" crossorigin>
+    <link rel="preconnect dns-prefetch" href="https://conf.config-security.com/" crossorigin>
+    <link rel="preconnect dns-prefetch" href="https://whale.camera/" crossorigin>
+    <script type="text/lazyload">
+/* >> TriplePixel :: start*/
+window.TriplePixelData={TripleName:"talithacoffee.myshopify.com",ver:"2.12",plat:"SHOPIFY",isHeadless:false},function(W,H,A,L,E,_,B,N){function O(U,T,P,H,R){void 0===R&&(R=!1),H=new XMLHttpRequest,P?(H.open("POST",U,!0),H.setRequestHeader("Content-Type","text/plain")):H.open("GET",U,!0),H.send(JSON.stringify(P||{})),H.onreadystatechange=function(){4===H.readyState&&200===H.status?(R=H.responseText,U.includes(".txt")?eval(R):P||(N[B]=R)):(299<H.status||H.status<200)&&T&&!R&&(R=!0,O(U,T-1,P))}}if(N=window,!N[H+"sn"]){N[H+"sn"]=1,L=function(){return Date.now().toString(36)+"_"+Math.random().toString(36)};try{A.setItem(H,1+(0|A.getItem(H)||0)),(E=JSON.parse(A.getItem(H+"U")||"[]")).push({u:location.href,r:document.referrer,t:Date.now(),id:L()}),A.setItem(H+"U",JSON.stringify(E))}catch(e){}var i,m,p;A.getItem('"!nC`')||(_=A,A=N,A[H]||(E=A[H]=function(t,e,a){return void 0===a&&(a=[]),"State"==t?E.s:(W=L(),(E._q=E._q||[]).push([W,t,e].concat(a)),W)},E.s="Installed",E._q=[],E.ch=W,B="configSecurityConfModel",N[B]=1,O("https://conf.config-security.com/model",5),i=L(),m=A[atob("c2NyZWVu")],_.setItem("di_pmt_wt",i),p={id:i,action:"profile",avatar:_.getItem("auth-security_rand_salt_"),time:m[atob("d2lkdGg=")]+":"+m[atob("aGVpZ2h0")],host:A.TriplePixelData.TripleName,plat:A.TriplePixelData.plat,url:window.location.href,ref:document.referrer,ver:A.TriplePixelData.ver},O("https://api.config-security.com/event",5,p),O("https://whale.camera/live/dot.txt",5)))}}("","TriplePixel",localStorage);
+/* << TriplePixel :: end*/
+    </script>
+    <script nowprocket nitro-exclude type="text/javascript" id="sa-dynamic-optimization" data-uuid="59c5d7f8-65ad-4f95-a708-da188fcd6ecc" src="data:text/javascript;base64,dmFyIHNjcmlwdCA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoInNjcmlwdCIpO3NjcmlwdC5zZXRBdHRyaWJ1dGUoIm5vd3Byb2NrZXQiLCAiIik7c2NyaXB0LnNldEF0dHJpYnV0ZSgibml0cm8tZXhjbHVkZSIsICIiKTtzY3JpcHQuc3JjID0gImh0dHBzOi8vZGFzaGJvYXJkLmxpbmtncmFwaC5jb20vc2NyaXB0cy9keW5hbWljX29wdGltaXphdGlvbi5qcyI7c2NyaXB0LmRhdGFzZXQudXVpZCA9ICI1OWM1ZDdmOC02NWFkLTRmOTUtYTcwOC1kYTE4OGZjZDZlY2MiO3NjcmlwdC5pZCA9ICJzYS1keW5hbWljLW9wdGltaXphdGlvbi1sb2FkZXIiO2RvY3VtZW50LmhlYWQuYXBwZW5kQ2hpbGQoc2NyaXB0KTs="></script>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <!-- Google Tag Manager -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+    </script>
+    <script type="lightJs">
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-N3GDJGLT');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <script>
+      !function(){var o=window.tdl=window.tdl||[];if(o.invoked)window.console&&console.error&&console.error("Tune snippet has been included more than once.");else{o.invoked=!0,o.methods=["init","identify","convert"],o.factory=function(n){return function(){var e=Array.prototype.slice.call(arguments);return e.unshift(n),o.push(e),o}};for(var e=0;e<o.methods.length;e++){var n=o.methods[e];o[n]=o.factory(n)}o.init=function(e){var n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src="https://js.go2sdk.com/v2/tune.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(n,t),o.domain=e}}}();
+
+      tdl.init("https://aspireiq.go2cloud.org")
+      tdl.identify()
+    </script>
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.shopify.com" crossorigin>
+    <link rel="preconnect" href="https://monorail-edge.shopifysvc.com">
+
+    {%- liquid
+      assign main_font = settings.type_main_font
+      assign main_font_bold = main_font | font_modify: 'weight', 'bold'
+      assign heading_font = settings.type_heading_font
+      assign accent_font = settings.type_accent_font
+    -%}
+
+
+    <link rel="stylesheet" href="{{ 'adev.min.css' | asset_url }}" media="all">
+
+    {{ content_for_header }}
+
+    {% render 'js-bridge' %}
+
+    <script>
+      document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+    </script>
+    <script>
+      function debounce(fn, wait) {
+        let t;
+        return (...args) => {
+          clearTimeout(t);
+          t = setTimeout(() => fn.apply(this, args), wait);
+        };
+      }
+    </script>
+    <script src="{{ 'utils.js' | asset_url }}" defer></script>
+    <script src="{{ 'global.bundle.min.js' | asset_url }}" type="module"></script>
+    {% if template == 'cart' or settings.cart_type == 'modal' %}
+      <script src="{{ 'cart-items.js' | asset_url }}" type="module"></script>
+      <script src="{{ 'cart-footer.js' | asset_url }}" type="module"></script>
+      {% if settings.cart_notes_enable %}
+        <script src="{{ 'cart-note.js' | asset_url }}" type="module"></script>
+      {% endif %}
+    {% endif %}
+    {% if request.design_mode %}
+      {% comment %} If theme editor, load all modules {% endcomment %}
+      <script src="{{ 'product.js' | asset_url }}" type="module"></script>
+      <script src="{{ 'modules-video.bundle.min.js' | asset_url }}" type="module"></script>
+      <script src="{{ 'background-video.js' | asset_url }}" type="module"></script>
+      <script src="{{ 'modules-background-video-yt.bundle.min.js' | asset_url }}" type="module"></script>
+      <script src="{{ 'video-with-text.js' | asset_url }}" type="module"></script>
+      <script src="{{ 'modules-slideshow.bundle.min.js' | asset_url }}" type="module"></script>
+      <script src="{{ 'theme-editor-support.js' | asset_url }}" type="module"></script>
+      <script src="{{ 'vendor-product.bundle.min.js' | asset_url }}" type="module"></script>
+      <script src="{{ 'product-quick-buy.js' | asset_url }}" type="module"></script>
+      <script src="{{ 'header.js' | asset_url }}" type="module"></script>
+      <script src="{{ 'call-to-action-sticker.js' | asset_url }}" type="module"></script>
+      <script src="{{ 'sections-age-check.bundle.min.js' | asset_url }}" type="module"></script>
+      <script src="{{ 'filterable.js' | asset_url }}" type="module"></script>
+      <script src="{{ 'login.js' | asset_url }}" type="module"></script>
+      <script src="{{ 'modules-popup.bundle.min.js' | asset_url }}" type="module"></script>
+      <script src="{{ 'modules-predictive-search.bundle.min.js' | asset_url }}" type="module"></script>
+      <script src="{{ 'vendor-store-availability.bundle.min.js' | asset_url }}" type="module"></script>
+      <script src="{{ 'store-availability.js' | asset_url }}" type="module"></script>
+      <script src="{{ 'product-model.js' | asset_url }}" type="module"></script>
+      <script src="{{ 'modules-photoswipe.bundle.min.js' | asset_url }}" type="module"></script>
+      <script src="{{ 'shapes-animations.js' | asset_url }}" defer></script>
+      <script src="{{ 'offset-gallery-item.js' | asset_url }}" type="module"></script>
+      <script src="{{ 'sections-footer.bundle.min.js' | asset_url }}" type="module"></script>
+      <script src="{{ 'modules-quantity.bundle.min.js' | asset_url }}" type="module"></script>
+      <script src="{{ 'block-shape-divider.js' | asset_url }}" type="module"></script>
+      <script src="{{ 'gift-card-recipient.js' | asset_url }}" type="module"></script>
+      <script src="{{ 'curved-text.js' | asset_url }}" type="module"></script>
+    {% endif %}
+    <script src="{{ 'alpine-extensions.js' | asset_url }}" defer></script>
+    <script src="{{ 'scroll-out.min.js' | asset_url }}" defer></script>
+    <link rel="stylesheet" href="{{ 'base.bundle.css' | asset_url }}">
+    <link rel="stylesheet" href="{{ 'custom.css' | asset_url }}">
+    <link rel="stylesheet" href="{{ 'layout.scss.css' | asset_url }}">
+    <link rel="stylesheet" href="https://use.typekit.net/yaf0fmw.css">
+
+    {% if template contains 'customers' %}
+      {% comment %}theme-check-disable ParserBlockingScriptTag{% endcomment %}
+      {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
+      {{ 'customer_area.js' | shopify_asset_url | script_tag }}
+      {% comment %}theme-check-enable ParserBlockingScriptTag{% endcomment %}
+    {% endif %}
+    <style>
+      :root {
+        --max-site-width: 1820px;
+      }
+    </style>
+    {% style %}
+      {{ main_font | font_face: font_display: 'swap' }}
+      {{ heading_font | font_face: font_display: 'swap' }}
+      {{ accent_font | font_face: font_display: 'swap' }}
+
+      {%- liquid
+        assign main_font_bolder = main_font | font_modify: 'weight', 'bolder'
+        assign main_font_italic = main_font | font_modify: 'style', 'italic'
+        assign main_font_bold_italic = main_font_bold | font_modify: 'style', 'italic'
+        if main_font_bold
+          echo main_font_bold | font_face: font_display: 'swap'
+        endif
+        if main_font_italic
+          echo main_font_italic | font_face: font_display: 'swap'
+        endif
+        if main_font_bold_italic
+          echo main_font_bold_italic | font_face: font_display: 'swap'
+        endif
+        if main_font_bolder
+          echo main_font_bolder | font_face: font_display: 'swap'
+        endif
+      -%}
+
+      {% if settings.heading_uppercase -%}
+        {%- capture heading_capitalize -%}uppercase{%- endcapture -%}
+      {% else -%}
+        {%- capture heading_capitalize -%}none{%- endcapture -%}
+      {% endif -%}
+      {%- capture heading_letterspacing -%}{{ settings.heading_letterspacing | divided_by: 1000.0 }}{% unless settings.heading_letterspacing == 0 -%}em{% endunless -%}{%- endcapture -%}
+
+
+
+      /* font added - Calibre + Stratum  */
+      @font-face {
+      font-family: 'Calibre';
+      src: url(https://cdn.shopify.com/s/files/1/0726/2391/5327/files/calibre-medium.woff2?v=1685996030) format('woff2');
+        }
+      @font-face {
+      font-family: 'Calibre Test';
+      src: url(https://cdn.shopify.com/s/files/1/0726/2391/5327/files/Calibre-Test.otf?v=1704917536);
+        }
+      @font-face {
+      font-family: 'Stratum';
+      src: url(https://cdn.shopify.com/s/files/1/0726/2391/5327/files/Stratum1WebBold.woff2?v=1687826288) format('woff2');
+        }
+
+
+      :root {
+        --heading-font-stack: {{ heading_font.family }}, {{ heading_font.fallback_families }};
+        --heading-font-weight: {{ heading_font.weight }};
+        --heading-font-style: {{ heading_font.style }};
+        --heading-letterspacing: {{ heading_letterspacing }};
+        --heading-capitalize: {{ heading_capitalize }};
+        --main-font-stack: {{ main_font.family }}, {{ main_font.fallback_families }};
+        --main-font-weight: {{ main_font.weight }};
+        --main-font-style: {{ main_font.style }};
+        --accent-font-stack: {{ accent_font.family }}, {{ accent_font.fallback_families }};
+        --accent-font-weight: {{ accent_font.weight }};
+        --accent-font-style: {{ accent_font.style }};
+      }
+    {% endstyle %}
+    {%- render 'css-variables' %}
+
+    {% comment %}theme-check-disable MissingTemplate{% endcomment %}
+    {% render 'critical-css' %}
+    {% comment %}theme-check-enable MissingTemplate{% endcomment %}
+    <style id="manual-critical-css">
+      [x-cloak] {
+        display: none;
+      }
+      [data-parallax-container] {
+        will-change: opacity;
+        opacity: 0;
+        transition: opacity 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+      }
+      .no-js [data-parallax-container],
+      [data-parallax-container].animated {
+        opacity: 1;
+      }
+
+      @media (prefers-reduced-motion) {
+        [data-parallax-container] {
+          opacity: 1;
+        }
+      }
+    </style>
+
+    {% unless heading_font.system? %}
+      <link rel="preload" as="font" href="{{ heading_font | font_url }}" type="font/woff2" crossorigin>
+    {% endunless %}
+    {% unless main_font.system? %}
+      <link rel="preload" as="font" href="{{ main_font | font_url }}" type="font/woff2" crossorigin>
+    {% endunless %}
+    <script>
+      window.onYouTubeIframeAPIReady = () => {
+        document.body.dispatchEvent(new CustomEvent('youtubeiframeapiready'));
+      };
+    </script>
+<script>function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"6aca228450a7b323fd87655dd09c8751"})});</script>
+
+     {% if template == 'customers/account' %}
+      <script src="https://static.rechargecdn.com/assets/storefront/recharge-client-1.16.3.min.js"></script>
+    {% endif %}
+
+    <link rel="stylesheet" href="{{ 'ck-my-account-styling-affinity.css' | asset_url }}">
+    <link rel="stylesheet" href="{{ 'ck-my-account-styling.css' | asset_url }}">
+  {% include 'pagefly-app-header' %}</head>
+
+  <body data-color-scheme="primary">
+    {% comment %}theme-check-disable MissingTemplate{% endcomment %}
+    <a class="skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
+    {%- sections 'header-group' -%}
+    {% render 'header-group-support' %}
+    <main id="MainContent" class="overflow-hidden">
+      {{ content_for_layout }}
+    </main>
+
+    {%- sections 'footer-group' -%}
+    {%- sections 'overlay-group' -%}
+
+    <div id="screenreader-announce" class="sr-only" aria-live="polite" role="status"></div>
+
+    <ul hidden>
+      <li id="a11y-refresh-page-message">{{ 'general.accessibility.refresh_page' | t }}</li>
+      <li id="a11y-selection-message">{{ 'general.accessibility.selection_help' | t }}</li>
+    </ul>
+ 
+    {% comment %} Modal containers {% endcomment %}
+    {% render 'left-drawer' %}
+    {% render 'right-drawer' %}
+    {% render 'modal' %}
+    {{ "//cdn.shopify.com/s/files/1/0633/1672/1913/t/1/assets/splide.min.js" | script_tag}} 
+    <script src="{{ 'modals.js' | asset_url }}" type="module"></script>
+    {% render "scripts" %}
+    {% comment %}theme-check-disable LiquidTag{% endcomment %}
+    {%- if settings.cart_type == 'modal' -%}
+      {% render 'drawer-cart' %}
+    {%- endif -%}
+    {% comment %}theme-check-enable LiquidTag{% endcomment %}
+    {%- if settings.show_on_sale_and_sold_out_badges -%}
+      {%- render 'static-sticker-defs' with shape: settings.on_sale_badge_shape, id: 'on-sale' -%}
+      {%- render 'static-sticker-defs' with shape: settings.sold_out_badge_shape, id: 'sold-out' -%}
+    {%- endif -%}
+    {%- render 'static-sticker-defs' with shape: settings.metafield_badge_shape, id: 'metafield-badge' -%}
+    {% comment %}theme-check-enable MissingTemplate{% endcomment %}
+    {% render 'rebuy-smartcart-extensions' %}
+    {% render 'rebuy-extensions-b2c' %}
+    {%- render 'ecom_footer' -%}
+
+    {% comment %} Append codingkart javascript code on my account {% endcomment %}
+    {% if template == 'customers/account' %}
+      <script src="{{ 'customShopifyDashboard.js' | asset_url }}" defer></script>
+    {% endif %}
+
+    {% comment %} Append codingkart javascripto on recurring portal {% endcomment %}
+    {% if request.path contains '/tools/recurring/portal/' %}
+      <script src="{{ 'sjcl.js' | asset_url }}"></script>
+      <script src="{{ 'multipass.js' | asset_url }}"></script>
+      <script src="{{ 'customrecurringDashboard.js' | asset_url }}" defer></script>
+    {% endif %}
+  </body>
+</html>

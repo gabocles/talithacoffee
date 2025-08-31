@@ -1,0 +1,77 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-search",
+      "settings": {
+        "display_on_card": false,
+        "crop": "aspect-w-1 aspect-h-1",
+        "results_per_row_mobile": "2",
+        "results_per_row_desktop": 5,
+        "enable_filtering": true,
+        "enable_sorting": false,
+        "expand_filters": true,
+        "show_filter_count": true,
+        "enable_color_swatch_filters": false,
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "cb7db4e0-f554-40b0-8212-d8e71b626ab9": {
+      "type": "pattern-marquee",
+      "settings": {
+        "type": "waves",
+        "color": "text",
+        "size": 12,
+        "speed": 110,
+        "direction": "",
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "f92a3d3e-9291-403f-846d-5c2f3a85fff7": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Other COFFEE YOU'd LIKE",
+        "subheading": "",
+        "collection": "coffee",
+        "no_products": 18,
+        "show_view_all": true,
+        "enable_quick_buy": false,
+        "display_on_card": true,
+        "layout": "carousel",
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 5,
+        "slideshow_focus": "left",
+        "mobile_slide_width": "full_width",
+        "desktop_slide_width": 40,
+        "autoscroll_mode": "1",
+        "product_tiles_aspect_ratio": "",
+        "image_shape": "",
+        "color_scheme": "primary",
+        "use_gradient_background": false,
+        "show_promo_box": false,
+        "promo_box_size": "single",
+        "promo_overlay": "",
+        "promo_overlay_percentage": 25,
+        "promo_title": "",
+        "promo_desc": "",
+        "promo_cta": "",
+        "promo_url": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "cb7db4e0-f554-40b0-8212-d8e71b626ab9",
+    "f92a3d3e-9291-403f-846d-5c2f3a85fff7"
+  ]
+}

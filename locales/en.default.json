@@ -1,0 +1,899 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "general": {
+    "404": {
+      "title": "404 Page Not Found",
+      "subtext_html": "The page you requested does not exist."
+    },
+    "accessibility": {
+      "skip_to_content": "Skip to content",
+      "close_modal": "Close (esc)",
+      "link_messages": {
+        "new_window": "Opens in a new window.",
+        "external": "Opens external website.",
+        "new_window_and_external": "Opens external website in a new window."
+      },
+      "refresh_page": "Choosing a selection results in a full page refresh.",
+      "selection_help": "Press the space key then arrow keys to make a selection.",
+      "unit_price_separator": "per",
+      "error": "Error",
+      "increment_one": "Add one",
+      "decrement_one": "Remove one",
+      "total_reviews": "total reviews",
+      "star_reviews_info": "{{ rating_value }} out of {{ rating_max }} stars",
+      "loading": "Loading"
+    },
+    "pagination": {
+      "label": "Pagination",
+      "page": "Page {{ number }}",
+      "next": "Next page",
+      "previous": "Previous page"
+    },
+    "video": {
+      "pause": "Pause video",
+      "play": "Play video"
+    },
+    "meta": {
+      "tags": "Tagged \"{{ tags }}\"",
+      "page": "Page {{ page }}"
+    },
+    "breadcrumbs": {
+      "home": "Home",
+      "home_link_title": "Back to the frontpage"
+    },
+    "newsletter_form": {
+      "newsletter_email": "Email Address",
+      "email_placeholder": "email@example.com",
+      "confirmation": "Thanks for subscribing",
+      "submit": "Subscribe"
+    },
+    "search": {
+      "loading": "Loading",
+      "placeholder": "Search",
+      "submit": "Search",
+      "no_results": "No results found for “{{ terms }}”. Check the spelling or use a different word or phrase.",
+      "page": "Page",
+      "products": "Products",
+      "collections": "Collections",
+      "articles": "Articles",
+      "pages": "Pages",
+      "suggestions": "Suggestions",
+      "results_with_count": {
+        "one": "{{ count }} result",
+        "other": "{{ count }} results"
+      },
+      "results_with_count_and_term": {
+        "one": "{{ count }} result found for “{{ terms }}”",
+        "other": "{{ count }} results found for “{{ terms }}”"
+      },
+      "title": "Search our site",
+      "title_with_results": "Search results",
+      "search_for": "Search for “{{ terms }}”",
+      "clear": "Clear search",
+      "view_all": "View all results"
+    },
+    "password_page": {
+      "opening_soon": "Opening Soon",
+      "login_form_heading": "Enter store using password",
+      "login_form_password_label": "Password",
+      "login_form_password_placeholder": "Your password",
+      "login_form_submit": "Enter",
+      "signup_form_email_label": "Email",
+      "signup_form_success": "We will send you an email right before we open!",
+      "admin_link_html": "Are you the store owner? <a href=\"/admin\" class=\"text-link border-b border-scheme-text \">Log in here</a>",
+      "password_link": "Enter using password",
+      "powered_by_shopify_html": "This shop will be powered by {{ shopify }}"
+    },
+    "country": {
+      "dropdown_label": "Country/region"
+    },
+    "language": {
+      "dropdown_label": "Language"
+    }
+  },
+  "blogs": {
+    "article": {
+      "author_on_date_html": "Posted by {{ author }} on {{ date }}",
+      "older_post": "Older Post",
+      "newer_post": "Newer Post",
+      "tags": "Tags",
+      "comment_meta_html": "{{ author }} on {{ date }}",
+      "read_more": "Read more",
+      "by_author": "{{ author }}",
+      "view_all_blogs": "View all blog posts"
+    },
+    "comments": {
+      "title": "Leave a comment",
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "post": "Post comment",
+      "moderated": "Please note, comments must be approved before they are published",
+      "success_moderated": "Your comment was posted successfully. We will publish it in a little while, as our blog is moderated.",
+      "success": "Your comment was posted successfully! Thank you!",
+      "comments_with_count": {
+        "one": "{{ count }} comment",
+        "other": "{{ count }} comments"
+      }
+    },
+    "sidebar": {
+      "recent_articles": "Recent Articles",
+      "categories": "Categories",
+      "rss": "Subscribe",
+      "all_tags": "All"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Your cart",
+      "remove": "Remove",
+      "note": "Add a note to your order",
+      "subtotal": "Subtotal",
+      "shipping_at_checkout": "Shipping & taxes calculated at checkout",
+      "update": "Update Cart",
+      "checkout": "Check Out",
+      "empty": "Your cart is currently empty.",
+      "taxes_and_shipping_at_checkout": "Taxes and shipping calculated at checkout",
+      "taxes_and_shipping_policy_at_checkout_html": "Taxes and <a href=\"{{ link }}\">shipping</a> calculated at checkout",
+      "taxes_included_but_shipping_at_checkout": "Tax included and shipping calculated at checkout",
+      "taxes_included_and_shipping_policy_html": "Tax included. <a href=\"{{ link }}\">Shipping</a> calculated at checkout.",
+      "cookies_required": "Enable cookies to use the shopping cart",
+      "continue_shopping": "Continue shopping",
+      "continue_browsing_html": "Continue browsing <a href=\"{{ link_url }}\">here</a>.",
+      "close_cart": "Close Cart",
+      "cart_error": "There was an error while updating your cart. Please try again.",
+      "cart_add_error": "All {{ title }} are in your cart.",
+      "new_subtotal": "TODO"
+    },
+    "label": {
+      "discounted_total": "Discounted total",
+      "product": "Product",
+      "price": "Price",
+      "price_column": "See Price column for discount details.",
+      "product_details": "Product details",
+      "quantity": "Quantity",
+      "qty": "Qty",
+      "regular_total": "Regular total",
+      "remove": "Remove {{ product }}",
+      "total": "Total",
+      "update": "Update",
+      "discounted_price": "Discounted price",
+      "original_price": "Original price"
+    },
+    "popup": {
+      "added_to_cart": "Added to your cart",
+      "cart_count": {
+        "one": "{{ count }} item",
+        "other": "{{ count }} items"
+      },
+      "product_details": "Product details",
+      "quantity": "Qty",
+      "quantity_label": "Quantity: {{ quantity_count }}"
+    }
+  },
+  "collections": {
+    "general": {
+      "title": "Collection",
+      "all_of_collection": "View All",
+      "no_matches": "Sorry, there are no products in this collection",
+      "link_title": "Browse our {{ title }} collection",
+      "grid_view": "Grid view",
+      "list_view": "List view",
+      "items_with_count": {
+        "one": "{{ count }} product",
+        "other": "{{ count }} products"
+      }
+    },
+    "sidebar": {
+      "tags": "Tags"
+    },
+    "onboarding": {
+      "modal_title": "This page will show all of your store's products",
+      "no_products_html": "There are no products yet, but once you begin adding them they will show up here regardless if they are in a collection.",
+      "add_product": "Add Product"
+    },
+    "pagination": {
+      "item_count_label": "Showing Items"
+    }
+  },
+  "facets": {
+    "filters": {
+      "use_fewer_filters_html": "Use fewer filters or <a class=\"{{ class }}\" href=\"{{ link }}\">clear all</a>",
+      "title_tags": "Filter",
+      "clear": "Clear",
+      "all_tags": "All products",
+      "to": "To",
+      "from": "From",
+      "apply": "Apply"
+    },
+    "sorting": {
+      "title": "Sort",
+      "featured": "Featured",
+      "best_selling": "Best Selling",
+      "az": "Alphabetically, A-Z",
+      "za": "Alphabetically, Z-A",
+      "price_ascending": "Price, low to high",
+      "price_descending": "Price, high to low",
+      "date_descending": "Date, new to old",
+      "date_ascending": "Date, old to new",
+      "filter": "Filter"
+    }
+  },
+  "contact": {
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone Number",
+      "message": "Message",
+      "send": "Send",
+      "post_success": "Thanks for contacting us. We'll get back to you as soon as possible.",
+      "error_heading": "Please adjust the following:"
+    }
+  },
+  "customer": {
+    "account": {
+      "title": "My Account",
+      "details": "Account Details",
+      "view_addresses": "View Addresses",
+      "return": "Return to Account Details"
+    },
+    "activate_account": {
+      "title": "Activate Account",
+      "subtext": "Create your password to activate your account.",
+      "password": "Password",
+      "password_confirm": "Confirm Password",
+      "submit": "Activate Account",
+      "cancel": "Decline Invitation"
+    },
+    "addresses": {
+      "title": "Your Addresses",
+      "default": "Default",
+      "add_new": "Add a New Address",
+      "edit_address": "Edit address",
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "company": "Company",
+      "address1": "Address1",
+      "address2": "Address2",
+      "city": "City",
+      "country": "Country",
+      "province": "Province",
+      "zip": "Postal/Zip Code",
+      "phone": "Phone",
+      "set_default": "Set as default address",
+      "add": "Add Address",
+      "update": "Update Address",
+      "cancel": "Cancel",
+      "edit": "Edit",
+      "delete": "Delete",
+      "delete_confirm": "Are you sure you wish to delete this address?"
+    },
+    "login": {
+      "title": "Login",
+      "email": "Email",
+      "password": "Password",
+      "forgot_password": "Forgot your password?",
+      "sign_in": "Sign In",
+      "cancel": "Return to Store",
+      "guest_title": "Continue as a guest",
+      "guest_continue": "Continue"
+    },
+    "orders": {
+      "title": "Order History",
+      "order_number": "Order",
+      "date": "Date",
+      "payment_status": "Payment Status",
+      "fulfillment_status": "Fulfillment Status",
+      "total": "Total",
+      "none": "You haven't placed any orders yet."
+    },
+    "order": {
+      "title": "Order {{ name }}",
+      "date_html": "Placed on {{ date }}",
+      "cancelled_reason": "Reason: {{ reason }}",
+      "billing_address": "Billing Address",
+      "payment_status": "Payment Status",
+      "shipping_address": "Shipping Address",
+      "fulfillment_status": "Fulfillment Status",
+      "discount": "Discount",
+      "shipping": "Shipping",
+      "tax": "Tax",
+      "product": "Product",
+      "sku": "SKU",
+      "price": "Price",
+      "quantity": "Quantity",
+      "total": "Total",
+      "fulfilled_at": "Fulfilled",
+      "subtotal": "Subtotal",
+      "cancelled_html": "Order Cancelled on {{ date }}",
+      "tracking_url": "Tracking link",
+      "track_shipment": "Track shipment",
+      "tracking_company": "Carrier",
+      "tracking_number": "Tracking number",
+      "refund_amount": "Refund amount"
+    },
+    "recover_password": {
+      "title": "Reset your password",
+      "email": "Email",
+      "submit": "Submit",
+      "cancel": "Cancel",
+      "subtext": "We will send you an email to reset your password.",
+      "success": "We've sent you an email with a link to update your password."
+    },
+    "reset_password": {
+      "title": "Reset account password",
+      "subtext": "Enter a new password for {{ email }}",
+      "password": "Password",
+      "password_confirm": "Confirm Password",
+      "submit": "Reset Password"
+    },
+    "register": {
+      "title": "Create Account",
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Create",
+      "cancel": "Return to Store"
+    }
+  },
+  "sections": {
+    "slideshow": {
+      "next_slide": "Next slide",
+      "previous_slide": "Previous slide",
+      "pause_slideshow": "Pause slideshow",
+      "rotate_slideshow": "Play slideshow",
+      "load_slide": "Load slide {{ slide_number }}",
+      "navigation_instructions": "Use left/right arrows to navigate the slideshow or swipe left/right if using a mobile device",
+      "play_slideshow": "Play slideshow"
+    },
+    "tour": {
+      "tour_no_events": "No upcoming events",
+      "tour_ticket_link": "Find Tickets for",
+      "tour_more_link": "View More",
+      "tour_location": "Location",
+      "tour_venue": "Event Venue",
+      "online_event": "Online event"
+    },
+    "onboarding": {
+      "modal_title": "Almost there...",
+      "no_products_html": "You have no products in your Frontpage collection. This placeholder will appear until you <a href=\"/admin/collections?tutorial=Frontpage\">add a product to this collection</a>.",
+      "add_product": "Add a Product",
+      "product_title": "Example Product Title",
+      "no_collections_html": "You don't have any collections to show here. <a href=\"/admin/custom_collections\">Add some collections</a> to go along with the default Frontpage.",
+      "add_collection": "Add a Collection",
+      "collection_title": "Collection Title",
+      "collection_cta": "Shop Now",
+      "complete_setup_html": "Go to your <a href=\"/admin/themes/{{ theme_id }}/settings\">Customize theme</a> page to complete setup.",
+      "blog_section-title": "Blog",
+      "blog_title": "Your post's title",
+      "blog_excerpt": "Your store hasn’t published any blog posts yet. A blog can be used to talk about new product launches, tips, or other news you want to share with your customers. You can check out Shopify’s ecommerce blog for inspiration and advice for your own store and blog.",
+      "blog_author": "Author name",
+      "featured_page_title": "Featured page",
+      "featured_page_text": "Select one of your pages to share information about your brand with your customers.",
+      "no_content": "This section doesn’t currently include any content. Add content to this section using the sidebar."
+    },
+    "map": {
+      "address_error": "Error looking up that address",
+      "address_no_results": "No results for that address",
+      "address_query_limit_html": "You have exceeded the Google API usage limit. Consider upgrading to a <a href=\"https://developers.google.com/maps/premium/usage-limits\">Premium Plan</a>.",
+      "auth_error_html": "There was a problem authenticating your Google Maps account."
+    },
+    "ecom-conferences-section": {
+      "headingtext_zn77lwkqcs_html": "We'd love to get in touch!&nbsp;<div>Pick one of these 3 easy ways!</div>",
+      "ecomiconlisttitle0_ecom3x80zs3m60l_3x80zs3m60l_html": "Book a Meeting!",
+      "ecomiconlistdes_0_ecom3x80zs3m60l_3x80zs3m60l_html": "Interesting in learning more?&nbsp;<div>Book a meeting with our Founder Mike Glanz</div>",
+      "ecomiconlisttitle1_ecom3x80zs3m60l_3x80zs3m60l_html": "Get in Touch",
+      "ecomiconlistdes_1_ecom3x80zs3m60l_3x80zs3m60l_html": "Provide your contact info for a&nbsp;<div><b>FREE bag of coffee</b>.&nbsp;&nbsp;</div><div>and we will = connect with you at a later date.&nbsp;</div>",
+      "ecomiconlisttitle2_ecom3x80zs3m60l_3x80zs3m60l_html": "Browse our Coffees",
+      "ecomiconlistdes_2_ecom3x80zs3m60l_3x80zs3m60l_html": "By buying our coffee you directly contribute to&nbsp; helping us equip 10,000 Trafficking survivors&nbsp;<div><b>ONE CUP AT A TIME!</b></div>"
+    },
+    "ecom-wsheader-section": {
+      "headingtext_s389ry377do_html": "Browse By Category",
+      "title0_jo3cza7kff_html": "All",
+      "title1_jo3cza7kff_html": "Coffee",
+      "title2_jo3cza7kff_html": "Tea",
+      "title3_jo3cza7kff_html": "Syrups",
+      "title4_jo3cza7kff_html": "Powders",
+      "title5_jo3cza7kff_html": "Supplies"
+    },
+    "ecom-wholesale-header-section": {
+      "textcontent_z99vbchgztm_html": "Great coffee. Greater cause. By choosing Talitha, you are contributing to creative positive change in the lives of survivors of trafficking. Here’s to Hope Roasted.",
+      "buttoncontent_wv3cwwyfejk_html": "Explore Now"
+    },
+    "ecom-slimheader-section": {
+      "headingtext_u94ovbcjldt_html": "Welcome to the wholesale portal!",
+      "textcontent_z99vbchgztm_html": "Great coffee. Greater cause. By choosing Talitha, you are contributing to creative positive change in the lives of survivors of trafficking. Here’s to Hope Roasted.",
+      "buttoncontent_wv3cwwyfejk_html": "Explore Now"
+    },
+    "ecom-e-section": {
+      "textcontent_i7a7nt66yjd_html": "Great coffee. Greater cause. By choosing Talitha, you are contributing to creative positive change in the lives of survivors of trafficking. Here’s to Hope Roasted.",
+      "buttoncontent_w2pjn22e94_html": "Explore Now"
+    },
+    "ecom-preview-page-page": {
+      "headingtext_22kecp6vtvr_html": "Delivered&nbsp;<div>to your door.</div>",
+      "textcontent_8xn1ox1762_html": "Subscribe and save on every order.Free shipping&nbsp;<div>always. Satisfaction guaranteed.</div>",
+      "buttoncontent_ml45o1hawc_html": "START SUBSCRIBING",
+      "title0_u961mtk7r7_html": "No Additional Fees",
+      "text0_u961mtk7r7_html": "Budget-friendly: You won't be hit with any extra fees, making our services an affordable option for you.",
+      "title1_u961mtk7r7_html": "Automated Shipping",
+      "text1_u961mtk7r7_html": "Hassle-free, automated replenishment of your favorite Orgain products on a 30, 45, 60 or 90-day frequency.",
+      "title2_u961mtk7r7_html": "Online Access",
+      "text2_u961mtk7r7_html": "Online access to update, modify or\ncancel your subscription at any time for any reason.",
+      "title3_u961mtk7r7_html": "Recurring Savings",
+      "text3_u961mtk7r7_html": "Savings of 25% on your first subscription order and 10% off on each subsequent subscription order.",
+      "headingtext_5qpf40k9baa_html": "Start your&nbsp;<div>Subscription Today</div>",
+      "product_single_media_sold_text_92ycz22lngj_html": "Sold out ",
+      "Savesale_92ycz22lngj_html": "Save [sale]%",
+      "sale_badge_92ycz22lngj_html": "Save {{sale}}%",
+      "instock_text_38nr82zmhxh_html": "Hungry up ! Only 3 items left in stock",
+      "outstock_text_38nr82zmhxh_html": "Outstock",
+      "inventory_text_38nr82zmhxh_html": "Hungry up ! Only {quantity} items left in stock",
+      "preorder_text_38nr82zmhxh_html": "Preorder text",
+      "textcontent_iy5rmpvzpb_html": "(100+ reviews)",
+      "product_single_sale_text_25yzyv8k7oy_html": "{price}% off",
+      "product_single_sold_text_25yzyv8k7oy_html": "Sold out",
+      "textcontent_sk0omjnljt_html": "12 Bottles / case (16 ounces each)",
+      "product_option_swatch_d5qu7gxtqi_html": "Color",
+      "add_to_cart_k23pr5hxkxq_html": "Subscribe",
+      "pre_order_k23pr5hxkxq_html": "Pre Order",
+      "product_unavailable_k23pr5hxkxq_html": "Unavailable",
+      "out_stock_k23pr5hxkxq_html": "Out stock",
+      "added_cart_text_k23pr5hxkxq_html": "Added to cart",
+      "added_cart_message_k23pr5hxkxq_html": "Added to cart",
+      "instock_text_7zsvbwsndn8_html": "Instock. Free 2-Day Shipping.",
+      "outstock_text_7zsvbwsndn8_html": "Outstock",
+      "inventory_text_7zsvbwsndn8_html": "{quantity} in stock. Free 2-Day Shipping.",
+      "preorder_text_7zsvbwsndn8_html": "Preorder text",
+      "headingtext_f7ztqo5s1m_html": "A Complete Meal in a Bottle!&nbsp;<div>Nutritious, Delicious and&nbsp;</div><div>Sustainable.<div></div></div>",
+      "title0_9wemci04s9b_html": "Made Without Gluten",
+      "text0_9wemci04s9b_html": "Budget-friendly: You won't be hit with any extra fees, making our services an affordable option for you.",
+      "title1_9wemci04s9b_html": "Made Without Dairy",
+      "text1_9wemci04s9b_html": "Our products provide a dose of 28 vitamins &amp; minerals that support metabolism, immunity and overall health.",
+      "title2_9wemci04s9b_html": "Organic Pea Protein",
+      "text2_9wemci04s9b_html": "Fats are vital to maintaining cell structure, normal hormone production and also serve as an energy source.",
+      "title3_9wemci04s9b_html": "Delicious Taste",
+      "text3_9wemci04s9b_html": "We use natural, low-calorie carbohydrates that burn slower than other sugars, giving our shakes a low glycemic index.",
+      "headingtext_hlbno60557v_html": "Real Reviews From Real&nbsp;<div>Customers<div><div></div></div></div>",
+      "text0_9tcug1rls5q_html": "<h3>A Convenient Protein Option</h3><div>I have been using Soylent protein for a few months now, and I must say it has become an integral part of my daily routine. Very like it!<br></div>",
+      "name0_9tcug1rls5q_html": "Anna Lou",
+      "title0_9tcug1rls5q_html": " Verified Buyer",
+      "text1_9tcug1rls5q_html": "<h3>A Nutrient-Packed Protein Shake</h3><div>As someone with a busy lifestyle, I often struggle to find time to prepare nutritious meals, especially when it comes to meeting my protein needs.<br></div>",
+      "name1_9tcug1rls5q_html": "Mario C.",
+      "title1_9tcug1rls5q_html": " Verified Buyer",
+      "text2_9tcug1rls5q_html": "<h3>Excellent Vegan Protein Option</h3><div> Being a vegan, finding a good-tasting and effective protein supplement can be a challenge. Soylent protein has been a fantastic discovery for me. <br></div>",
+      "name2_9tcug1rls5q_html": "Patino Robot",
+      "title2_9tcug1rls5q_html": " Verified Buyer",
+      "text3_9tcug1rls5q_html": "<h3>Ideal for Meal Replacement</h3><div> When I'm looking to replace a meal, it provides me with the necessary protein and nutrients without excessive calories. Love it!</div>",
+      "name3_9tcug1rls5q_html": "Reshawn S.",
+      "title3_9tcug1rls5q_html": " Verified Buyer",
+      "headingtext_a0wmviv6o0s_html": "Manage&nbsp;<div>Your Subscription<div><div><div></div></div></div></div>",
+      "textcontent_o5njutqs1ih_html": "Log in to easily swap products, change the frequency of your deliveries, and update your payment information.Cancel at any time for any reason",
+      "buttoncontent_ytpr7nmjy6_html": "LOGIN",
+      "headingtext_rdpsknr7dgl_html": "Have questions? We have&nbsp;<div>answers!<div><div><div><div></div></div></div></div></div>",
+      "item_title_0_vhqje8tq7t_html": "Is Soylent protein suitable for vegetarians?",
+      "item_title_1_vhqje8tq7t_html": "What is the protein source used in Soylent protein?",
+      "item_title_2_vhqje8tq7t_html": "Can Soylent protein be used as a meal replacement?",
+      "item_title_3_vhqje8tq7t_html": "Does Soylent protein contain any artificial flavors?",
+      "item_title_4_vhqje8tq7t_html": "Can Soylent be consumed by individuals with lactose?",
+      "textcontent_cvc15l4dvm8_html": "Yes, Soylent protein is suitable for vegans and vegetarians as it is a plant-based protein option.<div></div>",
+      "textcontent_y0km9vxxsio_html": "Soylent protein derives its protein from plant-based sources such as soy and pea protein.\n\n<div></div>",
+      "textcontent_ewfsoi3aglm_html": "Yes, Soylent protein can be used as a meal replacement as it provides a balanced nutritional profile, including protein, vitamins, and minerals.<div><br></div>",
+      "textcontent_au33yt1thwg_html": "No, Soylent protein does not contain any artificial flavors or colors. It is made with natural ingredients.\n\n<div></div>",
+      "textcontent_tvm68v6d8k_html": "Yes, Soylent protein is dairy-free and does not contain lactose, making it suitable for individuals with lactose intolerance or dairy allergies.<div><br></div>",
+      "headingtext_aykcgxsw3hg_html": "You May Also Like<div><div><div></div></div></div>",
+      "textcontent_m03tmcmcn1k_html": "(100+ reviews)",
+      "textcontent_1p095zukwo7_html": "12 Bottles",
+      "product_single_sale_text_3j5e5ajw1qx_html": "Sale",
+      "product_single_sold_text_3j5e5ajw1qx_html": "Sold out",
+      "add_to_cart_7b0j8hdwm22_html": "Add to cart",
+      "pre_order_7b0j8hdwm22_html": "Pre Order",
+      "product_unavailable_7b0j8hdwm22_html": "Unavailable",
+      "out_stock_7b0j8hdwm22_html": "Out stock",
+      "added_cart_text_7b0j8hdwm22_html": "Added to cart",
+      "added_cart_message_7b0j8hdwm22_html": "Added to cart",
+      "product_single_sale_text_wp7ljvwr43m_html": "Add & Save {price}%",
+      "product_single_sold_text_wp7ljvwr43m_html": "Sold out",
+      "textcontent_aclej0gb9fl_html": "(100+ reviews)",
+      "textcontent_jxkrgn8ymc_html": "12 Bottles",
+      "product_single_sale_text_4465pdelwk9_html": "Sale",
+      "product_single_sold_text_4465pdelwk9_html": "Sold out",
+      "add_to_cart_hh28naqlack_html": "Add to cart",
+      "pre_order_hh28naqlack_html": "Pre Order",
+      "product_unavailable_hh28naqlack_html": "Unavailable",
+      "out_stock_hh28naqlack_html": "Out stock",
+      "added_cart_text_hh28naqlack_html": "Added to cart",
+      "added_cart_message_hh28naqlack_html": "Added to cart",
+      "product_single_sale_text_oggeulc1qe_html": "Add & Save {price}%",
+      "product_single_sold_text_oggeulc1qe_html": "Sold out",
+      "textcontent_mdt4yob3prc_html": "(100+ reviews)",
+      "textcontent_cfqecvkpfwg_html": "12 Bottles",
+      "product_single_sale_text_7teg3uyl4zv_html": "Sale",
+      "product_single_sold_text_7teg3uyl4zv_html": "Sold out",
+      "add_to_cart_704ka0wr5f3_html": "Add to cart",
+      "pre_order_704ka0wr5f3_html": "Pre Order",
+      "product_unavailable_704ka0wr5f3_html": "Unavailable",
+      "out_stock_704ka0wr5f3_html": "Out stock",
+      "added_cart_text_704ka0wr5f3_html": "Added to cart",
+      "added_cart_message_704ka0wr5f3_html": "Added to cart",
+      "product_single_sale_text_kbovd1xepe_html": "Add & Save {price}%",
+      "product_single_sold_text_kbovd1xepe_html": "Sold out",
+      "headingtext_ce0hhhny54s_html": "Made with love. Loved by thousands.<div><div><div></div></div></div>",
+      "masonryheading1_8ilx6h7wy7k_html": "<br>",
+      "masonryheading2_8ilx6h7wy7k_html": "<br>",
+      "masonryheading3_8ilx6h7wy7k_html": "<br>",
+      "masonryheading4_8ilx6h7wy7k_html": "<br>",
+      "masonryheading5_8ilx6h7wy7k_html": "<br>",
+      "masonryheading6_8ilx6h7wy7k_html": "<br>"
+    },
+    "ecom-product-category-selector-section": {
+      "banner_heading_3yt3e2fhft_html": "COFFEE",
+      "banner_button_title_3yt3e2fhft_html": "Shop now",
+      "banner_heading_gti7n3k3w4u_html": "ORGANIC TEA",
+      "banner_button_title_gti7n3k3w4u_html": "Shop now",
+      "banner_heading_q20sgrq5el_html": "SUBSCRIPTIONS",
+      "banner_button_title_q20sgrq5el_html": "Shop now"
+    },
+    "ecom-fundraiser-header-home": {
+      "headingtext_045o6uvv6n77_html": "SCHOOL FUNDRAISER",
+      "headingtext_gk9npd7g9ao_html": "Kearny Senior High School<br>",
+      "buttoncontent_bvg01sp08sj_html": "SHOP NOW",
+      "header0_v8kfjxhxk9n_html": "Raise $$ for Kearny",
+      "text0_v8kfjxhxk9n_html": "20% of each purchase directly supports Kearny Senior High!",
+      "header1_v8kfjxhxk9n_html": "MAKE AN IMPACT",
+      "text1_v8kfjxhxk9n_html": "Support your school AND make an impact!",
+      "header2_v8kfjxhxk9n_html": "SUPPORT LOCAL BUSINESS",
+      "text2_v8kfjxhxk9n_html": "partnering with a\nLocal Award winning coffee roaster based in\nSan Diego"
+    },
+    "ecom-fundraiser-header-section": {
+      "headingtext_vlfuo0ndgf_html": "SCHOOL FUNDRAISER",
+      "headingtext_p694zt6vd1_html": "Kearny Senior High School<br>"
+    },
+    "ecom-fundraiser-selector-section": {
+      "banner_heading_b8tox2mo42w_html": "Browse our",
+      "banner_subheading_b8tox2mo42w_html": "<u>SPECIALTY COFFEE</u>",
+      "banner_button_title_b8tox2mo42w_html": "SHOP NOW",
+      "banner_heading_q36fs3c79rm_html": "Browse our",
+      "banner_subheading_q36fs3c79rm_html": "<u>ORGANIC TEA</u>",
+      "banner_button_title_q36fs3c79rm_html": "SHOP NOW"
+    },
+    "ecom-centered-button-section": {
+      "buttoncontent_6zd0vp6u5nr_html": "SHOP NOW"
+    },
+    "ecom-image-left-home": {
+      "headingtext_1yzteiqdux7_html": "BUY COFFEE.<br><div><div><div><div><div><div></div></div></div></div></div></div><div>CHANGE LIVES</div>",
+      "textcontent_mzftpb32rzp_html": "Every time you buy or subscribe to  Talitha coffee, you help us change lives through hiring, training, and holistic support of sex trafficking survivors.",
+      "buttoncontent_iqt6f5roxe_html": "SUBSCRIBE NOW"
+    },
+    "ecom-talitha-brand-section-home": {
+      "headingtext_1yzteiqdux7_html": "BUY COFFEE.<div>CHANGE LIVES</div>",
+      "textcontent_mzftpb32rzp_html": "Every time you buy or subscribe to  Talitha coffee, you help us change lives through hiring, training, and holistic support of sex trafficking survivors.",
+      "buttoncontent_iqt6f5roxe_html": "SUBSCRIBE NOW"
+    },
+    "ecom-talitha-brand-section-section": {
+      "headingtext_yook2l55lgp_html": "BUY COFFEE.<div>CHANGE LIVES.</div>",
+      "textcontent_rjtejb2sf9r_html": "Every time you buy or subscribe to  Talitha coffee, you help us change lives through hiring, training, and holistic support of sex trafficking survivors.",
+      "buttoncontent_nlq7zio3nsn_html": "SUBSCRIBE NOW"
+    },
+    "ecom-663268e6aa474fcfc809a392-section": {
+      "headingtext_vlfuo0ndgf_html": "SCHOOL FUNDRAISER",
+      "headingtext_p694zt6vd1_html": "Kearny Senior High School<br>",
+      "textcontent_r1ct11j7p_html": "<i>Checkout using the schools referral link or enter the code <b>KEARNY </b>during checkout.</i><div><br>Select which sport you'd like to support:</div>",
+      "buttoncontent_vieybx2o6nm_html": "SOFTBALL",
+      "buttoncontent_0nmp8au99y6_html": "Flag Football",
+      "buttoncontent_9vbtv0foto6_html": "Cheer",
+      "buttoncontent_gb82lgziosi_html": "SOFTBALL",
+      "header0_djg0lm4y3rn_html": "RAISE $$ fOR KEARNY",
+      "text0_djg0lm4y3rn_html": "20% of each purchase&nbsp;using the schools referral link or code goes directly&nbsp;supports Kearny Senior High!",
+      "header1_djg0lm4y3rn_html": "MAKE A POSITIVE IMPACT",
+      "text1_djg0lm4y3rn_html": "Support your school AND make a positive impact in your community!",
+      "header2_djg0lm4y3rn_html": "SUPPORT LOCAL BUSINESS",
+      "text2_djg0lm4y3rn_html": "partnering with a\nLocal Award winning coffee roaster based in\nSan Diego"
+    },
+    "ecom-fundraiser-header-2-section": {
+      "headingtext_vlfuo0ndgf_html": "SCHOOL FUNDRAISER",
+      "headingtext_p694zt6vd1_html": "Kearny Senior High School<br>",
+      "textcontent_r1ct11j7p_html": "<i>shop using the buttons below or enter the code <b>KEARNY </b>during checkout.</i><div><br>Select which sport you'd like to support:</div>",
+      "buttoncontent_vieybx2o6nm_html": "SOFTBALL",
+      "buttoncontent_0nmp8au99y6_html": "Flag Football",
+      "buttoncontent_9vbtv0foto6_html": "Cheer",
+      "buttoncontent_gb82lgziosi_html": "Girls Volleyball",
+      "header0_djg0lm4y3rn_html": "RAISE $$ fOR KEARNY",
+      "text0_djg0lm4y3rn_html": "20% of each purchase&nbsp;using the schools referral link or code goes directly&nbsp;supports Kearny Senior High!",
+      "header1_djg0lm4y3rn_html": "MAKE A POSITIVE IMPACT",
+      "text1_djg0lm4y3rn_html": "Support your school AND make a positive impact in your community!",
+      "header2_djg0lm4y3rn_html": "SUPPORT LOCAL BUSINESS",
+      "text2_djg0lm4y3rn_html": "partnering with a\nLocal Award winning coffee roaster based in\nSan Diego"
+    },
+    "ecom-partner-program-page": {
+      "headingtext_kmyj02o82fe_html": "Join us in our mission to END sex trafficking",
+      "headingtext_2g31acn6nq8_html": "We are looking for people, businesses, organizations, and churches to partner with us and offer Talitha Coffee at their locations. As a partner, we will give you 10% of each online sale you refer AND you help us spread the mission.<div><br></div><div>&nbsp;As a small thankyou for becoming a partner you'll also get a free bag of coffee.</div>",
+      "buttoncontent_0tfjsvpfyq6_html": "Join our partnership program",
+      "headingtext_1sqnetxs4fo_html": "<div>We are on a mission to <b><font color=\"#FFA400\">END sex trafficking</font></b>, and <font color=\"#FFA400\">provide hope</font> to survivors of trafficking through employment and advocacy for sex-trafficking survivors.</div>",
+      "textcontent_tfn1i2t2fp_html": "Talitha Coffees is a purpose-driven coffee company committed to supporting survivors of sex trafficking in their journey of reclaiming their lives. With every cup brewed and every bag of coffee purchased,&nbsp; actively contribute to the mission of ending sex trafficking through providing employment and holistic care to survivors of trafficking.",
+      "headingtext_xlg75rs69fj_html": "HOW IT WORKS",
+      "textcontent_5qhhyscj7tt_html": "LETS EQUIP 10,000 SURVIVORS TO TAKE BACK THEIR LIVES, ONE SIP AT A TIME!",
+      "textcontent_dy2gvs76en_html": "THANK YOU!",
+      "headingtext_tx9phzxztna_html": "PARTNER Perks",
+      "headingtext_3j9e0huo7sg_html": "<b>Provide HOPE and SUPPORT.</b><div>&nbsp;<div>by becoming a Talitha Partner you are directly contributing to providing HOPE and, support for sex trafficking survivors!</div></div>",
+      "headingtext_m8xxnpil1k_html": "<b>Get a free bag of coffee!</b><div><b><br></b>Sign up your church or business to start offering Talitha Coffee and we will send you a free bag of Talitha Coffee to enjoy.<div>&nbsp;</div></div>",
+      "headingtext_3k55l98z6kz_html": "<b>10% for you</b> + <b>10% off for all your friends.</b><div><br><div>As a on every order you refer, you earn a 10% commission.&nbsp; It is a great way to provide hope to survivors AND generate $$ for your organization's mission!</div></div>",
+      "headingtext_bl3jza1d8vm_html": "OK... What does \"supporting survivors\" mean?&nbsp;",
+      "headingtext_gwgzad9279w_html": "PROVIDING JOBS ",
+      "textcontent_tlh1wy5cvzq_html": "We prioritize hiring survivors through our survivor care network, and create workplaces that are supportive, informed and designed to help survivors thrive long-term.",
+      "headingtext_q3ekaxq5k_html": "Vocational Training ",
+      "textcontent_yn4hfhx5dt_html": "Through our highly trained and SCA certified staff, we are providing quarterly barista and coffee training to survivors in our network as an opportunity to give them an advantage in applying for jobs within the coffee industry.\n",
+      "headingtext_4y42hphreuq_html": "HOLISTIC Support ",
+      "textcontent_ucjx1n3jwln_html": "Through our partnerships with other counter-trafficking organizations we are committed to providing resources for survivors to meet their practical, emotional, mental health, and educational needs.",
+      "buttoncontent_hx1iyi14mt5_html": "Join our partnership program",
+      "headingtext_8gvev0r6ytk_html": "Join the movement along with our other amazing partners!",
+      "buttoncontent_lnjh5z82c1_html": "Join our partnership program"
+    },
+    "ecom-hidden-section": {
+      "headingtext_zn5qnm86lr_html": "Welcome to Your Personal account&nbsp;",
+      "headingtext_7ng4v09uvki_html": "For wholsale ordering&nbsp; please log into your WHOLESALE account",
+      "buttoncontent_qccy91ted3n_html": "WHOLESALE LOGIN"
+    },
+    "ecom-fundraiser-coastal-section": {
+      "headingtext_vlfuo0ndgf_html": "SCHOOL FUNDRAISER",
+      "headingtext_p694zt6vd1_html": "Coastal Academy<div>High School<br></div>",
+      "textcontent_r1ct11j7p_html": "<i>Shop below or enter the code <b>below at checkout:</b></i>",
+      "item_label_0_t9m3ffzrihe_html": "Each purchase using the below code donates 20% to Coastal Academy",
+      "item_copy_0_t9m3ffzrihe_html": "Copy",
+      "item_copied_0_t9m3ffzrihe_html": "COPIED!",
+      "buttoncontent_t8b3judd8o8_html": "Shop Coffee",
+      "buttoncontent_hiq65vlcmzj_html": "Shop TEA",
+      "header0_djg0lm4y3rn_html": "RAISE $$",
+      "text0_djg0lm4y3rn_html": "20% of each purchase&nbsp;using the schools referral link or code goes directly&nbsp;supports Coastal",
+      "header1_djg0lm4y3rn_html": "MAKE A POSITIVE IMPACT",
+      "text1_djg0lm4y3rn_html": "Support your school AND make a positive impact in your community!",
+      "header2_djg0lm4y3rn_html": "SUPPORT LOCAL BUSINESS",
+      "text2_djg0lm4y3rn_html": "partnering with a\nLocal Award winning coffee roaster based in\nSan Diego"
+    },
+    "ecom-holiday-release-product": {
+      "product_single_media_sold_text_n0ji34q3vkd_html": "Sold out",
+      "saleOff_n0ji34q3vkd_html": "-[sale]% Off",
+      "sale_badge_n0ji34q3vkd_html": "-{{sale}}% Off",
+      "textcontent_opwssd7rku_html": "5.0/5.0 (32 reviews)",
+      "view_more_text_y4ul7zta18q_html": "View more",
+      "view_less_text_y4ul7zta18q_html": "View less",
+      "product_option_swatch_h94bxg9svop_html": "Color",
+      "include_taxes_ybefb892p8b_html": "Tax included.",
+      "product_single_sale_text_ybefb892p8b_html": "{price}% OFF",
+      "product_single_sold_text_ybefb892p8b_html": "Sold out",
+      "add_to_cart_tzw1r6dskwc_html": "Add To Cart",
+      "pre_order_tzw1r6dskwc_html": "Pre Order",
+      "product_unavailable_tzw1r6dskwc_html": "Unavailable",
+      "out_stock_tzw1r6dskwc_html": "Out stock",
+      "added_cart_text_tzw1r6dskwc_html": "Added to cart",
+      "added_cart_message_tzw1r6dskwc_html": "Added to cart"
+    }
+  },
+  "homepage": {
+    "tour": {
+      "tour_no_events": "No upcoming events",
+      "tour_ticket_link": "Find Tickets",
+      "tour_more_link": "View More",
+      "tour_location": "Location",
+      "tour_venue": "Event Venue"
+    },
+    "onboarding": {
+      "modal_title": "Almost there...",
+      "no_products_html": "You have no products in your Frontpage collection. This placeholder will appear until you <a href=\"/admin/collections?tutorial=Frontpage\">add a product to this collection</a>.",
+      "add_product": "Add a Product",
+      "product_title": "Example Product Title",
+      "no_collections_html": "You don't have any collections to show here. <a href=\"/admin/custom_collections\">Add some collections</a> to go along with the default Frontpage.",
+      "add_collection": "Add a Collection",
+      "collection_title": "Collection Title",
+      "collection_cta": "Shop Now",
+      "complete_setup_html": "Go to your <a href=\"/admin/themes/{{ theme_id }}/settings\">Customize theme</a> page to complete setup.",
+      "blog_section-title": "Blog",
+      "blog_title": "Your post's title",
+      "blog_excerpt": "Your store hasn’t published any blog posts yet. A blog can be used to talk about new product launches, tips, or other news you want to share with your customers. You can check out Shopify’s ecommerce blog for inspiration and advice for your own store and blog.",
+      "blog_author": "Author name",
+      "featured_page_title": "Featured page",
+      "featured_page_text": "Select one of your pages to share information about your brand with your customers.",
+      "no_content": "This section doesn’t currently include any content. Add content to this section using the sidebar."
+    },
+    "map": {
+      "address_error": "Error looking up that address",
+      "address_no_results": "No results for that address",
+      "address_query_limit_html": "You have exceeded the Google API usage limit. Consider upgrading to a <a href=\"https://developers.google.com/maps/premium/usage-limits\">Premium Plan</a>.",
+      "auth_error_html": "There was a problem authenticating your Google Maps account."
+    }
+  },
+  "layout": {
+    "navigation": {
+      "menu": "Menu",
+      "primary": "Primary"
+    },
+    "drawers": {
+      "browse": "Browse",
+      "close_menu": "Close menu"
+    },
+    "cart": {
+      "title": "Cart",
+      "items_count": {
+        "one": "item",
+        "other": "items"
+      }
+    },
+    "customer": {
+      "account": "Account",
+      "logged_in_as_html": "Logged in as {{ first_name }}",
+      "log_out": "Log out",
+      "log_in": "Log in",
+      "create_account": "Create account"
+    },
+    "footer": {
+      "social_title": "Get Connected",
+      "newsletter_title": "Newsletter",
+      "navigation_title": "Navigation",
+      "accepted_payments": "Accepted Payments"
+    }
+  },
+  "products": {
+    "general": {
+      "previous_product_html": "&larr; Previous Product",
+      "next_product_html": "Next Product &rarr;",
+      "from_text_html": "From {{ price }}",
+      "sale_price": "Sale price",
+      "regular_price": "Regular price",
+      "share": "Share",
+      "related_products_title": "Related Products"
+    },
+    "product": {
+      "sold_out": "Sold Out",
+      "on_sale": "On Sale",
+      "on_sale_from_html": "<strong>On Sale</strong> from {{ price }}",
+      "unavailable": "Unavailable",
+      "unit_price_label": "Unit price",
+      "compare_at": "Compare at",
+      "quantity": "Quantity",
+      "add_to_cart": "Add to Cart",
+      "preorder": "Pre-order",
+      "adding_to_cart": "Adding",
+      "added_to_cart": "Added to Cart",
+      "add_to_cart_confirm_html": "<a href=\"{{ cart_url }}\">View cart</a> or <a href=\"{{ link_url }}\">continue shopping</a>",
+      "color_swatch_trigger": "Color",
+      "read_more": "Read more",
+      "in_stock": "In Stock",
+      "out_of_stock": "Out of Stock",
+      "inventory_in_stock": "Ready to ship",
+      "inventory_low_stock_html": "Only {{ count }} in stock",
+      "include_taxes": "Tax included.",
+      "price": {
+        "from_price_html": "From {{ price }}",
+        "regular_price": "Regular price",
+        "sale_price": "Sale price",
+        "unit_price": "Unit price"
+      }
+    },
+    "media": {
+      "media": "Media",
+      "view_in_your_space": "View in your space",
+      "view_in_your_space_label": "View in your space, loads item in augmented reality window"
+    }
+  },
+  "store_availability": {
+    "general": {
+      "view_store_info": "View store information",
+      "check_other_stores": "Check availability at other stores",
+      "pick_up_available": "Pickup available",
+      "pick_up_currently_unavailable": "Pickup currently unavailable",
+      "pick_up_available_at_html": "Pickup available at <strong>{{ location_name }}</strong>",
+      "pick_up_unavailable_at_html": "Pickup currently unavailable at <strong>{{ location_name }}</strong>"
+    }
+  },
+  "gift_cards": {
+    "issued": {
+      "title_html": "Here's your {{ value }} gift card for {{ shop }}!",
+      "subtext": "Your gift card",
+      "gift_card_code": "Gift card code",
+      "disabled": "Disabled",
+      "expired": "Expired on {{ expiry }}",
+      "active": "Expires on {{ expiry }}",
+      "redeem_html": "Use this code at checkout to redeem your {{ value }} gift card",
+      "shop_link": "Start shopping",
+      "print": "Print this gift card",
+      "remaining_html": "{{ balance }} left",
+      "add_to_apple_wallet": "Add to Apple Wallet",
+      "qr_image_alt": "QR code — scan to redeem gift card"
+    }
+  },
+  "age_check": {
+    "day": "Day",
+    "month": "Month",
+    "year": "Year"
+  },
+  "date_formats": {
+    "month_day_year": "%B %d, %Y",
+    "month_abbr": "%b"
+  },
+  "sharing": {
+    "social_sharing": {
+      "title": "Share",
+      "facebook": "Facebook",
+      "twitter": "Tweet",
+      "pinterest": "Pinterest",
+      "facebook_title": "Share on Facebook",
+      "twitter_title": "Tweet on Twitter",
+      "pinterest_title": "Pin on Pinterest"
+    },
+    "rss_subscribe": "Subscribe"
+  },
+  "recipient": {
+    "form": {
+      "checkbox": "I want to send this as a gift",
+      "email_label": "Recipient email",
+      "email_label_optional_for_no_js_behavior": "Recipient email (optional)",
+      "email": "Email",
+      "name_label": "Recipient name (optional)",
+      "name": "Name",
+      "message_label": "Message (optional)",
+      "message": "Message",
+      "max_characters": "{{ max_chars }} characters max"
+    }
+  },
+  "ecom-fundraiser-category-selector-block": {
+    "banner_heading_vq4etk7zr5_html": "Browse our",
+    "banner_subheading_vq4etk7zr5_html": "<u>SPECIALTY COFFEE</u>",
+    "banner_button_title_vq4etk7zr5_html": "SHOP NOW",
+    "banner_heading_ym9cehn8et_html": "Browse our",
+    "banner_subheading_ym9cehn8et_html": "<u>ORGANIC TEA</u>",
+    "banner_button_title_ym9cehn8et_html": "SHOP NOW"
+  },
+  "pagefly": {
+    "products": {
+      "product": {
+        "regular_price": "Regular price",
+        "sold_out": "Sold out",
+        "unavailable": "Unavailable",
+        "on_sale": "Sale",
+        "quantity": "Quantity",
+        "add_to_cart": "Add to cart",
+        "back_to_collection": "Back to {{ title }}",
+        "view_details": "View details"
+      }
+    },
+    "article": {
+      "tags": "Tags:",
+      "all_topics": "All topics",
+      "by_author": "by {{ author }}",
+      "posted_in": "Posted in",
+      "read_more": "Read more",
+      "back_to_blog": "Back to {{ title }}"
+    },
+    "comments": {
+      "title": "Leave a comment",
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "post": "Post comment",
+      "moderated": "Please note, comments must be approved before they are published",
+      "success_moderated": "Your comment was posted successfully. We will publish it in a little while, as our blog is moderated.",
+      "success": "Your comment was posted successfully! Thank you!",
+      "comments_with_count": {
+        "one": "{{ count }} comment",
+        "other": "{{ count }} comments"
+      }
+    },
+    "password_page": {
+      "login_form_message": "Enter store using password:",
+      "login_form_password_label": "Password",
+      "login_form_password_placeholder": "Your password",
+      "login_form_submit": "Enter",
+      "signup_form_email_label": "Email",
+      "signup_form_success": "We will send you an email right before we open!",
+      "password_link": "Enter using password"
+    }
+  }
+}

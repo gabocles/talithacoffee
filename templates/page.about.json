@@ -1,0 +1,353 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "display_on_card": true,
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "3a27360a-1d3e-4577-8dde-08faefe68b63": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "b4de7d5c-f898-4d5f-afb6-8ec6df5e3cb1": {
+          "type": "sticker",
+          "settings": {
+            "text": "",
+            "shape": "star_1",
+            "width": 300,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/people_Coffee.svg",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 50,
+            "vertical_position": 50,
+            "rotate": 0,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": true,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        }
+      },
+      "block_order": [
+        "b4de7d5c-f898-4d5f-afb6-8ec6df5e3cb1"
+      ],
+      "custom_css": [
+        "h2 {font-size: 36px;}",
+        "@media (min-width: 990px) {h2 {font-size: 100px; }}"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/Header_copy.png",
+        "display_on_card": false,
+        "display_content_below_image_on_mobile": false,
+        "style": "full",
+        "height": "natural",
+        "place_content": "place-content-center-end",
+        "text_align": "text-center",
+        "title": "",
+        "heading_size": "heading-feature",
+        "richtext": "",
+        "cta_url": "",
+        "cta_text": "Shop Now",
+        "color_scheme": "secondary",
+        "use_gradient_background": false,
+        "text_overlay_color": "same_as_section"
+      }
+    },
+    "f01ce3af-b446-40ad-869d-82697b052174": {
+      "type": "image-with-text",
+      "blocks": {
+        "6ab6fbe5-2e35-4a9a-aa34-936b46f32386": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 150,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Talitha-PlantsIllustrations-18_1.png",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 87,
+            "vertical_position": 0,
+            "rotate": 0,
+            "show_sticker_on_mobile": false,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": true,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "5219e09f-40f5-457d-b06b-4be607d5613c": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 100,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Talitha-PlantsIllustrations-03_1.png",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 94,
+            "vertical_position": 50,
+            "rotate": -30,
+            "show_sticker_on_mobile": false,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": false,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        }
+      },
+      "block_order": [
+        "6ab6fbe5-2e35-4a9a-aa34-936b46f32386",
+        "5219e09f-40f5-457d-b06b-4be607d5613c"
+      ],
+      "custom_css": [
+        "h3 {font-size: 40px;}",
+        "p {line-height: 24px;}",
+        "@media (min-width: 990px) {h3 {font-size: 100px; } p {font-size: 20px; max-width: 70%; }}"
+      ],
+      "settings": {
+        "display_on_card": false,
+        "image": "shopify://shop_images/Jenny.png",
+        "crop": "",
+        "image_shape": "default",
+        "blob_type": 1,
+        "rotate_image": 0,
+        "image_position": "right",
+        "image_size": "half",
+        "disable_media_style": false,
+        "title": "Talitha Coffee <br> HOPE ROASTED",
+        "heading_size": "heading-standard",
+        "richtext": "<p>Hope is believing in the power of fresh starts and second chances. It encourages finding intentional purpose in being the best one can be. Hope is investing in the idea that every great cup of coffee can make a difference and help brew change for a better world. This is Hope Roasted.</p>",
+        "text_alignment": "text-left",
+        "button_link": "shopify://collections/retail",
+        "button_label": "Shop Now",
+        "color_scheme": "secondary",
+        "use_gradient_background": false
+      }
+    },
+    "18bce001-3fee-421a-a295-4f42babfe869": {
+      "type": "image-with-text",
+      "custom_css": [
+        "p {font-family: \"calibre\"; font-size: 20px; line-height: 24px; width: 70%;}",
+        "h2 {font-size: 72px; font-family: \"Stratum\";}",
+        "@media (max-width: 990px) {p {width: 90%; font-size: 20px; padding: -30px; } h2 {font-size: 45px; /* Scaled down font size for mobile */ }}"
+      ],
+      "settings": {
+        "display_on_card": false,
+        "image": "shopify://shop_images/Asset_1.svg",
+        "crop": "",
+        "image_shape": "default_archway",
+        "blob_type": 1,
+        "rotate_image": 0,
+        "image_position": "left",
+        "image_size": "third",
+        "disable_media_style": true,
+        "title": "ABOUT",
+        "heading_size": "heading-feature",
+        "richtext": "<p><strong>Great coffee. Greater cause.</strong> By choosing Talitha, you are contributing to creating positive change in the lives of survivors of trafficking. We hope that you join us on this journey to making a difference, one cup at a time.</p><p>With a deep passion for combating human trafficking, Talitha's co-founder Jenny Barber was determined to make a positive difference after witnessing the devastating, intergenerational impact of the issue from a young age.</p>",
+        "text_alignment": "text-left",
+        "button_link": "shopify://pages/why-talitha",
+        "button_label": "READ OUR STORY",
+        "color_scheme": "secondary",
+        "use_gradient_background": false
+      }
+    },
+    "e1198c15-da59-4d14-ac19-04a233e54499": {
+      "type": "rich-text",
+      "blocks": {
+        "bbad7740-4333-4dcd-a5a9-ef1b82a61f1a": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 100,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/6.svg",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 79,
+            "vertical_position": 53,
+            "rotate": 0,
+            "show_sticker_on_mobile": false,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": true,
+            "parallax_speed": 9,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "bd1046db-6c61-4433-b326-5ee42849dd3c": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 100,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/4.svg",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 63,
+            "vertical_position": 6,
+            "rotate": 0,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": true,
+            "parallax_speed": 7,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        }
+      },
+      "block_order": [
+        "bbad7740-4333-4dcd-a5a9-ef1b82a61f1a",
+        "bd1046db-6c61-4433-b326-5ee42849dd3c"
+      ],
+      "custom_css": [
+        "h2 {font-size: 40px;}",
+        "h2,p {text-align: left;}",
+        "span {color: #ffa400;}",
+        ".py-section-vertical-spacing {padding-bottom: 20px;}",
+        "@media (min-width: 989px) {section {max-width: calc(100% - 26px); } p {max-width: 50%; }}"
+      ],
+      "settings": {
+        "title": "MEET YOUR TEAM",
+        "heading_size": "heading-standard",
+        "rich_text": "<p>Introducing our exceptional team of expert coffee roasters, dedicated to crafting the perfect blend for your ultimate caffeinated experience.<br/></p>",
+        "display_on_card": false,
+        "content_width_desktop": "lg:w-full",
+        "button_link": "",
+        "button_label": "Shop Now",
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "f0bd9ae0-2276-4ecb-b18d-8fb0505434dd": {
+      "type": "text-columns-with-images",
+      "blocks": {
+        "template--19897363824959__f0bd9ae0-2276-4ecb-b18d-8fb0505434dd-168927102219fc50cb-0": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image": "shopify://shop_images/Talitha_Support_team-2.jpg",
+            "title": "Robert Barber",
+            "text": "",
+            "cta_link": "",
+            "cta_text": "",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "template--19897363824959__f0bd9ae0-2276-4ecb-b18d-8fb0505434dd-168927102219fc50cb-1": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image": "shopify://shop_images/Rectangle_31_170137a6-bbc0-48c7-98a8-1531a1f60d64.png",
+            "title": "Jenny Barber",
+            "text": "",
+            "cta_link": "",
+            "cta_text": "",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "template--19897363824959__f0bd9ae0-2276-4ecb-b18d-8fb0505434dd-168927102219fc50cb-2": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image": "shopify://shop_images/Rectangle_32.png",
+            "title": "Tony Ademo",
+            "text": "",
+            "cta_link": "",
+            "cta_text": "",
+            "color_scheme": "primary"
+          }
+        }
+      },
+      "block_order": [
+        "template--19897363824959__f0bd9ae0-2276-4ecb-b18d-8fb0505434dd-168927102219fc50cb-0",
+        "template--19897363824959__f0bd9ae0-2276-4ecb-b18d-8fb0505434dd-168927102219fc50cb-1",
+        "template--19897363824959__f0bd9ae0-2276-4ecb-b18d-8fb0505434dd-168927102219fc50cb-2"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "h2 {text-align: left; font-size: 25px;}",
+        ".py-section-vertical-spacing {padding-top: 0;}",
+        "img {border-radius: 0px !important;}"
+      ],
+      "settings": {
+        "display_on_card": false,
+        "slideshow_on_mobile": false,
+        "title": "",
+        "crop": "",
+        "image_shape": "default",
+        "show_index_on_blocks": false,
+        "index_shape": "star_3",
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "ddb7fa1f-2330-4dd5-9720-d57f07ce0f7d": {
+      "type": "image-with-text-overlay",
+      "settings": {
+        "image": "shopify://shop_images/DSC3015-Edit.jpg",
+        "display_on_card": false,
+        "display_content_below_image_on_mobile": false,
+        "style": "full",
+        "height": "natural",
+        "place_content": "place-content-center-center",
+        "text_align": "text-center",
+        "title": "",
+        "heading_size": "heading-standard",
+        "richtext": "",
+        "cta_url": "",
+        "cta_text": "Shop Now",
+        "color_scheme": "primary",
+        "use_gradient_background": false,
+        "text_overlay_color": "white"
+      }
+    },
+    "blog_posts_ALDW6a": {
+      "type": "blog-posts",
+      "settings": {
+        "display_on_card": true,
+        "title": "Blog posts",
+        "blog": "news",
+        "post_limit": 3,
+        "crop": "aspect-w-4 aspect-h-3",
+        "image_shape": "default",
+        "blog_show_author": false,
+        "blog_show_date": true,
+        "show_post_excerpt": true,
+        "show_view_all": true,
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "3a27360a-1d3e-4577-8dde-08faefe68b63",
+    "f01ce3af-b446-40ad-869d-82697b052174",
+    "18bce001-3fee-421a-a295-4f42babfe869",
+    "e1198c15-da59-4d14-ac19-04a233e54499",
+    "f0bd9ae0-2276-4ecb-b18d-8fb0505434dd",
+    "ddb7fa1f-2330-4dd5-9720-d57f07ce0f7d",
+    "blog_posts_ALDW6a"
+  ]
+}

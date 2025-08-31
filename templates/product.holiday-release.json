@@ -1,0 +1,614 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "Holidy-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+            "display_on_card": false,
+            "text_align": "text-left"
+          }
+        },
+        "okendo_star_rating_mFypAw": {
+          "type": "shopify://apps/okendo/blocks/star-rating/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "a17e90c4-acc9-4f1d-af84-828ae4cb2289": {
+          "type": "description",
+          "settings": {
+            "display_on_card": false,
+            "truncate_description": false,
+            "text_align": "text-left"
+          }
+        },
+        "comparative_scale_LrQwBx": {
+          "type": "comparative_scale",
+          "settings": {
+            "display_on_card": false,
+            "left_label": "LIght",
+            "right_label": "Dark",
+            "marker_position": 41,
+            "marker_position_alt": ""
+          }
+        },
+        "text_jrnxgA": {
+          "type": "text",
+          "settings": {
+            "display_on_card": false,
+            "text": "Tasting Notes",
+            "icon": "none"
+          }
+        },
+        "62bbe4ca-b97e-40a6-a436-ba9573a1fd31": {
+          "type": "tasting_notes",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "display_on_card": false,
+            "option_style": "buttons",
+            "hide_option_labels": false,
+            "hide_sold_variants": true,
+            "enable_color_swatches": false
+          }
+        },
+        "price": {
+          "type": "price",
+          "disabled": true,
+          "settings": {
+            "display_on_card": false,
+            "show_on_sale_sticker": false,
+            "text_align": "text-left"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {
+            "display_on_card": false,
+            "show_label": false
+          }
+        },
+        "baf3083e-d14d-435d-bca3-100d6ac490ce": {
+          "type": "buy_buttons",
+          "settings": {
+            "display_on_card": false,
+            "show_price": false,
+            "enable_payment_button": false,
+            "show_pickup_availability": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "39086e30-eff0-4d4f-9e50-b8988b685485": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "ADD-ONS",
+            "product_list_limit": 3
+          }
+        },
+        "sticker_bGhyJE": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 130,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Christmas_Pattern_Elements_12.png",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 80,
+            "vertical_position": 80,
+            "rotate": 0,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "constantly_rotate",
+            "enable_parallax": true,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "sticker_pfLqJY": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 150,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Christmas_Pattern_Elements_16.png",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 39,
+            "vertical_position": 83,
+            "rotate": 0,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "rotate_when_scrolling",
+            "enable_parallax": true,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "sticker_dMWEic": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 130,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Christmas_Pattern_Elements_14.png",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 47,
+            "vertical_position": 67,
+            "rotate": 0,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "rotate_when_scrolling",
+            "enable_parallax": true,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "sticker_mTTQhb": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 150,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Christmas_Pattern_Elements_17.png",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 92,
+            "vertical_position": 18,
+            "rotate": 0,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "rotate_when_scrolling",
+            "enable_parallax": true,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "sticker_7Ydttp": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 100,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Christmas_Pattern_Elements_15.png",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 16,
+            "vertical_position": 22,
+            "rotate": 0,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "rotate_when_scrolling",
+            "enable_parallax": true,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "sticker_4aQcKE": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 150,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Christmas_Pattern_Elements_18.png",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 19,
+            "vertical_position": 80,
+            "rotate": 0,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "rotate_when_scrolling",
+            "enable_parallax": true,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "okendo_star_rating_mFypAw",
+        "a17e90c4-acc9-4f1d-af84-828ae4cb2289",
+        "comparative_scale_LrQwBx",
+        "text_jrnxgA",
+        "62bbe4ca-b97e-40a6-a436-ba9573a1fd31",
+        "variant_picker",
+        "price",
+        "quantity_selector",
+        "baf3083e-d14d-435d-bca3-100d6ac490ce",
+        "39086e30-eff0-4d4f-9e50-b8988b685485",
+        "sticker_bGhyJE",
+        "sticker_pfLqJY",
+        "sticker_dMWEic",
+        "sticker_mTTQhb",
+        "sticker_7Ydttp",
+        "sticker_4aQcKE"
+      ],
+      "custom_css": [
+        "a {font-family: \"Stratum\" !important;}"
+      ],
+      "settings": {
+        "crop": "",
+        "image_shape": "default",
+        "desktop_media_width": "lg:col-span-7_lg:col-span-5",
+        "show_slideshow_arrows_on_desktop": false,
+        "enable_image_zoom": false,
+        "enable_video_looping": false,
+        "autoplay_videos_on_desktop": false,
+        "media_mobile_width": "w-full",
+        "thumbnails_position": "under",
+        "thumbnail_crop": "aspect-w-1 aspect-h-1",
+        "thumbnail_shape": "default",
+        "hide_media_shadow": false,
+        "thumbnail_size": "standard",
+        "show_thumbnails_on_mobile": false,
+        "color_scheme": "quaternary",
+        "use_gradient_background": false,
+        "shipping_text": "<p>We do not offer returns on Coffee because it is a perishable product. However, customer satisfaction is very important to us. We want you to be happy. If you are unhappy with the coffee please contact us at orders@talitha.com and we will help you find a replacement or offer you a refund.</p>",
+        "badge_1_text": "Subscribe now",
+        "badge_2_text": true
+      }
+    },
+    "rich_text_DCXfNa": {
+      "type": "rich-text",
+      "blocks": {
+        "sticker_RKQybR": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 150,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Christmas_Pattern_Elements_11.png",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 80,
+            "vertical_position": 83,
+            "rotate": 30,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": true,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        }
+      },
+      "block_order": [
+        "sticker_RKQybR"
+      ],
+      "settings": {
+        "title": "El Salvador Dumont",
+        "heading_size": "heading-standard",
+        "rich_text": "<p>El Salvador Dumont comes to us from a 100-year specialty coffee family. Rodrigo Dumont is a fifth-generation farmer bringing generations of experience in the industry... and they have created a coffee worth remembering. </p><p>El Salvador Dumont is a blend of coffees grown around the Ilamatepec Volcano, curated together with exporter partner El Borbollon. Ripe cherry is selectively picked by trained hands at the peak of maturity. It is then separated by farm and/or quality at the mill. Subsequently, the cherry is pulped, naturally fermented, and washed. Finally, the parchment is dried on a combination of clay patios and raised beds, where moisture levels are carefully controlled</p>",
+        "display_on_card": true,
+        "content_width_desktop": "lg:w-2/3",
+        "button_link": "",
+        "button_label": "Shop Now",
+        "color_scheme": "quaternary",
+        "use_gradient_background": false
+      }
+    },
+    "text_columns_with_images_Qhycdw": {
+      "type": "text-columns-with-images",
+      "blocks": {
+        "column_A7LXK9": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image": "shopify://shop_images/El-Salvador-Dumont-sorting-2_f285ec68-f186-47aa-98ba-cf9b608d5468.jpg",
+            "title": "",
+            "text": "<h2>Region:</h2><h2>Santa Ana</h2>",
+            "cta_link": "",
+            "cta_text": "",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "column_hUXTKf": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image": "shopify://shop_images/El-Salvador-Dumont-vista-2_cb8eef74-6d8a-45c3-bbb7-3d97959d0343.jpg",
+            "title": "",
+            "text": "<h2>Altitude: </h2><h2>1,200–1,500 masl</h2>",
+            "cta_link": "",
+            "cta_text": "",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "column_DKRNMm": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image": "shopify://shop_images/El-Salvador-Dumont_de406326-4a80-40f1-8fb2-c2e7d23e0730.jpg",
+            "title": "",
+            "text": "<h2>Variety:</h2><h2>Bourbon, Pacamara</h2>",
+            "cta_link": "",
+            "cta_text": "",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "column_XDpgKQ": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image": "shopify://shop_images/El-Salvador-Dumont-vistanursery-min_8d34128f-1296-4a1c-b934-8c8c9d5466d8.jpg",
+            "title": "",
+            "text": "<h2>Process:</h2><h2>Washed</h2>",
+            "cta_link": "",
+            "cta_text": "",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "sticker_pKnjwh": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 150,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Christmas_Pattern_Elements_2.png",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 75,
+            "vertical_position": 80,
+            "rotate": 0,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": true,
+            "parallax_speed": 9,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "sticker_ATxfKV": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 150,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Christmas_Pattern_Elements_9.png",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 26,
+            "vertical_position": 80,
+            "rotate": 0,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": true,
+            "parallax_speed": 10,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "sticker_NaEpq8": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 100,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Christmas_Pattern_Elements_12.png",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 10,
+            "vertical_position": 0,
+            "rotate": 0,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "rotate_when_scrolling",
+            "enable_parallax": true,
+            "parallax_speed": 10,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "sticker_DGDyg9": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 120,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Christmas_Pattern_Elements_17.png",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 25,
+            "vertical_position": 9,
+            "rotate": 0,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "rotate_when_scrolling",
+            "enable_parallax": true,
+            "parallax_speed": 7,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "sticker_jDjAkQ": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 100,
+            "sticker_font_size": "1rem",
+            "image": "shopify://shop_images/Christmas_Pattern_Elements_19.png",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 55,
+            "vertical_position": 5,
+            "rotate": 0,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "constantly_rotate",
+            "enable_parallax": true,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        }
+      },
+      "block_order": [
+        "column_A7LXK9",
+        "column_hUXTKf",
+        "column_DKRNMm",
+        "column_XDpgKQ",
+        "sticker_pKnjwh",
+        "sticker_ATxfKV",
+        "sticker_NaEpq8",
+        "sticker_DGDyg9",
+        "sticker_jDjAkQ"
+      ],
+      "settings": {
+        "display_on_card": true,
+        "slideshow_on_mobile": false,
+        "title": "",
+        "crop": "",
+        "image_shape": "default",
+        "show_index_on_blocks": false,
+        "index_shape": "circle",
+        "color_scheme": "quaternary",
+        "use_gradient_background": false
+      }
+    },
+    "169021714666a7a555": {
+      "type": "apps",
+      "settings": {}
+    },
+    "1706891424d72fe38b": {
+      "type": "apps",
+      "blocks": {
+        "okendo_reviews_widget_ArmDbm": {
+          "type": "shopify://apps/okendo/blocks/reviews-widget/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "disabled": true,
+          "settings": {
+            "product": "{{product}}",
+            "widget_type": "reviews_widget"
+          }
+        }
+      },
+      "block_order": [
+        "okendo_reviews_widget_ArmDbm"
+      ],
+      "custom_css": [
+        "{background-color: #1a3c34; /* Green background */}"
+      ],
+      "settings": {}
+    },
+    "524a80b0-f537-4729-8e03-2951f3996a4c": {
+      "type": "featured-collection",
+      "blocks": {
+        "sticker_XJwDhM": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 150,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Christmas_Pattern_Elements_13.png",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 80,
+            "vertical_position": 80,
+            "rotate": 0,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "rotate_when_scrolling",
+            "enable_parallax": true,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "sticker_W7Tber": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 100,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Christmas_Pattern_Elements_20.png",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 14,
+            "vertical_position": 14,
+            "rotate": 0,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "constantly_rotate",
+            "enable_parallax": true,
+            "parallax_speed": 10,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        }
+      },
+      "block_order": [
+        "sticker_XJwDhM",
+        "sticker_W7Tber"
+      ],
+      "settings": {
+        "title": "EXPLORE OUR RANGE",
+        "subheading": "",
+        "collection": "coffee",
+        "no_products": 18,
+        "show_view_all": false,
+        "enable_quick_buy": true,
+        "display_on_card": true,
+        "layout": "carousel",
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 5,
+        "slideshow_focus": "center",
+        "mobile_slide_width": "three_fifths",
+        "desktop_slide_width": 20,
+        "autoscroll_mode": "1",
+        "product_tiles_aspect_ratio": "",
+        "image_shape": "",
+        "color_scheme": "quaternary",
+        "use_gradient_background": false,
+        "show_promo_box": false,
+        "promo_box_size": "single",
+        "promo_overlay": "",
+        "promo_overlay_percentage": 25,
+        "promo_title": "",
+        "promo_desc": "",
+        "promo_cta": "",
+        "promo_url": ""
+      }
+    },
+    "3ca0157d-b18d-4799-8c0a-205a81f7a9ad": {
+      "type": "custom-liquid",
+      "settings": {
+        "title": "",
+        "custom_liquid": "<style>\n.title-subtitle-container {\n  width: 100%;\n  border-bottom: 4px solid #DDDED9 !important;\n  padding-bottom: 20px;\n}\n\ndiv.product-block-buy-buttons button.add-to-cart-btn {\n    background: #DDDED9;\n}\n.pb-media-shadow {\n    background: #DDDED9;\n}\n.addtocart-sticky .ctn-btn,\n.addtocart-sticky .add-to-cart-btn {\n  background: #DDDED9!important;\n}\n</style>",
+        "full_width": true,
+        "color_scheme": "primary"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_DCXfNa",
+    "text_columns_with_images_Qhycdw",
+    "169021714666a7a555",
+    "1706891424d72fe38b",
+    "524a80b0-f537-4729-8e03-2951f3996a4c",
+    "3ca0157d-b18d-4799-8c0a-205a81f7a9ad"
+  ]
+}

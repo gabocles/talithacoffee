@@ -1,0 +1,196 @@
+:root{
+  --recharge-corners-radius: 0;
+}
+
+.recharge-container > div > div > div > div > div > div:nth-child(1) {
+  flex: unset;
+  width: calc(100% - 330px);
+}
+
+.recharge-container {
+  width: calc(100% - 60px);
+  margin: 0 auto;
+}
+
+.sectionHeading h2 {
+  color: #1A3C34;
+  font-size: 32px;
+  line-height: 34px;
+  text-transform: uppercase;
+  font-family: 'termina'!important;
+  font-weight: 700;
+  margin: 0 0 55px;
+}
+
+.recharge-container > div {
+  max-width: 100%;
+}
+
+.recharge-container > div > div {
+  padding: 60px 60px;
+  max-width: 100%;
+}
+
+.recharge-container .recharge-card {
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+}
+
+.recharge-container .recharge-card .recharge-component-subscription-item .recharge-image {
+  max-width: 72px;
+  border: solid 1px #546D66;
+  border-radius: 5px;
+}
+
+.recharge-container .recharge-card .recharge-component-subscription-item>div>div>div>div>div:nth-child(2) span.recharge-heading {
+  font-family: 'termina';
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.recharge-container .recharge-card .recharge-component-subscription-item>div>div>div>div>div:nth-child(2)>div>div>div>div>div:nth-child(2) span.recharge-text-p3,.recharge-container .recharge-card .recharge-component-subscription-item>div>div>div>div>div:nth-child(2)>div>div>div>div>div:nth-child(3) span.recharge-text-p3 {
+  font-size: 12.7px;
+  line-height: 21.39px;
+  color: #545A5D;
+  font-family: 'Calibre';
+  font-weight: 500;
+}
+
+.recharge-container > div > div > div > div > div > div:nth-child(2) {
+  width: 40%;
+  max-width: 330px;
+  flex: unset;
+}
+
+.recharge-container > div > div > div > div > div > div:nth-child(2) > div > div {
+  gap: 2px;
+}
+
+.recharge-container>div>div>div>div>div>div:nth-child(2)>div>div .recharge-card {
+  padding: 18px;
+}
+
+.recharge-container > div > div > div > div > div > div:nth-child(2) .recharge-card > div {
+  flex-direction: unset;
+  align-items: center;
+}
+
+.recharge-container>div>div>div>div>div>div:nth-child(2) .recharge-card>div > div {
+  height: 21.39px;
+}
+
+.recharge-container>div>div>div>div>div>div:nth-child(2) .recharge-card>div .recharge-icon {
+  padding: 0;
+  width: 21.40px;
+  height: 21.40px;
+}
+
+.recharge-container>div>div>div>div>div>div:nth-child(2) .recharge-card>div .recharge-icon svg {
+  width: 100%;
+  height: 100%;
+  background-image: url(https://cdn.shopify.com/s/files/1/0726/2391/5327/files/div._15b7gxl0.svg?v=1707822214);
+  background-size: cover;
+}
+
+.recharge-container>div>div>div>div>div>div:nth-child(2)>div>div>div:last-child .recharge-card>div .recharge-icon svg {
+  background-image: unset;
+}
+
+.recharge-container>div>div>div>div>div>div:nth-child(2) .recharge-card>div .recharge-icon svg path {
+  display: none;
+}
+
+.recharge-container>div>div>div>div>div>div:nth-child(2)>div>div>div:last-child .recharge-card>div .recharge-icon svg path {
+  display: unset;
+}
+
+.recharge-container>div>div>div>div>div>div:nth-child(2)>div>div>div .recharge-card span.recharge-heading-h2 {
+  font-family: 'termina';
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 700;
+  display: block;
+  text-transform: uppercase;
+  vertical-align: unset;
+  padding-top: 5px;
+}
+
+.recharge-container>div>div>div>div>div {
+  flex-direction: unset;
+}
+
+@media only screen and (max-width:1350px){
+  .recharge-container>div>div {
+    padding: 40px 30px;
+    max-width: 100%;
+  }
+
+  .recharge-container>div>div>div>div>div>div:nth-child(2) {
+      width: 40%;
+      max-width: 315px;
+  }
+
+  .recharge-container>div>div>div>div>div>div:nth-child(1) {
+      width: calc(100% - 315px);
+  }
+
+  .sectionHeading h2 {
+      font-size: 26px;
+      line-height: 28px;
+      margin: 0 0 40px;
+  }
+}
+
+@media only screen and (max-width:991px){
+  .recharge-container>div>div>div>div>div>div:nth-child(2) {
+      width: 40%;
+  }
+
+  .recharge-container>div>div>div>div>div>div:nth-child(1) {
+      width: 60%;
+  }
+
+  .recharge-container>div>div {
+      padding: 30px 20px;
+      max-width: 100%;
+  }
+
+  .recharge-container>div>div>div>div>div>div:nth-child(2)>div>div .recharge-card {
+      padding: 12px;
+  }
+
+  .sectionHeading h2 {
+      font-size: 22px;
+      line-height: 24px;
+      margin: 0 0 30px;
+  }
+}
+
+@media only screen and (max-width:767px){
+  .recharge-container {
+      width: calc(100% - 40px);
+      margin: 0 auto;
+  }
+
+  .recharge-container>div>div>div>div>div>div:nth-child(1) {
+      order: 2;
+      width: 100%;
+  }
+
+  .recharge-container>div>div>div>div>div>div:nth-child(2) {
+      width: 100%;
+  }
+
+  
+
+  .sectionHeading h2 {
+      font-size: 20px;
+      line-height: 22px;
+      margin: 0 0 22px;
+  }
+}

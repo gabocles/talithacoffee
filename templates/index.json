@@ -1,0 +1,925 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "text_marquee_ULyFYP": {
+      "type": "text-marquee",
+      "disabled": true,
+      "settings": {
+        "text": "♥ ITS GIVING TUESDAY♥ SHOP COFFEE ♥ GET A DISCOUNT  ♥  CHANGE LIVES ALL AT THE SAME TIME♥",
+        "repeat_text": true,
+        "shape_between_text": "none",
+        "animate_shape_between_text": true,
+        "link": "https://talitha.com/discount/GIVINGTUESDAY",
+        "font": "font-heading heading-secondary",
+        "apply_effects": false,
+        "mobile_text_scale": 2,
+        "desktop_text_scale": 4,
+        "speed": 170,
+        "direction": "",
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "hero_slideshow_wfKFJf": {
+      "type": "hero-slideshow",
+      "blocks": {
+        "slide_hT9xUF": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/1_1a5e6a28-7bbd-4689-b394-53be4df295f6.jpg",
+            "image_mobile": "shopify://shop_images/1_9cc5de9b-c05a-46e8-a7c4-706eeb21894e.jpg",
+            "title": "",
+            "richtext": "",
+            "cta_url": "shopify://collections/retail",
+            "cta_text": "SHOP COFFEE",
+            "place_content": "place-content-center-center",
+            "text_align": "inherit",
+            "text_overlay_color": "white"
+          }
+        },
+        "slide_EHfLDh": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/4_6720240a-b5f7-40f6-bfda-7ecf0d1938ea.jpg",
+            "image_mobile": "shopify://shop_images/4_ac0a4ba2-a42d-4902-8108-b6a62813779f.jpg",
+            "title": "",
+            "richtext": "",
+            "cta_url": "shopify://collections/retail",
+            "cta_text": "Shop Now",
+            "place_content": "place-content-center-center",
+            "text_align": "inherit",
+            "text_overlay_color": "same_as_section"
+          }
+        },
+        "slide_xdTV6T": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/3_7c8316e9-7634-449f-830b-717bc343d704.jpg",
+            "image_mobile": "shopify://shop_images/3_30072a10-6248-4282-afe1-9217b8f3a49f.jpg",
+            "title": "",
+            "richtext": "",
+            "cta_url": "shopify://collections/retail",
+            "cta_text": "Shop Now",
+            "place_content": "place-content-center-center",
+            "text_align": "inherit",
+            "text_overlay_color": "same_as_section"
+          }
+        },
+        "slide_wQdYJg": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/2_1e270a5b-5b3e-4c62-b96d-ffe5e3f78924.jpg",
+            "image_mobile": "shopify://shop_images/2_af710a44-d71e-48eb-968d-67cac4490890.jpg",
+            "title": "",
+            "richtext": "",
+            "cta_url": "shopify://collections",
+            "cta_text": "Shop Now",
+            "place_content": "place-content-center-center",
+            "text_align": "inherit",
+            "text_overlay_color": "same_as_section"
+          }
+        },
+        "sticker_E9MiYd": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 150,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Artboard_30.svg",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 17,
+            "vertical_position": 98,
+            "rotate": 0,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": true,
+            "parallax_speed": 1,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "sticker_BVnGzz": {
+          "type": "sticker",
+          "settings": {
+            "text": "",
+            "shape": "fit_to_text",
+            "width": 120,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Artboard_17.svg",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 80,
+            "vertical_position": 100,
+            "rotate": 28,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": true,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "sticker_q74qQA": {
+          "type": "sticker",
+          "settings": {
+            "text": "",
+            "shape": "star_1",
+            "width": 100,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Artboard_34.svg",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 43,
+            "vertical_position": 94,
+            "rotate": 0,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": true,
+            "parallax_speed": 5,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        }
+      },
+      "block_order": [
+        "slide_hT9xUF",
+        "slide_EHfLDh",
+        "slide_xdTV6T",
+        "slide_wQdYJg",
+        "sticker_E9MiYd",
+        "sticker_BVnGzz",
+        "sticker_q74qQA"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "button.splide__arrow span.push-btn-surface.align-bottom.p-2 span.block {display: flex !important; justify-content: center !important; align-items: center !important;}"
+      ],
+      "settings": {
+        "style": "full",
+        "height": "natural",
+        "display_on_card": false,
+        "display_content_below_image_on_mobile": false,
+        "auto_rotate": true,
+        "slide_speed": "5000",
+        "place_content": "place-content-center-start",
+        "text_align": "text-left",
+        "heading_size": "heading-feature",
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "3bd9c82c-23a2-4144-93ba-a20695f40aa0": {
+      "type": "hero-slideshow",
+      "blocks": {
+        "template--20081841504575__3bd9c82c-23a2-4144-93ba-a20695f40aa0-slide-1": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Talitha_Coffee-1.jpg",
+            "image_mobile": "shopify://shop_images/Talitha_Coffee-10.jpg",
+            "title": "BUY COFFEE. CHANGE LIVES.",
+            "richtext": "<p>Order your favorite blend or Single Origin Talitha Coffee now and empower survivors of sex trafficking with every cup.</p>",
+            "cta_url": "shopify://collections/retail",
+            "cta_text": "SHOP COFFEE",
+            "place_content": "place-content-start-start",
+            "text_align": "inherit",
+            "text_overlay_color": "white"
+          }
+        },
+        "template--20081841504575__3bd9c82c-23a2-4144-93ba-a20695f40aa0-slide-2": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Talitha_Coffee-16.jpg",
+            "image_mobile": "shopify://shop_images/Talitha_Coffee-12.jpg",
+            "title": "pour, with purpose",
+            "richtext": "<p>Talitha Coffee is on a mission to end human trafficking and empower survivors, one cup at a time. </p>",
+            "cta_url": "shopify://collections/retail",
+            "cta_text": "Shop Coffee",
+            "place_content": "place-content-start-start",
+            "text_align": "inherit",
+            "text_overlay_color": "white"
+          }
+        },
+        "b3617381-edb7-4f40-a2c7-26ca280bf196": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Talitha_Coffee-2.jpg",
+            "image_mobile": "shopify://shop_images/Talitha_Coffee-11.jpg",
+            "title": "FLEXIBLE SUBSCRIPTIONS, PLUS 10% OFF",
+            "richtext": "<p><strong>10% off. Every. Single. Time.</strong> We’ve made it easier than ever to save on amazing coffee. Personalize your bundle now, save money and empower survivors.</p>",
+            "cta_url": "shopify://pages/subscription",
+            "cta_text": "Shop Subscriptions",
+            "place_content": "place-content-start-start",
+            "text_align": "inherit",
+            "text_overlay_color": "white"
+          }
+        },
+        "0a1d245d-507b-4b9e-89ef-14ad7200dc93": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 150,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Artboard_30.svg",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 17,
+            "vertical_position": 98,
+            "rotate": 0,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": true,
+            "parallax_speed": 1,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "407b4d31-b27b-41f5-92c9-05c2405b27c5": {
+          "type": "sticker",
+          "settings": {
+            "text": "",
+            "shape": "fit_to_text",
+            "width": 120,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Artboard_17.svg",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 80,
+            "vertical_position": 100,
+            "rotate": 28,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": true,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "2d4df34f-71dc-431f-b92d-ed4867925685": {
+          "type": "sticker",
+          "settings": {
+            "text": "",
+            "shape": "star_1",
+            "width": 100,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Artboard_34.svg",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 43,
+            "vertical_position": 94,
+            "rotate": 0,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": true,
+            "parallax_speed": 5,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        }
+      },
+      "block_order": [
+        "template--20081841504575__3bd9c82c-23a2-4144-93ba-a20695f40aa0-slide-1",
+        "template--20081841504575__3bd9c82c-23a2-4144-93ba-a20695f40aa0-slide-2",
+        "b3617381-edb7-4f40-a2c7-26ca280bf196",
+        "0a1d245d-507b-4b9e-89ef-14ad7200dc93",
+        "407b4d31-b27b-41f5-92c9-05c2405b27c5",
+        "2d4df34f-71dc-431f-b92d-ed4867925685"
+      ],
+      "custom_css": [
+        "p {font-family: \"calibre\"; font-size: 20px; line-height: 24px; width: 80%;}",
+        "h2 {font-size: 73px; font-family: \"Stratum\";}",
+        "@media (max-width: 990px) {p {width: 90%; font-size: 20px; } h2 {font-size: 45px; }}"
+      ],
+      "settings": {
+        "style": "full",
+        "height": "natural",
+        "display_on_card": false,
+        "display_content_below_image_on_mobile": false,
+        "auto_rotate": true,
+        "slide_speed": "10000",
+        "place_content": "place-content-center-start",
+        "text_align": "text-left",
+        "heading_size": "heading-standard",
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "ecom_taltha_logo_list_section_tJfqg6": {
+      "type": "ecom-taltha-logo-list-section",
+      "settings": {}
+    },
+    "ecom_product_category_selector_section_tTgLyW": {
+      "type": "ecom-product-category-selector-section",
+      "settings": {}
+    },
+    "ecom_talitha_brand_section_section_LVeeDW": {
+      "type": "ecom-talitha-brand-section-section",
+      "settings": {}
+    },
+    "ac0a275e-bb4f-4104-93b4-a4213a8f11c9": {
+      "type": "featured-collection",
+      "custom_css": [
+        "section {padding: 0px !important;}",
+        "img {border-radius: 0px !important;}"
+      ],
+      "settings": {
+        "title": "Explore our Range",
+        "subheading": "",
+        "collection": "coffee",
+        "no_products": 18,
+        "show_view_all": true,
+        "enable_quick_buy": false,
+        "display_on_card": false,
+        "layout": "carousel",
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 5,
+        "slideshow_focus": "left",
+        "mobile_slide_width": "three_fifths",
+        "desktop_slide_width": 25,
+        "autoscroll_mode": "1",
+        "product_tiles_aspect_ratio": "aspect-w-1 aspect-h-1",
+        "image_shape": "default",
+        "color_scheme": "primary",
+        "use_gradient_background": false,
+        "show_promo_box": false,
+        "promo_box_size": "single",
+        "promo_bg": "shopify://shop_images/flat-coffee-beans.jpg",
+        "promo_overlay": "#1b3c34",
+        "promo_overlay_percentage": 25,
+        "promo_title": "<p>SUBSCRIBE</p><p><strong>& SAVE!</strong></p>",
+        "promo_desc": "Our flexible coffee subscriptions offer you complete control, ​​so you get exactly the coffee you want, exactly when you need it, keeping you caffeinated all day long!",
+        "promo_cta": "LEARN MORE",
+        "promo_url": "shopify://pages/subscription"
+      }
+    },
+    "bb122acc-f5d9-4099-985b-93ed182d1b4b": {
+      "type": "two-column-image-stickers",
+      "blocks": {
+        "e0f72644-6e4e-4c84-aeb4-9b3164e91151": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 100,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/7.svg",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 83,
+            "vertical_position": 0,
+            "rotate": 0,
+            "show_sticker_on_mobile": false,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": true,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "6ca2783c-b3b3-4196-ac1a-0d250f1c8013": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 100,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Talitha-PlantsIllustrations-23_1.png",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 80,
+            "vertical_position": 21,
+            "rotate": 0,
+            "show_sticker_on_mobile": false,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": true,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "1afd7707-e874-4b54-a8f3-96031258b18a": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 100,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Talitha-PlantsIllustrations-03_1.png",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 47,
+            "vertical_position": 52,
+            "rotate": 0,
+            "show_sticker_on_mobile": false,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": true,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "2499704b-23ac-4e88-a43e-a70c33b68c68": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 130,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/7.svg",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 73,
+            "vertical_position": 0,
+            "rotate": -4,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": false,
+            "rotation_animation": "none",
+            "enable_parallax": true,
+            "parallax_speed": 7,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "dd53d5f2-4c45-4835-9d25-a83cc36e1b79": {
+          "type": "sticker",
+          "disabled": true,
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 100,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Talitha-PlantsIllustrations-03_2.png",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 16,
+            "vertical_position": 0,
+            "rotate": 0,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": false,
+            "rotation_animation": "none",
+            "enable_parallax": false,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "sticker_WpVtg7": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 100,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Artboard_30.svg",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 13,
+            "vertical_position": 0,
+            "rotate": 0,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": true,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        }
+      },
+      "block_order": [
+        "e0f72644-6e4e-4c84-aeb4-9b3164e91151",
+        "6ca2783c-b3b3-4196-ac1a-0d250f1c8013",
+        "1afd7707-e874-4b54-a8f3-96031258b18a",
+        "2499704b-23ac-4e88-a43e-a70c33b68c68",
+        "dd53d5f2-4c45-4835-9d25-a83cc36e1b79",
+        "sticker_WpVtg7"
+      ],
+      "custom_css": [
+        "h2 {font-size: 42px; text-align: left;}",
+        "@media (max-width: 990px) {p {width: 90%; font-size: 22px; } h2 {font-family: Termina; font-size: 26px; font-weight: 700; line-height: 29px; letter-spacing: 0em; text-align: left; /* Scaled down font size for mobile */ }}"
+      ],
+      "settings": {
+        "header_1": "Lets equip 10,000 survivors to take back their lives, one sip at a time",
+        "para_text_right": "Every time you buy our coffee, you help us change lives through hiring, training, and holistic support of sex trafficking survivors.",
+        "header_color": "#1b3c34",
+        "body_color": "#1b3c34",
+        "background_color": "#ffffff",
+        "icon": "shopify://shop_images/Talitha-PlantsIllustrations-03_2.png",
+        "image_1": "shopify://shop_images/5.jpg",
+        "image_2": "shopify://shop_images/13.jpg",
+        "title": "Heading",
+        "heading_size": "heading-standard",
+        "rich_text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
+        "display_on_card": false,
+        "content_width_desktop": "lg:w-1/2",
+        "button_link": "shopify://pages/about",
+        "button_label": "OUR MISSION",
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "2fded257-bc40-4a85-bb7a-014476fa7302": {
+      "type": "rich-text",
+      "blocks": {
+        "66aaa09e-4f4c-4a72-bb11-fc46f9c4251f": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 100,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/11.svg",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 94,
+            "vertical_position": 6,
+            "rotate": 0,
+            "show_sticker_on_mobile": false,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": false,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "f1a7bb5a-4b66-40ea-b97f-b3af93bbe4f1": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 100,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Talitha-PlantsIllustrations-09_1.png",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 70,
+            "vertical_position": 86,
+            "rotate": 0,
+            "show_sticker_on_mobile": false,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": false,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "cd8c355a-4614-4264-bb64-eaddddf0ddd3": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 150,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/24.svg",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 37,
+            "vertical_position": 0,
+            "rotate": 0,
+            "show_sticker_on_mobile": false,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": false,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "d6a86a24-a791-494f-94b5-42bd7956114d": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 100,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/24.svg",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 13,
+            "vertical_position": 0,
+            "rotate": 0,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": false,
+            "rotation_animation": "none",
+            "enable_parallax": false,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "8f894494-be25-41bb-8aac-46d344150066": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 100,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/11.svg",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 59,
+            "vertical_position": 26,
+            "rotate": 0,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": false,
+            "rotation_animation": "none",
+            "enable_parallax": false,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        }
+      },
+      "block_order": [
+        "66aaa09e-4f4c-4a72-bb11-fc46f9c4251f",
+        "f1a7bb5a-4b66-40ea-b97f-b3af93bbe4f1",
+        "cd8c355a-4614-4264-bb64-eaddddf0ddd3",
+        "d6a86a24-a791-494f-94b5-42bd7956114d",
+        "8f894494-be25-41bb-8aac-46d344150066"
+      ],
+      "custom_css": [
+        ".py-section-vertical-spacing {padding-top: 30px; padding-bottom: 0px;}",
+        "h2 {font-family: \"Stratum\"; background-image: url(\"https://cdn.shopify.com/s/files/1/0726/2391/5327/files/background-img.png\"); background-position: center center; background-size: cover; background-clip: text; -webkit-background-clip: text; color: transparent; -webkit-text-fill-color: transparent; text-shadow: none !important; text-stroke: black !important; text-align: left; font-size: 50px;}",
+        "@media (min-width: 990px) {h2 {font-size: 150px; }}"
+      ],
+      "settings": {
+        "title": "WHO IS TALITHA?",
+        "heading_size": "heading-standard",
+        "rich_text": "",
+        "display_on_card": false,
+        "content_width_desktop": "lg:w-full",
+        "button_link": "",
+        "button_label": "Shop Now",
+        "color_scheme": "secondary",
+        "use_gradient_background": false
+      }
+    },
+    "e9e189d7-c1e2-4e19-9da8-10e639608a93": {
+      "type": "image-with-text",
+      "blocks": {
+        "e30b4ffb-23e5-4f79-a8eb-0939ad9e15a9": {
+          "type": "sticker",
+          "settings": {
+            "text": "Desktop Sticker",
+            "shape": "star_1",
+            "width": 100,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/23.svg",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 64,
+            "vertical_position": 13,
+            "rotate": 2,
+            "show_sticker_on_mobile": false,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": false,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "cbc79fe4-38c8-4330-afa1-1604828521e1": {
+          "type": "sticker",
+          "settings": {
+            "text": "Desktop Sticker",
+            "shape": "star_1",
+            "width": 110,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/24.svg",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 55,
+            "vertical_position": 98,
+            "rotate": 0,
+            "show_sticker_on_mobile": false,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": false,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "9fa36808-9b01-4865-92ba-d44e3065ebe3": {
+          "type": "sticker",
+          "settings": {
+            "text": "Desktop Sticker",
+            "shape": "star_1",
+            "width": 100,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/21.svg",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 74,
+            "vertical_position": 69,
+            "rotate": 72,
+            "show_sticker_on_mobile": false,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": false,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "7407c878-b5e1-4c20-ac08-78eb860450a7": {
+          "type": "sticker",
+          "settings": {
+            "text": "Sticker",
+            "shape": "star_1",
+            "width": 100,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Talitha-PlantsIllustrations-05_1.png",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 55,
+            "vertical_position": 28,
+            "rotate": 0,
+            "show_sticker_on_mobile": false,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": false,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "4adea6cf-4bbc-4247-af92-cd96b86775f4": {
+          "type": "sticker",
+          "settings": {
+            "text": "Mobile Sticker",
+            "shape": "star_1",
+            "width": 100,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/1.svg",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 83,
+            "vertical_position": 30,
+            "rotate": 22,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": false,
+            "rotation_animation": "none",
+            "enable_parallax": false,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        },
+        "91cd125c-7e35-4d21-a471-facc2acf51be": {
+          "type": "sticker",
+          "settings": {
+            "text": "Mobile Sticker",
+            "shape": "star_1",
+            "width": 100,
+            "sticker_font_size": "1.563rem",
+            "image": "shopify://shop_images/Talitha-PlantsIllustrations-09_1.png",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 85,
+            "vertical_position": 15,
+            "rotate": -12,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": false,
+            "rotation_animation": "none",
+            "enable_parallax": false,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "same_as_section"
+          }
+        }
+      },
+      "block_order": [
+        "e30b4ffb-23e5-4f79-a8eb-0939ad9e15a9",
+        "cbc79fe4-38c8-4330-afa1-1604828521e1",
+        "9fa36808-9b01-4865-92ba-d44e3065ebe3",
+        "7407c878-b5e1-4c20-ac08-78eb860450a7",
+        "4adea6cf-4bbc-4247-af92-cd96b86775f4",
+        "91cd125c-7e35-4d21-a471-facc2acf51be"
+      ],
+      "custom_css": [
+        ".py-section-vertical-spacing {padding-top: 0px; padding-bottom: 15px;}",
+        "img {width: 180px; margin: 0 auto;}",
+        "p {font-size: 16px; line-height: 24px;}",
+        "span {font-size: 14px;}",
+        "@media (min-width: 990px) {img {width: 400px; } p {max-width: 70%; font-size: 25px; } span {font-size: 20px; }}"
+      ],
+      "settings": {
+        "display_on_card": false,
+        "image": "shopify://shop_images/Asset_1.svg",
+        "crop": "",
+        "image_shape": "default",
+        "blob_type": 1,
+        "rotate_image": 0,
+        "image_position": "left",
+        "image_size": "half",
+        "disable_media_style": true,
+        "title": "",
+        "heading_size": "heading-standard",
+        "richtext": "<p>Talitha is a symbol of hope, bravery, and belonging — the heroic attributes of so many sex trafficking survivors. She reminds us that together, we can not only rise, we can thrive.</p>",
+        "text_alignment": "text-left",
+        "button_link": "shopify://pages/why-talitha",
+        "button_label": "THE STORY BEHIND TALITHA",
+        "color_scheme": "secondary",
+        "use_gradient_background": false
+      }
+    },
+    "efffcc5b-6044-433b-9583-cc29bf8ba258": {
+      "type": "blog-posts",
+      "custom_css": [
+        "p {font-family: \"calibre\"; font-size: 16px; line-height: 22px; width: 80%;}",
+        "h3 {font-size: 24px; font-family: \"Stratum\" !important;}",
+        "@media (max-width: 990px) {span {width: 90%; font-size: 16px; text-align: left; } h3 {font-size: 24px; }}"
+      ],
+      "settings": {
+        "display_on_card": false,
+        "title": "From the blog",
+        "blog": "news",
+        "post_limit": 3,
+        "crop": "aspect-w-4 aspect-h-3",
+        "image_shape": "default",
+        "blog_show_author": false,
+        "blog_show_date": false,
+        "show_post_excerpt": true,
+        "show_view_all": true,
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "cabcb2ce-433f-4c55-98a4-0eb9695ce34f": {
+      "type": "newsletter",
+      "custom_css": [
+        "h2 {text-align: left;}"
+      ],
+      "settings": {
+        "title": "10% OFF YOUR FIRST ORDER",
+        "richtext": "<p>Stay up to date with all things from Talitha Coffee, and get our newsletter straight to your inbox.. with 10% off your first order!</p>",
+        "display_on_card": false,
+        "color_scheme": "secondary",
+        "use_gradient_background": false
+      }
+    },
+    "image_with_text_overlay_JkgmYJ": {
+      "type": "image-with-text-overlay",
+      "settings": {
+        "image": "shopify://shop_images/Artboard_1_2x-80.jpg",
+        "display_on_card": false,
+        "display_content_below_image_on_mobile": true,
+        "style": "full",
+        "height": "natural",
+        "place_content": "place-content-center-center",
+        "text_align": "text-center",
+        "title": "",
+        "heading_size": "heading-standard",
+        "richtext": "",
+        "cta_url": "",
+        "cta_text": "Shop Now",
+        "color_scheme": "primary",
+        "use_gradient_background": false,
+        "text_overlay_color": "same_as_section"
+      }
+    },
+    "175132603932b81249": {
+      "type": "apps",
+      "blocks": {
+        "instafeed_app_block_aPXKDe": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "title": "",
+            "title_color": "",
+            "title_size_v2": 0,
+            "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
+            "background_color": "",
+            "feed_id": "",
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "instafeed_app_block_aPXKDe"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "text_marquee_ULyFYP",
+    "hero_slideshow_wfKFJf",
+    "3bd9c82c-23a2-4144-93ba-a20695f40aa0",
+    "ecom_taltha_logo_list_section_tJfqg6",
+    "ecom_product_category_selector_section_tTgLyW",
+    "ecom_talitha_brand_section_section_LVeeDW",
+    "ac0a275e-bb4f-4104-93b4-a4213a8f11c9",
+    "bb122acc-f5d9-4099-985b-93ed182d1b4b",
+    "2fded257-bc40-4a85-bb7a-014476fa7302",
+    "e9e189d7-c1e2-4e19-9da8-10e639608a93",
+    "efffcc5b-6044-433b-9583-cc29bf8ba258",
+    "cabcb2ce-433f-4c55-98a4-0eb9695ce34f",
+    "image_with_text_overlay_JkgmYJ",
+    "175132603932b81249"
+  ]
+}

@@ -1,0 +1,255 @@
+<style>
+  .activeSubscriptionContainer {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    margin-top: 16px;
+  }
+
+  .sectionHeadingShopify h2 {
+    font-size: 18px;
+    line-height: 22px;
+    font-family: 'termina' !important;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #1a3c34;
+    margin: 0 0 10px;
+  }
+
+  .subsctiptionListBox {
+    padding: 20px 0;
+    border-bottom: solid 1px #efefef;
+  }
+
+  .subscriptionListRow {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+  }
+
+  .subscriptionDescription {
+    width: 25%;
+    /* max-width: 275px; */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+
+  .subsctiptionImage {
+    width: 56px;
+    text-align: center;
+  }
+
+  .subsctiptionImage img {
+    display: inline;
+  }
+
+  .subsctiptionName {
+    width: calc(100% - 56px);
+    padding-left: 13px;
+  }
+
+  .subsctiptionName h3 {
+    font-size: 16px;
+    line-height: 20px;
+    font-family: 'Calibre';
+    font-weight: 600;
+    color: #1a3c34;
+  }
+
+  .subsctiptionWeight {
+    width: 10%;
+    max-width: 97px;
+  }
+
+  .subsctiptionListCol p {
+    font-size: 16px;
+    line-height: 19.6px;
+  }
+
+  .subsctiptionQuantity {
+    width: 8%;
+    max-width: 67px;
+  }
+
+  .subsctiptionShipment {
+    width: 16%;
+    max-width: 104px;
+  }
+
+  .subsctiptionListCol h6 {
+    font-size: 14px;
+    line-height: 16.8px;
+  }
+
+  .subsctiptionShipment h6 span {
+    display: block;
+    font-weight: 600;
+  }
+
+  a.subscriptionEditAction {
+    background-color: #eee;
+    padding: 7px 15px;
+    font-family: 'termina';
+    font-size: 11px;
+    line-height: 13.2px;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: inline-block;
+  }
+
+  @media only screen and (max-width: 1360px) {
+    .subscriptionDescription {
+      width: 35%;
+    }
+
+    .subsctiptionWeight {
+      width: 12%;
+    }
+
+    .subsctiptionShipment {
+      width: 15%;
+    }
+  }
+
+  @media only screen and (max-width: 1199px) {
+    .subscriptionDescription {
+      width: 60%;
+    }
+
+    .subsctiptionWeight,
+    .subsctiptionQuantity {
+      width: 20%;
+    }
+
+    .subsctiptionShipment {
+      width: 70%;
+      margin-top: 20px;
+    }
+
+    .subsctiptionImage {
+      text-align: left;
+    }
+  }
+
+  @media only screen and (max-width: 991px) {
+    .subscriptionDescription {
+      width: 35%;
+    }
+
+    .subsctiptionWeight {
+      width: 12%;
+    }
+
+    .subsctiptionShipment {
+      width: 15%;
+    }
+  }
+
+  @media only screen and (max-width: 767px) {
+    .subscriptionDescription {
+      width: 60%;
+    }
+
+    .subsctiptionWeight,
+    .subsctiptionQuantity {
+      width: 20%;
+    }
+
+    .subsctiptionShipment {
+      width: 70%;
+      margin-top: 20px;
+    }
+
+    .subsctiptionImage {
+      text-align: left;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    .subscriptionDescription {
+      width: 100%;
+    }
+
+    .subsctiptionWeight,
+    .subsctiptionQuantity {
+      width: 50%;
+      margin: 20px 0;
+      max-width: unset;
+    }
+
+    .subsctiptionShipment {
+      margin-top: 0;
+    }
+  }
+</style>
+
+<div class="activeSubscriptionContainer" style="display:none">
+  <div class="sectionHeadingShopify">
+    <h2>Active subscriptions</h2>
+  </div>
+  <div id="subscriptionListWrapper">
+    <div class="subsctiptionListBox">
+      <div class="subscriptionListRow">
+        <div class="subsctiptionListCol subscriptionDescription">
+          <div class="subsctiptionListCol subsctiptionImage">
+            <img src="https://cdn.shopify.com/s/files/1/0726/2391/5327/files/Group_100.png?v=1707892376" alt="">
+          </div>
+          <div class="subsctiptionListCol subsctiptionName">
+            <h3>Ignite - Signature Blend</h3>
+          </div>
+        </div>
+        <div class="subsctiptionListCol subsctiptionWeight">
+          <p>5lb - Beans</p>
+        </div>
+        <div class="subsctiptionListCol subsctiptionQuantity">
+          <p>Qty - 1</p>
+        </div>
+        <div class="subsctiptionListCol subsctiptionShipment">
+          <h6>Next Shipment <span>July 24</span></h6>
+        </div>
+        <div class="subsctiptionListCol subsctiptionAction">
+          <a href="javascript:void(0);" class="subscriptionEditAction">Edit</a>
+        </div>
+      </div>
+    </div>
+    <div class="subsctiptionListBox">
+      <div class="subscriptionListRow">
+        <div class="subsctiptionListCol subscriptionDescription">
+          <div class="subsctiptionListCol subsctiptionImage">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0726/2391/5327/files/Group_100_3cf316a8-6bac-4a69-9ce5-25410c48760a.png?v=1707892991"
+              alt=""
+            >
+          </div>
+          <div class="subsctiptionListCol subsctiptionName">
+            <h3>Light and Medium Decaf Coffees</h3>
+          </div>
+        </div>
+        <div class="subsctiptionListCol subsctiptionWeight">
+          <p>5lb - Beans</p>
+        </div>
+        <div class="subsctiptionListCol subsctiptionQuantity">
+          <p>Qty - 1</p>
+        </div>
+        <div class="subsctiptionListCol subsctiptionShipment">
+          <h6>Next Shipment <span>July 24</span></h6>
+        </div>
+        <div class="subsctiptionListCol subsctiptionAction">
+          <a href="javascript:void(0);" class="subscriptionEditAction">Edit</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,278 @@
+{% liquid
+  assign main_links = section.settings.main_linklist.links
+  assign right_links = section.settings.main_linklist_right.links
+  assign all_links = main_links | concat: right_links
+%}
+
+{%- assign base_font_class = base_font_class | replace: 'font-heading', 'font-main' %}
+<template data-should-teleport="#left-drawer-slot">
+  <div
+    :data-modal-label="$store.modals.leftDrawer.contents === 'nav' ? '{{ section.settings.main_linklist.title }}' : false"
+    x-show="$store.modals.leftDrawer.contents === 'nav'"
+    class="sidebar-nav pb-5 px-section {% if settings.enable_sidebar_nav_animation %} sidebar-nav--enable-transitions {% endif %}"
+  >
+    {% comment %}
+      <div class="relative flex items-center justify-between pb-5">
+        <h2 class="sr-only" class="" tabindex="-1">
+          {{ section.settings.main_linklist.title }}
+        </h2>
+        <button @click.prevent="$store.modals.close('nav')" class="block top-0">
+          <span class="sr-only">{{ 'general.accessibility.close_modal' | t }}</span>
+          <span class="inline-block w-5 h-5">{% render 'icon-close' %}</span>
+        </button>
+      </div>
+    {% endcomment %}
+    <ul class="mt-5">
+      {% for link in all_links %}
+        {% liquid
+          assign link_title_downcased = link.title | downcase
+          assign link_name_1_downcased = settings.link_name_1 | downcase
+          assign link_name_2_downcased = settings.link_name_2 | downcase
+          assign link_name_3_downcased = settings.link_name_3 | downcase
+          assign link_name_4_downcased = settings.link_name_4 | downcase
+          assign link_name_5_downcased = settings.link_name_5 | downcase
+        %}
+        {% comment %}
+          First level
+        {% endcomment %}
+        {% assign showcase_link_tiles = '' %}
+        <li class="text-lg lg:text-xl" style="--first-delay-tap: {% increment first_delay_tap %};">
+          {% if link.links.size > 0
+            or link_title_downcased == link_name_1_downcased
+            or link_title_downcased == link_name_2_downcased
+            or link_title_downcased == link_name_3_downcased
+            or link_title_downcased == link_name_4_downcased
+            or link_title_downcased == link_name_5_downcased
+          %}
+            <div
+              x-data="
+                {
+                  expanded: {% if forloop.first and section.settings.auto_expand %}true{% else %}false{% endif %}
+                }
+              "
+            >
+              <button
+                class="nav-link-xs w-full flex flex-row justify-between items-center font-heading py-2.5 text-left"
+                @click="expanded = ! expanded"
+                :aria-expanded="expanded"
+              >
+                {{ link.title }}
+                {% if link.links.size > 0
+                  or link_title_downcased == link_name_1_downcased
+                  or link_title_downcased == link_name_2_downcased
+                  or link_title_downcased == link_name_3_downcased
+                  or link_title_downcased == link_name_4_downcased
+                  or link_title_downcased == link_name_5_downcased
+                %}
+                  <div class="ml-auto">
+                    <span class="w-3 h-3 block" :class="{'rotate-180': expanded}">
+                      {%- render 'icon-chevron-down' -%}
+                    </span>
+                  </div>
+                {% endif %}
+              </button>
+              <div x-show="expanded" x-collapse>
+                <ul class="text-base font-main">
+                  {% if settings.menu_button %}
+                    {% for link_num in (1..5) %}
+                      {% liquid
+                        assign current_link_name = ''
+                        case link_num
+                          when 1
+                            assign current_link_name = link_name_1_downcased
+                          when 2
+                            assign current_link_name = link_name_2_downcased
+                          when 3
+                            assign current_link_name = link_name_3_downcased
+                          when 4
+                            assign current_link_name = link_name_4_downcased
+                          when 5
+                            assign current_link_name = link_name_5_downcased
+                        endcase
+                      %}
+
+                      {% if link_title_downcased == current_link_name %}
+                        {% for btn_num in (1..5) %}
+                          {% liquid
+                            assign button_url_key = 'button_' | append: link_num | append: '_url_' | append: btn_num
+                            assign button_text_key = 'button_' | append: link_num | append: '_text_' | append: btn_num
+                            assign button_bg_color_key = 'button_' | append: link_num | append: '_bg_color_' | append: btn_num
+                            assign button_text_color_key = 'button_' | append: link_num | append: '_text_color_' | append: btn_num
+
+                            assign button_url = settings[button_url_key]
+                            assign button_text = settings[button_text_key]
+                            assign button_bg_color = settings[button_bg_color_key]
+                            assign button_text_color = settings[button_text_color_key]
+                          %}
+
+                          {% if button_url and button_text %}
+                            <a
+                              href="{{ button_url }}"
+                              class="sidebar-button"
+                              style="background-color: {{ button_bg_color }}; color: {{ button_text_color }};"
+                            >
+                              {{ button_text }}
+                            </a>
+                          {% endif %}
+                        {% endfor %}
+                      {% endif %}
+                    {% endfor %}
+                  {% endif %}
+                  {% for link in link.links %}
+                    {% comment %}
+                      Second level
+                    {% endcomment %}
+                    {%- liquid
+                      assign showcase_link = false
+                      if section.settings.showcase_second_level_links
+                        if link.type == 'collection_link' or link.type == 'product_link'
+                          if link.links.size == 0
+                            assign showcase_link = true
+                          endif
+                        endif
+                      endif
+                    -%}
+
+                    {% unless showcase_link %}
+                      <li class="my-3 text-base" style="--second-delay-tap: {% increment second_delay_tap %};">
+                        {% if link.links.size > 0 %}
+                          <div
+                            x-data="{ expanded: false }"
+                          >
+                            <button
+                              class="w-full flex flex-row justify-between items-center {{ base_font_class }}"
+                              @click="expanded = ! expanded"
+                              :aria-expanded="expanded"
+                            >
+                              <span>{{ link.title }}</span>
+                              <div class="ml-auto">
+                                <span class="w-3 h-3 block" :class="{'rotate-180': expanded}">
+                                  {%- render 'icon-chevron-down' -%}
+                                </span>
+                              </div>
+                            </button>
+                            <ul class="child-dropdown" x-show="expanded" x-collapse>
+                              {% for link in link.links %}
+                                {% comment %}
+                                  Third level
+                                {% endcomment %}
+                                <li
+                                  class="my-3 pl-5 text-base"
+                                  style="--third-delay-tap: {% increment third_delay_tap %};"
+                                >
+                                  <a href="{{ link.url }}">
+                                    {{ link.title }}
+                                  </a>
+                                </li>
+                              {% endfor %}
+                            </ul>
+                          </div>
+                        {% else %}
+                          <a class="" href="{{ link.url }}">
+                            {{ link.title }}
+                          </a>
+                        {% endif %}
+                      </li>
+                    {% else %}
+                      {%- capture link_tile -%}
+                        <li class="text-base">
+                          {%- assign object = link.object -%}
+                          {% comment %} {% render 'showcase-tile' with object: object, crop: section.settings.crop %} {% endcomment %}
+                        </li>
+                      {%- endcapture -%}
+                      {%- assign showcase_link_tiles = showcase_link_tiles | append: link_tile -%}
+                    {%- endunless -%}
+                  {% endfor %}
+                </ul>
+                {% if showcase_link_tiles != '' %}
+                  <ul class="mb-5 nav-item grid gap-5 grid-cols-2">
+                    {{ showcase_link_tiles }}
+                  </ul>
+                {% endif %}
+              </div>
+            </div>
+          {% else %}
+            <a class="nav-link-xs block font-heading py-2.5" href="{{ link.url }}">
+              {{ link.title }}
+            </a>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+
+    <div class="mt-5 space-y-5">
+      {%- if section.settings.sidebar_show_footer_menu -%}
+        <nav class="sidebar-footer-menu" aria-label="Secondary">
+          <ul class="space-y-1.5">
+            {%- for link in linklists.footer.links -%}
+              <li>
+                <a class="inline-block py-1" href="{{ link.url }}">
+                  {{ link.title }}
+                </a>
+              </li>
+            {%- endfor -%}
+          </ul>
+        </nav>
+      {%- endif -%}
+
+      {% if shop.customer_accounts_enabled %}
+        <ul class="space-y-1.5">
+          {% if customer %}
+            <li>
+              <a href="{{ routes.account_url }}">{{ 'layout.customer.account' | t }}</a>
+            </li>
+            <li>
+              {{ 'layout.customer.log_out' | t | customer_logout_link }}
+            </li>
+          {% else %}
+            <li>
+              {{ 'layout.customer.log_in' | t | customer_login_link }}
+            </li>
+            <li>
+              {{ 'layout.customer.create_account' | t | customer_register_link }}
+            </li>
+          {% endif %}
+        </ul>
+      {% endif %}
+
+      {% comment %}
+        {%- if section.settings.header_show_search -%}
+        <form class="relative mt-10 max-w-2xl mx-auto block" action="/search" method="get" role="search">
+          <label for="Search" class="visually-hidden">
+            {{ 'general.search.placeholder' | t }}
+          </label>
+          <input type="search"
+                name="q"
+                id="Search"
+                class="pr-12 placeholder-current input w-full"
+                value="{{ search.terms | escape }}"
+                placeholder="{{ 'general.search.placeholder' | t }}">
+          <button class="absolute right-2 top-1/2 transform -translate-y-1/2 p-1" type="submit" class="button">
+            <span class="inline-block w-5 h-5">{% render 'icon-search' %}</span>
+            <span class="visually-hidden">{{ 'general.search.submit' | t }}</span>
+          </button>
+        </form>
+        {%- endif -%}
+      {% endcomment %}
+
+      {%- if section.settings.sidebar_show_social_icons -%}
+        {%- render 'social-icons', list_class: 'justify-start sidebar-social-icons' -%}
+      {%- endif -%}
+    </div>
+  </div>
+</template>
+
+<!-- NEW STYLE 23/09/24 -->
+{% style %}
+  .sidebar-button {
+    width: 100%;
+    display: inline-block;
+    margin-top: 5px;
+    padding: 8px 15px;
+    text-decoration: none;
+    font-family: Termina;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+  }
+{% endstyle %}
