@@ -9,12 +9,77 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "main-coffee-subscription-page",
-      "settings": {}
+    "rich_text_nFCWty": {
+      "type": "rich-text",
+      "blocks": {
+        "sticker_qtUqqi": {
+          "type": "sticker",
+          "settings": {
+            "text": "Start Your Year Of Coffee",
+            "shape": "star_2",
+            "width": 200,
+            "sticker_font_size": "1.563rem",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 80,
+            "vertical_position": 80,
+            "rotate": 0,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": false,
+            "parallax_speed": 3,
+            "color": "bg-scheme-text text-scheme-text-overlay",
+            "color_scheme": "tertiary"
+          }
+        }
+      },
+      "block_order": [
+        "sticker_qtUqqi"
+      ],
+      "name": "t:sections.rich_text.name",
+      "settings": {
+        "bg-image": "shopify://shop_images/Talitha_Clairemont_opening_banner.png",
+        "title": "Your Morning Ritual, Hope Roasted for a Year",
+        "heading_size": "heading-standard",
+        "rich_text": "<p>One subscription. One year of coffee. One year of impact for trafficking survivors.</p>",
+        "display_on_card": true,
+        "content_width_desktop": "lg:w-2/3",
+        "button_link": "",
+        "button_label": "Shop Now",
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "customizable_subscription_selector_DhqU7H": {
+      "type": "customizable-subscription-selector",
+      "name": "Subscription Selector",
+      "settings": {
+        "collection": "annual-product-subscriptions",
+        "show_title": true,
+        "title": "Customize Your Subscription",
+        "subtitle": "",
+        "enable_product_selection": true,
+        "product_step_title": "Select your product:",
+        "show_product_price": true,
+        "enable_product_options": true,
+        "options_step_title": "Choose your options:",
+        "enable_quantity_selection": true,
+        "quantity_step_title": "How much do you want?",
+        "max_quantity": 5,
+        "default_quantity": 1,
+        "enable_frequency_selection": true,
+        "frequency_step_title": "How often?",
+        "show_annual_option": true,
+        "annual_option_title": "Every Month",
+        "enable_gift_options": false,
+        "gift_step_title": "Gift options:",
+        "show_add_to_cart": true,
+        "add_to_cart_text": "Add to Cart"
+      }
     }
   },
   "order": [
-    "main"
+    "rich_text_nFCWty",
+    "customizable_subscription_selector_DhqU7H"
   ]
 }

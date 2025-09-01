@@ -1,0 +1,54 @@
+{%- comment -%}
+  Icon Finder Snippet
+  Renders icons based on the icon parameter
+  Usage: {% render 'icon-finder', icon: 'icon-name' %}
+{%- endcomment -%}
+
+{%- liquid
+  assign icon_name = icon | default: 'search'
+  assign icon_class = 'icon icon-' | append: icon_name
+-%}
+
+{%- case icon_name -%}
+  {%- when 'search' -%}
+    {% render 'icon-search' %}
+  {%- when 'cart' -%}
+    {% render 'icon-cart' %}
+  {%- when 'add' -%}
+    {% render 'icon-add' %}
+  {%- when 'subtract' -%}
+    {% render 'icon-subtract' %}
+  {%- when 'close' -%}
+    {% render 'icon-close' %}
+  {%- when 'chevron-down' -%}
+    {% render 'icon-chevron-down' %}
+  {%- when 'next' -%}
+    {% render 'icon-next' %}
+  {%- when 'previous' -%}
+    {% render 'icon-previous' %}
+  {%- when 'play' -%}
+    {% render 'icon-play' %}
+  {%- when 'pause' -%}
+    {% render 'icon-pause' %}
+  {%- when 'lock' -%}
+    {% render 'icon-lock' %}
+  {%- when 'email' -%}
+    {% render 'icon-email' %}
+  {%- when 'account' -%}
+    {% render 'icon-account' %}
+  {%- when 'menu' -%}
+    {% render 'icon-menu' %}
+  {%- when 'bag' -%}
+    {% render 'icon-bag' %}
+  {%- when 'in-stock' -%}
+    {% render 'icon-in-stock' %}
+  {%- when 'out-of-stock' -%}
+    {% render 'icon-out-of-stock' %}
+  {%- when 'video' -%}
+    {% render 'icon-video' %}
+  {%- when 'model' -%}
+    {% render 'icon-model' %}
+  {%- else -%}
+    {%- comment -%} Fallback to theme-icon if specific icon not found {%- endcomment -%}
+    {% render 'theme-icon', icon: icon_name %}
+{%- endcase -%}

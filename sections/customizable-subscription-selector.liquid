@@ -1,0 +1,968 @@
+{%- liquid
+  assign selected_collection = collections[section.settings.collection]
+  assign products = selected_collection.products
+-%}
+
+{%- comment -%} DEBUG: Información de productos {%- endcomment -%}
+<div style="background: #f0f0f0; padding: 20px; margin: 20px 0; border: 2px solid #ccc; font-family: monospace; font-size: 12px;">
+  <h3>🐛 DEBUG: Información de Productos</h3>
+
+  <p><strong>Colección seleccionada:</strong> {{ section.settings.collection }}</p>
+  <p><strong>Nombre de la colección:</strong> {{ selected_collection.title }}</p>
+  <p><strong>Total de productos:</strong> {{ products.size }}</p>
+
+  {%- for product in products -%}
+    <div style="border: 1px solid #999; margin: 10px 0; padding: 10px; background: white;">
+      <h4>Producto {{ forloop.index }}: {{ product.title }}</h4>
+      <p><strong>ID:</strong> {{ product.id }}</p>
+      <p><strong>Handle:</strong> {{ product.handle }}</p>
+      <p><strong>Precio:</strong> {{ product.price | money }}</p>
+      <p><strong>Disponible:</strong> {{ product.available }}</p>
+      <p><strong>Tipo:</strong> {{ product.type }}</p>
+      <p><strong>Vendor:</strong> {{ product.vendor }}</p>
+
+      <h5>🎯 Variantes ({{ product.variants.size }}):</h5>
+      {%- for variant in product.variants -%}
+        <div style="margin-left: 20px; padding: 5px; border-left: 2px solid #ddd;">
+          <p>
+            <strong>Variante {{ forloop.index }}:</strong> {{ variant.title }}
+          </p>
+          <p><strong>ID:</strong> {{ variant.id }}</p>
+          <p><strong>SKU:</strong> {{ variant.sku }}</p>
+          <p><strong>Precio:</strong> {{ variant.price | money }}</p>
+          <p><strong>Disponible:</strong> {{ variant.available }}</p>
+          <p><strong>Inventario:</strong> {{ variant.inventory_quantity }}</p>
+
+          {%- if variant.options.size > 0 -%}
+            <p><strong>Opciones:</strong></p>
+            {%- for option in variant.options -%}
+              <span style="background: #e0e0e0; padding: 2px 5px; margin: 2px; display: inline-block;">
+                {{- option -}}
+              </span>
+            {%- endfor -%}
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+
+      <h5>⚙️ Opciones del Producto ({{ product.options.size }}):</h5>
+      {%- for option in product.options -%}
+        <div style="margin-left: 20px; padding: 5px; border-left: 2px solid #ddd;">
+          <p>
+            <strong>{{ option.name }}:</strong>
+          </p>
+          <p><strong>Posición:</strong> {{ option.position }}</p>
+          <p><strong>Valores:</strong></p>
+          {%- for value in option.values -%}
+            <span style="background: #e0f0ff; padding: 2px 5px; margin: 2px; display: inline-block;">{{ value }}</span>
+          {%- endfor -%}
+        </div>
+      {%- endfor -%}
+
+      <h5>📅 Selling Plan Groups ({{ product.selling_plan_groups.size }}):</h5>
+      {%- for group in product.selling_plan_groups -%}
+        <div style="margin-left: 20px; padding: 5px; border-left: 2px solid #ddd;">
+          <p>
+            <strong>Grupo {{ forloop.index }}:</strong> {{ group.name }}
+          </p>
+          <p><strong>ID:</strong> {{ group.id }}</p>
+          <p><strong>App ID:</strong> {{ group.app_id }}</p>
+
+          <h6>📋 Selling Plans ({{ group.selling_plans.size }}):</h6>
+          {%- for plan in group.selling_plans -%}
+            <div style="margin-left: 20px; padding: 3px; background: #f9f9f9;">
+              <p>
+                <strong>Plan {{ forloop.index }}:</strong> {{ plan.name }}
+              </p>
+              <p><strong>ID:</strong> {{ plan.id }}</p>
+              <p><strong>Descripción:</strong> {{ plan.description }}</p>
+
+              {%- if plan.options.size > 0 -%}
+                <p><strong>Opciones del Plan:</strong></p>
+                {%- for option in plan.options -%}
+                  <div style="margin-left: 10px;">
+                    <p>
+                      <strong>{{ option.name }}:</strong> {{ option.value }}
+                    </p>
+                  </div>
+                {%- endfor -%}
+              {%- endif -%}
+
+              {%- if plan.price_adjustments.size > 0 -%}
+                <p><strong>Ajustes de Precio:</strong></p>
+                {%- for adjustment in plan.price_adjustments -%}
+                  <div style="margin-left: 10px;">
+                    <p>
+                      <strong>Orden:</strong> {{ adjustment.order_count }} - <strong>Valor:</strong>
+                      {{ adjustment.value -}}
+                      {{- adjustment.value_type }}
+                    </p>
+                  </div>
+                {%- endfor -%}
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endfor -%}
+
+      <h5>🏷️ Tags:</h5>
+      <p>{{ product.tags | join: ', ' }}</p>
+
+      <h5>🖼️ Imágenes ({{ product.images.size }}):</h5>
+      {%- for image in product.images limit: 3 -%}
+        <img src="{{ image | img_url: '100x' }}" alt="{{ product.title }}" style="margin: 5px; border: 1px solid #ccc;">
+      {%- endfor -%}
+    </div>
+  {%- endfor -%}
+
+  <h3>🎨 Metaobjetos de Iconos</h3>
+  {%- if shop.metaobjects.image_icon_urls -%}
+    {%- for icon_group in shop.metaobjects.image_icon_urls.values -%}
+      <div style="border: 1px solid #999; margin: 10px 0; padding: 10px; background: white;">
+        <h4>Grupo de Iconos {{ forloop.index }}</h4>
+        <p><strong>ID:</strong> {{ icon_group.id }}</p>
+        <p><strong>Handle:</strong> {{ icon_group.handle }}</p>
+
+        {%- if icon_group.options -%}
+          <h5>Opciones de Iconos:</h5>
+          {%- for option in icon_group.options.value -%}
+            <div style="margin-left: 20px; padding: 5px; border-left: 2px solid #ddd;">
+              <p><strong>Nombre:</strong> {{ option.name }}</p>
+              {%- if option.image_url -%}
+                <p><strong>URL de Imagen:</strong> {{ option.image_url.value }}</p>
+                <img
+                  src="{{ option.image_url.value | image_url }}"
+                  alt="{{ option.name }}"
+                  style="width: 30px; height: 30px; margin: 5px;"
+                >
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
+        {%- endif -%}
+      </div>
+    {%- endfor -%}
+  {%- else -%}
+    <p>❌ No se encontraron metaobjetos de iconos</p>
+  {%- endif -%}
+</div>
+
+<div class="sideContainer">
+  <div class="subscriptionMainDiv">
+    <div class="subscribeSection" id="subscribeSection">
+      {%- if section.settings.show_title -%}
+        <div class="subscription-header">
+          <h1>{{ section.settings.title | default: 'Customize Your Subscription' }}</h1>
+          {%- if section.settings.subtitle != blank -%}
+            <p>{{ section.settings.subtitle }}</p>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      <div class="subscriptionSteps" id="subscriptionSteps">
+        {%- comment -%} STEP 1: Product Selection {%- endcomment -%}
+        {%- if section.settings.enable_product_selection -%}
+          <div class="subscriptionOption step" id="productSelectStep">
+            <h2>{{ section.settings.product_step_title | default: 'Select your product:' }}</h2>
+            <div class="subscriptionRow product-grid">
+              {%- for product in products -%}
+                <div class="subscriptionCol product-col" data-product="{{ product | json | escape }}">
+                  <input
+                    type="radio"
+                    id="product-{{ product.id }}"
+                    name="selectedProduct"
+                    value="{{ product.id }}"
+                    class="selection-steps-radio"
+                    {%- if forloop.first -%}
+                      checked
+                    {%- endif -%}
+                  >
+                  <label for="product-{{ product.id }}" class="subscriptionCard card_product">
+                    <div class="itemDiv itemCardRelative">
+                      <div class="itemCard selectProductImage">
+                        <div class="itemIcon">
+                          <img
+                            src="{{ product.images[0] | img_url: '400x' }}"
+                            alt="{{ product.title }}"
+                            loading="lazy"
+                            width="120"
+                            height="120"
+                          >
+                        </div>
+                      </div>
+                      <div class="itemDetail">
+                        <h4>{{ product.title }}</h4>
+                        {%- if section.settings.show_product_price -%}
+                          <p class="price">{{ product.price | money }}</p>
+                        {%- endif -%}
+                        {%- if product.description != blank -%}
+                          <p class="description">{{ product.description | strip_html | truncate: 80 }}</p>
+                        {%- endif -%}
+                      </div>
+                    </div>
+                  </label>
+                </div>
+              {%- endfor -%}
+            </div>
+          </div>
+        {%- endif -%}
+
+        {%- comment -%} STEP 2: Product Options - CORREGIDO {%- endcomment -%}
+        {%- if section.settings.enable_product_options -%}
+          <div class="subscriptionOption step" id="productOptionsStep">
+            <h2>{{ section.settings.options_step_title | default: 'Choose your options:' }}</h2>
+            <div class="subscriptionRow" id="productOptionsContainer">
+              {%- comment -%} Opciones se poblarán dinámicamente por JavaScript {%- endcomment -%}
+            </div>
+          </div>
+        {%- endif -%}
+
+        {%- comment -%} STEP 4: Frequency Selection - CORREGIDO {%- endcomment -%}
+        {%- if section.settings.enable_frequency_selection -%}
+          <div class="subscriptionOption step" id="frequencyStep">
+            <h2>{{ section.settings.frequency_step_title | default: 'How often?' }}</h2>
+            <div class="subscriptionRow" id="frequencyContainer">
+              {%- comment -%} Frecuencias se poblarán dinámicamente por JavaScript {%- endcomment -%}
+            </div>
+
+            {%- comment -%} Annual Subscription Option {%- endcomment -%}
+            {%- if section.settings.show_annual_option -%}
+              <div class="subscriptionCol size annual-option">
+                <input
+                  type="radio"
+                  id="annual-subscription"
+                  name="selectedFrequency"
+                  value="annual"
+                  class="selection-steps-radio"
+                >
+                <label for="annual-subscription" class="subscriptionCard card_three">
+                  <div class="itemDiv">
+                    <div class="itemIcon">
+                      {%- assign icon_url = '' -%}
+                      {%- for singleStep in shop.metaobjects.image_icon_urls.values -%}
+                        {%- for singleStepSingleOption in singleStep.options.value -%}
+                          {%- if singleStepSingleOption.name contains 'month'
+                            or singleStepSingleOption.name contains 'annual'
+                          -%}
+                            {%- assign icon_url = singleStepSingleOption.image_url.value -%}
+                            {%- break -%}
+                          {%- endif -%}
+                        {%- endfor -%}
+                      {%- endfor -%}
+                      {%- if icon_url != blank -%}
+                        <img src="{{ icon_url | image_url }}" alt="Annual Subscription" width="40" height="40">
+                      {%- else -%}
+                        {% render 'icon-finder', icon: 'calendar' %}
+                      {%- endif -%}
+                    </div>
+                    <div class="itemDetail">
+                      <h4>Annual Subscription</h4>
+                      <h5>Every Month</h5>
+                    </div>
+                  </div>
+                </label>
+              </div>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {%- comment -%} STEP 5: Gift Options {%- endcomment -%}
+        {%- if section.settings.enable_gift_options -%}
+          <div class="subscriptionOption step" id="giftStep">
+            <h2>{{ section.settings.gift_step_title | default: 'Gift options:' }}</h2>
+            <div class="subscriptionRow">
+              <div class="subscriptionCol">
+                <input
+                  type="radio"
+                  id="gift-no"
+                  name="isGift"
+                  value="false"
+                  class="selection-steps-radio"
+                  checked
+                >
+                <label for="gift-no" class="subscriptionCard">
+                  <div class="itemDiv">
+                    <div class="itemIcon">
+                      {% render 'icon-finder', icon: 'user' %}
+                    </div>
+                    <div class="itemDetail">
+                      <h4>For me</h4>
+                    </div>
+                  </div>
+                </label>
+              </div>
+              <div class="subscriptionCol">
+                <input
+                  type="radio"
+                  id="gift-yes"
+                  name="isGift"
+                  value="true"
+                  class="selection-steps-radio"
+                >
+                <label for="gift-yes" class="subscriptionCard">
+                  <div class="itemDiv">
+                    <div class="itemIcon">
+                      {% render 'icon-finder', icon: 'gift' %}
+                    </div>
+                    <div class="itemDetail">
+                      <h4>As a gift</h4>
+                    </div>
+                  </div>
+                </label>
+              </div>
+            </div>
+          </div>
+        {%- endif -%}
+
+        {%- comment -%} Add to Cart Button {%- endcomment -%}
+        {%- if section.settings.show_add_to_cart -%}
+          <div class="subscription-add-to-cart">
+            <button type="button" class="add-subscription-btn" id="addSubscriptionBtn">
+              {{ section.settings.add_to_cart_text | default: 'Add to Cart' }}
+            </button>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .sideContainer {
+    max-width: calc(100% - 60px);
+    margin: 0 auto;
+  }
+
+  .subscriptionMainDiv {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .subscribeSection {
+    width: 100%;
+    background: #1b3c34;
+    min-height: 615px;
+    padding: 40px 70px;
+    color: white;
+  }
+
+  .subscription-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .subscription-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: white;
+  }
+
+  .subscription-header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+  }
+
+  .subscriptionSteps {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .subscriptionOption {
+    margin-bottom: 30px;
+  }
+
+  .subscriptionOption h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: white;
+  }
+
+  .subscriptionRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: flex-start;
+  }
+
+  /* Grilla de 3 columnas para productos */
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .product-col {
+    width: 100%;
+  }
+
+  .subscriptionCol {
+    flex: 0 0 auto;
+    min-width: 200px;
+  }
+
+  .subscriptionCard {
+    display: block;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    color: #333;
+    height: 100%;
+  }
+
+  .subscriptionCard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .selection-steps-radio:checked + .subscriptionCard {
+    border-color: #d4af37;
+    background: #f9f7f0;
+  }
+
+  .selection-steps-radio {
+    display: none;
+  }
+
+  .itemDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+  }
+
+  .itemIcon {
+    margin-bottom: 15px;
+  }
+
+  .itemIcon img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .itemIcon svg {
+    width: 40px;
+    height: 40px;
+    color: #1b3c34;
+  }
+
+  .itemDetail {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .itemDetail h4 {
+    margin: 0 0 8px 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .itemDetail h5 {
+    margin: 4px 0;
+    font-size: 0.85rem;
+    opacity: 0.7;
+    font-weight: normal;
+  }
+
+  .itemDetail p {
+    margin: 4px 0;
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+
+  .itemDetail .price {
+    font-weight: 600;
+    color: #d4af37;
+  }
+
+  .itemDetail .description {
+    font-size: 0.8rem;
+    line-height: 1.3;
+  }
+
+  .annual-option {
+    margin-top: 15px;
+  }
+
+  .add-subscription-btn {
+    background: #d4af37;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    width: 100%;
+    max-width: 300px;
+    margin: 30px auto 0;
+    display: block;
+  }
+
+  .add-subscription-btn:hover {
+    background: #b8941f;
+  }
+
+  @media (max-width: 1024px) {
+    .product-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .subscribeSection {
+      padding: 20px;
+    }
+
+    .product-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .subscriptionRow {
+      justify-content: center;
+    }
+
+    .subscriptionCol {
+      min-width: 150px;
+      flex: 1 1 calc(50% - 10px);
+    }
+
+    .subscription-header h1 {
+      font-size: 2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .subscriptionCol {
+      flex: 1 1 100%;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const productRadios = document.querySelectorAll('input[name="selectedProduct"]');
+    const frequencyContainer = document.getElementById('frequencyContainer');
+    const optionsContainer = document.getElementById('productOptionsContainer');
+    const addToCartBtn = document.getElementById('addSubscriptionBtn');
+
+    // Datos de iconos desde metaobjetos
+    const iconData = {
+      {%- for singleStep in shop.metaobjects.image_icon_urls.values -%}
+        {%- for singleStepSingleOption in singleStep.options.value -%}
+          '{{ singleStepSingleOption.name | downcase | replace: ' ', '_' }}': '{{ singleStepSingleOption.image_url.value | image_url }}',
+        {%- endfor -%}
+      {%- endfor -%}
+    };
+
+    // Update product options and frequency when product changes
+    productRadios.forEach((radio) => {
+      radio.addEventListener('change', function () {
+        if (this.checked) {
+          const productData = JSON.parse(this.closest('.subscriptionCol').dataset.product);
+          updateProductOptions(productData);
+          updateFrequencyOptions(productData);
+        }
+      });
+    });
+
+    // Initialize with first product
+    if (productRadios.length > 0) {
+      const firstProduct = JSON.parse(productRadios[0].closest('.subscriptionCol').dataset.product);
+      updateProductOptions(firstProduct);
+      updateFrequencyOptions(firstProduct);
+    }
+
+    function updateProductOptions(product) {
+      if (!optionsContainer) return;
+
+      optionsContainer.innerHTML = '';
+
+      // Extraer opciones únicas de las variantes
+      const optionSets = {};
+      const optionNames = ['Size', 'Grind', 'Type']; // Nombres basados en la estructura de variantes
+      
+      if (product.variants && product.variants.length > 0) {
+        product.variants.forEach(variant => {
+          if (variant.options && variant.options.length > 0) {
+            variant.options.forEach((option, index) => {
+              if (!optionSets[index]) {
+                optionSets[index] = new Set();
+              }
+              optionSets[index].add(option);
+            });
+          }
+        });
+
+        // Crear HTML para cada conjunto de opciones
+        Object.keys(optionSets).forEach((optionIndex, idx) => {
+          const optionName = optionNames[idx] || `Option ${parseInt(optionIndex) + 1}`;
+          const values = Array.from(optionSets[optionIndex]);
+          
+          if (values.length > 1) { // Solo mostrar si hay múltiples opciones
+            const optionTitle = document.createElement('h3');
+            optionTitle.textContent = `${optionName}:`;
+            optionTitle.style.cssText = 'width: 100%; margin-bottom: 15px; color: white; font-size: 1.2rem;';
+            optionsContainer.appendChild(optionTitle);
+
+            const optionRow = document.createElement('div');
+            optionRow.className = 'subscriptionRow';
+            optionRow.style.marginBottom = '20px';
+
+            values.forEach((value, valueIndex) => {
+              const col = document.createElement('div');
+              col.className = 'subscriptionCol';
+
+              // Buscar icono
+              let iconHtml = '';
+              const iconUrl = findIconUrl(value.toLowerCase());
+              if (iconUrl) {
+                iconHtml = `<img src="${iconUrl}" alt="${value}" width="40" height="40">`;
+              } else {
+                // Iconos por defecto según el tipo de opción
+                let defaultIcon = '';
+                if (optionName === 'Size') {
+                  defaultIcon = `<svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`;
+                } else if (optionName === 'Grind') {
+                  defaultIcon = `<svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>`;
+                } else {
+                  defaultIcon = `<svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.1 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2z"/></svg>`;
+                }
+                iconHtml = defaultIcon;
+              }
+
+              col.innerHTML = `
+                <input type="radio" id="option-${optionIndex}-${valueIndex}" name="selectedOption${optionIndex}" value="${value}" class="selection-steps-radio" ${
+                valueIndex === 0 ? 'checked' : ''
+              }>
+                <label for="option-${optionIndex}-${valueIndex}" class="subscriptionCard">
+                  <div class="itemDiv">
+                    <div class="itemIcon">
+                      ${iconHtml}
+                    </div>
+                    <div class="itemDetail">
+                      <h4>${value}</h4>
+                      <h5>${optionName}</h5>
+                    </div>
+                  </div>
+                </label>
+              `;
+
+              optionRow.appendChild(col);
+            });
+
+            optionsContainer.appendChild(optionRow);
+          }
+        });
+      }
+    }
+
+    function updateFrequencyOptions(product) {
+      if (!frequencyContainer) return;
+
+      frequencyContainer.innerHTML = '';
+
+      // Verificar si la opción anual está habilitada
+      const showAnnualOption = {{ section.settings.show_annual_option | json }};
+      
+      if (showAnnualOption) {
+        // Si la opción anual está habilitada, solo mostrar la opción anual
+        // No mostrar las opciones regulares del selling plan
+        return;
+      }
+
+      // Solo mostrar opciones regulares si la anual está deshabilitada
+      if (product.selling_plan_groups && product.selling_plan_groups.length > 0) {
+        product.selling_plan_groups.forEach((group, groupIndex) => {
+          if (group.selling_plans && group.selling_plans.length > 0) {
+            group.selling_plans.forEach((plan, planIndex) => {
+              const col = document.createElement('div');
+              col.className = 'subscriptionCol size';
+
+              const planName = plan.name.replace('Delivery ', '');
+              
+              // Extraer número de semanas
+              const weekMatch = planName.match(/(\d+)\s*week/);
+              const weeks = weekMatch ? weekMatch[1] : (groupIndex + 1);
+              
+              // Buscar icono específico para frecuencia
+              let iconHtml = '';
+              const iconSearchTerms = [
+                `${weeks}_week`,
+                `${weeks}week`,
+                `every_${weeks}_week`,
+                'week',
+                'frequency',
+                'calendar'
+              ];
+              
+              let iconUrl = null;
+              for (const term of iconSearchTerms) {
+                iconUrl = findIconUrl(term);
+                if (iconUrl) break;
+              }
+              
+              if (iconUrl) {
+                iconHtml = `<img src="${iconUrl}" alt="${planName}" width="40" height="40">`;
+              } else {
+                // Icono por defecto para frecuencia
+                iconHtml = `<svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                </svg>`;
+              }
+
+              col.innerHTML = `
+                <input type="radio" id="frequency-${plan.id}" name="selectedFrequency" value="${
+                plan.id
+              }" class="selection-steps-radio" ${groupIndex === 0 && planIndex === 0 ? 'checked' : ''}>
+                <label for="frequency-${plan.id}" class="subscriptionCard card_three">
+                  <div class="itemDiv">
+                    <div class="itemIcon">
+                      ${iconHtml}
+                    </div>
+                    <div class="itemDetail">
+                      <h4>Every ${weeks} week${weeks > 1 ? 's' : ''}</h4>
+                      <h5>Subscription</h5>
+                    </div>
+                  </div>
+                </label>
+              `;
+
+              frequencyContainer.appendChild(col);
+            });
+          }
+        });
+      }
+    }
+
+    // Función para buscar iconos en metaobjetos
+    function findIconUrl(searchTerm) {
+      const normalizedTerm = searchTerm.toLowerCase().replace(/\s+/g, '_');
+      
+      // Buscar coincidencia exacta
+      if (iconData[normalizedTerm]) {
+        return iconData[normalizedTerm];
+      }
+      
+      // Buscar coincidencia parcial
+      for (const [key, url] of Object.entries(iconData)) {
+        if (key.includes(normalizedTerm) || normalizedTerm.includes(key)) {
+          return url;
+        }
+      }
+      
+      return null;
+    }
+
+    // Add to cart functionality
+    if (addToCartBtn) {
+      addToCartBtn.addEventListener('click', function () {
+        const formData = {
+          selectedProduct: document.querySelector('input[name="selectedProduct"]:checked')?.value,
+          selectedQuantity: document.querySelector('input[name="selectedQuantity"]:checked')?.value,
+          selectedFrequency: document.querySelector('input[name="selectedFrequency"]:checked')?.value,
+          isGift: document.querySelector('input[name="isGift"]:checked')?.value === 'true',
+        };
+
+        // Add selected options
+        const optionInputs = document.querySelectorAll('input[name^="selectedOption"]:checked');
+        optionInputs.forEach((input) => {
+          const optionName = input.name;
+          formData[optionName] = input.value;
+        });
+
+        console.log('Form Data:', formData);
+        
+        // Aquí puedes agregar la lógica para enviar al carrito
+        // Por ejemplo: window.location.href = `/cart/add?id=${variantId}&selling_plan=${sellingPlanId}`;
+      });
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Subscription Selector",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection",
+      "info": "Select the collection to display products from"
+    },
+    {
+      "type": "header",
+      "content": "Section Display"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_title",
+      "label": "Show section title",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title",
+      "default": "Customize Your Subscription"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Section subtitle"
+    },
+    {
+      "type": "header",
+      "content": "Step 1: Product Selection"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_product_selection",
+      "label": "Enable product selection step",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "product_step_title",
+      "label": "Product step title",
+      "default": "Select your product:"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_product_price",
+      "label": "Show product prices",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Step 2: Product Options"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_product_options",
+      "label": "Enable product options step",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "options_step_title",
+      "label": "Options step title",
+      "default": "Choose your options:"
+    },
+    {
+      "type": "header",
+      "content": "Step 3: Quantity Selection"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_quantity_selection",
+      "label": "Enable quantity selection step",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "quantity_step_title",
+      "label": "Quantity step title",
+      "default": "How much do you want?"
+    },
+    {
+      "type": "range",
+      "id": "max_quantity",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "label": "Maximum quantity",
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "default_quantity",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "label": "Default quantity",
+      "default": 1
+    },
+    {
+      "type": "header",
+      "content": "Step 4: Frequency Selection"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_frequency_selection",
+      "label": "Enable frequency selection step",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "frequency_step_title",
+      "label": "Frequency step title",
+      "default": "How often?"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_annual_option",
+      "label": "Show annual subscription option",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "annual_option_title",
+      "label": "Annual option title",
+      "default": "Every Month"
+    },
+    {
+      "type": "header",
+      "content": "Step 5: Gift Options"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_gift_options",
+      "label": "Enable gift options step",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "gift_step_title",
+      "label": "Gift step title",
+      "default": "Gift options:"
+    },
+    {
+      "type": "header",
+      "content": "Add to Cart"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_add_to_cart",
+      "label": "Show add to cart button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "add_to_cart_text",
+      "label": "Add to cart button text",
+      "default": "Add to Cart"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Subscription Selector",
+      "settings": {
+        "enable_product_selection": true,
+        "enable_product_options": true,
+        "enable_quantity_selection": true,
+        "enable_frequency_selection": true,
+        "enable_gift_options": false,
+        "show_annual_option": true
+      }
+    }
+  ]
+}
+{% endschema %}
