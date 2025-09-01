@@ -12,60 +12,6 @@
 {% assign coffee_subscription_products = collections['coffee-subscription-1'].products %}
 {% assign coffee_subscription_gift_products = collections['coffee-subscription-gifts'].products %}
 
-{% comment %} DEBUG: Información de productos y planes {% endcomment %}
-<div style="background: #f0f0f0; padding: 20px; margin: 20px; border: 1px solid #ccc; font-family: monospace; font-size: 12px; max-height: 400px; overflow-y: auto;">
-  <h3>🔍 DEBUG: Productos de Suscripción</h3>
-
-  <h4>Colección: coffee-subscription-1</h4>
-  <p><strong>Total productos:</strong> {{ coffee_subscription_products.size }}</p>
-
-  {% for product in coffee_subscription_products %}
-    <div style="border: 1px solid #999; margin: 10px 0; padding: 10px; background: white;">
-      <h5>📦 Producto: {{ product.title }} (ID: {{ product.id }})</h5>
-      <p><strong>Handle:</strong> {{ product.handle }}</p>
-      <p><strong>Selling Plan Groups:</strong> {{ product.selling_plan_groups.size }}</p>
-
-      {% if product.selling_plan_groups.size > 0 %}
-        {% for selling_plan_group in product.selling_plan_groups %}
-          <div style="margin-left: 20px; border-left: 3px solid #007cba; padding-left: 10px; margin: 5px 0;">
-            <p><strong>📋 Plan Group:</strong> {{ selling_plan_group.name }}</p>
-            <p><strong>ID:</strong> {{ selling_plan_group.id }}</p>
-            <p><strong>Selling Plans:</strong> {{ selling_plan_group.selling_plans.size }}</p>
-
-            {% for selling_plan in selling_plan_group.selling_plans %}
-              <div style="margin-left: 20px; background: #f9f9f9; padding: 5px; margin: 3px 0;">
-                <p><strong>⚙️ Plan:</strong> {{ selling_plan.name }}</p>
-                <p><strong>ID:</strong> {{ selling_plan.id }}</p>
-                <p><strong>Descripción:</strong> {{ selling_plan.description }}</p>
-                <p><strong>Opciones:</strong> {{ selling_plan.options | json }}</p>
-              </div>
-            {% endfor %}
-          </div>
-        {% endfor %}
-      {% else %}
-        <p style="color: red;">❌ No tiene selling_plan_groups</p>
-      {% endif %}
-    </div>
-  {% endfor %}
-
-  <h4>Colección: coffee-subscription-gifts</h4>
-  <p><strong>Total productos:</strong> {{ coffee_subscription_gift_products.size }}</p>
-
-  {% for product in coffee_subscription_gift_products %}
-    <div style="border: 1px solid #999; margin: 10px 0; padding: 10px; background: white;">
-      <h5>🎁 Producto Gift: {{ product.title }} (ID: {{ product.id }})</h5>
-      <p><strong>Selling Plan Groups:</strong> {{ product.selling_plan_groups.size }}</p>
-
-      {% for selling_plan_group in product.selling_plan_groups %}
-        <div style="margin-left: 20px; border-left: 3px solid #28a745; padding-left: 10px;">
-          <p><strong>📋 Plan Group:</strong> {{ selling_plan_group.name }}</p>
-          <p><strong>ID:</strong> {{ selling_plan_group.id }}</p>
-        </div>
-      {% endfor %}
-    </div>
-  {% endfor %}
-</div>
-
 <script>
     var javascriptObject = [];
     var variationBestSellerInformation = [];
@@ -277,10 +223,7 @@
                       >
                         <h2>3. Select Coffee Type</h2>
                         <div
-                          class="subscriptionRow size type w-50-needed"
-                          {% if currentIndex != 1 %}
-                            display-none-needed
-                          {% endif %}
+                          class="subscriptionRow size type w-50-needed{% if currentIndex != 1 %} display-none-needed{% endif %}"
                           id="type-{{ product.id }}"
                         >
                           {% assign optionName = option.name | downcase %}
@@ -566,43 +509,46 @@
                     id="coffee-frq-{{ product.id }}"
                   >
                     {% for selling_plan in product.selling_plan_groups %}
-                      {% assign plan_value = selling_plan.selling_plans[0].id %}
-                      {% assign plan_name = selling_plan.name | replace: 'Delivery ', '' %}
-                      {% assign plan_name_downcase = selling_plan.name | replace: 'Delivery ', '' | downcase %}
-                      <div class="subscriptionCol size">
-                        <input
-                          type="radio"
-                          id="{{ plan_name | replace: " ", "-" | downcase }}-{{ product.id }}"
-                          name="howOften"
-                          value="{{ plan_value }}"
-                          class="selection-steps-radio"
-                        >
-                        <label
-                          for="{{ plan_name | replace: " ", "-" | downcase }}-{{ product.id }}"
-                          class="subscriptionCard card_three "
-                        >
-                          <div class="itemDiv">
-                            <div class="itemIcon">
-                              {% assign icon_url = '' %}
-                              {% for singleStep in shop.metaobjects.image_icon_urls.values %}
-                                {% for singleStepSingleOption in singleStep.options.value %}
-                                  {% assign singleStepOptionName = singleStepSingleOption.name | downcase %}
-                                  {% if plan_name_downcase contains singleStepOptionName %}
-                                    {% assign icon_url = singleStepSingleOption.image_url.value %}
-                                  {% endif %}
+                      {% comment %} Filtrar planes anuales - solo mostrar planes de frecuencia regular {% endcomment %}
+                      {% unless selling_plan.name contains 'Annual' or selling_plan.name contains '12-month' or selling_plan.name contains 'yearly' %}
+                        {% assign plan_value = selling_plan.selling_plans[0].id %}
+                        {% assign plan_name = selling_plan.name | replace: 'Delivery ', '' %}
+                        {% assign plan_name_downcase = selling_plan.name | replace: 'Delivery ', '' | downcase %}
+                        <div class="subscriptionCol size">
+                          <input
+                            type="radio"
+                            id="{{ plan_name | replace: " ", "-" | downcase }}-{{ product.id }}"
+                            name="howOften"
+                            value="{{ plan_value }}"
+                            class="selection-steps-radio"
+                          >
+                          <label
+                            for="{{ plan_name | replace: " ", "-" | downcase }}-{{ product.id }}"
+                            class="subscriptionCard card_three "
+                          >
+                            <div class="itemDiv">
+                              <div class="itemIcon">
+                                {% assign icon_url = '' %}
+                                {% for singleStep in shop.metaobjects.image_icon_urls.values %}
+                                  {% for singleStepSingleOption in singleStep.options.value %}
+                                    {% assign singleStepOptionName = singleStepSingleOption.name | downcase %}
+                                    {% if plan_name_downcase contains singleStepOptionName %}
+                                      {% assign icon_url = singleStepSingleOption.image_url.value %}
+                                    {% endif %}
+                                  {% endfor %}
                                 {% endfor %}
-                              {% endfor %}
-                              <img
-                                src="{{ icon_url | image_url }}"
-                                alt="{{ plan_name }}"
-                              >
+                                <img
+                                  src="{{ icon_url | image_url }}"
+                                  alt="{{ plan_name }}"
+                                >
+                              </div>
+                              <div class="itemDetail">
+                                <h4>{{ plan_name }}</h4>
+                              </div>
                             </div>
-                            <div class="itemDetail">
-                              <h4>{{ plan_name }}</h4>
-                            </div>
-                          </div>
-                        </label>
-                      </div>
+                          </label>
+                        </div>
+                      {% endunless %}
                     {% endfor %}
                   </div>
                 {% endfor %}
@@ -1381,14 +1327,14 @@
     </div>
   </section>
   <!-- jQuery cdn -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <!-- slick slider cdn -->
   <script
     src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
     integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
-  />
+  ></script>
   <script src="{{ 'ckCoffeeSubscriptionNew.js' | asset_url }}" defer></script>
   <script>
     jQuery('#productCarousel').owlCarousel({

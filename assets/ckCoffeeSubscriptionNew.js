@@ -172,12 +172,10 @@ $(document).ready(function () {
                 $('.gift-products-section').addClass('ck-hide');
                 $(`#gift-products-${$(this).val()}`).removeClass("ck-hide");
                 // scrollToNextStep($(`#main-product-${$(this).val()}`))
-                $('stepsWrapperFoGiftSomeone').p
+                
                 if (window.selectedProductType == 'forGift') {
                     scrollToNextStep($(`${nextStepClass}`))
-
                     // scrollToNextStep($(`#main-product-${$(this).val()}`))
-
                 }
                 break;
             // case 'howOften':
