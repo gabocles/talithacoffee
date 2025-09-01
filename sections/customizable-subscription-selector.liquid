@@ -7,7 +7,7 @@
 {% comment %} <div style="background: #f0f0f0; padding: 20px; margin: 20px 0; border: 2px solid #ccc; font-family: monospace; font-size: 12px;">
   <h3>🐛 DEBUG: Información de Productos</h3>
 
-  <p><strong>Colección seleccionada:</strong> {{ section.settings.collection }}</p>
+  <p><strong>Selected Collection:</strong> {{ section.settings.collection }}</p>
   <p><strong>Nombre de la colección:</strong> {{ selected_collection.title }}</p>
   <p><strong>Total de productos:</strong> {{ products.size }}</p>
 
@@ -405,7 +405,7 @@
               {{ section.settings.frequency_step_title | default: 'How often?' }}
             </h2>
             <div class="subscriptionRow" id="frequencyContainer">
-              {%- comment -%} Frecuencias se poblarán dinámicamente por JavaScript {%- endcomment -%}
+              {%- comment -%} Frequencies will be populated dynamically by JavaScript {%- endcomment -%}
             </div>
           </div>
         {%- endif -%}
@@ -1059,14 +1059,14 @@
       addEventListenersToStep(document.getElementById('grindStep'));
     }
 
-    // Función para filtrar opciones de grind según el tamaño seleccionado
+    // Function to filter grind options based on selected size
     function updateGrindOptionsForSize(product, selectedSize) {
       const grindContainer = document.getElementById('grindContainer');
       if (!grindContainer || !selectedSize) return;
       
       grindContainer.innerHTML = '';
       
-      // Filtrar variantes que coincidan con el tamaño seleccionado
+      // Filter variants that match the selected size
       const availableGrinds = new Set();
       
       product.variants.forEach(variant => {
@@ -1116,7 +1116,7 @@
         grindContainer.appendChild(col);
       });
       
-      // Agregar event listeners
+      // Add event listeners
       addEventListenersToStep(document.getElementById('grindStep'));
     }
 
@@ -1440,7 +1440,7 @@
       const inputs = step.querySelectorAll('input[type="radio"]');
       inputs.forEach(input => {
         input.addEventListener('change', () => {
-          // Lógica especial para cuando se selecciona un tamaño
+          // Special logic for when a size is selected
           if (input.name === 'selectedSize' && selectedProductData) {
             updateGrindOptionsForSize(selectedProductData, input.value);
           }
@@ -1498,16 +1498,16 @@
     if (addToCartBtn) {
       addToCartBtn.addEventListener('click', async function () {
         try {
-          console.log('🛒 Iniciando proceso de Add to Cart...');
+          console.log('🛒 Starting Add to Cart process...');
           
-          // Validar que se haya seleccionado un producto
+          // Validate that a product has been selected
           const selectedProduct = document.querySelector('input[name="selectedProduct"]:checked');
           if (!selectedProduct) {
-            alert('Por favor selecciona un producto');
+            alert('Please select a product');
             return;
           }
 
-          console.log('✅ Producto seleccionado:', selectedProduct.value);
+          console.log('✅ Product selected:', selectedProduct.value);
 
           // Obtener las selecciones del usuario
           const selectedSize = document.querySelector('input[name="selectedSize"]:checked')?.value;
@@ -1516,7 +1516,7 @@
           const selectedCoffeeType = document.querySelector('input[name="selectedCoffeeType"]:checked')?.value;
           const selectedFrequency = document.querySelector('input[name="selectedFrequency"]:checked')?.value;
 
-          console.log('📋 Selecciones del usuario:', {
+          console.log('📋 User selections:', {
             size: selectedSize,
             grind: selectedGrind,
             quantity: selectedQuantity,
@@ -1524,17 +1524,17 @@
             frequency: selectedFrequency
           });
 
-          // Validar selecciones requeridas
+          // Validate required selections
           if (!selectedSize) {
-            alert('Por favor selecciona un tamaño');
+            alert('Please select a size');
             return;
           }
           if (!selectedGrind) {
-            alert('Por favor selecciona un tipo de molido');
+            alert('Please select a grind type');
             return;
           }
           if (!selectedFrequency) {
-            alert('Por favor selecciona una frecuencia');
+            alert('Please select a frequency');
             return;
           }
 
@@ -1544,8 +1544,8 @@
             productData = JSON.parse(selectedProduct.dataset.productData);
             console.log('📦 Datos del producto:', productData);
           } catch (parseError) {
-            console.error('❌ Error al parsear datos del producto:', parseError);
-            alert('Error en los datos del producto. Por favor recarga la página.');
+            console.error('❌ Error parsing product data:', parseError);
+            alert('Error in product data. Please reload the page.');
             return;
           }
           
@@ -1555,21 +1555,21 @@
             selectedOptions.push(selectedCoffeeType);
           }
 
-          console.log('🔍 Buscando variante con opciones:', selectedOptions);
-          console.log('📊 Variantes disponibles:', productData.variants);
+          console.log('🔍 Searching for variant with options:', selectedOptions);
+          console.log('📊 Available variants:', productData.variants);
 
-          // Encontrar la variante que coincida
+          // Find matching variant
           const matchingVariant = findMatchingVariant(selectedOptions, productData.variants);
           
           if (!matchingVariant) {
-            console.error('❌ No se encontró variante coincidente');
-            console.log('Opciones buscadas:', selectedOptions);
-            console.log('Variantes disponibles:', productData.variants.map(v => ({
+            console.error('❌ No matching variant found');
+            console.log('Searched options:', selectedOptions);
+            console.log('Available variants:', productData.variants.map(v => ({
               id: v.id,
               options: [v.option1, v.option2, v.option3].filter(Boolean),
               available: v.available
             })));
-            alert('No se encontró una variante que coincida con tus selecciones. Por favor verifica tus opciones.');
+            alert('No variant found that matches your selections. Please verify your options.');
             return;
           }
 
@@ -1577,7 +1577,7 @@
 
           // Verificar disponibilidad
           if (!matchingVariant.available) {
-            alert('Lo sentimos, esta variante no está disponible en este momento.');
+            alert('Sorry, this variant is not available at the moment.');
             return;
           }
 
@@ -1608,7 +1608,7 @@
 
           // Deshabilitar botón durante la petición
           addToCartBtn.disabled = true;
-          addToCartBtn.textContent = 'Agregando...';
+          addToCartBtn.textContent = 'Adding...';
 
           // Realizar petición al carrito
           const response = await fetch(`${window.location.origin}/cart/add.js`, {
@@ -1632,7 +1632,7 @@
           console.log('✅ Producto agregado exitosamente:', responseData);
           
           // Mostrar mensaje de éxito
-          alert('¡Producto agregado al carrito exitosamente!');
+          alert('Product successfully added to cart!');
           
           // Opcional: actualizar contador del carrito
           if (window.theme && window.theme.cartCount) {
@@ -1641,7 +1641,7 @@
           
         } catch (error) {
           console.error('❌ Error completo al agregar al carrito:', error);
-          alert(`Hubo un error al agregar el producto al carrito: ${error.message}`);
+          alert(`There was an error adding the product to cart: ${error.message}`);
         } finally {
           // Rehabilitar botón
           addToCartBtn.disabled = false;
@@ -1650,34 +1650,34 @@
       });
     }
 
-    // Función para encontrar el selling plan anual
+    // Function to find annual selling plan
     function findAnnualSellingPlan(productData) {
       if (!productData.selling_plan_groups) {
         return null;
       }
       
       for (const group of productData.selling_plan_groups) {
-        // Buscar grupo que contenga 'annual', '12-month', 'yearly' en el nombre
+        // Search for group containing 'annual', '12-month', 'yearly' in the name
         if (group.name && 
             (group.name.toLowerCase().includes('annual') || 
              group.name.toLowerCase().includes('12-month') || 
              group.name.toLowerCase().includes('yearly'))) {
           
-          // Retornar el primer selling plan del grupo anual
+          // Return first selling plan from annual group
           if (group.selling_plans && group.selling_plans.length > 0) {
-            console.log('🎯 Grupo anual encontrado:', group.name, 'Plan ID:', group.selling_plans[0].id);
+            console.log('🎯 Annual group found:', group.name, 'Plan ID:', group.selling_plans[0].id);
             return group.selling_plans[0];
           }
         }
       }
       
-      console.warn('⚠️ No se encontró grupo de selling plan anual');
+      console.warn('⚠️ No annual selling plan group found');
       return null;
     }
 
-    // Función auxiliar mejorada para encontrar variante coincidente
+    // Improved helper function to find matching variant
     function findMatchingVariant(selectedOptions, variants) {
-      console.log('🔍 Buscando variante con opciones:', selectedOptions);
+      console.log('🔍 Searching for variant with options:', selectedOptions);
       
       return variants.find(variant => {
         if (!variant.available) {
@@ -1685,13 +1685,13 @@
         }
         
         const variantOptions = [variant.option1, variant.option2, variant.option3].filter(Boolean);
-        console.log(`Comparando variante ${variant.id}:`, variantOptions, 'con selecciones:', selectedOptions);
+        console.log(`Comparing variant ${variant.id}:`, variantOptions, 'with selections:', selectedOptions);
         
-        // Verificar que todas las opciones seleccionadas estén en la variante
+        // Verify that all selected options are in the variant
         const matches = selectedOptions.every(option => variantOptions.includes(option));
         
         if (matches) {
-          console.log('✅ Variante coincidente encontrada:', variant.id);
+          console.log('✅ Matching variant found:', variant.id);
         }
         
         return matches;
