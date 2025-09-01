@@ -4,7 +4,7 @@
 -%}
 
 {%- comment -%} DEBUG: Información de productos {%- endcomment -%}
-{% comment %} <div style="background: #f0f0f0; padding: 20px; margin: 20px 0; border: 2px solid #ccc; font-family: monospace; font-size: 12px;">
+<div style="background: #f0f0f0; padding: 20px; margin: 20px 0; border: 2px solid #ccc; font-family: monospace; font-size: 12px;">
   <h3>🐛 DEBUG: Información de Productos</h3>
 
   <p><strong>Colección seleccionada:</strong> {{ section.settings.collection }}</p>
@@ -146,7 +146,7 @@
   {%- else -%}
     <p>❌ No se encontraron metaobjetos de iconos</p>
   {%- endif -%}
-</div> {% endcomment %}
+</div>
 
 <div class="sideContainer">
   <div class="subscriptionMainDiv">
@@ -177,7 +177,7 @@
                     name="selectedProduct"
                     value="{{ product.id }}"
                     class="selection-steps-radio"
-                    data-product-data='{{ product | json | escape }}'
+                    data-product-data="{{ product | json | escape }}"
                   >
                   <label for="product-{{ product.id }}" class="subscriptionCard card_product">
                     <div class="itemDiv itemCardRelative">
@@ -209,113 +209,11 @@
           </div>
         {%- endif -%}
 
-        {%- comment -%} STEP 2A: Size Selection {%- endcomment -%}
-        {%- if section.settings.enable_size_selection -%}
-          <div class="subscriptionOption step" id="sizeStep" data-step="2a">
-            <h2>
-              <span class="step-indicator">2A</span>
-              Select Size:
-            </h2>
-            <div class="subscriptionRow" id="sizeContainer">
-              {%- comment -%} Se poblará dinámicamente {%- endcomment -%}
-            </div>
-          </div>
-        {%- endif -%}
-
-        {%- comment -%} STEP 2B: Grind Selection {%- endcomment -%}
-        {%- if section.settings.enable_grind_selection -%}
-          <div class="subscriptionOption step" id="grindStep" data-step="2b">
-            <h2>
-              <span class="step-indicator">2B</span>
-              Select Grind:
-            </h2>
-            <div class="subscriptionRow" id="grindContainer">
-              {%- comment -%} Se poblará dinámicamente {%- endcomment -%}
-            </div>
-          </div>
-        {%- endif -%}
-
-        {%- comment -%} STEP 3: Quantity Selection {%- endcomment -%}
-        {%- if section.settings.enable_quantity_selection -%}
-          <div class="subscriptionOption step" id="quantityStep" data-step="3">
-            <h2>
-              <span class="step-indicator">3</span>
-              {{ section.settings.quantity_step_title | default: 'How much do you want?' }}
-            </h2>
-            <div class="subscriptionRow" id="quantityContainer">
-              {%- for i in (1..section.settings.max_quantity) -%}
-                <div class="subscriptionCol size">
-                  <input
-                    type="radio"
-                    id="quantity-{{ i }}"
-                    name="selectedQuantity"
-                    value="{{ i }}"
-                    class="selection-steps-radio"
-                  >
-                  <label for="quantity-{{ i }}" class="subscriptionCard card_two">
-                    <div class="itemDiv">
-                      <div class="itemIcon">
-                        {%- assign icon_url = '' -%}
-                        {%- for singleStep in shop.metaobjects.image_icon_urls.values -%}
-                          {%- for singleStepSingleOption in singleStep.options.value -%}
-                            {%- assign option_name_normalized = singleStepSingleOption.name | downcase -%}
-                            {%- case i -%}
-                              {%- when 1 -%}
-                                {%- if option_name_normalized == 'one bag' or option_name_normalized == '12oz' -%}
-                                  {%- assign icon_url = singleStepSingleOption.image_url.value -%}
-                                  {%- break -%}
-                                {%- endif -%}
-                              {%- when 2 -%}
-                                {%- if option_name_normalized == 'two bags' or option_name_normalized == 'two 12oz bag' -%}
-                                  {%- assign icon_url = singleStepSingleOption.image_url.value -%}
-                                  {%- break -%}
-                                {%- endif -%}
-                              {%- when 3 -%}
-                                {%- if option_name_normalized == 'three bags' or option_name_normalized == 'three 12oz bag' -%}
-                                  {%- assign icon_url = singleStepSingleOption.image_url.value -%}
-                                  {%- break -%}
-                                {%- endif -%}
-                            {%- endcase -%}
-                          {%- endfor -%}
-                          {%- if icon_url != blank -%}{%- break -%}{%- endif -%}
-                        {%- endfor -%}
-                        {%- if icon_url != blank -%}
-                          <img src="{{ icon_url | image_url }}" alt="{{ i }} bag" width="40" height="40">
-                        {%- else -%}
-                          <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
-                            <text x="12" y="16" text-anchor="middle" font-size="12" font-weight="bold">{{ i }}</text>
-                          </svg>
-                        {%- endif -%}
-                      </div>
-                      <div class="itemDetail">
-                        <h4>{{ i }} bag{{ i | pluralize: '', 's' }}</h4>
-                      </div>
-                    </div>
-                  </label>
-                </div>
-              {%- endfor -%}
-            </div>
-          </div>
-        {%- endif -%}
-
-        {%- comment -%} STEP 4: Frequency Selection {%- endcomment -%}
-        {%- if section.settings.enable_frequency_selection -%}
-          <div class="subscriptionOption step" id="frequencyStep" data-step="4">
-            <h2>
-              <span class="step-indicator">4</span>
-              {{ section.settings.frequency_step_title | default: 'How often?' }}
-            </h2>
-            <div class="subscriptionRow" id="frequencyContainer">
-              {%- comment -%} Frecuencias se poblarán dinámicamente por JavaScript {%- endcomment -%}
-            </div>
-          </div>
-        {%- endif -%}
-
-        {%- comment -%} STEP 5: Gift Options {%- endcomment -%}
+        {%- comment -%} STEP 2: Gift Options (MOVED HERE - DISABLED BY DEFAULT) {%- endcomment -%}
         {%- if section.settings.enable_gift_options -%}
-          <div class="subscriptionOption step" id="giftStep" data-step="5">
+          <div class="subscriptionOption step" id="giftStep" data-step="2">
             <h2>
-              <span class="step-indicator">5</span>
+              <span class="step-indicator">2</span>
               {{ section.settings.gift_step_title | default: 'Gift options:' }}
             </h2>
             <div class="subscriptionRow">
@@ -330,7 +228,12 @@
                           {%- assign option_name_normalized = option.name | downcase | replace: ' ', '_' -%}
                           {%- assign search_term_normalized = 'user' | downcase | replace: ' ', '_' -%}
                           {%- if option_name_normalized contains search_term_normalized -%}
-                            <img src="{{ option.image_url.value | image_url }}" alt="{{ option.name }}" width="40" height="40">
+                            <img
+                              src="{{ option.image_url.value | image_url }}"
+                              alt="{{ option.name }}"
+                              width="40"
+                              height="40"
+                            >
                             {%- assign icon_found = true -%}
                             {%- break -%}
                           {%- endif -%}
@@ -360,7 +263,12 @@
                           {%- assign option_name_normalized = option.name | downcase | replace: ' ', '_' -%}
                           {%- assign search_term_normalized = 'gift' | downcase | replace: ' ', '_' -%}
                           {%- if option_name_normalized contains search_term_normalized -%}
-                            <img src="{{ option.image_url.value | image_url }}" alt="{{ option.name }}" width="40" height="40">
+                            <img
+                              src="{{ option.image_url.value | image_url }}"
+                              alt="{{ option.name }}"
+                              width="40"
+                              height="40"
+                            >
                             {%- assign icon_found = true -%}
                             {%- break -%}
                           {%- endif -%}
@@ -379,6 +287,125 @@
                   </div>
                 </label>
               </div>
+            </div>
+          </div>
+        {%- endif -%}
+
+        {%- comment -%} STEP 3: Size Selection (RENUMBERED) {%- endcomment -%}
+        {%- if section.settings.enable_size_selection -%}
+          <div class="subscriptionOption step" id="sizeStep" data-step="3">
+            <h2>
+              <span class="step-indicator">3</span>
+              Select Size:
+            </h2>
+            <div class="subscriptionRow" id="sizeContainer">
+              {%- comment -%} Se poblará dinámicamente {%- endcomment -%}
+            </div>
+          </div>
+        {%- endif -%}
+
+        {%- comment -%} STEP 4: Grind Selection (RENUMBERED) {%- endcomment -%}
+        {%- if section.settings.enable_grind_selection -%}
+          <div class="subscriptionOption step" id="grindStep" data-step="4">
+            <h2>
+              <span class="step-indicator">4</span>
+              Select Grind:
+            </h2>
+            <div class="subscriptionRow" id="grindContainer">
+              {%- comment -%} Se poblará dinámicamente {%- endcomment -%}
+            </div>
+          </div>
+        {%- endif -%}
+
+        {%- comment -%} STEP 5: Quantity Selection (RENUMBERED) {%- endcomment -%}
+        {%- if section.settings.enable_quantity_selection -%}
+          <div class="subscriptionOption step" id="quantityStep" data-step="5">
+            <h2>
+              <span class="step-indicator">5</span>
+              {{ section.settings.quantity_step_title | default: 'How much do you want?' }}
+            </h2>
+            <div class="subscriptionRow" id="quantityContainer">
+              {%- for i in (1..section.settings.max_quantity) -%}
+                <div class="subscriptionCol size">
+                  <input
+                    type="radio"
+                    id="quantity-{{ i }}"
+                    name="selectedQuantity"
+                    value="{{ i }}"
+                    class="selection-steps-radio"
+                  >
+                  <label for="quantity-{{ i }}" class="subscriptionCard card_two">
+                    <div class="itemDiv">
+                      <div class="itemIcon">
+                        {%- assign icon_url = '' -%}
+                        {%- for singleStep in shop.metaobjects.image_icon_urls.values -%}
+                          {%- for singleStepSingleOption in singleStep.options.value -%}
+                            {%- assign option_name_normalized = singleStepSingleOption.name | downcase -%}
+                            {%- case i -%}
+                              {%- when 1 -%}
+                                {%- if option_name_normalized == 'one bag' or option_name_normalized == '12oz' -%}
+                                  {%- assign icon_url = singleStepSingleOption.image_url.value -%}
+                                  {%- break -%}
+                                {%- endif -%}
+                              {%- when 2 -%}
+                                {%- if option_name_normalized == 'two bags'
+                                  or option_name_normalized == 'two 12oz bag'
+                                -%}
+                                  {%- assign icon_url = singleStepSingleOption.image_url.value -%}
+                                  {%- break -%}
+                                {%- endif -%}
+                              {%- when 3 -%}
+                                {%- if option_name_normalized == 'three bags'
+                                  or option_name_normalized == 'three 12oz bag'
+                                -%}
+                                  {%- assign icon_url = singleStepSingleOption.image_url.value -%}
+                                  {%- break -%}
+                                {%- endif -%}
+                            {%- endcase -%}
+                          {%- endfor -%}
+                          {%- if icon_url != blank -%}{%- break -%}{%- endif -%}
+                        {%- endfor -%}
+                        {%- if icon_url != blank -%}
+                          <img src="{{ icon_url | image_url }}" alt="{{ i }} bag" width="40" height="40">
+                        {%- else -%}
+                          <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                            <text x="12" y="16" text-anchor="middle" font-size="12" font-weight="bold">{{ i }}</text>
+                          </svg>
+                        {%- endif -%}
+                      </div>
+                      <div class="itemDetail">
+                        <h4>{{ i }} bag{{ i | pluralize: '', 's' }}</h4>
+                      </div>
+                    </div>
+                  </label>
+                </div>
+              {%- endfor -%}
+            </div>
+          </div>
+        {%- endif -%}
+
+        {%- comment -%} STEP 6: Coffee Type Selection (MOVED BEFORE FREQUENCY) {%- endcomment -%}
+        {%- if section.settings.enable_coffee_type_selection -%}
+          <div class="subscriptionOption step" id="coffeeTypeStep" data-step="6">
+            <h2>
+              <span class="step-indicator">6</span>
+              {{ section.settings.coffee_type_step_title | default: 'Select Coffee Type:' }}
+            </h2>
+            <div class="subscriptionRow" id="coffeeTypeContainer">
+              {%- comment -%} Se poblará dinámicamente con las opciones de tipo de café {%- endcomment -%}
+            </div>
+          </div>
+        {%- endif -%}
+
+        {%- comment -%} STEP 7: Frequency Selection (LAST STEP) {%- endcomment -%}
+        {%- if section.settings.enable_frequency_selection -%}
+          <div class="subscriptionOption step" id="frequencyStep" data-step="7">
+            <h2>
+              <span class="step-indicator">7</span>
+              {{ section.settings.frequency_step_title | default: 'How often?' }}
+            </h2>
+            <div class="subscriptionRow" id="frequencyContainer">
+              {%- comment -%} Frecuencias se poblarán dinámicamente por JavaScript {%- endcomment -%}
             </div>
           </div>
         {%- endif -%}
@@ -447,19 +474,19 @@
     transform: translateY(20px);
     transition: all 0.4s ease;
   }
-  
+
   .step.active {
     display: block;
     opacity: 1;
     transform: translateY(0);
   }
-  
+
   .step.completed {
     display: block;
     opacity: 0.6;
     pointer-events: none;
   }
-  
+
   /* Step indicators */
   .step-indicator {
     display: inline-block;
@@ -474,20 +501,26 @@
     font-weight: bold;
     font-size: 14px;
   }
-  
+
   .step.active .step-indicator {
     background: #d4af37;
     animation: pulse 2s infinite;
   }
-  
+
   .step.completed .step-indicator {
     background: #28a745;
   }
-  
+
   @keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
-    70% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+    0% {
+      box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7);
+    }
+    70% {
+      box-shadow: 0 0 0 10px rgba(212, 175, 55, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+    }
   }
 
   .subscriptionOption h2 {
@@ -625,12 +658,12 @@
     max-width: 300px;
     margin: 30px auto 0;
   }
-  
+
   .add-subscription-btn.visible {
     display: block;
     animation: slideUp 0.5s ease;
   }
-  
+
   @keyframes slideUp {
     from {
       opacity: 0;
@@ -782,6 +815,9 @@
         case 'productSelectStep':
           return document.querySelector('input[name="selectedProduct"]:checked') !== null;
         
+        case 'giftStep':
+          return document.querySelector('input[name="isGift"]:checked') !== null;
+        
         case 'sizeStep':
           return document.querySelector('input[name="selectedSize"]:checked') !== null;
         
@@ -794,8 +830,8 @@
         case 'frequencyStep':
           return document.querySelector('input[name="selectedFrequency"]:checked') !== null;
         
-        case 'giftStep':
-          return document.querySelector('input[name="isGift"]:checked') !== null;
+        case 'coffeeTypeStep':
+          return document.querySelector('input[name="selectedCoffeeType"]:checked') !== null;
         
         default:
           return false;
@@ -851,6 +887,12 @@
         case 'frequencyStep':
           if (selectedProductData) {
             updateFrequencyOptions(selectedProductData);
+          }
+          break;
+          
+        case 'coffeeTypeStep':
+          if (selectedProductData) {
+            updateCoffeeTypeOptions(selectedProductData);
           }
           break;
       }
@@ -943,6 +985,67 @@
       });
       
       const grinds = Array.from(grindOptions);
+      
+      grinds.forEach((grind, index) => {
+        const col = document.createElement('div');
+        col.className = 'subscriptionCol';
+        
+        const iconUrl = findIconUrl(grind.toLowerCase());
+        let iconHtml = '';
+        
+        if (iconUrl) {
+          iconHtml = `<img src="${iconUrl}" alt="${grind}" width="40" height="40">`;
+        } else {
+          iconHtml = getDefaultIcon('Grind', grind);
+        }
+        
+        col.innerHTML = `
+          <input 
+            type="radio" 
+            id="grind-${index}" 
+            name="selectedGrind" 
+            value="${grind}" 
+            class="selection-steps-radio"
+          >
+          <label for="grind-${index}" class="subscriptionCard">
+            <div class="itemDiv">
+              <div class="itemIcon">
+                ${iconHtml}
+              </div>
+              <div class="itemDetail">
+                <h4>${grind}</h4>
+                <h5>Grind</h5>
+              </div>
+            </div>
+          </label>
+        `;
+        
+        grindContainer.appendChild(col);
+      });
+      
+      // Agregar event listeners
+      addEventListenersToStep(document.getElementById('grindStep'));
+    }
+
+    // Función para filtrar opciones de grind según el tamaño seleccionado
+    function updateGrindOptionsForSize(product, selectedSize) {
+      const grindContainer = document.getElementById('grindContainer');
+      if (!grindContainer || !selectedSize) return;
+      
+      grindContainer.innerHTML = '';
+      
+      // Filtrar variantes que coincidan con el tamaño seleccionado
+      const availableGrinds = new Set();
+      
+      product.variants.forEach(variant => {
+        if (variant.available && variant.options && variant.options[0] === selectedSize) {
+          if (variant.options[1]) {
+            availableGrinds.add(variant.options[1]);
+          }
+        }
+      });
+      
+      const grinds = Array.from(availableGrinds);
       
       grinds.forEach((grind, index) => {
         const col = document.createElement('div');
@@ -1088,17 +1191,169 @@
       addEventListenersToStep(document.getElementById('frequencyStep'));
     }
 
+    // Función para actualizar las opciones de tipo de café
+    function updateCoffeeTypeOptions(selectedProduct) {
+      const coffeeTypeContainer = document.getElementById('coffeeTypeContainer');
+      if (!coffeeTypeContainer || !selectedProduct) return;
+      
+      coffeeTypeContainer.innerHTML = '';
+      
+      // Obtener opciones de tipo de café (tercera opción del producto)
+      const coffeeTypeOptions = new Set();
+      
+      selectedProduct.variants.forEach(variant => {
+        if (variant.available && variant.options && variant.options[2]) {
+          coffeeTypeOptions.add(variant.options[2]);
+        }
+      });
+      
+      const coffeeTypes = Array.from(coffeeTypeOptions);
+      
+      coffeeTypes.forEach((coffeeType, index) => {
+        const col = document.createElement('div');
+        col.className = 'subscriptionCol size';
+        
+        const iconUrl = findIconUrl(coffeeType.toLowerCase());
+        let iconHtml = '';
+        
+        if (iconUrl) {
+          iconHtml = `<img src="${iconUrl}" alt="${coffeeType}" width="40" height="40">`;
+        } else {
+          iconHtml = getDefaultIcon('CoffeeType', coffeeType);
+        }
+        
+        col.innerHTML = `
+          <input 
+            type="radio" 
+            id="coffee-type-${index}" 
+            name="selectedCoffeeType" 
+            value="${coffeeType}" 
+            class="selection-steps-radio"
+          >
+          <label for="coffee-type-${index}" class="subscriptionCard card_four">
+            <div class="itemDiv">
+              <div class="itemIcon">
+                ${iconHtml}
+              </div>
+              <div class="itemDetail type">
+                <h4>${coffeeType}</h4>
+              </div>
+            </div>
+          </label>
+        `;
+        
+        coffeeTypeContainer.appendChild(col);
+      });
+      
+      // Agregar event listeners
+      addEventListenersToStep(document.getElementById('coffeeTypeStep'));
+    }
+
+    // Función para obtener el icono del tipo de café usando icon-finder
+    function getCoffeeTypeIcon(coffeeType) {
+      const normalizedType = coffeeType.toLowerCase();
+      
+      // Primero intentar encontrar en metaobjetos
+      const iconUrl = findIconUrl(normalizedType);
+      if (iconUrl) {
+        return `<img src="${iconUrl}" alt="${coffeeType}" width="40" height="40">`;
+      }
+      
+      // Si no se encuentra, usar icon-finder como fallback
+      return `{% render 'icon-finder', icon: 'box' %}`;
+    }
+
     // Helper functions
     function findIconUrl(searchTerm) {
       const normalizedTerm = searchTerm.toLowerCase().replace(/\s+/g, '_');
       
+      // Búsqueda directa
       if (iconData[normalizedTerm]) {
         return iconData[normalizedTerm];
       }
       
-      // Búsqueda más flexible
+      // Mapeos específicos para mejorar la búsqueda
+      const iconMappings = {
+        // Tamaños
+        'one_bag': 'one_bag',
+        'two_bags': 'two_bags', 
+        'three_bags': 'three_bags',
+        '12oz': '12oz',
+        'two_12oz_bag': 'two_12oz_bag',
+        'three_12oz_bag': 'three_12oz_bag',
+        '2lbs': '2lbs',
+        '2lb': '2lb',
+        '2lb': '2LB',
+        '5lb': '5lb',
+        '5lb': '5LB',
+        
+        // Frecuencias
+        'every_1_week': 'every_1_week',
+        'every_2_weeks': 'every_2_weeks', 
+        'every_3_weeks': 'every_3_weeks',
+        'every_4_weeks': 'every_4_weeks',
+        '1_week': '1_week',
+        '2_week': '2_week',
+        '3_week': '3_week', 
+        '4_week': '4_week',
+        '3_months': '3_months',
+        '6_months': '6_months',
+        '12_months': '12_months',
+        
+        // Tipos de molido
+        'whole_bean': 'whole_bean',
+        'ground_coffee': 'ground_coffee',
+        'whole_bean_gift': 'whole_bean_gift',
+        'ground_coffee_gift': 'ground_coffee_gift',
+        'espresso': 'espresso',
+        'aeropress': 'aeropress',
+        'drip': 'drip',
+        'french': 'french',
+        
+        // Tipos de café
+        'arise': 'arise',
+        'virtuosa': 'virtuosa',
+        'ignite': 'ignite', 
+        'uganda': 'uganda',
+        'shantawene': 'shantawene',
+        'huehuetenango': 'huehuetenango',
+        
+        // Opciones de regalo
+        'giftsomeone': 'giftsomeone',
+        'gift_someone': 'giftsomeone'
+      };
+      
+      // Buscar en mapeos específicos
+      if (iconMappings[normalizedTerm]) {
+        const mappedKey = iconMappings[normalizedTerm];
+        if (iconData[mappedKey]) {
+          return iconData[mappedKey];
+        }
+      }
+      
+      // Búsqueda flexible mejorada
       for (const [key, url] of Object.entries(iconData)) {
+        // Búsqueda exacta
+        if (key === normalizedTerm) {
+          return url;
+        }
+        
+        // Búsqueda parcial
         if (key.includes(normalizedTerm) || normalizedTerm.includes(key)) {
+          return url;
+        }
+        
+        // Búsqueda por palabras clave
+        const keyWords = key.split('_');
+        const searchWords = normalizedTerm.split('_');
+        
+        const hasCommonWords = keyWords.some(word => 
+          searchWords.some(searchWord => 
+            word.includes(searchWord) || searchWord.includes(word)
+          )
+        );
+        
+        if (hasCommonWords && keyWords.length >= 2 && searchWords.length >= 2) {
           return url;
         }
       }
@@ -1120,13 +1375,27 @@
     }
 
     function getFrequencyIcon(weeks) {
-      if (weeks === 'annual') {
+      if (weeks === 'annual' || weeks === '12_months') {
+        const iconUrl = findIconUrl('12_months') || findIconUrl('12_month');
+        if (iconUrl) {
+          return `<img src="${iconUrl}" alt="Annual Subscription" width="40" height="40">`;
+        }
         return `<svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>`;
       }
       
-      const iconUrl = findIconUrl(`${weeks}_week`) || findIconUrl('week') || findIconUrl('frequency');
-      if (iconUrl) {
-        return `<img src="${iconUrl}" alt="Every ${weeks} weeks" width="40" height="40">`;
+      // Intentar diferentes variaciones para frecuencias
+      const variations = [
+        `every_${weeks}_week${weeks > 1 ? 's' : ''}`,
+        `every_${weeks}_week`,
+        `${weeks}_week${weeks > 1 ? 's' : ''}`, 
+        `${weeks}_week`
+      ];
+      
+      for (const variation of variations) {
+        const iconUrl = findIconUrl(variation);
+        if (iconUrl) {
+          return `<img src="${iconUrl}" alt="Every ${weeks} weeks" width="40" height="40">`;
+        }
       }
       
       return `<svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>`;
@@ -1139,6 +1408,11 @@
       const inputs = step.querySelectorAll('input[type="radio"]');
       inputs.forEach(input => {
         input.addEventListener('change', () => {
+          // Lógica especial para cuando se selecciona un tamaño
+          if (input.name === 'selectedSize' && selectedProductData) {
+            updateGrindOptionsForSize(selectedProductData, input.value);
+          }
+          
           // Lógica especial para frecuencia
           if (input.name === 'selectedFrequency') {
             handleFrequencySelection(input);
@@ -1165,8 +1439,11 @@
         if (this.checked) {
           selectedProductData = JSON.parse(this.getAttribute('data-product-data'));
           
-          // NO llamar updateProductOptions - solo poblar el siguiente step
-          // El siguiente step debería ser sizeStep
+          // CORREGIDO: Llamar a las funciones de actualización dinámica
+          updateSizeOptions(selectedProductData);
+          updateGrindOptions(selectedProductData);
+          updateCoffeeTypeOptions(selectedProductData);
+          updateFrequencyOptions(selectedProductData);
           
           setTimeout(() => {
             if (isCurrentStepCompleted()) {
@@ -1299,7 +1576,23 @@
     },
     {
       "type": "header",
-      "content": "Step 4: Frequency Selection"
+      "content": "Step 6: Coffee Type Selection"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_coffee_type_selection",
+      "label": "Enable coffee type selection step",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "coffee_type_step_title",
+      "label": "Coffee type step title",
+      "default": "Select Coffee Type:"
+    },
+    {
+      "type": "header",
+      "content": "Step 7: Frequency Selection"
     },
     {
       "type": "checkbox",
@@ -1327,7 +1620,7 @@
     },
     {
       "type": "header",
-      "content": "Step 5: Gift Options"
+      "content": "Step 2: Gift Options"
     },
     {
       "type": "checkbox",
@@ -1367,6 +1660,7 @@
         "enable_grind_selection": true,
         "enable_quantity_selection": true,
         "enable_frequency_selection": true,
+        "enable_coffee_type_selection": true,
         "enable_gift_options": false,
         "show_annual_option": true
       }

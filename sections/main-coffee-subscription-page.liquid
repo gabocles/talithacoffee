@@ -510,7 +510,10 @@
                   >
                     {% for selling_plan in product.selling_plan_groups %}
                       {% comment %} Filtrar planes anuales - solo mostrar planes de frecuencia regular {% endcomment %}
-                      {% unless selling_plan.name contains 'Annual' or selling_plan.name contains '12-month' or selling_plan.name contains 'yearly' %}
+                      {% unless selling_plan.name contains 'Annual'
+                        or selling_plan.name contains '12-month'
+                        or selling_plan.name contains 'yearly'
+                      %}
                         {% assign plan_value = selling_plan.selling_plans[0].id %}
                         {% assign plan_name = selling_plan.name | replace: 'Delivery ', '' %}
                         {% assign plan_name_downcase = selling_plan.name | replace: 'Delivery ', '' | downcase %}
