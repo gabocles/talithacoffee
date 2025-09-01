@@ -155,10 +155,6 @@
     "169021714666a7a555": {
       "type": "apps",
       "blocks": {
-        "12c72689-c916-4d5e-af9b-8243e596fb92": {
-          "type": "shopify://apps/upsell-product-add-ons-sg/blocks/app-block/b5caaaa1-43aa-4d84-9497-26284c984153",
-          "settings": {}
-        },
         "f9f94ff5-ccb2-4b72-b84a-6f4f7e7d0bbd": {
           "type": "shopify://apps/rebuy-personalization-engine/blocks/rebuy-widget/a26ae9b9-933b-40bf-bbc6-bf1220bbc4dc",
           "settings": {
@@ -170,7 +166,6 @@
         }
       },
       "block_order": [
-        "12c72689-c916-4d5e-af9b-8243e596fb92",
         "f9f94ff5-ccb2-4b72-b84a-6f4f7e7d0bbd"
       ],
       "disabled": true,

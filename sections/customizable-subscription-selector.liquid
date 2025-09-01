@@ -4,7 +4,7 @@
 -%}
 
 {%- comment -%} DEBUG: Información de productos {%- endcomment -%}
-<div style="background: #f0f0f0; padding: 20px; margin: 20px 0; border: 2px solid #ccc; font-family: monospace; font-size: 12px;">
+{% comment %} <div style="background: #f0f0f0; padding: 20px; margin: 20px 0; border: 2px solid #ccc; font-family: monospace; font-size: 12px;">
   <h3>🐛 DEBUG: Información de Productos</h3>
 
   <p><strong>Colección seleccionada:</strong> {{ section.settings.collection }}</p>
@@ -146,7 +146,7 @@
   {%- else -%}
     <p>❌ No se encontraron metaobjetos de iconos</p>
   {%- endif -%}
-</div>
+</div> {% endcomment %}
 
 <div class="sideContainer">
   <div class="subscriptionMainDiv">
@@ -412,6 +412,9 @@
 
         {%- comment -%} Add to Cart Button {%- endcomment -%}
         {%- if section.settings.show_add_to_cart -%}
+          <p class="shipping-notice" style="text-align: center; margin: 20px 0 10px; font-size: 0.9rem; opacity: 0.8; color: #d4af37;">
+            (Shipping is not included during the 2 months on us.)
+          </p>
           <button type="button" class="add-subscription-btn" id="addSubscriptionBtn">
             {{ section.settings.add_to_cart_text | default: 'Add to Cart' }}
           </button>
@@ -483,8 +486,8 @@
 
   .step.completed {
     display: block;
-    opacity: 0.6;
-    pointer-events: none;
+    opacity: 0.8;
+    /* Removido: pointer-events: none; para permitir clicks */
   }
 
   /* Step indicators */
@@ -509,6 +512,7 @@
 
   .step.completed .step-indicator {
     background: #28a745;
+    cursor: pointer;
   }
 
   @keyframes pulse {
@@ -740,12 +744,17 @@
     function initializeSteps() {
       steps = document.querySelectorAll('.step');
       
-      // No activar automáticamente el primer step
-      if (steps.length > 0) {
-        steps[0].classList.add('active');
-      }
+      // Ocultar todos los pasos excepto el primero
+      steps.forEach((step, index) => {
+        if (index === 0) {
+          step.classList.add('active');
+          step.style.display = 'block';
+        } else {
+          step.style.display = 'none';
+        }
+      });
       
-      // Agregar navegación hacia atrás a todos los steps
+      // Agregar navegación hacia atrás
       addBackwardNavigation();
       
       if (addToCartBtn) {
@@ -753,51 +762,71 @@
       }
     }
 
-    // Función para navegación hacia atrás
+    // Función mejorada para navegación hacia atrás
     function addBackwardNavigation() {
       steps.forEach((step, index) => {
         const stepIndicator = step.querySelector('.step-indicator');
-        if (stepIndicator && index < currentStepIndex) {
-          stepIndicator.style.cursor = 'pointer';
-          stepIndicator.addEventListener('click', () => goToStep(index));
+        if (stepIndicator) {
+          // Permitir clic en todos los pasos completados y el actual
+          if (index <= currentStepIndex) {
+            stepIndicator.style.cursor = 'pointer';
+            
+            // Limpiar event listeners anteriores clonando el elemento
+            const newIndicator = stepIndicator.cloneNode(true);
+            stepIndicator.parentNode.replaceChild(newIndicator, stepIndicator);
+            
+            // Agregar nuevo event listener
+            newIndicator.addEventListener('click', () => goToStep(index));
+          }
         }
       });
     }
 
-    // Ir a un step específico
+    // Función corregida para ir a un step específico
     function goToStep(targetIndex) {
-      if (targetIndex >= currentStepIndex) return; // Solo permitir ir hacia atrás
+      // Permitir ir a cualquier paso anterior o al actual
+      if (targetIndex > currentStepIndex) return;
       
-      // Resetear steps posteriores
+      // Si es el mismo paso, no hacer nada
+      if (targetIndex === currentStepIndex) return;
+      
+      // Resetear y OCULTAR steps posteriores al objetivo
       for (let i = targetIndex + 1; i < steps.length; i++) {
         const step = steps[i];
         step.classList.remove('active', 'completed');
+        step.style.display = 'none'; // OCULTAR completamente
         
         // Limpiar selecciones en steps posteriores
         const radios = step.querySelectorAll('input[type="radio"]');
         radios.forEach(radio => radio.checked = false);
       }
       
-      // Remover steps dinámicos posteriores
-      const dynamicSteps = document.querySelectorAll('[id*="option"][id*="Step"]');
-      dynamicSteps.forEach(step => {
-        const stepIndex = Array.from(steps).indexOf(step);
-        if (stepIndex > targetIndex) {
-          step.remove();
-        }
-      });
+      // Ocultar botón de agregar al carrito
+      if (addToCartBtn) {
+        addToCartBtn.style.display = 'none';
+      }
       
       // Actualizar índice actual
       currentStepIndex = targetIndex;
       
-      // Activar step objetivo
-      steps[targetIndex].classList.add('active');
-      steps[targetIndex].classList.remove('completed');
+      // RESETEAR COMPLETAMENTE todos los pasos y configurar estados correctos
+      for (let i = 0; i <= targetIndex; i++) {
+        const step = steps[i];
+        step.style.display = 'block'; // Asegurar que esté visible
+        
+        // Remover TODAS las clases de estado primero
+        step.classList.remove('active', 'completed');
+        
+        if (i < targetIndex) {
+          // Pasos anteriores al objetivo: marcar como completados
+          step.classList.add('completed');
+        } else if (i === targetIndex) {
+          // Paso objetivo: activar y remover cualquier estado completed
+          step.classList.add('active');
+        }
+      }
       
-      // Actualizar array de steps
-      steps = document.querySelectorAll('.step');
-      
-      // Scroll al step
+      // Scroll al step objetivo
       steps[targetIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
       
       // Actualizar navegación
@@ -847,6 +876,9 @@
         
         // Avanzar al siguiente step
         currentStepIndex++;
+        
+        // MOSTRAR y activar el siguiente step
+        steps[currentStepIndex].style.display = 'block';
         steps[currentStepIndex].classList.add('active');
         
         // Scroll al nuevo step
@@ -1462,10 +1494,207 @@
     // Inicializar cuando el DOM esté listo
     initializeSteps();
 
-    // Add to cart functionality (existing code)
+    // Add to cart functionality
     if (addToCartBtn) {
-      addToCartBtn.addEventListener('click', function () {
-        // ... existing add to cart logic ...
+      addToCartBtn.addEventListener('click', async function () {
+        try {
+          console.log('🛒 Iniciando proceso de Add to Cart...');
+          
+          // Validar que se haya seleccionado un producto
+          const selectedProduct = document.querySelector('input[name="selectedProduct"]:checked');
+          if (!selectedProduct) {
+            alert('Por favor selecciona un producto');
+            return;
+          }
+
+          console.log('✅ Producto seleccionado:', selectedProduct.value);
+
+          // Obtener las selecciones del usuario
+          const selectedSize = document.querySelector('input[name="selectedSize"]:checked')?.value;
+          const selectedGrind = document.querySelector('input[name="selectedGrind"]:checked')?.value;
+          const selectedQuantity = document.querySelector('input[name="selectedQuantity"]:checked')?.value || '1';
+          const selectedCoffeeType = document.querySelector('input[name="selectedCoffeeType"]:checked')?.value;
+          const selectedFrequency = document.querySelector('input[name="selectedFrequency"]:checked')?.value;
+
+          console.log('📋 Selecciones del usuario:', {
+            size: selectedSize,
+            grind: selectedGrind,
+            quantity: selectedQuantity,
+            coffeeType: selectedCoffeeType,
+            frequency: selectedFrequency
+          });
+
+          // Validar selecciones requeridas
+          if (!selectedSize) {
+            alert('Por favor selecciona un tamaño');
+            return;
+          }
+          if (!selectedGrind) {
+            alert('Por favor selecciona un tipo de molido');
+            return;
+          }
+          if (!selectedFrequency) {
+            alert('Por favor selecciona una frecuencia');
+            return;
+          }
+
+          // Obtener datos del producto
+          let productData;
+          try {
+            productData = JSON.parse(selectedProduct.dataset.productData);
+            console.log('📦 Datos del producto:', productData);
+          } catch (parseError) {
+            console.error('❌ Error al parsear datos del producto:', parseError);
+            alert('Error en los datos del producto. Por favor recarga la página.');
+            return;
+          }
+          
+          // Construir array de opciones para encontrar la variante
+          const selectedOptions = [selectedSize, selectedGrind];
+          if (selectedCoffeeType) {
+            selectedOptions.push(selectedCoffeeType);
+          }
+
+          console.log('🔍 Buscando variante con opciones:', selectedOptions);
+          console.log('📊 Variantes disponibles:', productData.variants);
+
+          // Encontrar la variante que coincida
+          const matchingVariant = findMatchingVariant(selectedOptions, productData.variants);
+          
+          if (!matchingVariant) {
+            console.error('❌ No se encontró variante coincidente');
+            console.log('Opciones buscadas:', selectedOptions);
+            console.log('Variantes disponibles:', productData.variants.map(v => ({
+              id: v.id,
+              options: [v.option1, v.option2, v.option3].filter(Boolean),
+              available: v.available
+            })));
+            alert('No se encontró una variante que coincida con tus selecciones. Por favor verifica tus opciones.');
+            return;
+          }
+
+          console.log('✅ Variante encontrada:', matchingVariant);
+
+          // Verificar disponibilidad
+          if (!matchingVariant.available) {
+            alert('Lo sentimos, esta variante no está disponible en este momento.');
+            return;
+          }
+
+          // Preparar datos para el carrito
+          const cartData = {
+            id: matchingVariant.id,
+            quantity: parseInt(selectedQuantity)
+          };
+          
+          // Agregar selling plan si hay frecuencia seleccionada
+          if (selectedFrequency) {
+            if (selectedFrequency === 'annual') {
+              // Buscar el selling plan para suscripción anual
+              const annualPlan = findAnnualSellingPlan(productData);
+              if (annualPlan) {
+                cartData.selling_plan = annualPlan.id;
+                console.log('📅 Selling plan anual encontrado:', annualPlan);
+              } else {
+                console.warn('⚠️ No se encontró selling plan anual para este producto');
+              }
+            } else {
+              // Para otras frecuencias, usar el valor directamente (debería ser un selling plan ID)
+              cartData.selling_plan = selectedFrequency;
+            }
+          }
+
+          console.log('🛍️ Datos para el carrito:', cartData);
+
+          // Deshabilitar botón durante la petición
+          addToCartBtn.disabled = true;
+          addToCartBtn.textContent = 'Agregando...';
+
+          // Realizar petición al carrito
+          const response = await fetch(`${window.location.origin}/cart/add.js`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify(cartData)
+          });
+
+          console.log('📡 Respuesta del servidor:', response.status, response.statusText);
+
+          if (!response.ok) {
+            const errorText = await response.text();
+            console.error('❌ Error HTTP:', response.status, errorText);
+            throw new Error(`Error HTTP: ${response.status} - ${errorText}`);
+          }
+
+          const responseData = await response.json();
+          console.log('✅ Producto agregado exitosamente:', responseData);
+          
+          // Mostrar mensaje de éxito
+          alert('¡Producto agregado al carrito exitosamente!');
+          
+          // Opcional: actualizar contador del carrito
+          if (window.theme && window.theme.cartCount) {
+            window.theme.cartCount.update();
+          }
+          
+        } catch (error) {
+          console.error('❌ Error completo al agregar al carrito:', error);
+          alert(`Hubo un error al agregar el producto al carrito: ${error.message}`);
+        } finally {
+          // Rehabilitar botón
+          addToCartBtn.disabled = false;
+          addToCartBtn.textContent = '{{ section.settings.add_to_cart_text | default: "Add to Cart" }}';
+        }
+      });
+    }
+
+    // Función para encontrar el selling plan anual
+    function findAnnualSellingPlan(productData) {
+      if (!productData.selling_plan_groups) {
+        return null;
+      }
+      
+      for (const group of productData.selling_plan_groups) {
+        // Buscar grupo que contenga 'annual', '12-month', 'yearly' en el nombre
+        if (group.name && 
+            (group.name.toLowerCase().includes('annual') || 
+             group.name.toLowerCase().includes('12-month') || 
+             group.name.toLowerCase().includes('yearly'))) {
+          
+          // Retornar el primer selling plan del grupo anual
+          if (group.selling_plans && group.selling_plans.length > 0) {
+            console.log('🎯 Grupo anual encontrado:', group.name, 'Plan ID:', group.selling_plans[0].id);
+            return group.selling_plans[0];
+          }
+        }
+      }
+      
+      console.warn('⚠️ No se encontró grupo de selling plan anual');
+      return null;
+    }
+
+    // Función auxiliar mejorada para encontrar variante coincidente
+    function findMatchingVariant(selectedOptions, variants) {
+      console.log('🔍 Buscando variante con opciones:', selectedOptions);
+      
+      return variants.find(variant => {
+        if (!variant.available) {
+          return false;
+        }
+        
+        const variantOptions = [variant.option1, variant.option2, variant.option3].filter(Boolean);
+        console.log(`Comparando variante ${variant.id}:`, variantOptions, 'con selecciones:', selectedOptions);
+        
+        // Verificar que todas las opciones seleccionadas estén en la variante
+        const matches = selectedOptions.every(option => variantOptions.includes(option));
+        
+        if (matches) {
+          console.log('✅ Variante coincidente encontrada:', variant.id);
+        }
+        
+        return matches;
       });
     }
   });

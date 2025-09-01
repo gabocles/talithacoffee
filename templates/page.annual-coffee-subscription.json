@@ -9,15 +9,15 @@
  */
 {
   "sections": {
-    "rich_text_nFCWty": {
-      "type": "rich-text",
+    "image_with_text_overlay_XrpCTy": {
+      "type": "image-with-text-overlay",
       "blocks": {
-        "sticker_qtUqqi": {
+        "sticker_9MQrgJ": {
           "type": "sticker",
           "settings": {
             "text": "Start Your Year Of Coffee",
             "shape": "star_2",
-            "width": 200,
+            "width": 150,
             "sticker_font_size": "1.563rem",
             "half_image_width_on_mobile": true,
             "horizontal_position": 80,
@@ -28,24 +28,129 @@
             "rotation_animation": "none",
             "enable_parallax": false,
             "parallax_speed": 3,
-            "color": "bg-scheme-text text-scheme-text-overlay",
+            "color": "bg-scheme-background text-scheme-text",
             "color_scheme": "tertiary"
           }
         }
       },
       "block_order": [
-        "sticker_qtUqqi"
+        "sticker_9MQrgJ"
       ],
-      "name": "t:sections.rich_text.name",
+      "name": "t:sections.image_with_text_overlay.name",
       "settings": {
-        "bg-image": "shopify://shop_images/Talitha_Clairemont_opening_banner.png",
-        "title": "Your Morning Ritual, Hope Roasted for a Year",
-        "heading_size": "heading-standard",
-        "rich_text": "<p>One subscription. One year of coffee. One year of impact for trafficking survivors.</p>",
+        "image": "shopify://shop_images/Talitha_Clairemont_opening_banner.png",
         "display_on_card": true,
-        "content_width_desktop": "lg:w-2/3",
+        "display_content_below_image_on_mobile": false,
+        "style": "full",
+        "height": "pt-half-screen-height",
+        "place_content": "place-content-center-center",
+        "text_align": "text-center",
+        "title": "Your Morning Ritual, Hope Roasted for a Year",
+        "heading_size": "heading-feature",
+        "richtext": "<p>One subscription. One year of coffee. One year of impact for trafficking survivors.</p>",
+        "cta_url": "",
+        "cta_text": "Start Your Year Of Coffee",
+        "color_scheme": "primary",
+        "use_gradient_background": false,
+        "text_overlay_color": "same_as_section"
+      }
+    },
+    "feature_text_columns_kXGMxF": {
+      "type": "feature-text-columns",
+      "blocks": {
+        "column_GwNcig": {
+          "type": "column",
+          "settings": {
+            "title": "",
+            "subheading": "<p>Fresh-roasted coffee delivered every 4 weeks</p>"
+          }
+        },
+        "column_8MmT3h": {
+          "type": "column",
+          "settings": {
+            "title": "",
+            "subheading": "<p>Choose from <strong>any roast or single origin</strong></p>"
+          }
+        },
+        "column_64tkXf": {
+          "type": "column",
+          "settings": {
+            "title": "",
+            "subheading": "<p>Flexible editing anytime</p>"
+          }
+        }
+      },
+      "block_order": [
+        "column_GwNcig",
+        "column_8MmT3h",
+        "column_64tkXf"
+      ],
+      "name": "t:sections.feature_text_columns.name",
+      "settings": {
+        "display_on_card": false,
+        "title": "Here’s what you’ll enjoy:",
+        "heading_size": "heading-feature",
+        "subheading_font": "body",
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
+    "image_with_text_BinBwN": {
+      "type": "image-with-text",
+      "blocks": {
+        "background_pattern_bdAwyj": {
+          "type": "background_pattern",
+          "settings": {
+            "type": "diagonal_lines",
+            "color": "text",
+            "size": 24,
+            "opacity": 100,
+            "enable_parallax": false,
+            "parallax_speed": 3
+          }
+        },
+        "sticker_MmUhjN": {
+          "type": "sticker",
+          "settings": {
+            "text": "Make Every Morning Matter",
+            "shape": "ticket_stub",
+            "width": 150,
+            "sticker_font_size": "1.563rem",
+            "half_image_width_on_mobile": true,
+            "horizontal_position": 80,
+            "vertical_position": 80,
+            "rotate": 0,
+            "show_sticker_on_mobile": true,
+            "show_sticker_on_desktop": true,
+            "rotation_animation": "none",
+            "enable_parallax": false,
+            "parallax_speed": 3,
+            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
+            "color_scheme": "tertiary"
+          }
+        }
+      },
+      "block_order": [
+        "background_pattern_bdAwyj",
+        "sticker_MmUhjN"
+      ],
+      "name": "t:sections.image_with_text.name",
+      "settings": {
+        "display_on_card": true,
+        "image": "shopify://shop_images/bankers-hill-coffee-bag.webp",
+        "crop": "",
+        "image_shape": "default",
+        "blob_type": 1,
+        "rotate_image": 0,
+        "image_position": "left",
+        "image_size": "half",
+        "disable_media_style": false,
+        "title": "2 months on us (September launch offer only)",
+        "heading_size": "heading-feature",
+        "richtext": "<p>Pre-paid annual subscription = 12 months of coffee, 10 months paid</p>",
+        "text_alignment": "text-left",
         "button_link": "",
-        "button_label": "Shop Now",
+        "button_label": "",
         "color_scheme": "primary",
         "use_gradient_background": false
       }
@@ -56,17 +161,19 @@
       "settings": {
         "collection": "annual-product-subscriptions",
         "show_title": true,
-        "title": "Customize Your Subscription",
+        "title": "Customize Your Annual Subscription",
         "subtitle": "",
         "enable_product_selection": true,
         "product_step_title": "Select your product:",
         "show_product_price": true,
-        "enable_product_options": true,
-        "options_step_title": "Choose your options:",
+        "enable_size_selection": true,
+        "enable_grind_selection": true,
         "enable_quantity_selection": true,
         "quantity_step_title": "How much do you want?",
-        "max_quantity": 5,
+        "max_quantity": 3,
         "default_quantity": 1,
+        "enable_coffee_type_selection": true,
+        "coffee_type_step_title": "Select Coffee Type:",
         "enable_frequency_selection": true,
         "frequency_step_title": "How often?",
         "show_annual_option": true,
@@ -79,7 +186,9 @@
     }
   },
   "order": [
-    "rich_text_nFCWty",
+    "image_with_text_overlay_XrpCTy",
+    "feature_text_columns_kXGMxF",
+    "image_with_text_BinBwN",
     "customizable_subscription_selector_DhqU7H"
   ]
 }
