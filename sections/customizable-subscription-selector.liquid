@@ -3,150 +3,152 @@
   assign products = selected_collection.products
 -%}
 
-{%- comment -%} DEBUG: Información de productos {%- endcomment -%}
-{% comment %} <div style="background: #f0f0f0; padding: 20px; margin: 20px 0; border: 2px solid #ccc; font-family: monospace; font-size: 12px;">
-  <h3>🐛 DEBUG: Información de Productos</h3>
+{%- comment -%} DEBUG: Product information {%- endcomment -%}
+{% comment %}
+  <div style="background: #f0f0f0; padding: 20px; margin: 20px 0; border: 2px solid #ccc; font-family: monospace; font-size: 12px;">
+    <h3>🐛 DEBUG: Product Information</h3>
 
-  <p><strong>Selected Collection:</strong> {{ section.settings.collection }}</p>
-  <p><strong>Nombre de la colección:</strong> {{ selected_collection.title }}</p>
-  <p><strong>Total de productos:</strong> {{ products.size }}</p>
+    <p><strong>Selected Collection:</strong> {{ section.settings.collection }}</p>
+    <p><strong>Collection Name:</strong> {{ selected_collection.title }}</p>
+    <p><strong>Total Products:</strong> {{ products.size }}</p>
 
-  {%- for product in products -%}
-    <div style="border: 1px solid #999; margin: 10px 0; padding: 10px; background: white;">
-      <h4>Producto {{ forloop.index }}: {{ product.title }}</h4>
-      <p><strong>ID:</strong> {{ product.id }}</p>
-      <p><strong>Handle:</strong> {{ product.handle }}</p>
-      <p><strong>Precio:</strong> {{ product.price | money }}</p>
-      <p><strong>Disponible:</strong> {{ product.available }}</p>
-      <p><strong>Tipo:</strong> {{ product.type }}</p>
-      <p><strong>Vendor:</strong> {{ product.vendor }}</p>
+    {%- for product in products -%}
+      <div style="border: 1px solid #999; margin: 10px 0; padding: 10px; background: white;">
+        <h4>Product {{ forloop.index }}: {{ product.title }}</h4>
+        <p><strong>ID:</strong> {{ product.id }}</p>
+        <p><strong>Handle:</strong> {{ product.handle }}</p>
+        <p><strong>Price:</strong> {{ product.price | money }}</p>
+        <p><strong>Available:</strong> {{ product.available }}</p>
+        <p><strong>Type:</strong> {{ product.type }}</p>
+        <p><strong>Vendor:</strong> {{ product.vendor }}</p>
 
-      <h5>🎯 Variantes ({{ product.variants.size }}):</h5>
-      {%- for variant in product.variants -%}
-        <div style="margin-left: 20px; padding: 5px; border-left: 2px solid #ddd;">
-          <p>
-            <strong>Variante {{ forloop.index }}:</strong> {{ variant.title }}
-          </p>
-          <p><strong>ID:</strong> {{ variant.id }}</p>
-          <p><strong>SKU:</strong> {{ variant.sku }}</p>
-          <p><strong>Precio:</strong> {{ variant.price | money }}</p>
-          <p><strong>Disponible:</strong> {{ variant.available }}</p>
-          <p><strong>Inventario:</strong> {{ variant.inventory_quantity }}</p>
+        <h5>🎯 Variants ({{ product.variants.size }}):</h5>
+        {%- for variant in product.variants -%}
+          <div style="margin-left: 20px; padding: 5px; border-left: 2px solid #ddd;">
+            <p>
+              <strong>Variant {{ forloop.index }}:</strong> {{ variant.title }}
+            </p>
+            <p><strong>ID:</strong> {{ variant.id }}</p>
+            <p><strong>SKU:</strong> {{ variant.sku }}</p>
+            <p><strong>Price:</strong> {{ variant.price | money }}</p>
+            <p><strong>Available:</strong> {{ variant.available }}</p>
+            <p><strong>Inventory:</strong> {{ variant.inventory_quantity }}</p>
 
-          {%- if variant.options.size > 0 -%}
-            <p><strong>Opciones:</strong></p>
-            {%- for option in variant.options -%}
-              <span style="background: #e0e0e0; padding: 2px 5px; margin: 2px; display: inline-block;">
-                {{- option -}}
-              </span>
+            {%- if variant.options.size > 0 -%}
+              <p><strong>Options:</strong></p>
+              {%- for option in variant.options -%}
+                <span style="background: #e0e0e0; padding: 2px 5px; margin: 2px; display: inline-block;">
+                  {{- option -}}
+                </span>
+              {%- endfor -%}
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+
+        <h5>⚙️ Product Options ({{ product.options.size }}):</h5>
+        {%- for option in product.options -%}
+          <div style="margin-left: 20px; padding: 5px; border-left: 2px solid #ddd;">
+            <p>
+              <strong>{{ option.name }}:</strong>
+            </p>
+            <p><strong>Position:</strong> {{ option.position }}</p>
+            <p><strong>Values:</strong></p>
+            {%- for value in option.values -%}
+              <span style="background: #e0f0ff; padding: 2px 5px; margin: 2px; display: inline-block;">{{ value }}</span>
+            {%- endfor -%}
+          </div>
+        {%- endfor -%}
+
+        <h5>📅 Selling Plan Groups ({{ product.selling_plan_groups.size }}):</h5>
+        {%- for group in product.selling_plan_groups -%}
+          <div style="margin-left: 20px; padding: 5px; border-left: 2px solid #ddd;">
+            <script>
+              console.log('Grupo:', {{ group | json }});
+            </script>
+            <p>
+              <strong>Grupo {{ forloop.index }}:</strong> {{ group.name }}
+            </p>
+            <p><strong>ID:</strong> {{ group.id }}</p>
+            <p><strong>App ID:</strong> {{ group.app_id }}</p>
+
+            <h6>📋 Selling Plans ({{ group.selling_plans.size }}):</h6>
+            {%- for plan in group.selling_plans -%}
+              <div style="margin-left: 20px; padding: 3px; background: #f9f9f9;">
+                <p>
+                  <strong>Plan {{ forloop.index }}:</strong> {{ plan.name }}
+                </p>
+                <p><strong>ID:</strong> {{ plan.id }}</p>
+                <p><strong>Description:</strong> {{ plan.description }}</p>
+
+                {%- if plan.options.size > 0 -%}
+                  <p><strong>Plan Options:</strong></p>
+                  {%- for option in plan.options -%}
+                    <div style="margin-left: 10px;">
+                      <p>
+                        <strong>{{ option.name }}:</strong> {{ option.value }}
+                      </p>
+                    </div>
+                  {%- endfor -%}
+                {%- endif -%}
+
+                {%- if plan.price_adjustments.size > 0 -%}
+                  <p><strong>Price Adjustments:</strong></p>
+                  {%- for adjustment in plan.price_adjustments -%}
+                    <div style="margin-left: 10px;">
+                      <p>
+                        <p><strong>Order:</strong> {{ adjustment.order_count }} - <strong>Value:</strong>
+                        {{ adjustment.value -}}
+                        {{- adjustment.value_type }}
+                      </p>
+                    </div>
+                  {%- endfor -%}
+                {%- endif -%}
+              </div>
+            {%- endfor -%}
+          </div>
+        {%- endfor -%}
+
+        <h5>🏷️ Tags:</h5>
+        <p>{{ product.tags | join: ', ' }}</p>
+
+        <h5>🖼️ Images ({{ product.images.size }}):</h5>
+        {%- for image in product.images limit: 3 -%}
+          <img src="{{ image | img_url: '100x' }}" alt="{{ product.title }}" style="margin: 5px; border: 1px solid #ccc;">
+        {%- endfor -%}
+      </div>
+    {%- endfor -%}
+
+    <h3>🎨 Icon Metaobjects</h3>
+    {%- if shop.metaobjects.image_icon_urls -%}
+      {%- for icon_group in shop.metaobjects.image_icon_urls.values -%}
+        <div style="border: 1px solid #999; margin: 10px 0; padding: 10px; background: white;">
+          <h4>Icon Group {{ forloop.index }}</h4>
+          <p><strong>ID:</strong> {{ icon_group.id }}</p>
+          <p><strong>Handle:</strong> {{ icon_group.handle }}</p>
+
+          {%- if icon_group.options -%}
+            <h5>Icon Options:</h5>
+            {%- for option in icon_group.options.value -%}
+              <div style="margin-left: 20px; padding: 5px; border-left: 2px solid #ddd;">
+                <p><strong>Name:</strong> {{ option.name }}</p>
+                {%- if option.image_url -%}
+                  <p><strong>Image URL:</strong> {{ option.image_url.value }}</p>
+                  <img
+                    src="{{ option.image_url.value | image_url }}"
+                    alt="{{ option.name }}"
+                    style="width: 30px; height: 30px; margin: 5px;"
+                  >
+                {%- endif -%}
+              </div>
             {%- endfor -%}
           {%- endif -%}
         </div>
       {%- endfor -%}
-
-      <h5>⚙️ Opciones del Producto ({{ product.options.size }}):</h5>
-      {%- for option in product.options -%}
-        <div style="margin-left: 20px; padding: 5px; border-left: 2px solid #ddd;">
-          <p>
-            <strong>{{ option.name }}:</strong>
-          </p>
-          <p><strong>Posición:</strong> {{ option.position }}</p>
-          <p><strong>Valores:</strong></p>
-          {%- for value in option.values -%}
-            <span style="background: #e0f0ff; padding: 2px 5px; margin: 2px; display: inline-block;">{{ value }}</span>
-          {%- endfor -%}
-        </div>
-      {%- endfor -%}
-
-      <h5>📅 Selling Plan Groups ({{ product.selling_plan_groups.size }}):</h5>
-      {%- for group in product.selling_plan_groups -%}
-        <div style="margin-left: 20px; padding: 5px; border-left: 2px solid #ddd;">
-          <script>
-            console.log('Grupo:', {{ group | json }});
-          </script>
-          <p>
-            <strong>Grupo {{ forloop.index }}:</strong> {{ group.name }}
-          </p>
-          <p><strong>ID:</strong> {{ group.id }}</p>
-          <p><strong>App ID:</strong> {{ group.app_id }}</p>
-
-          <h6>📋 Selling Plans ({{ group.selling_plans.size }}):</h6>
-          {%- for plan in group.selling_plans -%}
-            <div style="margin-left: 20px; padding: 3px; background: #f9f9f9;">
-              <p>
-                <strong>Plan {{ forloop.index }}:</strong> {{ plan.name }}
-              </p>
-              <p><strong>ID:</strong> {{ plan.id }}</p>
-              <p><strong>Descripción:</strong> {{ plan.description }}</p>
-
-              {%- if plan.options.size > 0 -%}
-                <p><strong>Opciones del Plan:</strong></p>
-                {%- for option in plan.options -%}
-                  <div style="margin-left: 10px;">
-                    <p>
-                      <strong>{{ option.name }}:</strong> {{ option.value }}
-                    </p>
-                  </div>
-                {%- endfor -%}
-              {%- endif -%}
-
-              {%- if plan.price_adjustments.size > 0 -%}
-                <p><strong>Ajustes de Precio:</strong></p>
-                {%- for adjustment in plan.price_adjustments -%}
-                  <div style="margin-left: 10px;">
-                    <p>
-                      <strong>Orden:</strong> {{ adjustment.order_count }} - <strong>Valor:</strong>
-                      {{ adjustment.value -}}
-                      {{- adjustment.value_type }}
-                    </p>
-                  </div>
-                {%- endfor -%}
-              {%- endif -%}
-            </div>
-          {%- endfor -%}
-        </div>
-      {%- endfor -%}
-
-      <h5>🏷️ Tags:</h5>
-      <p>{{ product.tags | join: ', ' }}</p>
-
-      <h5>🖼️ Imágenes ({{ product.images.size }}):</h5>
-      {%- for image in product.images limit: 3 -%}
-        <img src="{{ image | img_url: '100x' }}" alt="{{ product.title }}" style="margin: 5px; border: 1px solid #ccc;">
-      {%- endfor -%}
-    </div>
-  {%- endfor -%}
-
-  <h3>🎨 Metaobjetos de Iconos</h3>
-  {%- if shop.metaobjects.image_icon_urls -%}
-    {%- for icon_group in shop.metaobjects.image_icon_urls.values -%}
-      <div style="border: 1px solid #999; margin: 10px 0; padding: 10px; background: white;">
-        <h4>Grupo de Iconos {{ forloop.index }}</h4>
-        <p><strong>ID:</strong> {{ icon_group.id }}</p>
-        <p><strong>Handle:</strong> {{ icon_group.handle }}</p>
-
-        {%- if icon_group.options -%}
-          <h5>Opciones de Iconos:</h5>
-          {%- for option in icon_group.options.value -%}
-            <div style="margin-left: 20px; padding: 5px; border-left: 2px solid #ddd;">
-              <p><strong>Nombre:</strong> {{ option.name }}</p>
-              {%- if option.image_url -%}
-                <p><strong>URL de Imagen:</strong> {{ option.image_url.value }}</p>
-                <img
-                  src="{{ option.image_url.value | image_url }}"
-                  alt="{{ option.name }}"
-                  style="width: 30px; height: 30px; margin: 5px;"
-                >
-              {%- endif -%}
-            </div>
-          {%- endfor -%}
-        {%- endif -%}
-      </div>
-    {%- endfor -%}
-  {%- else -%}
-    <p>❌ No se encontraron metaobjetos de iconos</p>
-  {%- endif -%}
-</div> {% endcomment %}
+    {%- else -%}
+      <p>❌ No icon metaobjects found</p>
+    {%- endif -%}
+  </div>
+{% endcomment %}
 
 <div class="sideContainer">
   <div class="subscriptionMainDiv">
@@ -299,7 +301,7 @@
               Select Size:
             </h2>
             <div class="subscriptionRow" id="sizeContainer">
-              {%- comment -%} Se poblará dinámicamente {%- endcomment -%}
+              {%- comment -%} Will be populated dynamically {%- endcomment -%}
             </div>
           </div>
         {%- endif -%}
@@ -312,7 +314,7 @@
               Select Grind:
             </h2>
             <div class="subscriptionRow" id="grindContainer">
-              {%- comment -%} Se poblará dinámicamente {%- endcomment -%}
+              {%- comment -%} Will be populated dynamically {%- endcomment -%}
             </div>
           </div>
         {%- endif -%}
@@ -392,7 +394,7 @@
               {{ section.settings.coffee_type_step_title | default: 'Select Coffee Type:' }}
             </h2>
             <div class="subscriptionRow" id="coffeeTypeContainer">
-              {%- comment -%} Se poblará dinámicamente con las opciones de tipo de café {%- endcomment -%}
+              {%- comment -%} Will be populated dynamically {%- endcomment -%}
             </div>
           </div>
         {%- endif -%}
@@ -412,7 +414,10 @@
 
         {%- comment -%} Add to Cart Button {%- endcomment -%}
         {%- if section.settings.show_add_to_cart -%}
-          <p class="shipping-notice" style="text-align: center; margin: 20px 0 10px; font-size: 0.9rem; opacity: 0.8; color: #d4af37;">
+          <p
+            class="shipping-notice"
+            style="text-align: center; margin: 20px 0 10px; font-size: 0.9rem; opacity: 0.8; color: #d4af37;"
+          >
             (Shipping is not included during the 2 months on us.)
           </p>
           <button type="button" class="add-subscription-btn" id="addSubscriptionBtn">
@@ -487,7 +492,6 @@
   .step.completed {
     display: block;
     opacity: 0.8;
-    /* Removido: pointer-events: none; para permitir clicks */
   }
 
   /* Step indicators */
@@ -540,7 +544,7 @@
     justify-content: flex-start;
   }
 
-  /* Grilla de 3 columnas para productos */
+  /* 3-column grid for products */
   .product-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -725,13 +729,13 @@
     const frequencyContainer = document.getElementById('frequencyContainer');
     const addToCartBtn = document.getElementById('addSubscriptionBtn');
     
-    // Variables globales
+  // Global variables
     let currentStepIndex = 0;
     let selectedProductData = null;
     let steps = [];
-    let stepHistory = []; // Para navegación hacia atrás
+  let stepHistory = []; // For backward navigation
 
-    // Datos de iconos desde metaobjetos
+  // Icon data from metaobjects
     const iconData = {
       {%- for singleStep in shop.metaobjects.image_icon_urls.values -%}
         {%- for singleStepSingleOption in singleStep.options.value -%}
@@ -740,11 +744,11 @@
       {%- endfor -%}
     };
 
-    // Inicialización mejorada
+  // Improved initialization
     function initializeSteps() {
       steps = document.querySelectorAll('.step');
       
-      // Ocultar todos los pasos excepto el primero
+  // Hide all steps except the first
       steps.forEach((step, index) => {
         if (index === 0) {
           step.classList.add('active');
@@ -754,7 +758,7 @@
         }
       });
       
-      // Agregar navegación hacia atrás
+  // Add backward navigation
       addBackwardNavigation();
       
       if (addToCartBtn) {
@@ -762,78 +766,78 @@
       }
     }
 
-    // Función mejorada para navegación hacia atrás
+  // Improved function for backward navigation
     function addBackwardNavigation() {
       steps.forEach((step, index) => {
         const stepIndicator = step.querySelector('.step-indicator');
         if (stepIndicator) {
-          // Permitir clic en todos los pasos completados y el actual
+          // Allow click on all completed steps and the current one
           if (index <= currentStepIndex) {
             stepIndicator.style.cursor = 'pointer';
             
-            // Limpiar event listeners anteriores clonando el elemento
+            // Clean previous event listeners by cloning the element
             const newIndicator = stepIndicator.cloneNode(true);
             stepIndicator.parentNode.replaceChild(newIndicator, stepIndicator);
             
-            // Agregar nuevo event listener
+            // Add new event listener
             newIndicator.addEventListener('click', () => goToStep(index));
           }
         }
       });
     }
 
-    // Función corregida para ir a un step específico
+  // Corrected function to go to a specific step
     function goToStep(targetIndex) {
-      // Permitir ir a cualquier paso anterior o al actual
+  // Allow going to any previous step or the current one
       if (targetIndex > currentStepIndex) return;
       
-      // Si es el mismo paso, no hacer nada
+  // If it's the same step, do nothing
       if (targetIndex === currentStepIndex) return;
       
-      // Resetear y OCULTAR steps posteriores al objetivo
+  // Reset and HIDE steps after the target
       for (let i = targetIndex + 1; i < steps.length; i++) {
         const step = steps[i];
         step.classList.remove('active', 'completed');
-        step.style.display = 'none'; // OCULTAR completamente
+  step.style.display = 'none'; // Completely HIDE
         
-        // Limpiar selecciones en steps posteriores
+  // Clear selections in subsequent steps
         const radios = step.querySelectorAll('input[type="radio"]');
         radios.forEach(radio => radio.checked = false);
       }
       
-      // Ocultar botón de agregar al carrito
+  // Hide add to cart button
       if (addToCartBtn) {
         addToCartBtn.style.display = 'none';
       }
       
-      // Actualizar índice actual
+  // Update current index
       currentStepIndex = targetIndex;
       
-      // RESETEAR COMPLETAMENTE todos los pasos y configurar estados correctos
+  // COMPLETELY RESET all steps and set correct states
       for (let i = 0; i <= targetIndex; i++) {
         const step = steps[i];
-        step.style.display = 'block'; // Asegurar que esté visible
+  step.style.display = 'block'; // Ensure it's visible
         
-        // Remover TODAS las clases de estado primero
+  // Remove ALL state classes first
         step.classList.remove('active', 'completed');
         
         if (i < targetIndex) {
-          // Pasos anteriores al objetivo: marcar como completados
+          // Steps before the target: mark as completed
           step.classList.add('completed');
         } else if (i === targetIndex) {
-          // Paso objetivo: activar y remover cualquier estado completed
+          // Target step: activate and remove any completed state
           step.classList.add('active');
         }
       }
       
-      // Scroll al step objetivo
+  // Scroll to the target step
       steps[targetIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
       
-      // Actualizar navegación
+  // Update navigation
       addBackwardNavigation();
     }
 
-    // Función corregida para isCurrentStepCompleted
+  // Corrected function for isCurrentStepCompleted
     function isCurrentStepCompleted() {
       const currentStep = steps[currentStepIndex];
       if (!currentStep) return false;
@@ -867,31 +871,31 @@
       }
     }
 
-    // Función mejorada para avanzar al siguiente step
+  // Improved function to advance to the next step
     function advanceToNextStep() {
       if (currentStepIndex < steps.length - 1) {
-        // Marcar step actual como completado
+  // Mark current step as completed
         steps[currentStepIndex].classList.add('completed');
         steps[currentStepIndex].classList.remove('active');
         
-        // Avanzar al siguiente step
+  // Move to the next step
         currentStepIndex++;
         
-        // MOSTRAR y activar el siguiente step
+  // SHOW and activate the next step
         steps[currentStepIndex].style.display = 'block';
         steps[currentStepIndex].classList.add('active');
         
-        // Scroll al nuevo step
+  // Scroll to the new step
         steps[currentStepIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
         
-        // Poblar contenido si es necesario
+  // Populate content if necessary
         populateStepContent(steps[currentStepIndex]);
         
-        // Actualizar navegación
+  // Update navigation
         addBackwardNavigation();
       }
       
-      // Mostrar botón de agregar al carrito si es el último step
+  // Show add to cart button if it's the last step
       if (currentStepIndex === steps.length - 1 && isCurrentStepCompleted()) {
         if (addToCartBtn) {
           addToCartBtn.style.display = 'block';
@@ -899,7 +903,7 @@
       }
     }
 
-    // Función corregida para poblar contenido de steps
+  // Corrected function to populate step content
     function populateStepContent(step) {
       const stepId = step.id;
       
@@ -930,25 +934,41 @@
       }
     }
 
-    // Función simplificada - NO crear steps dinámicos, solo poblar los existentes
+  // Simplified function - DO NOT create dynamic steps, only populate existing ones
     function updateProductOptions(product) {
       if (!product.variants || product.variants.length === 0) return;
       
-      // NO crear steps dinámicos - usar solo los estáticos
-      // Los steps sizeStep y grindStep ya existen en el HTML
+      // Get size options (first product option)
+      const sizeOptions = new Set();
+      product.variants.forEach(variant => {
+        if (variant.available && variant.options && variant.options[0]) {
+          sizeOptions.add(variant.options[0]);
+        }
+      });
       
-      // Actualizar array de steps
+      // Get grind options (second product option)
+      const grindOptions = new Set();
+      product.variants.forEach(variant => {
+        if (variant.available && variant.options && variant.options[1]) {
+          grindOptions.add(variant.options[1]);
+        }
+      });
+      
+  // DO NOT create dynamic steps - use only static ones
+  // The steps sizeStep and grindStep already exist in the HTML
+      
+  // Update steps array
       steps = document.querySelectorAll('.step');
     }
 
-    // Función corregida para updateSizeOptions
+  // Corrected function for updateSizeOptions
     function updateSizeOptions(product) {
       const sizeContainer = document.getElementById('sizeContainer');
       if (!sizeContainer) return;
       
       sizeContainer.innerHTML = '';
       
-      // Obtener opciones de tamaño (primera opción del producto)
+  // Get size options (first product option)
       const sizeOptions = new Set();
       
       product.variants.forEach(variant => {
@@ -996,18 +1016,18 @@
         sizeContainer.appendChild(col);
       });
       
-      // Agregar event listeners
+  // Add event listeners
       addEventListenersToStep(document.getElementById('sizeStep'));
     }
 
-    // Función corregida para updateGrindOptions
+  // Corrected function for updateGrindOptions
     function updateGrindOptions(product) {
       const grindContainer = document.getElementById('grindContainer');
       if (!grindContainer) return;
       
       grindContainer.innerHTML = '';
       
-      // Obtener opciones de molido (segunda opción del producto)
+  // Get grind options (second product option)
       const grindOptions = new Set();
       
       product.variants.forEach(variant => {
@@ -1055,7 +1075,7 @@
         grindContainer.appendChild(col);
       });
       
-      // Agregar event listeners
+  // Add event listeners
       addEventListenersToStep(document.getElementById('grindStep'));
     }
 
@@ -1128,14 +1148,14 @@
       const showAnnualOption = {{ section.settings.show_annual_option | json }};
       
       if (showAnnualOption) {
-        // Solo mostrar opciones del grupo "Annual Subscription"
+        // Show only annual subscription options
         if (product.selling_plan_groups && product.selling_plan_groups.length > 0) {
           const annualGroup = product.selling_plan_groups.find(group => 
             group.name && group.name.toLowerCase().includes('annual')
           );
           
           if (annualGroup && annualGroup.selling_plans) {
-            // Mostrar solo el primer plan anual (todos son iguales)
+            // Show only the first annual plan (all are the same)
             const plan = annualGroup.selling_plans[0];
             const col = document.createElement('div');
             col.className = 'subscriptionCol size';
@@ -1169,10 +1189,10 @@
           }
         }
       } else {
-        // Mostrar solo frecuencias semanales (excluir grupo anual)
+        // Show only weekly frequencies (exclude annual group)
         if (product.selling_plan_groups && product.selling_plan_groups.length > 0) {
           product.selling_plan_groups.forEach((group, groupIndex) => {
-            // Saltar el grupo anual
+            // Skip the annual group
             if (group.name && group.name.toLowerCase().includes('annual')) {
               return;
             }
@@ -1186,7 +1206,7 @@
                 const weekMatch = planName.match(/(\d+)\s*week/);
                 const weeks = weekMatch ? weekMatch[1] : (groupIndex + 1);
                 
-                // Buscar icono específico para la frecuencia
+                // Search for specific icon for the frequency
                 let iconHtml = findIconUrl(`Every ${weeks} week${weeks > 1 ? 's' : ''}`) || 
                               findIconUrl(`${weeks} week`) ||
                               getFrequencyIcon(weeks);
@@ -1223,14 +1243,14 @@
       addEventListenersToStep(document.getElementById('frequencyStep'));
     }
 
-    // Función para actualizar las opciones de tipo de café
+    // Function to update coffee type options
     function updateCoffeeTypeOptions(selectedProduct) {
       const coffeeTypeContainer = document.getElementById('coffeeTypeContainer');
       if (!coffeeTypeContainer || !selectedProduct) return;
       
       coffeeTypeContainer.innerHTML = '';
       
-      // Obtener opciones de tipo de café (tercera opción del producto)
+      // Get coffee type options (third product option)
       const coffeeTypeOptions = new Set();
       
       selectedProduct.variants.forEach(variant => {
@@ -1277,21 +1297,21 @@
         coffeeTypeContainer.appendChild(col);
       });
       
-      // Agregar event listeners
+      // Add event listeners
       addEventListenersToStep(document.getElementById('coffeeTypeStep'));
     }
 
-    // Función para obtener el icono del tipo de café usando icon-finder
+  // Function to get the coffee type icon using icon-finder
     function getCoffeeTypeIcon(coffeeType) {
       const normalizedType = coffeeType.toLowerCase();
       
-      // Primero intentar encontrar en metaobjetos
+  // First try to find in metaobjects
       const iconUrl = findIconUrl(normalizedType);
       if (iconUrl) {
         return `<img src="${iconUrl}" alt="${coffeeType}" width="40" height="40">`;
       }
       
-      // Si no se encuentra, usar icon-finder como fallback
+  // If not found, use icon-finder as fallback
       return `{% render 'icon-finder', icon: 'box' %}`;
     }
 
@@ -1299,14 +1319,14 @@
     function findIconUrl(searchTerm) {
       const normalizedTerm = searchTerm.toLowerCase().replace(/\s+/g, '_');
       
-      // Búsqueda directa
+  // Direct search
       if (iconData[normalizedTerm]) {
         return iconData[normalizedTerm];
       }
       
-      // Mapeos específicos para mejorar la búsqueda
+  // Specific mappings to improve search
       const iconMappings = {
-        // Tamaños
+  // Sizes
         'one_bag': 'one_bag',
         'two_bags': 'two_bags', 
         'three_bags': 'three_bags',
@@ -1319,7 +1339,7 @@
         '5lb': '5lb',
         '5lb': '5LB',
         
-        // Frecuencias
+  // Frequencies
         'every_1_week': 'every_1_week',
         'every_2_weeks': 'every_2_weeks', 
         'every_3_weeks': 'every_3_weeks',
@@ -1332,7 +1352,7 @@
         '6_months': '6_months',
         '12_months': '12_months',
         
-        // Tipos de molido
+  // Grind types
         'whole_bean': 'whole_bean',
         'ground_coffee': 'ground_coffee',
         'whole_bean_gift': 'whole_bean_gift',
@@ -1342,7 +1362,7 @@
         'drip': 'drip',
         'french': 'french',
         
-        // Tipos de café
+  // Coffee types
         'arise': 'arise',
         'virtuosa': 'virtuosa',
         'ignite': 'ignite', 
@@ -1350,12 +1370,12 @@
         'shantawene': 'shantawene',
         'huehuetenango': 'huehuetenango',
         
-        // Opciones de regalo
+  // Gift options
         'giftsomeone': 'giftsomeone',
         'gift_someone': 'giftsomeone'
       };
       
-      // Buscar en mapeos específicos
+  // Search in specific mappings
       if (iconMappings[normalizedTerm]) {
         const mappedKey = iconMappings[normalizedTerm];
         if (iconData[mappedKey]) {
@@ -1363,19 +1383,19 @@
         }
       }
       
-      // Búsqueda flexible mejorada
+  // Improved flexible search
       for (const [key, url] of Object.entries(iconData)) {
-        // Búsqueda exacta
+  // Exact search
         if (key === normalizedTerm) {
           return url;
         }
         
-        // Búsqueda parcial
+  // Partial search
         if (key.includes(normalizedTerm) || normalizedTerm.includes(key)) {
           return url;
         }
         
-        // Búsqueda por palabras clave
+  // Keyword search
         const keyWords = key.split('_');
         const searchWords = normalizedTerm.split('_');
         
@@ -1393,6 +1413,7 @@
       return null;
     }
 
+    // Function to get the default icon
     function getDefaultIcon(optionName, value) {
       const name = optionName.toLowerCase();
       const val = value.toLowerCase();
@@ -1415,7 +1436,7 @@
         return `<svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>`;
       }
       
-      // Intentar diferentes variaciones para frecuencias
+      // Try different variations for frequencies
       const variations = [
         `every_${weeks}_week${weeks > 1 ? 's' : ''}`,
         `every_${weeks}_week`,
@@ -1445,7 +1466,6 @@
             updateGrindOptionsForSize(selectedProductData, input.value);
           }
           
-          // Lógica especial para frecuencia
           if (input.name === 'selectedFrequency') {
             handleFrequencySelection(input);
           }
@@ -1458,20 +1478,10 @@
         });
       });
     }
-
-    // Nueva función para manejar selección de frecuencia
-    function handleFrequencySelection(selectedInput) {
-      // Ya no necesitamos lógica especial aquí porque solo mostramos
-      // un tipo de frecuencia a la vez basado en la configuración
-    }
-
-    // Event listener corregido para selección de producto
     productRadios.forEach(radio => {
       radio.addEventListener('change', function() {
         if (this.checked) {
           selectedProductData = JSON.parse(this.getAttribute('data-product-data'));
-          
-          // CORREGIDO: Llamar a las funciones de actualización dinámica
           updateSizeOptions(selectedProductData);
           updateGrindOptions(selectedProductData);
           updateCoffeeTypeOptions(selectedProductData);
@@ -1491,163 +1501,154 @@
       addEventListenersToStep(step);
     });
 
-    // Inicializar cuando el DOM esté listo
+  // Initialize when the DOM is ready
     initializeSteps();
 
     // Add to cart functionality
     if (addToCartBtn) {
       addToCartBtn.addEventListener('click', async function () {
         try {
-          console.log('🛒 Starting Add to Cart process...');
+            console.log('🛒 Starting Add to Cart process...');
           
-          // Validate that a product has been selected
-          const selectedProduct = document.querySelector('input[name="selectedProduct"]:checked');
-          if (!selectedProduct) {
-            alert('Please select a product');
-            return;
-          }
-
-          console.log('✅ Product selected:', selectedProduct.value);
-
-          // Obtener las selecciones del usuario
-          const selectedSize = document.querySelector('input[name="selectedSize"]:checked')?.value;
-          const selectedGrind = document.querySelector('input[name="selectedGrind"]:checked')?.value;
-          const selectedQuantity = document.querySelector('input[name="selectedQuantity"]:checked')?.value || '1';
-          const selectedCoffeeType = document.querySelector('input[name="selectedCoffeeType"]:checked')?.value;
-          const selectedFrequency = document.querySelector('input[name="selectedFrequency"]:checked')?.value;
-
-          console.log('📋 User selections:', {
-            size: selectedSize,
-            grind: selectedGrind,
-            quantity: selectedQuantity,
-            coffeeType: selectedCoffeeType,
-            frequency: selectedFrequency
-          });
-
-          // Validate required selections
-          if (!selectedSize) {
-            alert('Please select a size');
-            return;
-          }
-          if (!selectedGrind) {
-            alert('Please select a grind type');
-            return;
-          }
-          if (!selectedFrequency) {
-            alert('Please select a frequency');
-            return;
-          }
-
-          // Obtener datos del producto
-          let productData;
-          try {
-            productData = JSON.parse(selectedProduct.dataset.productData);
-            console.log('📦 Datos del producto:', productData);
-          } catch (parseError) {
-            console.error('❌ Error parsing product data:', parseError);
-            alert('Error in product data. Please reload the page.');
-            return;
-          }
-          
-          // Construir array de opciones para encontrar la variante
-          const selectedOptions = [selectedSize, selectedGrind];
-          if (selectedCoffeeType) {
-            selectedOptions.push(selectedCoffeeType);
-          }
-
-          console.log('🔍 Searching for variant with options:', selectedOptions);
-          console.log('📊 Available variants:', productData.variants);
-
-          // Find matching variant
-          const matchingVariant = findMatchingVariant(selectedOptions, productData.variants);
-          
-          if (!matchingVariant) {
-            console.error('❌ No matching variant found');
-            console.log('Searched options:', selectedOptions);
-            console.log('Available variants:', productData.variants.map(v => ({
-              id: v.id,
-              options: [v.option1, v.option2, v.option3].filter(Boolean),
-              available: v.available
-            })));
-            alert('No variant found that matches your selections. Please verify your options.');
-            return;
-          }
-
-          console.log('✅ Variante encontrada:', matchingVariant);
-
-          // Verificar disponibilidad
-          if (!matchingVariant.available) {
-            alert('Sorry, this variant is not available at the moment.');
-            return;
-          }
-
-          // Preparar datos para el carrito
-          const cartData = {
-            id: matchingVariant.id,
-            quantity: parseInt(selectedQuantity)
-          };
-          
-          // Agregar selling plan si hay frecuencia seleccionada
-          if (selectedFrequency) {
-            if (selectedFrequency === 'annual') {
-              // Buscar el selling plan para suscripción anual
-              const annualPlan = findAnnualSellingPlan(productData);
-              if (annualPlan) {
-                cartData.selling_plan = annualPlan.id;
-                console.log('📅 Selling plan anual encontrado:', annualPlan);
-              } else {
-                console.warn('⚠️ No se encontró selling plan anual para este producto');
-              }
-            } else {
-              // Para otras frecuencias, usar el valor directamente (debería ser un selling plan ID)
-              cartData.selling_plan = selectedFrequency;
+            // Validate that a product has been selected
+            const selectedProduct = document.querySelector('input[name="selectedProduct"]:checked');
+            if (!selectedProduct) {
+              alert('Please select a product');
+              return;
             }
-          }
 
-          console.log('🛍️ Datos para el carrito:', cartData);
+            console.log('✅ Product selected:', selectedProduct.value);
 
-          // Deshabilitar botón durante la petición
-          addToCartBtn.disabled = true;
-          addToCartBtn.textContent = 'Adding...';
+            // Get user selections
+            const selectedSize = document.querySelector('input[name="selectedSize"]:checked')?.value;
+            const selectedGrind = document.querySelector('input[name="selectedGrind"]:checked')?.value;
+            const selectedQuantity = document.querySelector('input[name="selectedQuantity"]:checked')?.value || '1';
+            const selectedCoffeeType = document.querySelector('input[name="selectedCoffeeType"]:checked')?.value;
+            const selectedFrequency = document.querySelector('input[name="selectedFrequency"]:checked')?.value;
 
-          // Realizar petición al carrito
-          const response = await fetch(`${window.location.origin}/cart/add.js`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json'
-            },
-            body: JSON.stringify(cartData)
-          });
+            console.log('📋 User selections:', {
+              size: selectedSize,
+              grind: selectedGrind,
+              quantity: selectedQuantity,
+              coffeeType: selectedCoffeeType,
+              frequency: selectedFrequency
+            });
 
-          console.log('📡 Respuesta del servidor:', response.status, response.statusText);
+            // Validate required selections
+            if (!selectedSize) {
+              alert('Please select a size');
+              return;
+            }
+            if (!selectedGrind) {
+              alert('Please select a grind type');
+              return;
+            }
+            if (!selectedFrequency) {
+              alert('Please select a frequency');
+              return;
+            }
 
-          if (!response.ok) {
-            const errorText = await response.text();
-            console.error('❌ Error HTTP:', response.status, errorText);
-            throw new Error(`Error HTTP: ${response.status} - ${errorText}`);
-          }
-
-          const responseData = await response.json();
-          console.log('✅ Producto agregado exitosamente:', responseData);
+            // Get product data
+            let productData;
+            try {
+              productData = JSON.parse(selectedProduct.dataset.productData);
+              console.log('📦 Product data:', productData);
+            } catch (parseError) {
+              console.error('❌ Error parsing product data:', parseError);
+              alert('Error in product data. Please reload the page.');
+              return;
+            }
           
-          // Mostrar mensaje de éxito
-          alert('Product successfully added to cart!');
+            // Build options array to find the variant
+            const selectedOptions = [selectedSize, selectedGrind];
+            if (selectedCoffeeType) {
+              selectedOptions.push(selectedCoffeeType);
+            }
+
+            console.log('🔍 Searching for variant with options:', selectedOptions);
+            console.log('📊 Available variants:', productData.variants);
+
+            // Find matching variant
+            const matchingVariant = findMatchingVariant(selectedOptions, productData.variants);
           
-          // Opcional: actualizar contador del carrito
-          if (window.theme && window.theme.cartCount) {
-            window.theme.cartCount.update();
+            if (!matchingVariant) {
+              console.error('❌ No matching variant found');
+              console.log('Searched options:', selectedOptions);
+              console.log('Available variants:', productData.variants.map(v => ({
+                id: v.id,
+                options: [v.option1, v.option2, v.option3].filter(Boolean),
+                available: v.available
+              })));
+              alert('No variant found that matches your selections. Please verify your options.');
+              return;
+            }
+
+            console.log('✅ Matching variant found:', matchingVariant);
+
+            // Check availability
+            if (!matchingVariant.available) {
+              alert('Sorry, this variant is not available at the moment.');
+              return;
+            }
+
+            // Prepare data for the cart
+            const cartData = {
+              id: matchingVariant.id,
+              quantity: parseInt(selectedQuantity)
+            };
+          
+            // Add selling plan if frequency is selected
+            if (selectedFrequency) {
+              if (selectedFrequency === 'annual') {
+                // Find the selling plan for annual subscription
+                const annualPlan = findAnnualSellingPlan(productData);
+                if (annualPlan) {
+                  cartData.selling_plan = annualPlan.id;
+                  console.log('📅 Annual selling plan found:', annualPlan);
+                } else {
+                  console.warn('⚠️ Annual selling plan not found for this product');
+                }
+              } else {
+                cartData.selling_plan = selectedFrequency;
+              }
+            }
+
+            console.log('🛍️ Cart data:', cartData);
+
+            addToCartBtn.disabled = true;
+            addToCartBtn.textContent = 'Adding...';
+
+            const response = await fetch(`${window.location.origin}/cart/add.js`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+              },
+              body: JSON.stringify(cartData)
+            });
+
+            if (!response.ok) {
+              const errorText = await response.text();
+              console.error('❌ HTTP Error:', response.status, errorText);
+              throw new Error(`HTTP Error: ${response.status} - ${errorText}`);
+            }
+
+            const responseData = await response.json();
+            console.log('✅ Product added successfully:', responseData);
+          
+            alert('Product successfully added to cart!');
+            if (window.theme && window.theme.cartCount) {
+              window.theme.cartCount.update();
+            }
+          
+          } catch (error) {
+            console.error('❌ Error adding product to cart:', error);
+            alert(`There was an error adding the product to cart: ${error.message}`);
+          } finally {
+            addToCartBtn.disabled = false;
+            addToCartBtn.textContent = '{{ section.settings.add_to_cart_text | default: "Add to Cart" }}';
           }
-          
-        } catch (error) {
-          console.error('❌ Error completo al agregar al carrito:', error);
-          alert(`There was an error adding the product to cart: ${error.message}`);
-        } finally {
-          // Rehabilitar botón
-          addToCartBtn.disabled = false;
-          addToCartBtn.textContent = '{{ section.settings.add_to_cart_text | default: "Add to Cart" }}';
-        }
-      });
+        });
     }
 
     // Function to find annual selling plan
