@@ -38,7 +38,7 @@
       ],
       "name": "t:sections.image_with_text_overlay.name",
       "settings": {
-        "image": "shopify://shop_images/Talitha_Clairemont_opening_banner.png",
+        "image": "shopify://shop_images/coffee_fcde36ec-b274-448a-8a7f-ac6d3607beae.png",
         "display_on_card": true,
         "display_content_below_image_on_mobile": false,
         "style": "full",
@@ -47,7 +47,7 @@
         "text_align": "text-center",
         "title": "Your Morning Ritual, Hope Roasted for a Year",
         "heading_size": "heading-feature",
-        "richtext": "<p>One subscription. One year of coffee. One year of impact for trafficking survivors.</p>",
+        "richtext": "<p>One subscription. </p><p>One year of coffee. </p><p>One year of impact for trafficking survivors.</p>",
         "cta_url": "",
         "cta_text": "Start Your Year Of Coffee",
         "color_scheme": "primary",
@@ -89,7 +89,10 @@
       "settings": {
         "display_on_card": false,
         "title": "Here’s what you’ll enjoy:",
-        "heading_size": "heading-feature",
+        "main_title_size": "text-2xl lg:text-3xl",
+        "column_title_size": "heading-standard",
+        "content_text_size": "text-xl",
+        "heading_size": "heading-standard",
         "subheading_font": "body",
         "color_scheme": "primary",
         "use_gradient_background": false
@@ -108,31 +111,10 @@
             "enable_parallax": false,
             "parallax_speed": 3
           }
-        },
-        "sticker_MmUhjN": {
-          "type": "sticker",
-          "settings": {
-            "text": "Make Every Morning Matter",
-            "shape": "ticket_stub",
-            "width": 150,
-            "sticker_font_size": "1.563rem",
-            "half_image_width_on_mobile": true,
-            "horizontal_position": 80,
-            "vertical_position": 80,
-            "rotate": 0,
-            "show_sticker_on_mobile": true,
-            "show_sticker_on_desktop": true,
-            "rotation_animation": "none",
-            "enable_parallax": false,
-            "parallax_speed": 3,
-            "color": "bg-scheme-accent-1 text-scheme-accent-1-overlay",
-            "color_scheme": "tertiary"
-          }
         }
       },
       "block_order": [
-        "background_pattern_bdAwyj",
-        "sticker_MmUhjN"
+        "background_pattern_bdAwyj"
       ],
       "name": "t:sections.image_with_text.name",
       "settings": {
@@ -151,6 +133,13 @@
         "text_alignment": "text-left",
         "button_link": "",
         "button_label": "",
+        "show_additional_section": true,
+        "additional_section_type": "banner",
+        "additional_button_label": "Learn More",
+        "additional_button_link": "",
+        "banner_text": "Make Every Morning Matter",
+        "additional_section_alignment": "text-center",
+        "additional_section_color_scheme": "secondary",
         "color_scheme": "primary",
         "use_gradient_background": false
       }
@@ -183,12 +172,34 @@
         "show_add_to_cart": true,
         "add_to_cart_text": "Add to Cart"
       }
+    },
+    "image_with_text_overlay_Y76hEy": {
+      "type": "image-with-text-overlay",
+      "name": "t:sections.image_with_text_overlay.name",
+      "settings": {
+        "image": "shopify://shop_images/coffee2.png",
+        "display_on_card": true,
+        "display_content_below_image_on_mobile": false,
+        "style": "full",
+        "height": "pt-half-screen-height",
+        "place_content": "place-content-center-center",
+        "text_align": "text-center",
+        "title": "Why is this important?",
+        "heading_size": "heading-feature",
+        "richtext": "<h3>Your coffee. Their new beginning.</h3><p>Every Talitha subscription fuels more than mornings -  it creates steady jobs, training, and opportunity for trafficking survivors.</p><p>Now is the time to make your mornings matter.</p><p>Because this isn’t just coffee.<br/> It’s Hope Roasted.</p>",
+        "cta_url": "",
+        "cta_text": "",
+        "color_scheme": "primary",
+        "use_gradient_background": false,
+        "text_overlay_color": "same_as_section"
+      }
     }
   },
   "order": [
     "image_with_text_overlay_XrpCTy",
     "feature_text_columns_kXGMxF",
     "image_with_text_BinBwN",
-    "customizable_subscription_selector_DhqU7H"
+    "customizable_subscription_selector_DhqU7H",
+    "image_with_text_overlay_Y76hEy"
   ]
 }

@@ -71,15 +71,33 @@
             </div>
 
             {%- if button_label != blank -%}
-              
-            <div class="mt-5">
-                  <a href="{% if template contains 'product' and product.metafields.custom.brewingguide.value != blank %}{{ product.metafields.custom.brewingguide.value.url }}
-                    {% else %}{{ button_link }}{% endif %}" 
-                   class="inline-block" {% if template contains 'product' %}download{% endif %}>
-              
+              <div class="mt-5">
+                <a href="{% if template contains 'product' and product.metafields.custom.brewingguide.value != blank %}{{ product.metafields.custom.brewingguide.value.url }}
+                  {% else %}{{ button_link }}{% endif %}" 
+                 class="inline-block" {% if template contains 'product' %}download{% endif %}>
                 <span class="custom-btn">{{ button_label }}</span>
-              </a>
-            </div>
+                </a>
+              </div>
+            {%- endif -%}
+
+            {%- if section.settings.show_additional_section -%}
+              <div class="mt-8 {{ section.settings.additional_section_alignment }} color-scheme-{{ section.settings.additional_section_color_scheme }}">
+                {%- if section.settings.additional_section_type == 'button' -%}
+                  {%- if section.settings.additional_button_label != blank -%}
+                    <div class="additional-button-container">
+                      <a href="{{ section.settings.additional_button_link }}" class="inline-block">
+                        <span class="custom-btn secondary-btn">{{ section.settings.additional_button_label }}</span>
+                      </a>
+                    </div>
+                  {%- endif -%}
+                {%- elsif section.settings.additional_section_type == 'banner' -%}
+                  {%- if section.settings.banner_text != blank -%}
+                    <div class="mini-banner p-4 rounded-lg bg-scheme-accent-1 text-scheme-accent-1-overlay">
+                      <p class="text-sm font-medium mb-0">{{ section.settings.banner_text }}</p>
+                    </div>
+                  {%- endif -%}
+                {%- endif -%}
+              </div>
             {%- endif -%}
           </div>
         </div>

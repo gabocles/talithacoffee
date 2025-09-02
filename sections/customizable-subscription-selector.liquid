@@ -429,6 +429,28 @@
   </div>
 </div>
 
+<!-- Error Modal -->
+<div id="errorModal" class="error-modal-overlay">
+  <div class="error-modal">
+    <div class="error-modal-header">
+      <div class="error-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+          <line x1="15" y1="9" x2="9" y2="15" stroke="currentColor" stroke-width="2"/>
+          <line x1="9" y1="9" x2="15" y2="15" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </div>
+      <h3>Error</h3>
+    </div>
+    <div class="error-modal-body">
+      <p id="errorMessage">An error occurred</p>
+    </div>
+    <div class="error-modal-footer">
+      <button type="button" class="error-modal-close" onclick="closeErrorModal()">OK</button>
+    </div>
+  </div>
+</div>
+
 <style>
   .sideContainer {
     max-width: calc(100% - 60px);
@@ -721,6 +743,133 @@
       flex: 1 1 100%;
     }
   }
+
+  /* Error Modal Styles */
+  .error-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .error-modal-overlay.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .error-modal {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    width: 90%;
+    max-height: 90vh;
+    overflow: hidden;
+    transform: scale(0.7) translateY(-50px);
+    transition: all 0.3s ease;
+    border: 2px solid #FFA400;
+  }
+
+  .error-modal-overlay.show .error-modal {
+    transform: scale(1) translateY(0);
+  }
+
+  .error-modal-header {
+    background: linear-gradient(135deg, #1A3C34, #336458);
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .error-icon {
+    width: 24px;
+    height: 24px;
+    color: #FFA400;
+    flex-shrink: 0;
+  }
+
+  .error-modal-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'Rajdhani', sans-serif;
+  }
+
+  .error-modal-body {
+    padding: 24px;
+    color: #1A3C34;
+  }
+
+  .error-modal-body p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+    font-family: 'Carlito', sans-serif;
+  }
+
+  .error-modal-footer {
+    padding: 16px 24px 24px;
+    text-align: right;
+  }
+
+  .error-modal-close {
+    background: linear-gradient(135deg, #1A3C34, #336458);
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'Rajdhani', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .error-modal-close:hover {
+    background: linear-gradient(135deg, #336458, #1A3C34);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(26, 60, 52, 0.3);
+  }
+
+  .error-modal-close:active {
+    transform: translateY(0);
+  }
+
+  /* Animation keyframes */
+  @keyframes modalSlideIn {
+    from {
+      opacity: 0;
+      transform: scale(0.7) translateY(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+
+  @keyframes modalSlideOut {
+    from {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: scale(0.7) translateY(-50px);
+    }
+  }
 </style>
 
 <script>
@@ -805,11 +954,6 @@
         radios.forEach(radio => radio.checked = false);
       }
       
-  // Hide add to cart button
-      if (addToCartBtn) {
-        addToCartBtn.style.display = 'none';
-      }
-      
   // Update current index
       currentStepIndex = targetIndex;
       
@@ -835,6 +979,9 @@
       
   // Update navigation
       addBackwardNavigation();
+      
+  // Check and show add to cart button
+      checkAndShowAddToCartButton();
     }
 
   // Corrected function for isCurrentStepCompleted
@@ -849,6 +996,9 @@
           return document.querySelector('input[name="selectedProduct"]:checked') !== null;
         
         case 'giftStep':
+
+          const giftStep = document.getElementById('giftStep');
+          if (!giftStep) return true; // Skip this step if it doesn't exist
           return document.querySelector('input[name="isGift"]:checked') !== null;
         
         case 'sizeStep':
@@ -871,7 +1021,30 @@
       }
     }
 
-  // Improved function to advance to the next step
+  // Function to check and show Add to Cart button
+    function checkAndShowAddToCartButton() {
+      console.log('Checking Add to Cart button visibility...');
+      console.log('Current step index:', currentStepIndex);
+      console.log('Total steps:', steps.length);
+      console.log('Is last step:', currentStepIndex === steps.length - 1);
+      console.log('Is current step completed:', isCurrentStepCompleted());
+      
+      if (currentStepIndex === steps.length - 1 && isCurrentStepCompleted()) {
+        if (addToCartBtn) {
+          addToCartBtn.style.display = 'block';
+          addToCartBtn.classList.add('visible');
+          console.log('✅ Add to Cart button is now visible');
+        }
+      } else {
+        if (addToCartBtn) {
+          addToCartBtn.style.display = 'none';
+          addToCartBtn.classList.remove('visible');
+          console.log('❌ Add to Cart button is hidden');
+        }
+      }
+    }
+
+    // Improved function to advance to the next step
     function advanceToNextStep() {
       if (currentStepIndex < steps.length - 1) {
   // Mark current step as completed
@@ -895,12 +1068,8 @@
         addBackwardNavigation();
       }
       
-  // Show add to cart button if it's the last step
-      if (currentStepIndex === steps.length - 1 && isCurrentStepCompleted()) {
-        if (addToCartBtn) {
-          addToCartBtn.style.display = 'block';
-        }
-      }
+  // Check and show add to cart button
+      checkAndShowAddToCartButton();
     }
 
   // Corrected function to populate step content
@@ -1474,6 +1643,7 @@
             if (isCurrentStepCompleted()) {
               advanceToNextStep();
             }
+            checkAndShowAddToCartButton();
           }, 100);
         });
       });
@@ -1491,6 +1661,7 @@
             if (isCurrentStepCompleted()) {
               advanceToNextStep();
             }
+            checkAndShowAddToCartButton();
           }, 100);
         }
       });
@@ -1513,7 +1684,7 @@
             // Validate that a product has been selected
             const selectedProduct = document.querySelector('input[name="selectedProduct"]:checked');
             if (!selectedProduct) {
-              alert('Please select a product');
+              showErrorModal('Please select a product');
               return;
             }
 
@@ -1536,15 +1707,15 @@
 
             // Validate required selections
             if (!selectedSize) {
-              alert('Please select a size');
+              showErrorModal('Please select a size');
               return;
             }
             if (!selectedGrind) {
-              alert('Please select a grind type');
+              showErrorModal('Please select a grind type');
               return;
             }
             if (!selectedFrequency) {
-              alert('Please select a frequency');
+              showErrorModal('Please select a frequency');
               return;
             }
 
@@ -1555,7 +1726,7 @@
               console.log('📦 Product data:', productData);
             } catch (parseError) {
               console.error('❌ Error parsing product data:', parseError);
-              alert('Error in product data. Please reload the page.');
+              showErrorModal('Error in product data. Please reload the page.');
               return;
             }
           
@@ -1579,7 +1750,7 @@
                 options: [v.option1, v.option2, v.option3].filter(Boolean),
                 available: v.available
               })));
-              alert('No variant found that matches your selections. Please verify your options.');
+              showErrorModal('No variant found that matches your selections. Please verify your options.');
               return;
             }
 
@@ -1587,7 +1758,7 @@
 
             // Check availability
             if (!matchingVariant.available) {
-              alert('Sorry, this variant is not available at the moment.');
+              showErrorModal('Sorry, this variant is not available at the moment.');
               return;
             }
 
@@ -1636,14 +1807,13 @@
             const responseData = await response.json();
             console.log('✅ Product added successfully:', responseData);
           
-            alert('Product successfully added to cart!');
             if (window.theme && window.theme.cartCount) {
               window.theme.cartCount.update();
             }
           
           } catch (error) {
             console.error('❌ Error adding product to cart:', error);
-            alert(`There was an error adding the product to cart: ${error.message}`);
+            showErrorModal(`There was an error adding the product to cart: ${error.message}`);
           } finally {
             addToCartBtn.disabled = false;
             addToCartBtn.textContent = '{{ section.settings.add_to_cart_text | default: "Add to Cart" }}';
@@ -1698,6 +1868,99 @@
         return matches;
       });
     }
+
+    // Error Modal Functions
+    window.showErrorModal = function(message) {
+      const modal = document.getElementById('errorModal');
+      const messageElement = document.getElementById('errorMessage');
+      
+      if (modal && messageElement) {
+        messageElement.textContent = message;
+        modal.classList.add('show');
+        
+        // Prevent body scroll when modal is open
+        document.body.style.overflow = 'hidden';
+      }
+    };
+
+    window.showSuccessModal = function(message) {
+      const modal = document.getElementById('errorModal');
+      const messageElement = document.getElementById('errorMessage');
+      const header = modal.querySelector('.error-modal-header h3');
+      const icon = modal.querySelector('.error-icon');
+      const closeBtn = modal.querySelector('.error-modal-close');
+      
+      if (modal && messageElement) {
+        messageElement.textContent = message;
+        header.textContent = 'Success';
+        icon.style.color = '#28a745';
+        closeBtn.style.background = '#28a745';
+        closeBtn.onmouseover = () => closeBtn.style.background = '#218838';
+        closeBtn.onmouseout = () => closeBtn.style.background = '#28a745';
+        
+        // Update icon to checkmark
+        icon.innerHTML = `
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+            <path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        `;
+        
+        modal.classList.add('show');
+        
+        // Prevent body scroll when modal is open
+        document.body.style.overflow = 'hidden';
+      }
+    };
+
+    window.closeErrorModal = function() {
+      const modal = document.getElementById('errorModal');
+      const header = modal.querySelector('.error-modal-header h3');
+      const icon = modal.querySelector('.error-icon');
+      const closeBtn = modal.querySelector('.error-modal-close');
+      
+      if (modal) {
+        modal.classList.remove('show');
+        
+        // Restore body scroll
+        document.body.style.overflow = '';
+        
+        // Reset to error state for next use
+        setTimeout(() => {
+          header.textContent = 'Error';
+          icon.style.color = '#dc3545';
+          closeBtn.style.background = '#dc3545';
+          closeBtn.onmouseover = () => closeBtn.style.background = '#c82333';
+          closeBtn.onmouseout = () => closeBtn.style.background = '#dc3545';
+          
+          // Reset icon to X
+          icon.innerHTML = `
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+              <line x1="15" y1="9" x2="9" y2="15" stroke="currentColor" stroke-width="2"/>
+              <line x1="9" y1="9" x2="15" y2="15" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          `;
+        }, 300);
+      }
+    };
+
+    // Close modal when clicking outside
+    document.getElementById('errorModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeErrorModal();
+      }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        const modal = document.getElementById('errorModal');
+        if (modal.classList.contains('show')) {
+          closeErrorModal();
+        }
+      }
+    });
   });
 </script>
 

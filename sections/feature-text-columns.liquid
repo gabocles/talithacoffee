@@ -17,7 +17,7 @@
   <div class="section-content relative z-10 max-w-site mx-auto py-section-vertical-spacing px-section">
     {% if section.settings.title != '' %}
     {%- assign block_heading_level = 'h3' -%}
-    <h2 class="text-center font-heading  heading-standard heading-style break-words {{ settings.heading_drop_shadow_style }}">{{ section.settings.title }}</h2>
+    <h2 class="text-center font-heading {{ section.settings.main_title_size | default: 'text-2xl' }} heading-style break-words {{ settings.heading_drop_shadow_style }}">{{ section.settings.title }}</h2>
     {% endif %}
 
     <ul class="{% if section.settings.title != '' %}section-content-top-margin{% endif %} grid grid-cols-1 lg:grid-cols-12 gap-10">
@@ -25,9 +25,9 @@
         <li class=" {{ col_span }} {% if section.settings.display_on_card %}text-scheme-text card-container{% endif %}" {% unless block.settings.color_scheme == 'same_as_section' %}data-color-scheme="{{ block.settings.color_scheme }}"{% endunless %} {{ block.shopify_attributes }}>
           <div class="{% if section.settings.display_on_card %}card p-5 h-full{% endif %} text-center">
             {% if block.settings.title != '' %}
-            <{{ block_heading_level }} class="font-heading {{ section.settings.heading_size }} break-words">{{ block.settings.title }}</{{ block_heading_level }}>
+            <{{ block_heading_level }} class="font-heading {{ section.settings.column_title_size | default: 'text-lg' }} break-words">{{ block.settings.title }}</{{ block_heading_level }}>
             {% endif %}
-            <div class="rte {% if section.settings.subheading_font == 'heading' %}font-heading heading-secondary{% endif %} {% if block.settings.title != '' %}mt-2.5{% endif %}">{{ block.settings.subheading }}</div>
+            <div class="rte {{ section.settings.content_text_size | default: 'text-base' }} {% if section.settings.subheading_font == 'heading' %}font-heading{% endif %} {% if block.settings.title != '' %}mt-2.5{% endif %}">{{ block.settings.subheading }}</div>
             {% if block.settings.cta_link %}
             {% endif %}
           </div>
@@ -68,52 +68,146 @@
     {
       "type": "checkbox",
       "id": "display_on_card",
-      "label": "t:sections.feature_text_columns.settings.display_on_card.label"
+      "label": "t:common.settings.display_on_card.label",
+      "default": false
     },
     {
       "type": "text",
       "id": "title",
-      "label": "t:common.settings.title.label"
+      "label": "t:common.settings.title.label",
+      "default": "Feature text columns"
+    },
+    {
+      "type": "header",
+      "content": "Font Settings"
+    },
+    {
+      "type": "select",
+      "id": "main_title_size",
+      "label": "Main title font size",
+      "options": [
+        {
+          "value": "text-sm",
+          "label": "Small"
+        },
+        {
+          "value": "text-base",
+          "label": "Medium"
+        },
+        {
+          "value": "text-lg",
+          "label": "Large"
+        },
+        {
+          "value": "text-xl",
+          "label": "Extra Large"
+        },
+        {
+          "value": "text-2xl",
+          "label": "2X Large"
+        },
+        {
+          "value": "text-3xl",
+          "label": "3X Large"
+        }
+      ],
+      "default": "text-2xl"
+    },
+    {
+      "type": "select",
+      "id": "column_title_size",
+      "label": "Column title font size",
+      "options": [
+        {
+          "value": "text-xs",
+          "label": "Extra Small"
+        },
+        {
+          "value": "text-sm",
+          "label": "Small"
+        },
+        {
+          "value": "text-base",
+          "label": "Medium"
+        },
+        {
+          "value": "text-lg",
+          "label": "Large"
+        },
+        {
+          "value": "text-xl",
+          "label": "Extra Large"
+        },
+        {
+          "value": "text-2xl",
+          "label": "2X Large"
+        }
+      ],
+      "default": "text-lg"
+    },
+    {
+      "type": "select",
+      "id": "content_text_size",
+      "label": "Content text font size",
+      "options": [
+        {
+          "value": "text-xs",
+          "label": "Extra Small"
+        },
+        {
+          "value": "text-sm",
+          "label": "Small"
+        },
+        {
+          "value": "text-base",
+          "label": "Medium"
+        },
+        {
+          "value": "text-lg",
+          "label": "Large"
+        },
+        {
+          "value": "text-xl",
+          "label": "Extra Large"
+        }
+      ],
+      "default": "text-base"
     },
     {
       "type": "select",
       "id": "heading_size",
-      "label": "t:sections.feature_text_columns.settings.heading_size.label",
+      "label": "t:common.settings.heading_size.label",
       "options": [
         {
-          "value": "heading-standard",
-          "label": "t:common.options.standard.label"
+          "value": "h3",
+          "label": "t:common.options.small.label"
         },
         {
-          "value": "heading-feature",
-          "label": "t:common.options.feature.label"
+          "value": "h2",
+          "label": "t:common.options.medium.label"
         },
         {
-          "value": "heading-secondary",
-          "label": "t:sections.feature_text_columns.settings.heading_size.options.secondary.label"
+          "value": "h1",
+          "label": "t:common.options.large.label"
         }
       ],
-      "default": "heading-standard"
+      "default": "h2"
     },
     {
-      "type": "radio",
+      "type": "select",
       "id": "subheading_font",
-      "label": "t:sections.feature_text_columns.settings.subheading_font.label",
+      "label": "t:common.settings.subheading_font.label",
       "options": [
         {
           "value": "heading",
-          "label": "t:common.options.heading.label"
+          "label": "t:common.options.heading_font.label"
         },
         {
           "value": "body",
-          "label": "t:common.options.body.label"
+          "label": "t:common.options.body_font.label"
         }
       ],
-      "default": "heading"
-    },
-    {
-      "type": "header",
-      "content": "t:common.settings.header_color"
+      "default": "body"
     },
     {
       "type": "select",
@@ -121,22 +215,27 @@
       "label": "t:common.settings.color_scheme.label",
       "options": [
         {
-          "value": "primary",
-          "label": "t:common.options.primary.label"
+          "value": "scheme-1",
+          "label": "t:common.options.scheme_1.label"
         },
         {
-          "value": "secondary",
-          "label": "t:common.options.secondary.label"
+          "value": "scheme-2",
+          "label": "t:common.options.scheme_2.label"
         },
         {
-          "value": "tertiary",
-          "label": "t:common.options.tertiary.label"
+          "value": "scheme-3",
+          "label": "t:common.options.scheme_3.label"
         },
         {
-          "value": "quaternary",
-          "label": "t:common.options.quaternary.label"
+          "value": "scheme-4",
+          "label": "t:common.options.scheme_4.label"
+        },
+        {
+          "value": "scheme-5",
+          "label": "t:common.options.scheme_5.label"
         }
-      ]
+      ],
+      "default": "scheme-1"
     },
     {
       "type": "checkbox",
