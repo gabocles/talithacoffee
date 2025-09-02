@@ -89,10 +89,10 @@
       "settings": {
         "display_on_card": false,
         "title": "Here’s what you’ll enjoy:",
-        "main_title_size": "text-2xl lg:text-3xl",
-        "column_title_size": "heading-standard",
-        "content_text_size": "text-xl",
-        "heading_size": "heading-standard",
+        "main_title_size": "text-3xl",
+        "column_title_size": "text-xs",
+        "content_text_size": "text-lg",
+        "heading_size": "h2",
         "subheading_font": "body",
         "color_scheme": "primary",
         "use_gradient_background": false
