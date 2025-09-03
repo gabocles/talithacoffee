@@ -1,41 +1,83 @@
 {%- liquid
   assign block_heading_level = 'h2'
-  assign columns = section.blocks | where: "type", "column"
-  assign divisible_by_four =  columns.size | modulo: 4
-  assign divisible_by_three =  columns.size | modulo: 3
-  if divisible_by_four == 0
-    assign col_span = 'lg:col-span-3'
-  elsif divisible_by_three == 0
-    assign col_span = 'lg:col-span-4'
-  else
-    assign col_span = 'lg:col-span-6'
-  endif
+  assign columns = section.blocks | where: 'type', 'column'
 -%}
 
-<section class="relative grid text-scheme-text bg-scheme-background {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %} relative overflow-hidden" data-color-scheme="{{ section.settings.color_scheme | default: 'primary' }}" >
-
+<section
+  class="relative grid text-scheme-text bg-scheme-background {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %} relative overflow-hidden"
+  data-color-scheme="{{ section.settings.color_scheme | default: 'primary' }}"
+>
   <div class="section-content relative z-10 max-w-site mx-auto py-section-vertical-spacing px-section">
     {% if section.settings.title != '' %}
-    {%- assign block_heading_level = 'h3' -%}
-    <h2 class="text-center font-heading {{ section.settings.main_title_size | default: 'text-2xl' }} heading-style break-words {{ settings.heading_drop_shadow_style }}">{{ section.settings.title }}</h2>
+      {%- assign block_heading_level = 'h3' -%}
+      <h2 class="text-center font-heading {{ section.settings.main_title_size | default: 'text-2xl' }} heading-style break-words {{ settings.heading_drop_shadow_style }}">
+        {{ section.settings.title }}
+      </h2>
     {% endif %}
 
-    <ul class="{% if section.settings.title != '' %}section-content-top-margin{% endif %} grid grid-cols-1 lg:grid-cols-12 gap-10">
-      {% for block in columns %}
-        <li class=" {{ col_span }} {% if section.settings.display_on_card %}text-scheme-text card-container{% endif %}" {% unless block.settings.color_scheme == 'same_as_section' %}data-color-scheme="{{ block.settings.color_scheme }}"{% endunless %} {{ block.shopify_attributes }}>
-          <div class="{% if section.settings.display_on_card %}card p-5 h-full{% endif %} text-center">
+    <ul class="{% if section.settings.title != '' %}section-content-top-margin{% endif %} grid grid-cols-1 lg:grid-cols-12 gap-1">
+      {% for block in section.blocks %}
+        {%- liquid
+          assign col_span = 'lg:col-span-4'
+          if section.blocks.size == 1
+            assign col_span = 'lg:col-span-12'
+          elsif section.blocks.size == 2
+            assign col_span = 'lg:col-span-6'
+          elsif section.blocks.size == 3
+            assign col_span = 'lg:col-span-4'
+          elsif section.blocks.size == 4
+            assign col_span = 'lg:col-span-3'
+          else
+            assign col_span = 'lg:col-span-4'
+          endif
+
+          assign show_on_card = false
+          if block.settings.display_on_card != blank
+            assign show_on_card = block.settings.display_on_card
+          else
+            assign show_on_card = section.settings.display_on_card
+          endif
+
+          assign bg_image_style = ''
+          if block.settings.background_image != blank
+            assign bg_position = block.settings.background_image_position | default: 'center'
+            assign bg_size = block.settings.background_image_size | default: 'cover'
+            assign bg_opacity = block.settings.background_image_opacity | default: 100
+            assign opacity_decimal = bg_opacity | divided_by: 100.0
+            assign image_url = block.settings.background_image | img_url: '800x800'
+            assign bg_image_style = 'background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(' | append: image_url | append: '); background-position: ' | append: bg_position | append: '; background-size: ' | append: bg_size | append: '; background-repeat: no-repeat;'
+          endif
+        -%}
+
+        <li
+          {% assign combined_style = 'height: 300px;' %}
+          {% if block.settings.background_image != blank %}
+            {% assign combined_style = combined_style | append: ' ' | append: bg_image_style %}
+          {% endif %}
+          style="{{ combined_style }}"
+          class="{{ col_span }} {% if show_on_card %}text-scheme-text card-container{% endif %} relative overflow-hidden {% if block.settings.background_image != blank %}aspect-square min-h-80 flex items-center justify-center{% endif %}"
+          {% unless block.settings.color_scheme == 'same_as_section' %}
+            data-color-scheme="{{ block.settings.color_scheme }}"
+          {% endunless %}
+          {{ block.shopify_attributes }}
+        >
+          <div style="max-width: 90%; opacity: 0.9" class="{% if show_on_card and block.settings.background_image != blank %}absolute bottom-0 left-0 right-0 bg-white bg-opacity-70 p-4 m-3 rounded-lg shadow-lg{% elsif show_on_card %}card p-5 h-full{% elsif block.settings.background_image != blank %}absolute inset-0 flex items-center justify-center p-4 text-white bg-black bg-opacity-30{% endif %} text-center relative z-10">
             {% if block.settings.title != '' %}
-            <{{ block_heading_level }} class="font-heading {{ section.settings.column_title_size | default: 'text-lg' }} break-words">{{ block.settings.title }}</{{ block_heading_level }}>
+              <{{ block_heading_level }} class="font-heading {{ section.settings.column_title_size | default: 'text-lg' }} break-words">
+                {{- block.settings.title -}}
+              </{{ block_heading_level }}>
             {% endif %}
-            <div class="rte {{ section.settings.content_text_size | default: 'text-base' }} {% if section.settings.subheading_font == 'heading' %}font-heading{% endif %} {% if block.settings.title != '' %}mt-2.5{% endif %}">{{ block.settings.subheading }}</div>
-            {% if block.settings.cta_link %}
-            {% endif %}
+            <div class="rte {{ section.settings.content_text_size | default: 'text-base' }} {% if section.settings.subheading_font == 'heading' %}font-heading{% endif %} {% if block.settings.title != '' %}mt-2.5{% endif %}">
+              {{ block.settings.subheading }}
+            </div>
           </div>
-          {% if section.settings.display_on_card and settings.card_show_border_on_shadow %}<div class="card-border"></div>{% endif %}
+          {% if show_on_card and settings.card_show_border_on_shadow and block.settings.background_image == blank %}
+            <div class="card-border"></div>
+          {% endif %}
         </li>
       {% endfor %}
     </ul>
-  </div>  
+  </div>
 
   {%- liquid
     for block in section.blocks
@@ -49,10 +91,9 @@
   -%}
 </section>
 
-
 {%- liquid
-  assign stickers = section.blocks | where: "type", "sticker" 
-  assign shape_dividers = section.blocks | where: "type", "shape_divider" 
+  assign stickers = section.blocks | where: 'type', 'sticker'
+  assign shape_dividers = section.blocks | where: 'type', 'shape_divider'
   for sticker in stickers
     render 'block-sticker' with block: sticker, section: section
   endfor
@@ -65,183 +106,183 @@
 {
   "name": "t:sections.feature_text_columns.name",
   "settings": [
-      {
-        "type": "checkbox",
-        "id": "display_on_card",
-        "label": "Display on card",
-        "default": false
-      },
-      {
-        "type": "text",
-        "id": "title",
-        "label": "Title",
-        "default": "Feature text columns"
-      },
-      {
-        "type": "header",
-        "content": "Font Settings"
-      },
-      {
-        "type": "select",
-        "id": "main_title_size",
-        "label": "Main title font size",
-        "options": [
-          {
-            "value": "text-sm",
-            "label": "Small"
-          },
-          {
-            "value": "text-base",
-            "label": "Medium"
-          },
-          {
-            "value": "text-lg",
-            "label": "Large"
-          },
-          {
-            "value": "text-xl",
-            "label": "Extra Large"
-          },
-          {
-            "value": "text-2xl",
-            "label": "2X Large"
-          },
-          {
-            "value": "text-3xl",
-            "label": "3X Large"
-          }
-        ],
-        "default": "text-2xl"
-      },
-      {
-        "type": "select",
-        "id": "column_title_size",
-        "label": "Column title font size",
-        "options": [
-          {
-            "value": "text-xs",
-            "label": "Extra Small"
-          },
-          {
-            "value": "text-sm",
-            "label": "Small"
-          },
-          {
-            "value": "text-base",
-            "label": "Medium"
-          },
-          {
-            "value": "text-lg",
-            "label": "Large"
-          },
-          {
-            "value": "text-xl",
-            "label": "Extra Large"
-          },
-          {
-            "value": "text-2xl",
-            "label": "2X Large"
-          }
-        ],
-        "default": "text-lg"
-      },
-      {
-        "type": "select",
-        "id": "content_text_size",
-        "label": "Content text font size",
-        "options": [
-          {
-            "value": "text-xs",
-            "label": "Extra Small"
-          },
-          {
-            "value": "text-sm",
-            "label": "Small"
-          },
-          {
-            "value": "text-base",
-            "label": "Medium"
-          },
-          {
-            "value": "text-lg",
-            "label": "Large"
-          },
-          {
-            "value": "text-xl",
-            "label": "Extra Large"
-          }
-        ],
-        "default": "text-base"
-      },
-      {
-        "type": "select",
-        "id": "heading_size",
-        "label": "Heading size",
-        "options": [
-          {
-            "value": "h3",
-            "label": "Small"
-          },
-          {
-            "value": "h2",
-            "label": "Medium"
-          },
-          {
-            "value": "h1",
-            "label": "Large"
-          }
-        ],
-        "default": "h2"
-      },
-      {
-        "type": "select",
-        "id": "subheading_font",
-        "label": "Subheading font",
-        "options": [
-          {
-            "value": "heading",
-            "label": "Heading font"
-          },
-          {
-            "value": "body",
-            "label": "Body font"
-          }
-        ],
-        "default": "body"
-      },
-      {
-        "type": "select",
-        "id": "color_scheme",
-        "label": "Color scheme",
-        "options": [
-          {
-            "value": "scheme-1",
-            "label": "Scheme 1"
-          },
-          {
-            "value": "scheme-2",
-            "label": "Scheme 2"
-          },
-          {
-            "value": "scheme-3",
-            "label": "Scheme 3"
-          },
-          {
-            "value": "scheme-4",
-            "label": "Scheme 4"
-          },
-          {
-            "value": "scheme-5",
-            "label": "Scheme 5"
-          }
-        ],
-        "default": "scheme-1"
-      },
-      {
-        "type": "checkbox",
-        "id": "use_gradient_background",
-        "label": "Use gradient for background"
-      }
+    {
+      "type": "checkbox",
+      "id": "display_on_card",
+      "label": "Display on card",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Feature text columns"
+    },
+    {
+      "type": "header",
+      "content": "Font Settings"
+    },
+    {
+      "type": "select",
+      "id": "main_title_size",
+      "label": "Main title font size",
+      "options": [
+        {
+          "value": "text-sm",
+          "label": "Small"
+        },
+        {
+          "value": "text-base",
+          "label": "Medium"
+        },
+        {
+          "value": "text-lg",
+          "label": "Large"
+        },
+        {
+          "value": "text-xl",
+          "label": "Extra Large"
+        },
+        {
+          "value": "text-2xl",
+          "label": "2X Large"
+        },
+        {
+          "value": "text-3xl",
+          "label": "3X Large"
+        }
+      ],
+      "default": "text-2xl"
+    },
+    {
+      "type": "select",
+      "id": "column_title_size",
+      "label": "Column title font size",
+      "options": [
+        {
+          "value": "text-xs",
+          "label": "Extra Small"
+        },
+        {
+          "value": "text-sm",
+          "label": "Small"
+        },
+        {
+          "value": "text-base",
+          "label": "Medium"
+        },
+        {
+          "value": "text-lg",
+          "label": "Large"
+        },
+        {
+          "value": "text-xl",
+          "label": "Extra Large"
+        },
+        {
+          "value": "text-2xl",
+          "label": "2X Large"
+        }
+      ],
+      "default": "text-lg"
+    },
+    {
+      "type": "select",
+      "id": "content_text_size",
+      "label": "Content text font size",
+      "options": [
+        {
+          "value": "text-xs",
+          "label": "Extra Small"
+        },
+        {
+          "value": "text-sm",
+          "label": "Small"
+        },
+        {
+          "value": "text-base",
+          "label": "Medium"
+        },
+        {
+          "value": "text-lg",
+          "label": "Large"
+        },
+        {
+          "value": "text-xl",
+          "label": "Extra Large"
+        }
+      ],
+      "default": "text-base"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        {
+          "value": "h3",
+          "label": "Small"
+        },
+        {
+          "value": "h2",
+          "label": "Medium"
+        },
+        {
+          "value": "h1",
+          "label": "Large"
+        }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "select",
+      "id": "subheading_font",
+      "label": "Subheading font",
+      "options": [
+        {
+          "value": "heading",
+          "label": "Heading font"
+        },
+        {
+          "value": "body",
+          "label": "Body font"
+        }
+      ],
+      "default": "body"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "options": [
+        {
+          "value": "scheme-1",
+          "label": "Scheme 1"
+        },
+        {
+          "value": "scheme-2",
+          "label": "Scheme 2"
+        },
+        {
+          "value": "scheme-3",
+          "label": "Scheme 3"
+        },
+        {
+          "value": "scheme-4",
+          "label": "Scheme 4"
+        },
+        {
+          "value": "scheme-5",
+          "label": "Scheme 5"
+        }
+      ],
+      "default": "scheme-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_gradient_background",
+      "label": "Use gradient for background"
+    }
   ],
   "blocks": [
     {
@@ -260,6 +301,84 @@
           "id": "subheading",
           "label": "t:sections.feature_text_columns.blocks.column.settings.subheading.label",
           "default": "<p>Subheading goes here.</p>"
+        },
+        {
+          "type": "header",
+          "content": "Column Display Options"
+        },
+        {
+          "type": "checkbox",
+          "id": "display_on_card",
+          "label": "Display on Card",
+          "default": false,
+          "info": "Override section setting for this specific column"
+        },
+        {
+          "type": "header",
+          "content": "Background Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "background_image",
+          "label": "Background Image"
+        },
+        {
+          "type": "select",
+          "id": "background_image_position",
+          "label": "Background Image Position",
+          "options": [
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "top",
+              "label": "Top"
+            },
+            {
+              "value": "bottom",
+              "label": "Bottom"
+            },
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "select",
+          "id": "background_image_size",
+          "label": "Background Image Size",
+          "options": [
+            {
+              "value": "cover",
+              "label": "Cover"
+            },
+            {
+              "value": "contain",
+              "label": "Contain"
+            },
+            {
+              "value": "auto",
+              "label": "Auto"
+            }
+          ],
+          "default": "cover"
+        },
+        {
+          "type": "range",
+          "id": "background_image_opacity",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "unit": "%",
+          "label": "Background Image Opacity",
+          "default": 100
         }
       ]
     },
@@ -1296,11 +1415,7 @@
     }
   ],
   "disabled_on": {
-    "groups": [
-      "header",
-      "footer",
-      "aside"
-    ]
+    "groups": ["header", "footer", "aside"]
   }
 }
 {% endschema %}

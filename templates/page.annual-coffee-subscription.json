@@ -62,21 +62,36 @@
           "type": "column",
           "settings": {
             "title": "",
-            "subheading": "<p>Fresh-roasted coffee delivered every 4 weeks</p>"
+            "subheading": "<p>Fresh-roasted coffee delivered every 4 weeks</p>",
+            "display_on_card": true,
+            "background_image": "shopify://shop_images/image-text-1.png",
+            "background_image_position": "center",
+            "background_image_size": "cover",
+            "background_image_opacity": 0
           }
         },
         "column_8MmT3h": {
           "type": "column",
           "settings": {
             "title": "",
-            "subheading": "<p>Choose from <strong>any roast or single origin</strong></p>"
+            "subheading": "<p>Choose from <strong>any roast or single origin</strong></p>",
+            "display_on_card": true,
+            "background_image": "shopify://shop_images/image-text-2.png",
+            "background_image_position": "center",
+            "background_image_size": "cover",
+            "background_image_opacity": 100
           }
         },
         "column_64tkXf": {
           "type": "column",
           "settings": {
             "title": "",
-            "subheading": "<p>Flexible editing anytime</p>"
+            "subheading": "<p>Flexible editing anytime</p>",
+            "display_on_card": true,
+            "background_image": "shopify://shop_images/roastery-sign.webp",
+            "background_image_position": "center",
+            "background_image_size": "cover",
+            "background_image_opacity": 0
           }
         }
       },

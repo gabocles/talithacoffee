@@ -1630,8 +1630,44 @@
       // Store the selected frequency globally
       window.selectedFrequency = input.value;
       
-      // You can add additional logic here if needed
-      // For example, updating pricing or other UI elements
+      // Check if this is an annual subscription selection
+      if (input.value === 'annual' || input.value === 'yearly' || input.value === '12-month') {
+        console.log('🎯 Annual subscription detected, setting UI default to 4 weeks');
+        
+        // Find and auto-select 4-week frequency option in UI (but keep annual plan)
+        const frequencyStep = document.querySelector('[data-step="frequency"]');
+        if (frequencyStep) {
+          const fourWeekOption = frequencyStep.querySelector('input[value*="4"][value*="week"], input[value="4_week"], input[value="4-week"]');
+          if (fourWeekOption && !fourWeekOption.checked) {
+            // Only update UI, don't change the actual plan selection
+            fourWeekOption.checked = true;
+            console.log('✅ Auto-selected 4-week frequency in UI for annual subscription');
+            
+            // Update display but keep selectedFrequency as 'annual'
+            window.selectedFrequency = 'annual'; // Maintain annual plan selection
+          }
+        }
+      }
+      
+      // Update UI to reflect the frequency selection
+      updateFrequencyDisplay();
+    }
+    
+    // Helper function to update frequency display
+    function updateFrequencyDisplay() {
+      const frequencyStep = document.querySelector('[data-step="frequency"]');
+      if (frequencyStep) {
+        const selectedInput = frequencyStep.querySelector('input[type="radio"]:checked');
+        if (selectedInput) {
+          // Update any frequency display elements
+          const frequencyDisplays = document.querySelectorAll('.frequency-display, .selected-frequency');
+          frequencyDisplays.forEach(display => {
+            if (display) {
+              display.textContent = selectedInput.nextElementSibling?.textContent || selectedInput.value;
+            }
+          });
+        }
+      }
     }
 
     // Add event listeners to step inputs
@@ -1782,7 +1818,7 @@
             // Add selling plan if frequency is selected
             if (selectedFrequency) {
               if (selectedFrequency === 'annual') {
-                // Find the selling plan for annual subscription
+                // Find the ACTUAL annual selling plan (not 4-week individual plan)
                 const annualPlan = findAnnualSellingPlan(productData);
                 if (annualPlan) {
                   cartData.selling_plan = annualPlan.id;
@@ -1832,12 +1868,38 @@
         });
     }
 
+    // Function to find 4-week selling plan
+    function find4WeekSellingPlan(productData) {
+      if (!productData.selling_plan_groups) {
+        return null;
+      }
+      
+      for (const group of productData.selling_plan_groups) {
+        if (group.selling_plans) {
+          for (const plan of group.selling_plans) {
+            // Look for plans with 4 week frequency
+            if (plan.name && 
+                (plan.name.toLowerCase().includes('4 week') || 
+                 plan.name.toLowerCase().includes('4-week') ||
+                 plan.name.toLowerCase().includes('4week'))) {
+              console.log('🎯 4-week plan found:', plan.name, 'Plan ID:', plan.id);
+              return plan;
+            }
+          }
+        }
+      }
+      
+      console.warn('⚠️ No 4-week selling plan found');
+      return null;
+    }
+
     // Function to find annual selling plan
     function findAnnualSellingPlan(productData) {
       if (!productData.selling_plan_groups) {
         return null;
       }
       
+      // Find the actual annual group and return its plan
       for (const group of productData.selling_plan_groups) {
         // Search for group containing 'annual', '12-month', 'yearly' in the name
         if (group.name && 
