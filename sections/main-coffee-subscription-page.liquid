@@ -512,43 +512,49 @@
                     id="coffee-frq-{{ product.id }}"
                   >
                     {% for selling_plan in product.selling_plan_groups %}
-                      {% assign plan_value = selling_plan.selling_plans[0].id %}
-                      {% assign plan_name = selling_plan.name | replace: 'Delivery ', '' %}
-                      {% assign plan_name_downcase = selling_plan.name | replace: 'Delivery ', '' | downcase %}
-                      <div class="subscriptionCol size">
-                        <input
-                          type="radio"
-                          id="{{ plan_name | replace: " ", "-" | downcase }}-{{ product.id }}"
-                          name="howOften"
-                          value="{{ plan_value }}"
-                          class="selection-steps-radio"
-                        >
-                        <label
-                          for="{{ plan_name | replace: " ", "-" | downcase }}-{{ product.id }}"
-                          class="subscriptionCard card_three "
-                        >
-                          <div class="itemDiv">
-                            <div class="itemIcon">
-                              {% assign icon_url = '' %}
-                              {% for singleStep in shop.metaobjects.image_icon_urls.values %}
-                                {% for singleStepSingleOption in singleStep.options.value %}
-                                  {% assign singleStepOptionName = singleStepSingleOption.name | downcase %}
-                                  {% if plan_name_downcase contains singleStepOptionName %}
-                                    {% assign icon_url = singleStepSingleOption.image_url.value %}
-                                  {% endif %}
+                      {% comment %} Filtrar planes anuales - solo mostrar planes de frecuencia regular {% endcomment %}
+                      {% unless selling_plan.name contains 'Annual'
+                        or selling_plan.name contains '12-month'
+                        or selling_plan.name contains 'yearly'
+                      %}
+                        {% assign plan_value = selling_plan.selling_plans[0].id %}
+                        {% assign plan_name = selling_plan.name | replace: 'Delivery ', '' %}
+                        {% assign plan_name_downcase = selling_plan.name | replace: 'Delivery ', '' | downcase %}
+                        <div class="subscriptionCol size">
+                          <input
+                            type="radio"
+                            id="{{ plan_name | replace: " ", "-" | downcase }}-{{ product.id }}"
+                            name="howOften"
+                            value="{{ plan_value }}"
+                            class="selection-steps-radio"
+                          >
+                          <label
+                            for="{{ plan_name | replace: " ", "-" | downcase }}-{{ product.id }}"
+                            class="subscriptionCard card_three "
+                          >
+                            <div class="itemDiv">
+                              <div class="itemIcon">
+                                {% assign icon_url = '' %}
+                                {% for singleStep in shop.metaobjects.image_icon_urls.values %}
+                                  {% for singleStepSingleOption in singleStep.options.value %}
+                                    {% assign singleStepOptionName = singleStepSingleOption.name | downcase %}
+                                    {% if plan_name_downcase contains singleStepOptionName %}
+                                      {% assign icon_url = singleStepSingleOption.image_url.value %}
+                                    {% endif %}
+                                  {% endfor %}
                                 {% endfor %}
-                              {% endfor %}
-                              <img
-                                src="{{ icon_url | image_url }}"
-                                alt="{{ plan_name }}"
-                              >
+                                <img
+                                  src="{{ icon_url | image_url }}"
+                                  alt="{{ plan_name }}"
+                                >
+                              </div>
+                              <div class="itemDetail">
+                                <h4>{{ plan_name }}</h4>
+                              </div>
                             </div>
-                            <div class="itemDetail">
-                              <h4>{{ plan_name }}</h4>
-                            </div>
-                          </div>
-                        </label>
-                      </div>
+                          </label>
+                        </div>
+                      {% endunless %}
                     {% endfor %}
                   </div>
                 {% endfor %}
@@ -706,9 +712,8 @@
                 {% assign products = gift_product.products.value %}
                 {% for product in products %}
                   <div class="productOptions display-none-needed" id="main-product-{{ product.id }}">
-                    {% assign InitialStepcount = 3  %}
+                    {% assign InitialStepcount = 3 %}
                     {% for option in product.options_with_values %}
-                      
                       {% assign optionName = option.name | downcase %}
                       {% comment %} name = {{ optionName }} {% endcomment %}
                       {% comment %} <br> {% endcomment %}
@@ -721,9 +726,7 @@
                             class="subscriptionRow size coffee-weight w-50-needed {% if currentIndex != 1 %}display-none-needed{% endif %}"
                             id="coffee-weight-{{ product.id }}"
                           >
-                            <h2 style="width:100%;margin-bottom: 10px;">
-                             Select {{ optionName }}
-                            </h2>
+                            <h2 style="width:100%;margin-bottom: 10px;">Select {{ optionName }}</h2>
                             {%- for value in option.values -%}
                               {% comment %} Check that variation is avaialbe of not {% endcomment %}
                               {% assign option_available = false %}
@@ -797,9 +800,7 @@
                             class="subscriptionRow size grind-type w-50-needed {% if currentIndex != 1 %}display-none-needed{% endif %}"
                             id="grind-type-{{ product.id }}"
                           >
-                            <h2 style="width:100%;margin-bottom: 10px;">
-                              Select {{ optionName }}
-                            </h2>
+                            <h2 style="width:100%;margin-bottom: 10px;">Select {{ optionName }}</h2>
                             {% assign lowercasedOptionName = option.name | downcase %}
                             {% if lowercasedOptionName == 'amount' %}
                               {%- for value in option.values -%}
@@ -840,7 +841,6 @@
                                           {% assign icon_url = '' %}
                                           {% for singleStep in shop.metaobjects.image_icon_urls.values %}
                                             {% for singleStepSingleOption in singleStep.options.value %}
-                                               
                                               {% if value contains singleStepSingleOption.name %}
                                                 {% assign icon_url = singleStepSingleOption.image_url.value %}
                                               {% endif %}
@@ -872,9 +872,7 @@
                           id="product-type-step-{{-  product.id -}}"
                           style="display:none"
                         >
-                          <h2 style="width:100%;margin-bottom: 10px;">
-                           Select {{ optionName }}
-                          </h2>
+                          <h2 style="width:100%;margin-bottom: 10px;">Select {{ optionName }}</h2>
                           <div class="subscriptionRow size type w-50-needed" id="type-{{ product.id }}">
                             {% assign optionName = option.name | downcase %}
                             {% if optionName == 'length' %}
@@ -943,12 +941,12 @@
                       {% if optionName == 'frequency' %}
                         <div
                           class="subscriptionOption step productTypeStep"
-                          {% comment %} id="coffee-frq-{{ product.id }}"
-                          style="display:none" {% endcomment %}
+                          {% comment %}
+                            id="coffee-frq-{{ product.id }}"
+                            style="display:none"
+                          {% endcomment %}
                         >
-                          <h2 style="width:100%;margin-bottom: 10px;">
-                           Select {{ optionName }}
-                          </h2>
+                          <h2 style="width:100%;margin-bottom: 10px;">Select {{ optionName }}</h2>
                           <div class="subscriptionRow size type w-50-needed" id="type-{{ product.id }}">
                             {% assign optionName = option.name | downcase %}
                             {% if optionName == 'frequency' %}
@@ -990,10 +988,10 @@
                                             {% for singleStepSingleOption in singleStep.options.value %}
                                               {% assign optionValue = value | downcase %}
                                               {% comment %} {% unless optionValue == singleStepSingleOption.name %} {% endcomment %}
-                                                {% if singleStepSingleOption.name contains optionValue %}
-                                                  {% assign icon_url = singleStepSingleOption.image_url.value %}
-                                                {% endif %}
-                                                {% comment %} {% assign icon_url = singleStepSingleOption.image_url.value %} {% endcomment %}
+                                              {% if singleStepSingleOption.name contains optionValue %}
+                                                {% assign icon_url = singleStepSingleOption.image_url.value %}
+                                              {% endif %}
+                                              {% comment %} {% assign icon_url = singleStepSingleOption.image_url.value %} {% endcomment %}
                                               {% comment %} {% endunless %} {% endcomment %}
                                             {% endfor %}
                                           {% endfor %}
@@ -1016,82 +1014,84 @@
                       {% endif %}
                       {% comment %} 3. HOW MUCH COFFEE DO YOU WANT? {% endcomment %}
                     {% endfor %}
-                    {% comment %} <div class="subscriptionOption step" id="productFreqStep">
-                      <h2>4. How often?</h2>
-                      <div
-                        class="subscriptionRow coffee-frq w-50-needed size display-none-needed"
-                        id="coffee-frq-{{ product.id }}"
-                      >
-                        <div class="subscriptionCol size">
-                          <input
-                            type="radio"
-                            id="1weekplangift-{{ product.id }}"
-                            name="howoftengift"
-                            value="1 week"
-                            class="selection-steps-radio"
-                          >
-                          <label
-                            for="1weekplangift-{{ product.id }}"
-                            class="subscriptionCard card_three "
-                          >
-                            <div class="itemDiv">
-                              <div class="itemIcon">
-                                {% assign icon_url = '' %}
-                                {% for singleStep in shop.metaobjects.image_icon_urls.values %}
-                                  {% for singleStepSingleOption in singleStep.options.value %}
-                                    {% assign singleStepOptionName = singleStepSingleOption.name | downcase %}
-                                    {% if singleStepOptionName contains '1 week' %}
-                                      {% assign icon_url = singleStepSingleOption.image_url.value %}
-                                    {% endif %}
+                    {% comment %}
+                      <div class="subscriptionOption step" id="productFreqStep">
+                        <h2>4. How often?</h2>
+                        <div
+                          class="subscriptionRow coffee-frq w-50-needed size display-none-needed"
+                          id="coffee-frq-{{ product.id }}"
+                        >
+                          <div class="subscriptionCol size">
+                            <input
+                              type="radio"
+                              id="1weekplangift-{{ product.id }}"
+                              name="howoftengift"
+                              value="1 week"
+                              class="selection-steps-radio"
+                            >
+                            <label
+                              for="1weekplangift-{{ product.id }}"
+                              class="subscriptionCard card_three "
+                            >
+                              <div class="itemDiv">
+                                <div class="itemIcon">
+                                  {% assign icon_url = '' %}
+                                  {% for singleStep in shop.metaobjects.image_icon_urls.values %}
+                                    {% for singleStepSingleOption in singleStep.options.value %}
+                                      {% assign singleStepOptionName = singleStepSingleOption.name | downcase %}
+                                      {% if singleStepOptionName contains '1 week' %}
+                                        {% assign icon_url = singleStepSingleOption.image_url.value %}
+                                      {% endif %}
+                                    {% endfor %}
                                   {% endfor %}
-                                {% endfor %}
-                                <img
-                                  src="{{ icon_url | image_url }}"
-                                  alt="1 Week"
-                                >
+                                  <img
+                                    src="{{ icon_url | image_url }}"
+                                    alt="1 Week"
+                                  >
+                                </div>
+                                <div class="itemDetail">
+                                  <h4>1 Week</h4>
+                                </div>
                               </div>
-                              <div class="itemDetail">
-                                <h4>1 Week</h4>
-                              </div>
-                            </div>
-                          </label>
-                        </div>
-                        <div class="subscriptionCol size">
-                          <input
-                            type="radio"
-                            id="2weekplangift-{{ product.id }}"
-                            name="howoftengift"
-                            value="2 week"
-                            class="selection-steps-radio"
-                          >
-                          <label
-                            for="2weekplangift-{{ product.id }}"
-                            class="subscriptionCard card_three "
-                          >
-                            <div class="itemDiv">
-                              <div class="itemIcon">
-                                {% assign icon_url = '' %}
-                                {% for singleStep in shop.metaobjects.image_icon_urls.values %}
-                                  {% for singleStepSingleOption in singleStep.options.value %}
-                                    {% assign singleStepOptionName = singleStepSingleOption.name | downcase %}
-                                    {% if singleStepOptionName contains '2 week' %}
-                                      {% assign icon_url = singleStepSingleOption.image_url.value %}
-                                    {% endif %}
+                            </label>
+                          </div>
+                          <div class="subscriptionCol size">
+                            <input
+                              type="radio"
+                              id="2weekplangift-{{ product.id }}"
+                              name="howoftengift"
+                              value="2 week"
+                              class="selection-steps-radio"
+                            >
+                            <label
+                              for="2weekplangift-{{ product.id }}"
+                              class="subscriptionCard card_three "
+                            >
+                              <div class="itemDiv">
+                                <div class="itemIcon">
+                                  {% assign icon_url = '' %}
+                                  {% for singleStep in shop.metaobjects.image_icon_urls.values %}
+                                    {% for singleStepSingleOption in singleStep.options.value %}
+                                      {% assign singleStepOptionName = singleStepSingleOption.name | downcase %}
+                                      {% if singleStepOptionName contains '2 week' %}
+                                        {% assign icon_url = singleStepSingleOption.image_url.value %}
+                                      {% endif %}
+                                    {% endfor %}
                                   {% endfor %}
-                                {% endfor %}
-                                <img
-                                  src="{{ icon_url | image_url }}"
-                                  alt="2 Week"
-                                >
+                                  <img
+                                    src="{{ icon_url | image_url }}"
+                                    alt="2 Week"
+                                  >
+                                </div>
+                                <div class="itemDetail">
+                                  <h4>2 Week</h4>
+                                </div>
                               </div>
-                              <div class="itemDetail">
-                                <h4>2 Week</h4>
-                              </div>
-                            </div>
-                          </label>
+                            </label>
+                          </div>
                         </div>
                       </div>
-                    </div> {% endcomment %}
+                    {% endcomment %}
                   </div>
                 {% endfor %}
               {% endfor %}
@@ -1148,10 +1148,10 @@
                   </div>
 
                   <div class="newsOfferEmail">
-                      <button id="submitGiftSubscripition" class="offFromBtn" type="submit" style="margin-top:0">
-                        Submit
-                      </button>
-                    </div>
+                    <button id="submitGiftSubscripition" class="offFromBtn" type="submit" style="margin-top:0">
+                      Submit
+                    </button>
+                  </div>
                 </form>
               </div>
 
