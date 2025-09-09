@@ -68,9 +68,9 @@
   >
     {%- capture content %}
     {% if title != blank %}
-      <h2 class="font-heading  {{ heading_size }} heading-style {{ settings.heading_drop_shadow_style }}">
-        {{ title | escape }}
-      </h2>
+      <div class="font-heading {{ heading_size }} heading-style {{ settings.heading_drop_shadow_style }}">
+        {{ title }}
+      </div>
     {% endif %}
     {% if richtext != blank %}
       <div class="rte text-theme-basic mt-5">

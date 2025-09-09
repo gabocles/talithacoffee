@@ -9,11 +9,44 @@
  */
 {
   "sections": {
+    "feature_text_iixwyN": {
+      "type": "feature-text",
+      "blocks": {
+        "background_pattern_mFc6wj": {
+          "type": "background_pattern",
+          "settings": {
+            "type": "triangle",
+            "color": "text",
+            "size": 24,
+            "opacity": 100,
+            "enable_parallax": false,
+            "parallax_speed": 3
+          }
+        }
+      },
+      "block_order": [
+        "background_pattern_mFc6wj"
+      ],
+      "name": "t:sections.feature_text.name",
+      "settings": {
+        "rich_text": "<p>Use this text to share information about your brand with your customers.</p>",
+        "mobile_text_size": "text-xl",
+        "desktop_text_size": "lg:text-2xl",
+        "display_on_card": true,
+        "apply_effects": true,
+        "content_width_desktop": "lg:w-full",
+        "button_link": "",
+        "button_label": "Shop Now",
+        "color_scheme": "primary",
+        "use_gradient_background": false
+      }
+    },
     "image_with_text_overlay_XrpCTy": {
       "type": "image-with-text-overlay",
       "blocks": {
         "sticker_9MQrgJ": {
           "type": "sticker",
+          "disabled": true,
           "settings": {
             "text": "Start Your Year Of Coffee",
             "shape": "star_2",
@@ -45,9 +78,9 @@
         "height": "pt-half-screen-height",
         "place_content": "place-content-center-center",
         "text_align": "text-center",
-        "title": "Your Morning Ritual, Hope Roasted for a Year",
+        "title": "Your Morning Ritual",
         "heading_size": "heading-feature",
-        "richtext": "<p>One subscription. </p><p>One year of coffee. </p><p>One year of impact for trafficking survivors.</p>",
+        "richtext": "<h4>Hope Roasted for a Year</h4><p>One subscription. <br/><br/>One year of coffee. </p><p>One year of impact for trafficking survivors.</p>",
         "cta_url": "",
         "cta_text": "Start Your Year Of Coffee",
         "color_scheme": "primary",
@@ -142,9 +175,9 @@
         "image_position": "left",
         "image_size": "half",
         "disable_media_style": false,
-        "title": "2 months on us (September launch offer only)",
+        "title": "3 months on us (September launch offer only)",
         "heading_size": "heading-feature",
-        "richtext": "<p>Pre-paid annual subscription = 12 months of coffee, 10 months paid</p>",
+        "richtext": "<p>Pre-paid annual subscription = 12 months of coffee, 9 months paid</p>",
         "text_alignment": "text-left",
         "button_link": "",
         "button_label": "",
@@ -211,6 +244,7 @@
     }
   },
   "order": [
+    "feature_text_iixwyN",
     "image_with_text_overlay_XrpCTy",
     "feature_text_columns_kXGMxF",
     "image_with_text_BinBwN",

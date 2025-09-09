@@ -7,15 +7,15 @@
   class="relative grid text-scheme-text bg-scheme-background {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %} relative overflow-hidden"
   data-color-scheme="{{ section.settings.color_scheme | default: 'primary' }}"
 >
-  <div class="section-content relative z-10 max-w-site mx-auto py-section-vertical-spacing px-section">
+  <div class="section-content relative z-10 max-w-site mx-auto py-section-vertical-spacing xl:py-16 2xl:py-20 px-section xl:px-8 2xl:px-12">
     {% if section.settings.title != '' %}
       {%- assign block_heading_level = 'h3' -%}
-      <h2 class="text-center font-heading {{ section.settings.main_title_size | default: 'text-2xl' }} heading-style break-words {{ settings.heading_drop_shadow_style }}">
+      <h2 class="text-center font-heading {{ section.settings.main_title_size | default: 'text-2xl' }} xl:text-4xl 2xl:text-5xl heading-style break-words {{ settings.heading_drop_shadow_style }}">
         {{ section.settings.title }}
       </h2>
     {% endif %}
 
-    <ul class="{% if section.settings.title != '' %}section-content-top-margin{% endif %} grid grid-cols-1 lg:grid-cols-12 gap-1">
+    <ul class="{% if section.settings.title != '' %}section-content-top-margin{% endif %} grid grid-cols-1 lg:grid-cols-12 gap-1 xl:gap-3 2xl:gap-4">
       {% for block in section.blocks %}
         {%- liquid
           assign col_span = 'lg:col-span-4'
@@ -55,19 +55,19 @@
             {% assign combined_style = combined_style | append: ' ' | append: bg_image_style %}
           {% endif %}
           style="{{ combined_style }}"
-          class="{{ col_span }} {% if show_on_card %}text-scheme-text card-container{% endif %} relative overflow-hidden {% if block.settings.background_image != blank %}aspect-square min-h-80 flex items-center justify-center{% endif %}"
+          class="{{ col_span }} {% if show_on_card %}text-scheme-text card-container{% endif %} relative overflow-hidden {% if block.settings.background_image != blank %}aspect-square min-h-80 xl:min-h-96 2xl:min-h-[28rem] flex items-center justify-center{% endif %}"
           {% unless block.settings.color_scheme == 'same_as_section' %}
             data-color-scheme="{{ block.settings.color_scheme }}"
           {% endunless %}
           {{ block.shopify_attributes }}
         >
-          <div style="max-width: 90%; opacity: 0.9" class="{% if show_on_card and block.settings.background_image != blank %}absolute bottom-0 left-0 right-0 bg-white bg-opacity-70 p-4 m-3 rounded-lg shadow-lg{% elsif show_on_card %}card p-5 h-full{% elsif block.settings.background_image != blank %}absolute inset-0 flex items-center justify-center p-4 text-white bg-black bg-opacity-30{% endif %} text-center relative z-10">
+          <div style="max-width: 90%; opacity: 0.9" class="{% if show_on_card and block.settings.background_image != blank %}absolute bottom-0 left-0 right-0 bg-white bg-opacity-70 p-4 xl:p-6 2xl:p-8 m-3 xl:m-4 2xl:m-5 rounded-lg shadow-lg{% elsif show_on_card %}card p-5 xl:p-7 2xl:p-9 h-full{% elsif block.settings.background_image != blank %}absolute inset-0 flex items-center justify-center p-4 xl:p-6 2xl:p-8 text-white bg-black bg-opacity-30{% endif %} text-center relative z-10">
             {% if block.settings.title != '' %}
-              <{{ block_heading_level }} class="font-heading {{ section.settings.column_title_size | default: 'text-lg' }} break-words">
+              <{{ block_heading_level }} class="font-heading {{ section.settings.column_title_size | default: 'text-lg' }} xl:text-xl 2xl:text-2xl break-words">
                 {{- block.settings.title -}}
               </{{ block_heading_level }}>
             {% endif %}
-            <div class="rte {{ section.settings.content_text_size | default: 'text-base' }} {% if section.settings.subheading_font == 'heading' %}font-heading{% endif %} {% if block.settings.title != '' %}mt-2.5{% endif %}">
+            <div class="rte {{ section.settings.content_text_size | default: 'text-base' }} xl:text-lg 2xl:text-xl {% if section.settings.subheading_font == 'heading' %}font-heading{% endif %} {% if block.settings.title != '' %}mt-2.5 xl:mt-3 2xl:mt-4{% endif %}">
               {{ block.settings.subheading }}
             </div>
           </div>
@@ -150,9 +150,18 @@
         {
           "value": "text-3xl",
           "label": "3X Large"
+        },
+        {
+          "value": "text-4xl",
+          "label": "4X Large"
+        },
+        {
+          "value": "text-5xl",
+          "label": "5X Large"
         }
       ],
-      "default": "text-2xl"
+      "default": "text-2xl",
+      "info": "Note: Font sizes automatically scale larger on extra large screens (XL and 2XL)"
     },
     {
       "type": "select",
@@ -182,9 +191,14 @@
         {
           "value": "text-2xl",
           "label": "2X Large"
+        },
+        {
+          "value": "text-3xl",
+          "label": "3X Large"
         }
       ],
-      "default": "text-lg"
+      "default": "text-lg",
+      "info": "Note: Font sizes automatically scale larger on extra large screens (XL and 2XL)"
     },
     {
       "type": "select",
@@ -210,9 +224,14 @@
         {
           "value": "text-xl",
           "label": "Extra Large"
+        },
+        {
+          "value": "text-2xl",
+          "label": "2X Large"
         }
       ],
-      "default": "text-base"
+      "default": "text-base",
+      "info": "Note: Font sizes automatically scale larger on extra large screens (XL and 2XL)"
     },
     {
       "type": "select",
