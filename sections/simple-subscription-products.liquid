@@ -1,0 +1,2253 @@
+{%- liquid
+  assign selected_collection = collections[section.settings.collection]
+  assign products = selected_collection.products
+-%}
+
+{%- comment -%} DEBUG: Product information {%- endcomment -%}
+{% comment %}
+  <div style="background: #f0f0f0; padding: 20px; margin: 20px 0; border: 2px solid #ccc; font-family: monospace; font-size: 12px;">
+    <h3>🐛 DEBUG: Simple Subscription Products</h3>
+
+    <p><strong>Selected Collection:</strong> {{ section.settings.collection }}</p>
+    <p><strong>Collection Name:</strong> {{ selected_collection.title }}</p>
+    <p><strong>Total Products:</strong> {{ products.size }}</p>
+
+    {%- for product in products -%}
+      <div style="border: 1px solid #999; margin: 10px 0; padding: 10px; background: white;">
+        <h4>Product {{ forloop.index }}: {{ product.title }}</h4>
+        <p><strong>ID:</strong> {{ product.id }}</p>
+        <p><strong>Handle:</strong> {{ product.handle }}</p>
+        <p><strong>Price:</strong> {{ product.price | money }}</p>
+        
+        <h5>📅 Selling Plan Groups ({{ product.selling_plan_groups.size }}):</h5>
+        {%- for group in product.selling_plan_groups -%}
+          <div style="margin-left: 20px; padding: 5px; border-left: 2px solid #ddd;">
+            <p><strong>Group:</strong> {{ group.name }}</p>
+            <p><strong>ID:</strong> {{ group.id }}</p>
+            <p><strong>App ID:</strong> {{ group.app_id }}</p>
+
+            {%- for plan in group.selling_plans -%}
+              <div style="margin-left: 20px; padding: 3px; background: #f9f9f9;">
+                <p><strong>Plan:</strong> {{ plan.name }} (ID: {{ plan.id }})</p>
+              </div>
+            {%- endfor -%}
+          </div>
+        {%- endfor -%}
+
+        <h5>🔧 Variants ({{ product.variants.size }}):</h5>
+        {%- for variant in product.variants -%}
+          <div style="margin-left: 20px; padding: 5px; border-left: 2px solid #ddd;">
+            <p><strong>Variant:</strong> {{ variant.title }} (ID: {{ variant.id }})</p>
+            <p><strong>Available:</strong> {{ variant.available }}</p>
+            <p><strong>Price:</strong> {{ variant.price | money }}</p>
+            
+            {%- if variant.selling_plan_allocations.size > 0 -%}
+              <p><strong>Selling Plan Allocations:</strong></p>
+              {%- for allocation in variant.selling_plan_allocations -%}
+                <div style="margin-left: 15px; font-size: 11px;">
+                  <p>Plan ID: {{ allocation.selling_plan_id }}</p>
+                </div>
+              {%- endfor -%}
+            {%- else -%}
+              <p style="color: #e74c3c;"><strong>No selling plan allocations</strong></p>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endfor -%}
+  </div>
+{% endcomment %}
+
+<div class="simple-subscription-container">
+  <div class="simple-subscription-main">
+    <div class="simple-subscription-section" id="simpleSubscriptionSection">
+      
+      {%- if section.settings.show_title -%}
+        <div class="subscription-header">
+          <h1>{{ section.settings.title | default: 'Annual Subscription Products' }}</h1>
+          {%- if section.settings.subtitle != blank -%}
+            <p>{{ section.settings.subtitle }}</p>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      <div class="simple-products-container" id="simpleProductsContainer">
+        {%- if section.settings.display_type == 'carousel' -%}
+          <div class="products-carousel" id="productsCarousel">
+            <div class="carousel-wrapper">
+              <div class="carousel-track" id="carouselTrack">
+                {%- for product in products -%}
+                  <div class="carousel-slide">
+                    <div class="simple-product-card" data-product="{{ product | json | escape }}">
+                      <div class="product-image">
+                        <img
+                          src="{{ product.images[0] | image_url: width: 400 }}"
+                          alt="{{ product.title }}"
+                          loading="lazy"
+                          width="300"
+                          height="300"
+                        >
+                      </div>
+                      
+                      <div class="product-info">
+                        <div class="product-content">
+                          <h3>{{ product.title }}</h3>
+                          
+                          {%- if section.settings.show_product_description and product.description != blank -%}
+                            <p class="product-description">{{ product.description | strip_html | truncate: 120 }}</p>
+                          {%- endif -%}
+                          
+                          {%- if section.settings.show_product_price -%}
+                            {%- comment -%} Annual subscription pricing - calculate annual total with discount {%- endcomment -%}
+                            {%- assign monthly_price = product.price -%}
+                            {%- assign discount_percentage = 25 -%}
+                            {%- assign annual_discount_found = false -%}
+                            
+                            {%- comment -%} Try to find actual discount from selling plans {%- endcomment -%}
+                            {%- for group in product.selling_plan_groups -%}
+                              {%- assign group_name_lower = group.name | downcase -%}
+                              {%- if group_name_lower contains 'annual' or group_name_lower contains '12-month' or group_name_lower contains 'yearly' -%}
+                                {%- for plan in group.selling_plans -%}
+                                  {%- for adjustment in plan.price_adjustments -%}
+                                    {%- if adjustment.value_type == 'percentage' -%}
+                                      {%- assign discount_percentage = adjustment.value -%}
+                                      {%- assign annual_discount_found = true -%}
+                                    {%- elsif adjustment.value_type == 'fixed_amount' -%}
+                                      {%- assign calculated_discount = adjustment.value | times: 100.0 | divided_by: product.price -%}
+                                      {%- assign discount_percentage = calculated_discount -%}
+                                      {%- assign annual_discount_found = true -%}
+                                    {%- endif -%}
+                                  {%- endfor -%}
+                                  {%- if annual_discount_found -%}{%- break -%}{%- endif -%}
+                                {%- endfor -%}
+                                {%- if annual_discount_found -%}{%- break -%}{%- endif -%}
+                              {%- endif -%}
+                            {%- endfor -%}
+                            
+                            {%- comment -%} Calculate annual pricing: monthly × 12, then apply discount {%- endcomment -%}
+                            {%- assign annual_full_price = monthly_price | times: 12 -%}
+                            {%- assign discount_multiplier = 100 | minus: discount_percentage | divided_by: 100.0 -%}
+                            {%- assign annual_discounted_price = annual_full_price | times: discount_multiplier -%}
+                            {%- assign total_savings = annual_full_price | minus: annual_discounted_price -%}
+
+                            <div class="product-pricing">
+                              <span class="price-original">{{ annual_full_price | money }} /year</span>
+                              <span class="price-annual">{{ annual_discounted_price | money }} /year</span>
+                              <span class="price-discount">Save {{ total_savings | money }} ({{ discount_percentage | round }}%)</span>
+                            </div>
+                          {%- endif -%}
+                        </div>
+                        
+                        <div class="product-button-area">
+                          {%- comment -%} Button for annual subscription {%- endcomment -%}
+                          <button 
+                            type="button" 
+                            class="add-annual-subscription-btn" 
+                            data-product-id="{{ product.id }}"
+                            data-product-handle="{{ product.handle }}"
+                            {%- if section.settings.button_loading_text != blank -%}
+                              data-loading-text="{{ section.settings.button_loading_text }}"
+                            {%- else -%}
+                              data-loading-text="Adding..."
+                            {%- endif -%}
+                          >
+                            {{ section.settings.button_text | default: 'Add Annual Subscription' }}
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {%- endfor -%}
+              </div>
+            </div>
+            
+            {%- if products.size > 1 -%}
+              <div class="carousel-controls">
+                <button class="carousel-btn carousel-prev" id="carouselPrev" aria-label="Previous product">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                  </svg>
+                </button>
+                <button class="carousel-btn carousel-next" id="carouselNext" aria-label="Next product">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/>
+                  </svg>
+                </button>
+              </div>
+            {%- endif -%}
+          </div>
+        {%- else -%}
+          <div class="simple-products-grid" id="simpleProductsGrid">
+        {%- for product in products -%}
+          <div class="simple-product-card" data-product="{{ product | json | escape }}">
+            <div class="product-image">
+              <img
+                src="{{ product.images[0] | image_url: width: 400 }}"
+                alt="{{ product.title }}"
+                loading="lazy"
+                width="300"
+                height="300"
+              >
+            </div>
+            
+            <div class="product-info">
+              <div class="product-content">
+                <h3>{{ product.title }}</h3>
+                
+                {%- if section.settings.show_product_description and product.description != blank -%}
+                  <p class="product-description">{{ product.description | strip_html | truncate: 120 }}</p>
+                {%- endif -%}
+                
+                {%- if section.settings.show_product_price -%}
+                  {%- comment -%} Annual subscription pricing - calculate annual total with discount {%- endcomment -%}
+                  {%- assign monthly_price = product.price -%}
+                  {%- assign discount_percentage = 25 -%}
+                  {%- assign annual_discount_found = false -%}
+                  
+                  {%- comment -%} Try to find actual discount from selling plans {%- endcomment -%}
+                  {%- for group in product.selling_plan_groups -%}
+                    {%- assign group_name_lower = group.name | downcase -%}
+                    {%- if group_name_lower contains 'annual' or group_name_lower contains '12-month' or group_name_lower contains 'yearly' -%}
+                      {%- for plan in group.selling_plans -%}
+                        {%- for adjustment in plan.price_adjustments -%}
+                          {%- if adjustment.value_type == 'percentage' -%}
+                            {%- assign discount_percentage = adjustment.value -%}
+                            {%- assign annual_discount_found = true -%}
+                          {%- elsif adjustment.value_type == 'fixed_amount' -%}
+                            {%- assign calculated_discount = adjustment.value | times: 100.0 | divided_by: product.price -%}
+                            {%- assign discount_percentage = calculated_discount -%}
+                            {%- assign annual_discount_found = true -%}
+                          {%- endif -%}
+                        {%- endfor -%}
+                        {%- if annual_discount_found -%}{%- break -%}{%- endif -%}
+                      {%- endfor -%}
+                      {%- if annual_discount_found -%}{%- break -%}{%- endif -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+                  
+                  {%- comment -%} Calculate annual pricing: monthly × 12, then apply discount {%- endcomment -%}
+                  {%- assign annual_full_price = monthly_price | times: 12 -%}
+                  {%- assign discount_multiplier = 100 | minus: discount_percentage | divided_by: 100.0 -%}
+                  {%- assign annual_discounted_price = annual_full_price | times: discount_multiplier -%}
+                  {%- assign total_savings = annual_full_price | minus: annual_discounted_price -%}
+
+                  <div class="product-pricing">
+                    <span class="price-original">{{ annual_full_price | money }} /year</span>
+                    <span class="price-annual">{{ annual_discounted_price | money }} /year</span>
+                    <span class="price-discount">Save {{ total_savings | money }} ({{ discount_percentage | round }}%)</span>
+                  </div>
+                {%- endif -%}
+              </div>
+              
+              <div class="product-button-area">
+                {%- comment -%} Button for annual subscription {%- endcomment -%}
+                <button 
+                  type="button" 
+                  class="add-annual-subscription-btn" 
+                  data-product-id="{{ product.id }}"
+                  data-product-handle="{{ product.handle }}"
+                  {%- if section.settings.button_loading_text != blank -%}
+                    data-loading-text="{{ section.settings.button_loading_text }}"
+                  {%- else -%}
+                    data-loading-text="Adding..."
+                  {%- endif -%}
+                >
+                  {{ section.settings.button_text | default: 'Add Annual Subscription' }}
+                </button>
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+        </div>
+      {%- endif -%}
+      </div>
+
+      {%- if products.size == 0 -%}
+        <div class="empty-collection">
+          <p>{{ section.settings.empty_collection_text | default: 'No products found in this collection.' }}</p>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+<!-- Success Modal -->
+<div id="successModal" class="success-modal-overlay">
+  <div class="success-modal">
+    <div class="success-modal-header">
+      <div class="success-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+          <path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h3>Success!</h3>
+    </div>
+    <div class="success-modal-body">
+      <p id="successMessage">Product added to cart successfully!</p>
+    </div>
+    <div class="success-modal-footer">
+      <button type="button" class="success-modal-close" onclick="closeSuccessModal()">Continue Shopping</button>
+      <a href="{{ routes.cart_url }}" class="success-modal-cart">View Cart</a>
+    </div>
+  </div>
+</div>
+
+<!-- Error Modal -->
+<div id="errorModal" class="error-modal-overlay">
+  <div class="error-modal">
+    <div class="error-modal-header">
+      <div class="error-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+          <line x1="15" y1="9" x2="9" y2="15" stroke="currentColor" stroke-width="2"/>
+          <line x1="9" y1="9" x2="15" y2="15" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </div>
+      <h3>Error</h3>
+    </div>
+    <div class="error-modal-body">
+      <p id="errorMessage">An error occurred</p>
+    </div>
+    <div class="error-modal-footer">
+      <button type="button" class="error-modal-close" onclick="closeErrorModal()">OK</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .simple-subscription-container {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+  }
+
+  .simple-subscription-main {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .simple-subscription-section {
+    width: 100%;
+    background: #1b3c34;
+    min-height: 400px;
+    padding: 40px 60px;
+    color: white;
+    border-radius: 12px;
+  }
+
+  .subscription-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .subscription-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: white;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+  }
+
+  .subscription-header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    font-family: 'Carlito', sans-serif;
+  }
+
+  .simple-products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+  }
+
+  /* Carousel Styles */
+  .products-carousel {
+    position: relative;
+    margin-top: 40px;
+  }
+
+  .carousel-wrapper {
+    overflow: hidden;
+    border-radius: 12px;
+    position: relative;
+  }
+
+  .carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .carousel-slide {
+    min-width: calc(100% / 3);
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
+
+  .carousel-slide .simple-product-card {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .carousel-controls {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .carousel-btn {
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #1b3c34;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    pointer-events: auto;
+    margin: 0 15px;
+  }
+
+  .carousel-btn:hover {
+    background: white;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .carousel-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .simple-product-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .simple-product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border-color: #d4af37;
+  }
+
+  .product-image {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1.1;
+    width: 100%;
+  }
+
+  .product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .simple-product-card:hover .product-image img {
+    transform: scale(1.05);
+  }
+
+  .product-info {
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .product-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .product-button-area {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+
+  .product-info h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #1b3c34;
+    font-family: 'Rajdhani', sans-serif;
+  }
+
+  .product-description {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: #666;
+    margin-bottom: 12px;
+    font-family: 'Carlito', sans-serif;
+  }
+
+  .product-pricing {
+    margin-bottom: 15px;
+    font-family: 'Rajdhani', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+  }
+
+  .price-original {
+    font-size: 0.95rem;
+    color: #999;
+    text-decoration: line-through;
+    font-weight: 400;
+  }
+
+  .price-annual {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #d4af37;
+  }
+
+  .price-discount {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #28a745;
+    background: rgba(40, 167, 69, 0.1);
+    padding: 3px 6px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .add-annual-subscription-btn {
+    background: linear-gradient(135deg, #d4af37, #b8941f);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 250px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+    font-size: 1rem;
+  }
+
+  .add-annual-subscription-btn:hover {
+    background: linear-gradient(135deg, #b8941f, #a0821b);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+  }
+
+  .add-annual-subscription-btn:active {
+    transform: translateY(0);
+  }
+
+  .add-annual-subscription-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+
+  .empty-collection {
+    text-align: center;
+    padding: 60px 20px;
+    color: white;
+  }
+
+  .empty-collection p {
+    font-size: 1.1rem;
+    opacity: 0.8;
+  }
+
+  /* Modal Styles */
+  .success-modal-overlay,
+  .error-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .success-modal-overlay.show,
+  .error-modal-overlay.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .success-modal,
+  .error-modal {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    max-width: 450px;
+    width: 90%;
+    max-height: 90vh;
+    overflow: hidden;
+    transform: scale(0.7) translateY(-50px);
+    transition: all 0.3s ease;
+  }
+
+  .success-modal-overlay.show .success-modal,
+  .error-modal-overlay.show .error-modal {
+    transform: scale(1) translateY(0);
+  }
+
+  .success-modal-header,
+  .error-modal-header {
+    background: linear-gradient(135deg, #1A3C34, #336458);
+    color: #fff;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .success-icon {
+    width: 24px;
+    height: 24px;
+    color: #28a745;
+    flex-shrink: 0;
+  }
+
+  .error-icon {
+    width: 24px;
+    height: 24px;
+    color: #dc3545;
+    flex-shrink: 0;
+  }
+
+  .success-modal-header h3,
+  .error-modal-header h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: 'Rajdhani', sans-serif;
+  }
+
+  .success-modal-body,
+  .error-modal-body {
+    padding: 30px 25px;
+    color: #1A3C34;
+  }
+
+  .success-modal-body p,
+  .error-modal-body p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+    font-family: 'Carlito', sans-serif;
+  }
+
+  .success-modal-footer,
+  .error-modal-footer {
+    padding: 20px 25px 25px;
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+  }
+
+  .success-modal-close,
+  .error-modal-close,
+  .success-modal-cart {
+    background: linear-gradient(135deg, #1A3C34, #336458);
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'Rajdhani', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .success-modal-cart {
+    background: linear-gradient(135deg, #d4af37, #b8941f);
+  }
+
+  .success-modal-close:hover,
+  .error-modal-close:hover {
+    background: linear-gradient(135deg, #336458, #1A3C34);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(26, 60, 52, 0.3);
+  }
+
+  .success-modal-cart:hover {
+    background: linear-gradient(135deg, #b8941f, #a0821b);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .simple-subscription-section {
+      padding: 30px 20px;
+    }
+
+    .subscription-header h1 {
+      font-size: 2rem;
+    }
+
+    .simple-products-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      justify-items: center;
+    }
+
+    .simple-products-grid .simple-product-card {
+      max-width: 280px;
+      width: 100%;
+    }
+
+    .simple-products-grid .product-image {
+      width: 100%;
+      aspect-ratio: 1;
+    }
+
+    .simple-products-grid .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 20px 15px;
+    }
+
+    .add-annual-subscription-btn {
+      max-width: none;
+      width: 100%;
+    }
+
+    /* Carousel responsive adjustments */
+    .carousel-slide {
+      min-width: 100%;
+      padding: 0 15px;
+    }
+
+    .carousel-slide .simple-product-card {
+      max-width: 280px;
+      margin: 0 auto;
+    }
+
+    .product-image {
+      aspect-ratio: 1;
+      width: 100%;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 20px 15px;
+    }
+
+    .carousel-btn {
+      width: 40px;
+      height: 40px;
+      margin: 0 10px;
+    }
+
+    .carousel-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .carousel-btn {
+      width: 40px;
+      height: 40px;
+      margin: 0 10px;
+    }
+
+    .carousel-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .simple-subscription-container {
+      padding: 0 10px;
+      margin: 40px auto;
+    }
+
+    .simple-subscription-section {
+      padding: 20px 15px;
+    }
+
+    .subscription-header h1 {
+      font-size: 1.8rem;
+    }
+
+    .carousel-slide {
+      padding: 0 10px;
+    }
+
+    .carousel-slide .simple-product-card,
+    .simple-products-grid .simple-product-card {
+      max-width: 250px;
+    }
+
+    .product-image {
+      width: 100% !important;
+      aspect-ratio: 1 !important;
+    }
+
+    .product-image img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 15px 10px;
+    }
+
+    .product-info h3 {
+      font-size: 1.2rem;
+    }
+
+    .carousel-btn {
+      width: 35px;
+      height: 35px;
+      margin: 0 8px;
+    }
+
+    .carousel-btn svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  /* === MODAL DE VARIANTES === */
+  .variant-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .variant-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+  }
+
+  .variant-modal-content {
+    position: relative;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    width: 90%;
+    max-height: 90vh;
+    overflow: hidden;
+    animation: slideUp 0.3s ease-out;
+  }
+
+  .variant-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px;
+    border-bottom: 1px solid #e5e5e5;
+    background: #f8f9fa;
+  }
+
+  .variant-modal-header h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2c3e50;
+  }
+
+  .variant-modal-close {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #7f8c8d;
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+  }
+
+  .variant-modal-close:hover {
+    background: #e74c3c;
+    color: white;
+  }
+
+  .variant-modal-body {
+    padding: 24px;
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+
+  .product-info {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  .modal-product-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    object-fit: cover;
+    border: 2px solid #e5e5e5;
+  }
+
+  .product-details h4 {
+    margin: 0 0 8px 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2c3e50;
+  }
+
+  .product-details p {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #27ae60;
+  }
+
+  .variants-container h4 {
+    margin: 0 0 16px 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2c3e50;
+  }
+
+  .variants-list {
+    display: grid;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .variant-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    border: 2px solid #e5e5e5;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: white;
+  }
+
+  .variant-option:hover {
+    border-color: #3498db;
+    background: #f8fafc;
+  }
+
+  .variant-option.selected {
+    border-color: #27ae60;
+    background: #e8f5e8;
+  }
+
+  .variant-option.unavailable {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: #f5f5f5;
+  }
+
+  .variant-info {
+    flex: 1;
+  }
+
+  .variant-title {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 4px;
+  }
+
+  .variant-price {
+    color: #27ae60;
+    font-weight: 600;
+  }
+
+  .variant-stock {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+  }
+
+  .quantity-selector {
+    margin-bottom: 24px;
+  }
+
+  .quantity-selector label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #2c3e50;
+  }
+
+  .quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .quantity-btn {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #e5e5e5;
+    background: white;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #2c3e50;
+    transition: all 0.2s ease;
+  }
+
+  .quantity-btn:hover {
+    border-color: #3498db;
+    background: #f8fafc;
+  }
+
+  .quantity-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  #variantQuantity {
+    width: 80px;
+    height: 40px;
+    border: 2px solid #e5e5e5;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  .variant-modal-footer {
+    display: flex;
+    gap: 16px;
+    padding: 24px;
+    border-top: 1px solid #e5e5e5;
+    background: #f8f9fa;
+  }
+
+  .btn-cancel {
+    flex: 1;
+    padding: 14px 24px;
+    border: 2px solid #95a5a6;
+    background: white;
+    color: #7f8c8d;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .btn-cancel:hover {
+    border-color: #7f8c8d;
+    color: #2c3e50;
+  }
+
+  .btn-add-to-cart {
+    flex: 2;
+    padding: 14px 24px;
+    border: none;
+    background: #27ae60;
+    color: white;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+
+  .btn-add-to-cart:hover:not(:disabled) {
+    background: #219a52;
+    transform: translateY(-1px);
+  }
+
+  .btn-add-to-cart:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+  }
+
+  .btn-add-to-cart.loading {
+    color: transparent;
+  }
+
+  .btn-add-to-cart.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid transparent;
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { 
+      opacity: 0;
+      transform: translateY(30px) scale(0.95);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes spin {
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideOutRight {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .variant-modal-content {
+      width: 95%;
+      margin: 20px;
+    }
+
+    .variant-modal-header,
+    .variant-modal-body,
+    .variant-modal-footer {
+      padding: 16px;
+    }
+
+    .product-info {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .variant-option {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .quantity-controls {
+      justify-content: center;
+    }
+
+    .variant-modal-footer {
+      flex-direction: column;
+    }
+  }
+</style>
+
+<script>
+  try {
+    document.addEventListener('DOMContentLoaded', function () {
+      // Initialize add to cart buttons
+      const addButtons = document.querySelectorAll('.add-annual-subscription-btn');
+      
+      if (addButtons.length === 0) {
+        return;
+      }
+      
+      // Initialize carousel if display type is carousel
+      const displayType = '{{ section.settings.display_type }}';
+      
+      if (displayType === 'carousel') {
+        initializeCarousel();
+      }
+      
+      // Add event listeners to all add to cart buttons
+      addButtons.forEach((button, index) => {
+        button.addEventListener('click', async function(e) {
+          e.preventDefault();
+          
+          try {
+            await openVariantModal(this);
+          } catch (error) {
+            console.error('Error opening variant modal:', error);
+          }
+        });
+      });
+
+    // Carousel functionality
+    function initializeCarousel() {
+      const carousel = document.getElementById('productsCarousel');
+      if (!carousel) return;
+      
+      const track = document.getElementById('carouselTrack');
+      const slides = track.querySelectorAll('.carousel-slide');
+      const prevBtn = document.getElementById('carouselPrev');
+      const nextBtn = document.getElementById('carouselNext');
+      
+      let currentSlide = 0;
+      const totalSlides = slides.length;
+      
+      // Get how many slides to show at once and max slide index
+      function getSlideInfo() {
+        const isDesktop = window.innerWidth > 768;
+        const slidesToShow = isDesktop ? 3 : 1;
+        const maxSlideIndex = Math.max(0, totalSlides - slidesToShow);
+        return { slidesToShow, maxSlideIndex, isDesktop };
+      }
+      
+      // Get current indicators
+      function getCurrentIndicators() {
+        return []; // No indicators anymore
+      }
+      
+      if (totalSlides <= 1) return; // No need for controls with single slide
+      
+      // Update carousel position
+      function updateCarousel() {
+        const { slidesToShow, maxSlideIndex, isDesktop } = getSlideInfo();
+        
+        // For desktop: slide by individual products but show 3 at a time
+        // For mobile: slide by individual products and show 1 at a time
+        const slideWidth = isDesktop ? (100 / slidesToShow) : 100;
+        const translateX = -currentSlide * slideWidth;
+        track.style.transform = `translateX(${translateX}%)`;
+        
+        // Update button states
+        if (prevBtn) prevBtn.disabled = currentSlide === 0;
+        if (nextBtn) nextBtn.disabled = currentSlide >= maxSlideIndex;
+      }
+      
+      // Previous slide
+      if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+          if (currentSlide > 0) {
+            currentSlide--;
+            updateCarousel();
+          }
+        });
+      }
+      
+      // Next slide
+      if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+          const { maxSlideIndex } = getSlideInfo();
+          if (currentSlide < maxSlideIndex) {
+            currentSlide++;
+            updateCarousel();
+          }
+        });
+      }
+      
+      // Indicator clicks - no longer needed
+      function setupIndicatorListeners() {
+        // No indicators to setup
+      }
+      
+      // Touch/swipe support
+      let startX = 0;
+      let isDragging = false;
+      
+      track.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        isDragging = true;
+      });
+      
+      track.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+      });
+      
+      track.addEventListener('touchend', (e) => {
+        if (!isDragging) return;
+        
+        const endX = e.changedTouches[0].clientX;
+        const diff = startX - endX;
+        const { maxSlideIndex } = getSlideInfo();
+        
+        if (Math.abs(diff) > 50) { // Minimum swipe distance
+          if (diff > 0 && currentSlide < maxSlideIndex) {
+            // Swipe left - next slide
+            currentSlide++;
+            updateCarousel();
+          } else if (diff < 0 && currentSlide > 0) {
+            // Swipe right - previous slide
+            currentSlide--;
+            updateCarousel();
+          }
+        }
+        
+        isDragging = false;
+      });
+      
+      // Keyboard navigation
+      carousel.addEventListener('keydown', (e) => {
+        const { maxSlideIndex } = getSlideInfo();
+        if (e.key === 'ArrowLeft' && currentSlide > 0) {
+          currentSlide--;
+          updateCarousel();
+        } else if (e.key === 'ArrowRight' && currentSlide < maxSlideIndex) {
+          currentSlide++;
+          updateCarousel();
+        }
+      });
+      
+      // Auto-play (optional)
+      if ({{ section.settings.carousel_autoplay | json }}) {
+        const autoplayInterval = {{ section.settings.carousel_autoplay_speed | default: 5000 }};
+        let autoplayTimer;
+        
+        function startAutoplay() {
+          autoplayTimer = setInterval(() => {
+            const { maxSlideIndex } = getSlideInfo();
+            if (currentSlide < maxSlideIndex) {
+              currentSlide++;
+            } else {
+              currentSlide = 0;
+            }
+            updateCarousel();
+          }, autoplayInterval);
+        }
+        
+        function stopAutoplay() {
+          clearInterval(autoplayTimer);
+        }
+        
+        // Start autoplay
+        startAutoplay();
+        
+        // Pause on hover
+        carousel.addEventListener('mouseenter', stopAutoplay);
+        carousel.addEventListener('mouseleave', startAutoplay);
+        
+        // Pause on focus
+        carousel.addEventListener('focusin', stopAutoplay);
+        carousel.addEventListener('focusout', startAutoplay);
+      }
+      
+      // Handle window resize
+      window.addEventListener('resize', () => {
+        const { maxSlideIndex } = getSlideInfo();
+        if (currentSlide > maxSlideIndex) {
+          currentSlide = maxSlideIndex;
+        }
+        updateCarousel();
+      });
+      
+      // Initialize
+      updateCarousel();
+    }
+
+    // === FUNCIONES DEL MODAL DE VARIANTES ===
+    
+    // Variable global para el producto actual
+    let currentProductData = null;
+    let selectedVariantId = null;
+    
+    // Función para abrir el modal de variantes
+    async function openVariantModal(button) {
+      try {
+        if (!button) {
+          console.error('❌ Button is null or undefined');
+          return;
+        }
+        
+        // Obtener datos del producto desde el botón
+        const productHandle = button.getAttribute('data-product-handle');
+        const productId = button.getAttribute('data-product-id');
+        
+        if (!productHandle || !productId) {
+          console.error('❌ Missing product data');
+          return;
+        }
+        
+        // Obtener los datos del producto
+        currentProductData = await getProductData(productHandle);
+        if (!currentProductData) {
+          console.error('❌ Could not load product data');
+          return;
+        }
+        
+        // Specific log for subscription plans of selected product
+        
+        // Llenar el modal con la información del producto
+        populateModal(currentProductData);
+        
+        // Mostrar el modal
+        showModal();
+        
+      } catch (error) {
+        console.error('Error opening variant modal:', error);
+      }
+    }
+    
+    // Función para obtener datos del producto
+    async function getProductData(productHandle) {
+      try {
+        const response = await fetch(`/products/${productHandle}.js`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const productData = await response.json();
+        return productData;
+        
+      } catch (error) {
+        console.error('❌ Error fetching product data:', error);
+        return null;
+      }
+    }
+    
+    // Función para llenar el modal con datos del producto
+    function populateModal(productData) {
+      try {
+        // Elementos del modal
+        const modal = document.getElementById('variantModal');
+        const modalTitle = document.getElementById('modalProductTitle');
+        const modalImage = document.getElementById('modalProductImage');
+        const modalName = document.getElementById('modalProductName');
+        const modalPrice = document.getElementById('modalProductPrice');
+        const variantsList = document.getElementById('variantsList');
+        
+        if (!modal || !modalTitle || !modalImage || !modalName || !modalPrice || !variantsList) {
+          console.error('❌ Missing modal elements');
+          return;
+        }
+        
+        // Fill basic information
+        modalTitle.textContent = `Select Variant - ${productData.title}`;
+        modalName.textContent = productData.title;
+        
+        // Product image
+        if (productData.featured_image) {
+          modalImage.src = productData.featured_image;
+          modalImage.alt = productData.title;
+        }
+        
+        // Price (use first available variant)
+        const firstVariant = productData.variants.find(v => v.available);
+        if (firstVariant) {
+          modalPrice.textContent = formatPrice(firstVariant.price);
+        }
+        
+        // Clear variants list
+        variantsList.innerHTML = '';
+        
+        // Filter only variants that have annual plan (flexible search)
+        const variantsWithAnnualPlan = productData.variants.filter(variant => {
+          if (!variant.selling_plan_allocations) return false;
+          
+          // Check if any selling plan allocation belongs to an annual plan
+          return variant.selling_plan_allocations.some(allocation => {
+            // Find the selling plan in the product's selling plan groups
+            for (const group of productData.selling_plan_groups || []) {
+              const groupName = group.name ? group.name.toLowerCase() : '';
+              if (groupName.includes('annual') || groupName.includes('12-month') || groupName.includes('yearly')) {
+                // Check if this allocation belongs to this annual group
+                return group.selling_plans.some(plan => plan.id === allocation.selling_plan_id);
+              }
+            }
+            return false;
+          });
+        });
+        
+        if (variantsWithAnnualPlan.length === 0) {
+          variantsList.innerHTML = '<p style="text-align: center; color: #e74c3c; padding: 20px;">No variants with annual subscription available</p>';
+          return;
+        }
+        
+        // Create elements only for variants with annual plan
+        variantsWithAnnualPlan.forEach((variant, index) => {
+          const variantElement = createVariantElement(variant, index === 0);
+          variantsList.appendChild(variantElement);
+        });
+        
+        // Reset quantity
+        document.getElementById('variantQuantity').value = 1;
+        
+        // Auto-select the first available variant WITH ANNUAL PLAN
+        const firstAvailableVariantWithAnnual = variantsWithAnnualPlan.find(v => v.available);
+        if (firstAvailableVariantWithAnnual) {
+          selectedVariantId = firstAvailableVariantWithAnnual.id;
+        } else {
+          selectedVariantId = null;
+        }
+        
+        updateAddToCartButton();
+        
+      } catch (error) {
+        console.error('Error populating modal:', error);
+      }
+    }
+    
+    // Función para crear elemento de variante
+    function createVariantElement(variant, isFirst = false) {
+      const variantDiv = document.createElement('div');
+      variantDiv.className = `variant-option ${!variant.available ? 'unavailable' : ''}`;
+      variantDiv.setAttribute('data-variant-id', variant.id);
+      
+        // If it's the first available variant, select it automatically
+        if (isFirst && variant.available) {
+          variantDiv.classList.add('selected');
+          selectedVariantId = variant.id;
+        }        variantDiv.innerHTML = `
+        <div class="variant-info">
+          <div class="variant-title">${variant.title}</div>
+          <div class="variant-price">${formatPrice(variant.price)}</div>
+          ${variant.available 
+            ? `<div class="variant-stock">In stock</div>` 
+            : `<div class="variant-stock">Out of stock</div>`
+          }
+        </div>
+      `;      // Add event listener if available
+      if (variant.available) {
+        variantDiv.addEventListener('click', () => selectVariant(variant.id));
+      }
+      
+      return variantDiv;
+    }
+    
+    // Function to select a variant
+    function selectVariant(variantId) {
+      // Remove previous selection
+      document.querySelectorAll('.variant-option').forEach(option => {
+        option.classList.remove('selected');
+      });
+      
+      // Select the new variant
+      const selectedOption = document.querySelector(`[data-variant-id="${variantId}"]`);
+      if (selectedOption) {
+        selectedOption.classList.add('selected');
+        selectedVariantId = variantId;
+        
+        // Update price in modal
+        const variant = currentProductData.variants.find(v => v.id === variantId);
+        if (variant) {
+          document.getElementById('modalProductPrice').textContent = formatPrice(variant.price);
+        }
+        
+        updateAddToCartButton();
+      }
+    }
+    
+    // Function to show modal
+    function showModal() {
+      try {
+        const modal = document.getElementById('variantModal');
+        
+        if (!modal) {
+          console.error('❌ Modal element not found');
+          return;
+        }
+        
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden'; // Prevent body scroll
+        
+        // Setup event listeners
+        setupModalEventListeners();
+        
+      } catch (error) {
+        console.error('❌ Error in showModal:', error);
+      }
+    }
+    
+    // Function to hide modal
+    function hideModal() {
+      const modal = document.getElementById('variantModal');
+      modal.style.display = 'none';
+      document.body.style.overflow = ''; // Restore body scroll
+      
+      // Clear data
+      currentProductData = null;
+      selectedVariantId = null;
+    }
+    
+    // Setup modal event listeners
+    function setupModalEventListeners() {
+      const modal = document.getElementById('variantModal');
+      const closeBtn = modal.querySelector('.variant-modal-close');
+      const cancelBtn = modal.querySelector('.btn-cancel');
+      const addToCartBtn = modal.querySelector('.btn-add-to-cart');
+      const overlay = modal.querySelector('.variant-modal-overlay');
+      const quantityInput = document.getElementById('variantQuantity');
+      const minusBtn = modal.querySelector('.quantity-btn.minus');
+      const plusBtn = modal.querySelector('.quantity-btn.plus');
+      
+      // Close modal
+      const closeModal = () => hideModal();
+      
+      closeBtn.addEventListener('click', closeModal);
+      cancelBtn.addEventListener('click', closeModal);
+      overlay.addEventListener('click', closeModal);
+      
+      // ESC to close
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.style.display === 'flex') {
+          closeModal();
+        }
+      });
+      
+      // Quantity controls
+      minusBtn.addEventListener('click', () => {
+        const current = parseInt(quantityInput.value);
+        if (current > 1) {
+          quantityInput.value = current - 1;
+        }
+      });
+      
+      plusBtn.addEventListener('click', () => {
+        const current = parseInt(quantityInput.value);
+        if (current < 10) {
+          quantityInput.value = current + 1;
+        }
+      });
+      
+      // Validate quantity
+      quantityInput.addEventListener('input', () => {
+        let value = parseInt(quantityInput.value);
+        if (isNaN(value) || value < 1) {
+          quantityInput.value = 1;
+        } else if (value > 10) {
+          quantityInput.value = 10;
+        }
+      });
+      
+      // Add to cart from modal
+      addToCartBtn.addEventListener('click', async () => {
+        if (selectedVariantId) {
+          await handleModalAddToCart();
+        }
+      });
+    }
+    
+    // Función para actualizar el estado del botón de añadir al carrito
+    function updateAddToCartButton() {
+      const addToCartBtn = document.querySelector('.btn-add-to-cart');
+      if (addToCartBtn) {
+        addToCartBtn.disabled = !selectedVariantId;
+      }
+    }
+    
+    // Función para manejar añadir al carrito desde el modal
+    async function handleModalAddToCart() {
+      try {
+        const addToCartBtn = document.querySelector('.btn-add-to-cart');
+        const quantity = parseInt(document.getElementById('variantQuantity').value);
+        
+        if (!selectedVariantId || !currentProductData) {
+          console.error('❌ Missing variant or product data');
+          return;
+        }
+        
+        // Mostrar loading
+        addToCartBtn.disabled = true;
+        addToCartBtn.classList.add('loading');
+        
+        // Buscar la variante seleccionada
+        const selectedVariant = currentProductData.variants.find(v => v.id === selectedVariantId);
+        if (!selectedVariant) {
+          throw new Error('Selected variant not found');
+        }
+        
+        // Buscar selling plan para suscripción anual
+        let sellingPlanId = null;
+        if (selectedVariant.selling_plan_allocations && selectedVariant.selling_plan_allocations.length > 0) {
+          
+          // Estrategia mejorada: Buscar el plan anual específico
+          // Sabemos que el plan anual es el ID 8466006335 basado en los selling_plan_groups
+          const annualPlan = selectedVariant.selling_plan_allocations.find(allocation => 
+            allocation.selling_plan_id === 8466006335
+          );
+          
+          if (annualPlan) {
+            sellingPlanId = annualPlan.selling_plan_id;
+          } else {
+            // Fallback: Look for highest price plan (annual plan costs $194.28)
+            const sortedByPrice = [...selectedVariant.selling_plan_allocations].sort((a, b) => b.price - a.price);
+            const highestPricePlan = sortedByPrice[0];
+            
+            // If highest price is significantly higher, it's probably annual
+            const secondHighest = sortedByPrice[1];
+            const priceRatio = secondHighest ? (highestPricePlan.price / secondHighest.price) : 1;
+            
+            if (priceRatio > 5) { // If 5x more expensive, probably annual
+              sellingPlanId = highestPricePlan.selling_plan_id;
+            } else {
+              // Estrategia final: Usar el último plan 
+              const lastPlan = selectedVariant.selling_plan_allocations[selectedVariant.selling_plan_allocations.length - 1];
+              sellingPlanId = lastPlan.selling_plan_id;
+            }
+          }
+        }
+        
+        // Prepare cart data
+        const cartData = {
+          items: [{
+            id: selectedVariantId,
+            quantity: quantity
+          }]
+        };
+        
+        // Add selling plan if exists
+        if (sellingPlanId) {
+          cartData.items[0].selling_plan = sellingPlanId;
+        }
+        
+        // Add to cart
+        const response = await fetch('/cart/add.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(cartData)
+        });
+        
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.message || 'Failed to add to cart');
+        }
+        
+        const result = await response.json();
+        
+        // Close modal
+        hideModal();
+        
+        // Show success message (optional)
+        showSuccessMessage(`${selectedVariant.title} added to cart!`);
+        
+        // Update cart UI
+        updateCartUI();
+        
+      } catch (error) {
+        console.error('❌ Error adding to cart from modal:', error);
+        alert('Error adding to cart: ' + error.message);
+      } finally {
+        // Remove loading
+        const addToCartBtn = document.querySelector('.btn-add-to-cart');
+        if (addToCartBtn) {
+          addToCartBtn.disabled = false;
+          addToCartBtn.classList.remove('loading');
+        }
+      }
+    }
+    
+    // Función para formatear precio
+    // Function to format price
+    function formatPrice(price) {
+      return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD'
+      }).format(price / 100);
+    }
+    
+    // Function to show success message
+    function showSuccessMessage(message) {
+      // Create notification element
+      const notification = document.createElement('div');
+      notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #27ae60;
+        color: white;
+        padding: 16px 24px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        z-index: 10000;
+        font-weight: 600;
+        animation: slideInRight 0.3s ease-out;
+      `;
+      notification.textContent = message;
+      
+      document.body.appendChild(notification);
+      
+      // Remove after 3 seconds
+      setTimeout(() => {
+        notification.style.animation = 'slideOutRight 0.3s ease-out';
+        setTimeout(() => {
+          if (notification.parentNode) {
+            notification.parentNode.removeChild(notification);
+          }
+        }, 300);
+      }, 3000);
+    }
+    
+    // Function to update cart UI
+    function updateCartUI() {
+      // Find cart counter and update it
+      const cartCount = document.querySelector('.cart-count, [data-cart-count]');
+      if (cartCount) {
+        // Fetch cart count
+        fetch('/cart.js')
+          .then(response => response.json())
+          .then(cart => {
+            cartCount.textContent = cart.item_count;
+          })
+          .catch(error => console.error('Error updating cart count:', error));
+      }
+    }
+
+    // Function to handle add to cart
+    async function handleAddToCart(button) {
+      try {
+        // Get product data
+        const productCard = button.closest('.simple-product-card');
+        
+        const productDataAttr = productCard.getAttribute('data-product');
+        
+        if (!productDataAttr) {
+          console.error('❌ No product data found');
+          showErrorModal('Product data not found');
+          return;
+        }
+
+        let productData;
+        try {
+          // Decode HTML entities first, then parse JSON
+          const decodedData = productDataAttr.replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&amp;/g, '&');
+          productData = JSON.parse(decodedData);
+        } catch (parseError) {
+          console.error('❌ Error parsing product data:', parseError);
+          console.error('❌ Raw data:', productDataAttr);
+          showErrorModal('Error in product data. Please reload the page.');
+          return;
+        }
+
+        // Set loading state
+        const originalText = button.innerHTML;
+        const loadingText = button.getAttribute('data-loading-text') || 'Adding...';
+        button.disabled = true;
+        button.innerHTML = loadingText;
+
+        // Find the first available variant
+        const availableVariant = productData.variants.find(variant => variant.available);
+        
+        if (!availableVariant) {
+          console.error('❌ No available variants found');
+          showErrorModal('Sorry, this product is not available at the moment.');
+          return;
+        }
+
+        // Find annual selling plan
+        const annualPlan = findAnnualSellingPlan(productData);
+        
+        if (!annualPlan) {
+          console.error('❌ No annual selling plan found');
+          showErrorModal('Annual subscription is not available for this product.');
+          return;
+        }
+
+        // Prepare cart data
+        const cartData = {
+          id: availableVariant.id,
+          quantity: 1,
+          selling_plan: annualPlan.id
+        };
+
+        // Add to cart
+        const response = await fetch(`${window.location.origin}/cart/add.js`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(cartData)
+        });
+
+        if (!response.ok) {
+          const errorText = await response.text();
+          console.error('❌ HTTP Error:', response.status, errorText);
+          throw new Error(`HTTP Error: ${response.status} - ${errorText}`);
+        }
+
+        const responseData = await response.json();
+
+        // Update cart count if available
+        if (window.theme && window.theme.cartCount) {
+          window.theme.cartCount.update();
+        }
+
+        // Show success modal
+        showSuccessModal(`${productData.title} has been added to your cart with annual subscription!`);
+
+        // Dispatch custom event for other scripts
+        document.body.dispatchEvent(
+          new CustomEvent('shapes:cart:afteradditem', {
+            bubbles: true,
+            detail: { 
+              response: responseData,
+              product: productData,
+              sellingPlan: annualPlan 
+            }
+          })
+        );
+
+      } catch (error) {
+        console.error('❌ Error adding product to cart:', error);
+        showErrorModal(`There was an error adding the product to cart: ${error.message}`);
+      } finally {
+        // Reset button state
+        button.disabled = false;
+        button.innerHTML = originalText;
+      }
+    }
+
+    // Function to find annual selling plan
+    function findAnnualSellingPlan(productData) {
+      if (!productData.selling_plan_groups) {
+        return null;
+      }
+      
+      // Find the actual annual group and return its plan
+      for (const group of productData.selling_plan_groups) {
+        // Search for group containing 'annual', '12-month', 'yearly' in the name
+        if (group.name && 
+            (group.name.toLowerCase().includes('annual') || 
+             group.name.toLowerCase().includes('12-month') || 
+             group.name.toLowerCase().includes('yearly'))) {
+          
+          // Return first selling plan from annual group
+          if (group.selling_plans && group.selling_plans.length > 0) {
+            return group.selling_plans[0];
+          }
+        }
+      }
+      
+      return null;
+    }
+
+    // Success Modal Functions
+    window.showSuccessModal = function(message) {
+      const modal = document.getElementById('successModal');
+      const messageElement = document.getElementById('successMessage');
+      
+      if (modal && messageElement) {
+        messageElement.textContent = message;
+        modal.classList.add('show');
+        
+        // Prevent body scroll when modal is open
+        document.body.style.overflow = 'hidden';
+      }
+    };
+
+    window.closeSuccessModal = function() {
+      const modal = document.getElementById('successModal');
+      
+      if (modal) {
+        modal.classList.remove('show');
+        
+        // Restore body scroll
+        document.body.style.overflow = '';
+      }
+    };
+
+    // Error Modal Functions
+    window.showErrorModal = function(message) {
+      const modal = document.getElementById('errorModal');
+      const messageElement = document.getElementById('errorMessage');
+      
+      if (modal && messageElement) {
+        messageElement.textContent = message;
+        modal.classList.add('show');
+        
+        // Prevent body scroll when modal is open
+        document.body.style.overflow = 'hidden';
+      }
+    };
+
+    window.closeErrorModal = function() {
+      const modal = document.getElementById('errorModal');
+      
+      if (modal) {
+        modal.classList.remove('show');
+        
+        // Restore body scroll
+        document.body.style.overflow = '';
+      }
+    };
+
+    // Close modals when clicking outside
+    document.getElementById('successModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeSuccessModal();
+      }
+    });
+
+    document.getElementById('errorModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeErrorModal();
+      }
+    });
+
+    // Close modals with Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        const successModal = document.getElementById('successModal');
+        const errorModal = document.getElementById('errorModal');
+        
+        if (successModal.classList.contains('show')) {
+          closeSuccessModal();
+        }
+        if (errorModal.classList.contains('show')) {
+          closeErrorModal();
+        }
+      }
+    });
+  });
+  
+} catch (error) {
+  console.error('❌ Script Error:', error);
+}
+</script>
+
+{% schema %}
+{
+  "name": "Simple Subscriptions",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection",
+      "info": "Select the collection to display products from"
+    },
+    {
+      "type": "header",
+      "content": "Section Display"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_title",
+      "label": "Show section title",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title",
+      "default": "Annual Subscription Products"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Section subtitle",
+      "info": "Optional subtitle text"
+    },
+    {
+      "type": "header",
+      "content": "Product Display"
+    },
+    {
+      "type": "select",
+      "id": "display_type",
+      "label": "Display type",
+      "options": [
+        {
+          "value": "grid",
+          "label": "Grid"
+        },
+        {
+          "value": "carousel",
+          "label": "Carousel/Slider"
+        }
+      ],
+      "default": "grid",
+      "info": "Choose how to display the products"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_product_price",
+      "label": "Show product prices",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_product_description",
+      "label": "Show product descriptions",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Carousel Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "carousel_autoplay",
+      "label": "Enable carousel autoplay",
+      "default": false,
+      "info": "Automatically advance slides (only for carousel display)"
+    },
+    {
+      "type": "range",
+      "id": "carousel_autoplay_speed",
+      "min": 2000,
+      "max": 9500,
+      "step": 500,
+      "label": "Autoplay speed (milliseconds)",
+      "default": 5000,
+      "info": "How long each slide is displayed in autoplay mode"
+    },
+    {
+      "type": "header",
+      "content": "Button Settings"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Add Annual Subscription"
+    },
+    {
+      "type": "text",
+      "id": "button_loading_text",
+      "label": "Button loading text",
+      "default": "Adding..."
+    },
+    {
+      "type": "header",
+      "content": "Empty State"
+    },
+    {
+      "type": "text",
+      "id": "empty_collection_text",
+      "label": "Empty collection text",
+      "default": "No products found in this collection."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Simple Subscriptions",
+      "settings": {
+        "show_title": true,
+        "show_product_price": true,
+        "show_product_description": true,
+        "button_text": "Add Annual Subscription",
+        "button_loading_text": "Adding..."
+      }
+    }
+  ]
+}
+{% endschema %}
+
+<!-- Variant Selection Modal -->
+<div id="variantModal" class="variant-modal" style="display: none;">
+  <div class="variant-modal-overlay"></div>
+  <div class="variant-modal-content">
+    <div class="variant-modal-header">
+      <h3 id="modalProductTitle">Select Variant</h3>
+      <button class="variant-modal-close" aria-label="Close">&times;</button>
+    </div>
+    <div class="variant-modal-body">
+      <div class="product-info">
+        <img id="modalProductImage" src="data:image/svg+xml,%3Csvg width='80' height='80' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='80' height='80' fill='%23f5f5f5'/%3E%3C/svg%3E" alt="" class="modal-product-image" width="80" height="80">
+        <div class="product-details">
+          <h4 id="modalProductName">Product</h4>
+          <p id="modalProductPrice">$0.00</p>
+        </div>
+      </div>
+      <div class="variants-container">
+        <h4>Available Variants:</h4>
+        <div id="variantsList" class="variants-list">
+          <!-- Variants will be loaded dynamically here -->
+        </div>
+      </div>
+      <div class="quantity-selector">
+        <label for="variantQuantity">Quantity:</label>
+        <div class="quantity-controls">
+          <button type="button" class="quantity-btn minus">-</button>
+          <input type="number" id="variantQuantity" value="1" min="1" max="10">
+          <button type="button" class="quantity-btn plus">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="variant-modal-footer">
+      <button class="btn-cancel">Cancel</button>
+      <button class="btn-add-to-cart" disabled>Add to Cart</button>
+    </div>
+  </div>
+</div>
