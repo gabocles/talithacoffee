@@ -1,34 +1,35 @@
 {%- liquid
-  assign block_heading_level = 'h2'
-  assign columns = section.blocks | where: 'type', 'column'
 -%}
 
 <section
   class="relative grid text-scheme-text bg-scheme-background {% if section.settings.use_gradient_background %}bg-scheme-gradient{% endif %} relative overflow-hidden"
   data-color-scheme="{{ section.settings.color_scheme | default: 'primary' }}"
 >
-  <div class="section-content relative z-10 max-w-site mx-auto py-section-vertical-spacing xl:py-16 2xl:py-20 px-section xl:px-8 2xl:px-12">
+  <div class="section-content relative z-10 {% if section.settings.section_width == 'full' %}w-full{% else %}max-w-site{% endif %} mx-auto py-section-vertical-spacing xl:py-16 2xl:py-20 px-section xl:px-8 2xl:px-12">
     {% if section.settings.title != '' %}
-      {%- assign block_heading_level = 'h3' -%}
       <h2 class="text-center font-heading {{ section.settings.main_title_size | default: 'text-2xl' }} xl:text-4xl 2xl:text-5xl heading-style break-words {{ settings.heading_drop_shadow_style }}">
         {{ section.settings.title }}
       </h2>
     {% endif %}
 
-    <ul class="{% if section.settings.title != '' %}section-content-top-margin{% endif %} grid grid-cols-1 lg:grid-cols-12 gap-1 xl:gap-3 2xl:gap-4">
+    <ul class="{% if section.settings.title != '' %}section-content-top-margin{% endif %} grid grid-cols-1 {% if section.settings.columns_full_width %}{% case section.blocks.size %}{% when 1 %}lg:grid-cols-1{% when 2 %}lg:grid-cols-2{% when 3 %}lg:grid-cols-3{% when 4 %}lg:grid-cols-4{% else %}lg:grid-cols-3{% endcase %}{% else %}lg:grid-cols-12{% endif %} {% unless section.settings.columns_full_width %}gap-1 xl:gap-3 2xl:gap-4{% endunless %}">
       {% for block in section.blocks %}
         {%- liquid
-          assign col_span = 'lg:col-span-4'
-          if section.blocks.size == 1
-            assign col_span = 'lg:col-span-12'
-          elsif section.blocks.size == 2
-            assign col_span = 'lg:col-span-6'
-          elsif section.blocks.size == 3
-            assign col_span = 'lg:col-span-4'
-          elsif section.blocks.size == 4
-            assign col_span = 'lg:col-span-3'
+          if section.settings.columns_full_width
+            assign col_span = ''
           else
             assign col_span = 'lg:col-span-4'
+            if section.blocks.size == 1
+              assign col_span = 'lg:col-span-12'
+            elsif section.blocks.size == 2
+              assign col_span = 'lg:col-span-6'
+            elsif section.blocks.size == 3
+              assign col_span = 'lg:col-span-4'
+            elsif section.blocks.size == 4
+              assign col_span = 'lg:col-span-3'
+            else
+              assign col_span = 'lg:col-span-4'
+            endif
           endif
 
           assign show_on_card = false
@@ -42,20 +43,33 @@
           if block.settings.background_image != blank
             assign bg_position = block.settings.background_image_position | default: 'center'
             assign bg_size = block.settings.background_image_size | default: 'cover'
-            assign bg_opacity = block.settings.background_image_opacity | default: 100
-            assign opacity_decimal = bg_opacity | divided_by: 100.0
-            assign image_url = block.settings.background_image | img_url: '800x800'
+            assign image_size = block.settings.image_size | default: '800x800'
+            assign image_url = block.settings.background_image | image_url: width: image_size
             assign bg_image_style = 'background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(' | append: image_url | append: '); background-position: ' | append: bg_position | append: '; background-size: ' | append: bg_size | append: '; background-repeat: no-repeat;'
           endif
+          
+          assign responsive_height_class = ''
+          case section.settings.responsive_height
+            when 'small'
+              assign responsive_height_class = 'min-h-60 xl:min-h-72 2xl:min-h-80'
+            when 'medium'
+              assign responsive_height_class = 'min-h-80 xl:min-h-96 2xl:min-h-[28rem]'
+            when 'large'
+              assign responsive_height_class = 'min-h-96 xl:min-h-[28rem] 2xl:min-h-[32rem]'
+            when 'extra_large'
+              assign responsive_height_class = 'min-h-[28rem] xl:min-h-[32rem] 2xl:min-h-[36rem]'
+            else
+              assign responsive_height_class = 'min-h-80 xl:min-h-96 2xl:min-h-[28rem]'
+          endcase
         -%}
 
         <li
-          {% assign combined_style = 'height: 300px;' %}
+          {% assign combined_style = 'height: ' | append: section.settings.column_height | default: '300px' | append: ';' %}
           {% if block.settings.background_image != blank %}
             {% assign combined_style = combined_style | append: ' ' | append: bg_image_style %}
           {% endif %}
           style="{{ combined_style }}"
-          class="{{ col_span }} {% if show_on_card %}text-scheme-text card-container{% endif %} relative overflow-hidden {% if block.settings.background_image != blank %}aspect-square min-h-80 xl:min-h-96 2xl:min-h-[28rem] flex items-center justify-center{% endif %}"
+          class="{{ col_span }} {% if show_on_card %}text-scheme-text card-container{% endif %} relative overflow-hidden {% if block.settings.background_image != blank %}aspect-square {{ responsive_height_class }} flex items-center justify-center{% endif %}"
           {% unless block.settings.color_scheme == 'same_as_section' %}
             data-color-scheme="{{ block.settings.color_scheme }}"
           {% endunless %}
@@ -63,11 +77,11 @@
         >
           <div style="max-width: 90%; opacity: 0.9" class="{% if show_on_card and block.settings.background_image != blank %}absolute bottom-0 left-0 right-0 bg-white bg-opacity-70 p-4 xl:p-6 2xl:p-8 m-3 xl:m-4 2xl:m-5 rounded-lg shadow-lg{% elsif show_on_card %}card p-5 xl:p-7 2xl:p-9 h-full{% elsif block.settings.background_image != blank %}absolute inset-0 flex items-center justify-center p-4 xl:p-6 2xl:p-8 text-white bg-black bg-opacity-30{% endif %} text-center relative z-10">
             {% if block.settings.title != '' %}
-              <{{ block_heading_level }} class="font-heading {{ section.settings.column_title_size | default: 'text-lg' }} xl:text-xl 2xl:text-2xl break-words">
-                {{- block.settings.title -}}
-              </{{ block_heading_level }}>
+              <div class="rte font-heading {{ block.settings.title_size | default: section.settings.column_title_size | default: 'text-lg' }} xl:text-xl 2xl:text-2xl break-words">
+                {{ block.settings.title }}
+              </div>
             {% endif %}
-            <div class="rte {{ section.settings.content_text_size | default: 'text-base' }} xl:text-lg 2xl:text-xl {% if section.settings.subheading_font == 'heading' %}font-heading{% endif %} {% if block.settings.title != '' %}mt-2.5 xl:mt-3 2xl:mt-4{% endif %}">
+            <div class="rte {{ block.settings.content_size | default: section.settings.content_text_size | default: 'text-base' }} xl:text-lg 2xl:text-xl {% if section.settings.subheading_font == 'heading' %}font-heading{% endif %} {% if block.settings.title != '' %}mt-2.5 xl:mt-3 2xl:mt-4{% endif %}">
               {{ block.settings.subheading }}
             </div>
           </div>
@@ -301,6 +315,65 @@
       "type": "checkbox",
       "id": "use_gradient_background",
       "label": "Use gradient for background"
+    },
+    {
+      "type": "header",
+      "content": "Layout Options"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section width",
+      "options": [
+        {
+          "value": "default",
+          "label": "Default (max-width)"
+        },
+        {
+          "value": "full",
+          "label": "Full width"
+        }
+      ],
+      "default": "default",
+      "info": "Choose between default max-width or full viewport width"
+    },
+    {
+      "type": "checkbox",
+      "id": "columns_full_width",
+      "label": "Columns use full width",
+      "info": "Make columns span the full container width instead of using 12-column grid"
+    },
+    {
+      "type": "text",
+      "id": "column_height",
+      "label": "Column height",
+      "default": "300px",
+      "info": "Set height for all columns (e.g., 400px, 20rem)"
+    },
+    {
+      "type": "select",
+      "id": "responsive_height",
+      "label": "Responsive height",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        },
+        {
+          "value": "extra_large",
+          "label": "Extra Large"
+        }
+      ],
+      "default": "medium",
+      "info": "Additional responsive height classes for columns with background images"
     }
   ],
   "blocks": [
@@ -310,10 +383,10 @@
       "limit": 4,
       "settings": [
         {
-          "type": "text",
+          "type": "richtext",
           "id": "title",
           "label": "t:common.settings.title.label",
-          "default": "Heading"
+          "default": "<p>Heading</p>"
         },
         {
           "type": "richtext",
@@ -331,6 +404,88 @@
           "label": "Display on Card",
           "default": false,
           "info": "Override section setting for this specific column"
+        },
+        {
+          "type": "header",
+          "content": "Text Customization"
+        },
+        {
+          "type": "select",
+          "id": "title_size",
+          "label": "Title font size (override)",
+          "options": [
+            {
+              "value": "",
+              "label": "Use section default"
+            },
+            {
+              "value": "text-xs",
+              "label": "Extra Small"
+            },
+            {
+              "value": "text-sm",
+              "label": "Small"
+            },
+            {
+              "value": "text-base",
+              "label": "Medium"
+            },
+            {
+              "value": "text-lg",
+              "label": "Large"
+            },
+            {
+              "value": "text-xl",
+              "label": "Extra Large"
+            },
+            {
+              "value": "text-2xl",
+              "label": "2X Large"
+            },
+            {
+              "value": "text-3xl",
+              "label": "3X Large"
+            }
+          ],
+          "default": "",
+          "info": "Override the section's default title size for this column only"
+        },
+        {
+          "type": "select",
+          "id": "content_size",
+          "label": "Content font size (override)",
+          "options": [
+            {
+              "value": "",
+              "label": "Use section default"
+            },
+            {
+              "value": "text-xs",
+              "label": "Extra Small"
+            },
+            {
+              "value": "text-sm",
+              "label": "Small"
+            },
+            {
+              "value": "text-base",
+              "label": "Medium"
+            },
+            {
+              "value": "text-lg",
+              "label": "Large"
+            },
+            {
+              "value": "text-xl",
+              "label": "Extra Large"
+            },
+            {
+              "value": "text-2xl",
+              "label": "2X Large"
+            }
+          ],
+          "default": "",
+          "info": "Override the section's default content size for this column only"
         },
         {
           "type": "header",
@@ -398,6 +553,31 @@
           "unit": "%",
           "label": "Background Image Opacity",
           "default": 100
+        },
+        {
+          "type": "select",
+          "id": "image_size",
+          "label": "Image Resolution",
+          "options": [
+            {
+              "value": "600x600",
+              "label": "Small (600x600)"
+            },
+            {
+              "value": "800x800",
+              "label": "Medium (800x800)"
+            },
+            {
+              "value": "1200x1200",
+              "label": "Large (1200x1200)"
+            },
+            {
+              "value": "1600x1600",
+              "label": "Extra Large (1600x1600)"
+            }
+          ],
+          "default": "800x800",
+          "info": "Higher resolutions for better quality on large screens"
         }
       ]
     },

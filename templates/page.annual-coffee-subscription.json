@@ -96,37 +96,46 @@
         "column_GwNcig": {
           "type": "column",
           "settings": {
-            "title": "",
-            "subheading": "<p>Fresh-roasted coffee delivered every 4 weeks</p>",
+            "title": "<p>Fresh-roasted coffee delivered every 4 weeks</p>",
+            "subheading": "",
             "display_on_card": true,
+            "title_size": "",
+            "content_size": "",
             "background_image": "shopify://shop_images/image-text-1.png",
             "background_image_position": "center",
             "background_image_size": "cover",
-            "background_image_opacity": 0
+            "background_image_opacity": 0,
+            "image_size": "1200x1200"
           }
         },
         "column_8MmT3h": {
           "type": "column",
           "settings": {
-            "title": "",
-            "subheading": "<p>Choose from <strong>any roast or single origin</strong></p>",
+            "title": "<p>Choose from any roast or single origin</p>",
+            "subheading": "",
             "display_on_card": true,
+            "title_size": "",
+            "content_size": "",
             "background_image": "shopify://shop_images/image-text-2.png",
             "background_image_position": "center",
             "background_image_size": "cover",
-            "background_image_opacity": 100
+            "background_image_opacity": 100,
+            "image_size": "800x800"
           }
         },
         "column_64tkXf": {
           "type": "column",
           "settings": {
-            "title": "",
-            "subheading": "<p>Flexible editing anytime</p>",
+            "title": "<p>Flexible editing anytime</p>",
+            "subheading": "",
             "display_on_card": true,
+            "title_size": "",
+            "content_size": "",
             "background_image": "shopify://shop_images/roastery-sign.webp",
             "background_image_position": "center",
             "background_image_size": "cover",
-            "background_image_opacity": 0
+            "background_image_opacity": 0,
+            "image_size": "800x800"
           }
         }
       },
@@ -140,12 +149,16 @@
         "display_on_card": false,
         "title": "Here’s what you’ll enjoy:",
         "main_title_size": "text-3xl",
-        "column_title_size": "text-xs",
+        "column_title_size": "text-base",
         "content_text_size": "text-lg",
         "heading_size": "h2",
         "subheading_font": "body",
         "color_scheme": "primary",
-        "use_gradient_background": false
+        "use_gradient_background": false,
+        "section_width": "full",
+        "columns_full_width": true,
+        "column_height": "40vh",
+        "responsive_height": "large"
       }
     },
     "image_with_text_BinBwN": {
