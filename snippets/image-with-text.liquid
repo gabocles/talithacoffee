@@ -80,6 +80,15 @@
               </div>
             {%- endif -%}
 
+            {%- if scroll_button_text != blank -%}
+              <div class="mt-5">
+                <button onclick="document.getElementById('{{ scroll_target_id }}').scrollIntoView({ behavior: 'smooth', block: 'center' })" 
+                        class="inline-block">
+                  <span class="custom-btn">{{ scroll_button_text }}</span>
+                </button>
+              </div>
+            {%- endif -%}
+
             {%- if section.settings.show_additional_section -%}
               <div class="mt-8 {{ section.settings.additional_section_alignment }} color-scheme-{{ section.settings.additional_section_color_scheme }}">
                 {%- if section.settings.additional_section_type == 'button' -%}

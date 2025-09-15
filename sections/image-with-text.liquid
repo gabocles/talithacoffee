@@ -16,6 +16,8 @@
       richtext: section.settings.richtext,
       button_link: section.settings.button_link,
       button_label: section.settings.button_label,
+      scroll_button_text: section.settings.scroll_button_text,
+      scroll_target_id: section.settings.scroll_target_id,
       heading_size: section.settings.heading_size,
       container_id: section.id,
       disable_media_style: section.settings.disable_media_style
@@ -460,6 +462,18 @@
       "id": "button_label",
       "label": "t:common.settings.button_label.label",
       "default": "Shop Now"
+    },
+    {
+      "type": "text",
+      "id": "scroll_button_text",
+      "label": "Scroll Button Text"
+    },
+    {
+      "type": "text",
+      "id": "scroll_target_id",
+      "label": "Scroll Target Section ID",
+      "info": "Enter the ID of the section to scroll to (without #)",
+      "default": "simpleSubscriptionSection"
     },
     {
       "type": "header",
