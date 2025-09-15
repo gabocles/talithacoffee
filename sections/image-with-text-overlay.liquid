@@ -26,6 +26,8 @@
       richtext: section.settings.richtext,
       cta_url: section.settings.cta_url,
       cta_text: section.settings.cta_text,
+      scroll_button_text: section.settings.scroll_button_text,
+      scroll_target_id: section.settings.scroll_target_id,
       display_on_card: section.settings.display_on_card,
       style: style,
       crop: crop,
@@ -246,6 +248,18 @@
       "id": "cta_text",
       "label": "t:common.settings.cta_text.label",
       "default": "Shop Now"
+    },
+    {
+      "type": "text",
+      "id": "scroll_button_text",
+      "label": "Scroll Button Text"
+    },
+    {
+      "type": "text",
+      "id": "scroll_target_id",
+      "label": "Scroll Target Section ID",
+      "info": "Enter the ID of the section to scroll to (without #)",
+      "default": "simpleSubscriptionSection"
     },
     {
       "type": "header",

@@ -85,6 +85,18 @@
         </a>
       </div>
     {% endif %}
+
+    {% if scroll_button_text != blank and scroll_target_id != blank %}
+      <div class="relative z-10 mt-5 flex justify-center">
+        <button 
+          class="custom-btn px-8 py-4 text-lg font-bold" 
+          onclick="document.getElementById('{{ scroll_target_id }}').scrollIntoView({ behavior: 'smooth', block: 'center' })"
+          type="button"
+        >
+          {{ scroll_button_text }}
+        </button>
+      </div>
+    {% endif %}
   {%- endcapture -%}
 
     <div class="{% if style == 'inset' %}{{ content_inset_class }}{% endif %}">

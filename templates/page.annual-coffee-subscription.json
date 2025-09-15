@@ -29,7 +29,7 @@
       ],
       "name": "t:sections.feature_text.name",
       "settings": {
-        "rich_text": "<p>Use this text to share information about your brand with your customers.</p>",
+        "rich_text": "<h3><strong>Alitha’s First-Ever Annual<br/><br/></strong>Subscription is Here:<br/>Pre-pay this Fall → 3 months are on us!”</h3>",
         "mobile_text_size": "text-xl",
         "desktop_text_size": "lg:text-2xl",
         "display_on_card": true,
@@ -83,6 +83,8 @@
         "richtext": "<h4>Hope Roasted for a Year</h4><p>One subscription. <br/><br/>One year of coffee. </p><p>One year of impact for trafficking survivors.</p>",
         "cta_url": "",
         "cta_text": "Start Your Year Of Coffee",
+        "scroll_button_text": "Go now to Subscribe!",
+        "scroll_target_id": "simpleSubscriptionSection",
         "color_scheme": "primary",
         "use_gradient_background": false,
         "text_overlay_color": "same_as_section"
@@ -226,6 +228,8 @@
         "richtext": "<h3>Your coffee. Their new beginning.</h3><p>Every Talitha subscription fuels more than mornings -  it creates steady jobs, training, and opportunity for trafficking survivors.</p><p>Now is the time to make your mornings matter.</p><p>Because this isn’t just coffee.<br/> It’s Hope Roasted.</p>",
         "cta_url": "",
         "cta_text": "",
+        "scroll_button_text": "",
+        "scroll_target_id": "",
         "color_scheme": "primary",
         "use_gradient_background": false,
         "text_overlay_color": "same_as_section"
